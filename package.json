@@ -1,0 +1,28 @@
+{
+  "name": "ticket-triage",
+  "type": "module",
+  "module": "index.ts",
+  "private": true,
+  "scripts": {
+    "check-types": "tsc -b",
+    "check": "ultracite check",
+    "fix": "ultracite fix"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "2.4.15",
+    "@types/bun": "latest",
+    "csv-parse": "^6.2.1",
+    "ultracite": "7.8.1"
+  },
+  "peerDependencies": {
+    "typescript": "^5"
+  },
+  "dependencies": {
+    "@langfuse/otel": "^5.4.1",
+    "@langfuse/tracing": "^5.4.1",
+    "@openrouter/ai-sdk-provider": "^2.9.0",
+    "@opentelemetry/sdk-node": "^0.218.0",
+    "ai": "^6.0.195",
+    "zod": "^4.4.3"
+  }
+}
