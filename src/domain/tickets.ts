@@ -1,4 +1,4 @@
-export type TicketChannel = "email" | "web_form" | "chat" | "phone" | "social";
+export type TicketChannel = "email" | "chat" | "phone" | "social";
 
 export type Ticket = {
   id: string;
@@ -8,11 +8,5 @@ export type Ticket = {
   customer: {
     name: string;
     email: string;
-  };
-  /** dev/eval only, can strip before prompting */
-  metaLabels?: {
-    category: string;
-    priority: string;
-    escalated: boolean;
   };
 };

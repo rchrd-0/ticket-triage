@@ -4,61 +4,59 @@ import Papa from "papaparse";
 import type { Ticket, TicketChannel } from "@/domain/tickets";
 
 type CsvRow = {
-  ticket_id: string;
-  customer_name: string;
-  customer_email: string;
-  product: string;
-  category: string;
-  issue_description: string;
-  priority: string;
-  channel: string;
-  escalated: string;
+  "Ticket ID": string;
+  "Customer Name": string;
+  "Customer Email": string;
+  "Product Purchased": string;
+  "Ticket Description": string;
+  "Ticket Channel": string;
+  "Ticket Subject": string;
 };
 
 const SAMPLE_SIZE = 500;
-const MAX_PER_CATEGORY = SAMPLE_SIZE / 10;
+const MAX_PER_SUBJECT = Math.ceil(SAMPLE_SIZE / 16); // ~16 distinct ticket subjects in dataset
 
-const csvPath = path.resolve(import.meta.dir, "..", "data", "customer_support_tickets_200k.csv");
+const csvPath = path.resolve(import.meta.dir, "..", "data", "customer_support_tickets.csv");
 const outPath = path.resolve(import.meta.dir, "..", "src", "fixtures", "tickets.json");
 const csvStream = createReadStream(csvPath);
 
 const channelByCsv: Record<string, TicketChannel> = {
   Email: "email",
-  "Web Form": "web_form",
   Chat: "chat",
   Phone: "phone",
-  "Social Media": "social",
+  "Social media": "social",
 };
 
 const mapRowToTicket = (row: CsvRow): Ticket | null => {
-  const channel = channelByCsv[row.channel];
+  const channel = channelByCsv[row["Ticket Channel"]];
   if (!channel) {
     return null;
   }
 
-  const body = row.issue_description?.trim();
+  const product = row["Product Purchased"]?.trim();
+  if (!product) {
+    return null;
+  }
+
+  const body = row["Ticket Description"]?.trim().replace(/\{product_purchased\}/gi, product);
   if (!body) {
     return null;
   }
 
   return {
-    id: row.ticket_id,
+    id: row["Ticket ID"],
     channel,
-    product: row.product,
+    product,
     body,
     customer: {
-      name: row.customer_name,
-      email: row.customer_email,
-    },
-    metaLabels: {
-      category: row.category,
-      priority: row.priority,
-      escalated: row.escalated === "Yes",
+      name: row["Customer Name"],
+      email: row["Customer Email"],
     },
   };
 };
 
-const perCategory = new Map<string, number>();
+const perSubject = new Map<string, number>();
+const uniqueBodyCount = new Map<string, number>();
 
 const tickets = await new Promise<Ticket[]>((resolve, reject) => {
   const collected: Ticket[] = [];
@@ -74,10 +72,10 @@ const tickets = await new Promise<Ticket[]>((resolve, reject) => {
       }
 
       const row = result.data;
-      const { category } = row;
+      const subject = row["Ticket Subject"];
 
-      const count = perCategory.get(category) ?? 0;
-      if (count >= MAX_PER_CATEGORY) {
+      const count = perSubject.get(subject) ?? 0;
+      if (count >= MAX_PER_SUBJECT) {
         return;
       }
 
@@ -86,10 +84,29 @@ const tickets = await new Promise<Ticket[]>((resolve, reject) => {
         return;
       }
 
-      perCategory.set(category, count + 1);
+      const bodyCount = uniqueBodyCount.get(ticket.body) ?? 0;
+      uniqueBodyCount.set(ticket.body, bodyCount + 1);
+
+      perSubject.set(subject, count + 1);
       collected.push(ticket);
     },
-    complete: () => resolve(collected),
+    complete: () => {
+      const uniqueBodies = uniqueBodyCount.size;
+      const duplicateRows = collected.length - uniqueBodies;
+      const bodiesWithDuplicates = [...uniqueBodyCount.values()].filter(
+        (count) => count > 1
+      ).length;
+
+      console.log({
+        totalTickets: collected.length,
+        uniqueBodies,
+        duplicateRows,
+        duplicateRowPct: (duplicateRows / collected.length) * 100,
+        bodiesWithDuplicates,
+      });
+
+      resolve(collected);
+    },
     error: (error: unknown) => reject(error),
   });
 });
@@ -99,5 +116,5 @@ await promises.writeFile(outPath, `${JSON.stringify(tickets, null, 2)}\n`, "utf8
 
 console.log(`Wrote ${tickets.length} tickets to ${outPath}`);
 console.log(
-  `Categories: ${[...perCategory.entries()].map(([key, value]) => `${key}=${value}`).join(", ")}`
+  `Subjects: ${[...perSubject.entries()].map(([key, value]) => `${key}=${value}`).join(", ")}`
 );
