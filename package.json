@@ -1,9 +1,10 @@
 {
   "name": "ticket-triage",
   "type": "module",
-  "module": "index.ts",
+  "module": "src/app.ts",
   "private": true,
   "scripts": {
+    "start": "bun src/app.ts",
     "check-types": "tsc -b",
     "check": "ultracite check",
     "fix": "ultracite fix",
@@ -20,6 +21,7 @@
     "typescript": "^5"
   },
   "dependencies": {
+    "@ai-sdk/valibot": "^2.0.28",
     "@langfuse/otel": "^5.4.1",
     "@langfuse/tracing": "^5.4.1",
     "@openrouter/ai-sdk-provider": "^2.9.0",
