@@ -12,6 +12,12 @@
       "sourceType": "github",
       "skillPath": "skills/langfuse/SKILL.md",
       "computedHash": "bef547e21d59cc32f84120e83295e54560935132b5870bf16f3383faae32acba"
+    },
+    "valibot": {
+      "source": "open-circle/agent-skills",
+      "sourceType": "github",
+      "skillPath": "skills/valibot/SKILL.md",
+      "computedHash": "6798b923c1bbe9b07cb8c40470ada09c377d666045caefda90d95577e16e8744"
     }
   }
 }

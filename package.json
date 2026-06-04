@@ -24,8 +24,9 @@
     "@langfuse/tracing": "^5.4.1",
     "@openrouter/ai-sdk-provider": "^2.9.0",
     "@opentelemetry/sdk-node": "^0.218.0",
+    "@t3-oss/env-core": "^0.13.11",
     "ai": "^6.0.195",
     "papaparse": "^5.5.3",
-    "zod": "^4.4.3"
+    "valibot": "^1.4.1"
   }
 }
