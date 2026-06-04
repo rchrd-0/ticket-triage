@@ -1,0 +1,7502 @@
+[
+  {
+    "id": "1",
+    "channel": "email",
+    "product": "Web Portal",
+    "body": "The payment was deducted from my bank account but the transaction shows failed.",
+    "customer": {
+      "name": "Patricia Smith",
+      "email": "patricia.smith760@outlook.com"
+    },
+    "metaLabels": {
+      "category": "Account Suspension",
+      "priority": "Urgent",
+      "escalated": false
+    }
+  },
+  {
+    "id": "2",
+    "channel": "email",
+    "product": "Mobile App",
+    "body": "I found a bug in the latest update affecting report generation.",
+    "customer": {
+      "name": "Patricia Williams",
+      "email": "patricia.williams390@gmail.com"
+    },
+    "metaLabels": {
+      "category": "Performance Issue",
+      "priority": "Urgent",
+      "escalated": true
+    }
+  },
+  {
+    "id": "3",
+    "channel": "chat",
+    "product": "Web Portal",
+    "body": "The application crashes whenever I try to upload a file.",
+    "customer": {
+      "name": "William Anderson",
+      "email": "william.anderson651@outlook.com"
+    },
+    "metaLabels": {
+      "category": "Performance Issue",
+      "priority": "Medium",
+      "escalated": true
+    }
+  },
+  {
+    "id": "4",
+    "channel": "social",
+    "product": "Payment Gateway",
+    "body": "My subscription was cancelled without my request and I need clarification.",
+    "customer": {
+      "name": "David Miller",
+      "email": "david.miller672@icloud.com"
+    },
+    "metaLabels": {
+      "category": "Subscription Cancellation",
+      "priority": "Medium",
+      "escalated": true
+    }
+  },
+  {
+    "id": "5",
+    "channel": "email",
+    "product": "Web Portal",
+    "body": "The system is not syncing data across devices properly.",
+    "customer": {
+      "name": "Robert Gonzalez",
+      "email": "robert.gonzalez391@hotmail.com"
+    },
+    "metaLabels": {
+      "category": "Feature Request",
+      "priority": "High",
+      "escalated": true
+    }
+  },
+  {
+    "id": "6",
+    "channel": "social",
+    "product": "Subscription Service",
+    "body": "There seems to be a discrepancy in my billing statement for this month.",
+    "customer": {
+      "name": "Thomas Smith",
+      "email": "thomas.smith614@outlook.com"
+    },
+    "metaLabels": {
+      "category": "Payment Problem",
+      "priority": "Low",
+      "escalated": false
+    }
+  },
+  {
+    "id": "7",
+    "channel": "phone",
+    "product": "Subscription Service",
+    "body": "I would like to request a refund for the recent charge.",
+    "customer": {
+      "name": "Michael Martinez",
+      "email": "michael.martinez409@company.com"
+    },
+    "metaLabels": {
+      "category": "Security Concern",
+      "priority": "Medium",
+      "escalated": true
+    }
+  },
+  {
+    "id": "8",
+    "channel": "phone",
+    "product": "Web Portal",
+    "body": "Two-factor authentication codes are not being delivered to my phone.",
+    "customer": {
+      "name": "Jessica Miller",
+      "email": "jessica.miller553@yahoo.com"
+    },
+    "metaLabels": {
+      "category": "Subscription Cancellation",
+      "priority": "Low",
+      "escalated": true
+    }
+  },
+  {
+    "id": "9",
+    "channel": "chat",
+    "product": "API Service",
+    "body": "The payment was deducted from my bank account but the transaction shows failed.",
+    "customer": {
+      "name": "William Anderson",
+      "email": "william.anderson256@gmail.com"
+    },
+    "metaLabels": {
+      "category": "Security Concern",
+      "priority": "Low",
+      "escalated": false
+    }
+  },
+  {
+    "id": "10",
+    "channel": "social",
+    "product": "Billing System",
+    "body": "I am unable to access my account after entering the correct credentials.",
+    "customer": {
+      "name": "Elizabeth Miller",
+      "email": "elizabeth.miller992@gmail.com"
+    },
+    "metaLabels": {
+      "category": "Performance Issue",
+      "priority": "Urgent",
+      "escalated": true
+    }
+  },
+  {
+    "id": "11",
+    "channel": "chat",
+    "product": "Subscription Service",
+    "body": "The application crashes whenever I try to upload a file.",
+    "customer": {
+      "name": "Susan Jackson",
+      "email": "susan.jackson579@hotmail.com"
+    },
+    "metaLabels": {
+      "category": "Feature Request",
+      "priority": "High",
+      "escalated": true
+    }
+  },
+  {
+    "id": "12",
+    "channel": "phone",
+    "product": "API Service",
+    "body": "I am experiencing very slow performance while using the dashboard.",
+    "customer": {
+      "name": "Linda Lopez",
+      "email": "linda.lopez292@yahoo.com"
+    },
+    "metaLabels": {
+      "category": "Security Concern",
+      "priority": "Low",
+      "escalated": true
+    }
+  },
+  {
+    "id": "13",
+    "channel": "email",
+    "product": "Cloud Storage",
+    "body": "I am experiencing very slow performance while using the dashboard.",
+    "customer": {
+      "name": "Susan Rodriguez",
+      "email": "susan.rodriguez46@gmail.com"
+    },
+    "metaLabels": {
+      "category": "Account Suspension",
+      "priority": "Urgent",
+      "escalated": true
+    }
+  },
+  {
+    "id": "14",
+    "channel": "chat",
+    "product": "Payment Gateway",
+    "body": "The application crashes whenever I try to upload a file.",
+    "customer": {
+      "name": "Patricia Lopez",
+      "email": "patricia.lopez799@hotmail.com"
+    },
+    "metaLabels": {
+      "category": "Account Suspension",
+      "priority": "Urgent",
+      "escalated": false
+    }
+  },
+  {
+    "id": "15",
+    "channel": "email",
+    "product": "E-commerce Store",
+    "body": "There seems to be a discrepancy in my billing statement for this month.",
+    "customer": {
+      "name": "Michael Gonzalez",
+      "email": "michael.gonzalez337@outlook.com"
+    },
+    "metaLabels": {
+      "category": "Feature Request",
+      "priority": "High",
+      "escalated": false
+    }
+  },
+  {
+    "id": "16",
+    "channel": "phone",
+    "product": "Billing System",
+    "body": "The payment was deducted from my bank account but the transaction shows failed.",
+    "customer": {
+      "name": "Susan Smith",
+      "email": "susan.smith533@hotmail.com"
+    },
+    "metaLabels": {
+      "category": "Refund Request",
+      "priority": "High",
+      "escalated": false
+    }
+  },
+  {
+    "id": "17",
+    "channel": "email",
+    "product": "API Service",
+    "body": "I would like to request a refund for the recent charge.",
+    "customer": {
+      "name": "Michael Wilson",
+      "email": "michael.wilson805@hotmail.com"
+    },
+    "metaLabels": {
+      "category": "Subscription Cancellation",
+      "priority": "Urgent",
+      "escalated": true
+    }
+  },
+  {
+    "id": "18",
+    "channel": "chat",
+    "product": "Mobile App",
+    "body": "The application crashes whenever I try to upload a file.",
+    "customer": {
+      "name": "Charles Miller",
+      "email": "charles.miller736@company.com"
+    },
+    "metaLabels": {
+      "category": "Refund Request",
+      "priority": "Low",
+      "escalated": true
+    }
+  },
+  {
+    "id": "19",
+    "channel": "social",
+    "product": "Analytics Dashboard",
+    "body": "I would like to request a refund for the recent charge.",
+    "customer": {
+      "name": "Thomas Wilson",
+      "email": "thomas.wilson851@hotmail.com"
+    },
+    "metaLabels": {
+      "category": "Account Suspension",
+      "priority": "Medium",
+      "escalated": true
+    }
+  },
+  {
+    "id": "20",
+    "channel": "web_form",
+    "product": "E-commerce Store",
+    "body": "The application crashes whenever I try to upload a file.",
+    "customer": {
+      "name": "Susan Wilson",
+      "email": "susan.wilson339@hotmail.com"
+    },
+    "metaLabels": {
+      "category": "Login Issue",
+      "priority": "Low",
+      "escalated": true
+    }
+  },
+  {
+    "id": "21",
+    "channel": "web_form",
+    "product": "Billing System",
+    "body": "I am unable to access my account after entering the correct credentials.",
+    "customer": {
+      "name": "Richard Garcia",
+      "email": "richard.garcia861@icloud.com"
+    },
+    "metaLabels": {
+      "category": "Security Concern",
+      "priority": "Low",
+      "escalated": false
+    }
+  },
+  {
+    "id": "22",
+    "channel": "social",
+    "product": "Subscription Service",
+    "body": "I am unable to access my account after entering the correct credentials.",
+    "customer": {
+      "name": "Sarah Johnson",
+      "email": "sarah.johnson975@outlook.com"
+    },
+    "metaLabels": {
+      "category": "Payment Problem",
+      "priority": "Medium",
+      "escalated": false
+    }
+  },
+  {
+    "id": "23",
+    "channel": "social",
+    "product": "Subscription Service",
+    "body": "The payment was deducted from my bank account but the transaction shows failed.",
+    "customer": {
+      "name": "Patricia Jackson",
+      "email": "patricia.jackson27@outlook.com"
+    },
+    "metaLabels": {
+      "category": "Bug Report",
+      "priority": "Low",
+      "escalated": false
+    }
+  },
+  {
+    "id": "24",
+    "channel": "social",
+    "product": "Cloud Storage",
+    "body": "I found a bug in the latest update affecting report generation.",
+    "customer": {
+      "name": "John Wilson",
+      "email": "john.wilson181@company.com"
+    },
+    "metaLabels": {
+      "category": "Feature Request",
+      "priority": "Urgent",
+      "escalated": false
+    }
+  },
+  {
+    "id": "25",
+    "channel": "web_form",
+    "product": "Web Portal",
+    "body": "The system is not syncing data across devices properly.",
+    "customer": {
+      "name": "William Hernandez",
+      "email": "william.hernandez287@hotmail.com"
+    },
+    "metaLabels": {
+      "category": "Login Issue",
+      "priority": "Medium",
+      "escalated": true
+    }
+  },
+  {
+    "id": "26",
+    "channel": "chat",
+    "product": "Analytics Dashboard",
+    "body": "I am experiencing very slow performance while using the dashboard.",
+    "customer": {
+      "name": "Barbara Wilson",
+      "email": "barbara.wilson764@hotmail.com"
+    },
+    "metaLabels": {
+      "category": "Subscription Cancellation",
+      "priority": "Medium",
+      "escalated": false
+    }
+  },
+  {
+    "id": "27",
+    "channel": "phone",
+    "product": "Web Portal",
+    "body": "My subscription was cancelled without my request and I need clarification.",
+    "customer": {
+      "name": "Sarah Jones",
+      "email": "sarah.jones281@gmail.com"
+    },
+    "metaLabels": {
+      "category": "Feature Request",
+      "priority": "Low",
+      "escalated": true
+    }
+  },
+  {
+    "id": "28",
+    "channel": "web_form",
+    "product": "Billing System",
+    "body": "I found a bug in the latest update affecting report generation.",
+    "customer": {
+      "name": "Charles Martinez",
+      "email": "charles.martinez88@yahoo.com"
+    },
+    "metaLabels": {
+      "category": "Refund Request",
+      "priority": "Medium",
+      "escalated": true
+    }
+  },
+  {
+    "id": "29",
+    "channel": "phone",
+    "product": "Mobile App",
+    "body": "I would like to request a refund for the recent charge.",
+    "customer": {
+      "name": "Robert Garcia",
+      "email": "robert.garcia3@icloud.com"
+    },
+    "metaLabels": {
+      "category": "Data Sync Issue",
+      "priority": "Medium",
+      "escalated": true
+    }
+  },
+  {
+    "id": "30",
+    "channel": "social",
+    "product": "E-commerce Store",
+    "body": "I would like to request a refund for the recent charge.",
+    "customer": {
+      "name": "Robert Johnson",
+      "email": "robert.johnson170@outlook.com"
+    },
+    "metaLabels": {
+      "category": "Payment Problem",
+      "priority": "High",
+      "escalated": true
+    }
+  },
+  {
+    "id": "31",
+    "channel": "phone",
+    "product": "CRM Platform",
+    "body": "The payment was deducted from my bank account but the transaction shows failed.",
+    "customer": {
+      "name": "Joseph Rodriguez",
+      "email": "joseph.rodriguez186@hotmail.com"
+    },
+    "metaLabels": {
+      "category": "Subscription Cancellation",
+      "priority": "Urgent",
+      "escalated": true
+    }
+  },
+  {
+    "id": "32",
+    "channel": "chat",
+    "product": "Cloud Storage",
+    "body": "There seems to be a discrepancy in my billing statement for this month.",
+    "customer": {
+      "name": "James Moore",
+      "email": "james.moore474@icloud.com"
+    },
+    "metaLabels": {
+      "category": "Security Concern",
+      "priority": "Urgent",
+      "escalated": true
+    }
+  },
+  {
+    "id": "33",
+    "channel": "chat",
+    "product": "E-commerce Store",
+    "body": "The system is not syncing data across devices properly.",
+    "customer": {
+      "name": "Patricia Anderson",
+      "email": "patricia.anderson970@gmail.com"
+    },
+    "metaLabels": {
+      "category": "Feature Request",
+      "priority": "Urgent",
+      "escalated": true
+    }
+  },
+  {
+    "id": "34",
+    "channel": "social",
+    "product": "Cloud Storage",
+    "body": "I would like to request a refund for the recent charge.",
+    "customer": {
+      "name": "Elizabeth Jackson",
+      "email": "elizabeth.jackson594@company.com"
+    },
+    "metaLabels": {
+      "category": "Account Suspension",
+      "priority": "High",
+      "escalated": false
+    }
+  },
+  {
+    "id": "35",
+    "channel": "chat",
+    "product": "API Service",
+    "body": "I would like to request a refund for the recent charge.",
+    "customer": {
+      "name": "John Taylor",
+      "email": "john.taylor989@hotmail.com"
+    },
+    "metaLabels": {
+      "category": "Payment Problem",
+      "priority": "Urgent",
+      "escalated": true
+    }
+  },
+  {
+    "id": "36",
+    "channel": "phone",
+    "product": "Web Portal",
+    "body": "Two-factor authentication codes are not being delivered to my phone.",
+    "customer": {
+      "name": "Karen Williams",
+      "email": "karen.williams241@company.com"
+    },
+    "metaLabels": {
+      "category": "Payment Problem",
+      "priority": "Urgent",
+      "escalated": false
+    }
+  },
+  {
+    "id": "37",
+    "channel": "phone",
+    "product": "Analytics Dashboard",
+    "body": "I am experiencing very slow performance while using the dashboard.",
+    "customer": {
+      "name": "Linda Thomas",
+      "email": "linda.thomas935@hotmail.com"
+    },
+    "metaLabels": {
+      "category": "Subscription Cancellation",
+      "priority": "Low",
+      "escalated": false
+    }
+  },
+  {
+    "id": "38",
+    "channel": "web_form",
+    "product": "Billing System",
+    "body": "I am experiencing very slow performance while using the dashboard.",
+    "customer": {
+      "name": "Charles Lopez",
+      "email": "charles.lopez589@outlook.com"
+    },
+    "metaLabels": {
+      "category": "Refund Request",
+      "priority": "Low",
+      "escalated": true
+    }
+  },
+  {
+    "id": "39",
+    "channel": "phone",
+    "product": "API Service",
+    "body": "The system is not syncing data across devices properly.",
+    "customer": {
+      "name": "Elizabeth Hernandez",
+      "email": "elizabeth.hernandez766@icloud.com"
+    },
+    "metaLabels": {
+      "category": "Account Suspension",
+      "priority": "High",
+      "escalated": true
+    }
+  },
+  {
+    "id": "40",
+    "channel": "social",
+    "product": "Subscription Service",
+    "body": "There seems to be a discrepancy in my billing statement for this month.",
+    "customer": {
+      "name": "Patricia Anderson",
+      "email": "patricia.anderson378@company.com"
+    },
+    "metaLabels": {
+      "category": "Refund Request",
+      "priority": "Urgent",
+      "escalated": false
+    }
+  },
+  {
+    "id": "41",
+    "channel": "web_form",
+    "product": "Payment Gateway",
+    "body": "Two-factor authentication codes are not being delivered to my phone.",
+    "customer": {
+      "name": "Linda Moore",
+      "email": "linda.moore139@icloud.com"
+    },
+    "metaLabels": {
+      "category": "Security Concern",
+      "priority": "Urgent",
+      "escalated": false
+    }
+  },
+  {
+    "id": "42",
+    "channel": "social",
+    "product": "CRM Platform",
+    "body": "I am unable to access my account after entering the correct credentials.",
+    "customer": {
+      "name": "Patricia Anderson",
+      "email": "patricia.anderson94@company.com"
+    },
+    "metaLabels": {
+      "category": "Data Sync Issue",
+      "priority": "Medium",
+      "escalated": true
+    }
+  },
+  {
+    "id": "43",
+    "channel": "web_form",
+    "product": "Analytics Dashboard",
+    "body": "I am unable to access my account after entering the correct credentials.",
+    "customer": {
+      "name": "James Jones",
+      "email": "james.jones16@outlook.com"
+    },
+    "metaLabels": {
+      "category": "Performance Issue",
+      "priority": "Low",
+      "escalated": true
+    }
+  },
+  {
+    "id": "44",
+    "channel": "chat",
+    "product": "CRM Platform",
+    "body": "The payment was deducted from my bank account but the transaction shows failed.",
+    "customer": {
+      "name": "Richard Wilson",
+      "email": "richard.wilson703@gmail.com"
+    },
+    "metaLabels": {
+      "category": "Subscription Cancellation",
+      "priority": "Medium",
+      "escalated": false
+    }
+  },
+  {
+    "id": "45",
+    "channel": "email",
+    "product": "CRM Platform",
+    "body": "There seems to be a discrepancy in my billing statement for this month.",
+    "customer": {
+      "name": "David Anderson",
+      "email": "david.anderson409@icloud.com"
+    },
+    "metaLabels": {
+      "category": "Refund Request",
+      "priority": "Medium",
+      "escalated": false
+    }
+  },
+  {
+    "id": "46",
+    "channel": "phone",
+    "product": "Web Portal",
+    "body": "I would like to request a refund for the recent charge.",
+    "customer": {
+      "name": "Elizabeth Lopez",
+      "email": "elizabeth.lopez107@hotmail.com"
+    },
+    "metaLabels": {
+      "category": "Account Suspension",
+      "priority": "High",
+      "escalated": true
+    }
+  },
+  {
+    "id": "47",
+    "channel": "web_form",
+    "product": "API Service",
+    "body": "I am unable to access my account after entering the correct credentials.",
+    "customer": {
+      "name": "James Garcia",
+      "email": "james.garcia891@yahoo.com"
+    },
+    "metaLabels": {
+      "category": "Account Suspension",
+      "priority": "Medium",
+      "escalated": true
+    }
+  },
+  {
+    "id": "48",
+    "channel": "social",
+    "product": "E-commerce Store",
+    "body": "The payment was deducted from my bank account but the transaction shows failed.",
+    "customer": {
+      "name": "Karen Anderson",
+      "email": "karen.anderson425@outlook.com"
+    },
+    "metaLabels": {
+      "category": "Security Concern",
+      "priority": "Low",
+      "escalated": true
+    }
+  },
+  {
+    "id": "49",
+    "channel": "email",
+    "product": "CRM Platform",
+    "body": "The system is not syncing data across devices properly.",
+    "customer": {
+      "name": "Jessica Wilson",
+      "email": "jessica.wilson180@yahoo.com"
+    },
+    "metaLabels": {
+      "category": "Bug Report",
+      "priority": "Low",
+      "escalated": false
+    }
+  },
+  {
+    "id": "50",
+    "channel": "phone",
+    "product": "Web Portal",
+    "body": "Two-factor authentication codes are not being delivered to my phone.",
+    "customer": {
+      "name": "Barbara Williams",
+      "email": "barbara.williams448@gmail.com"
+    },
+    "metaLabels": {
+      "category": "Data Sync Issue",
+      "priority": "Urgent",
+      "escalated": false
+    }
+  },
+  {
+    "id": "51",
+    "channel": "social",
+    "product": "Billing System",
+    "body": "I would like to request a refund for the recent charge.",
+    "customer": {
+      "name": "Karen Jones",
+      "email": "karen.jones779@company.com"
+    },
+    "metaLabels": {
+      "category": "Subscription Cancellation",
+      "priority": "Urgent",
+      "escalated": false
+    }
+  },
+  {
+    "id": "52",
+    "channel": "social",
+    "product": "API Service",
+    "body": "I found a bug in the latest update affecting report generation.",
+    "customer": {
+      "name": "Mary Lopez",
+      "email": "mary.lopez852@outlook.com"
+    },
+    "metaLabels": {
+      "category": "Payment Problem",
+      "priority": "Urgent",
+      "escalated": true
+    }
+  },
+  {
+    "id": "53",
+    "channel": "phone",
+    "product": "Payment Gateway",
+    "body": "The system is not syncing data across devices properly.",
+    "customer": {
+      "name": "Jennifer Johnson",
+      "email": "jennifer.johnson254@company.com"
+    },
+    "metaLabels": {
+      "category": "Security Concern",
+      "priority": "High",
+      "escalated": false
+    }
+  },
+  {
+    "id": "54",
+    "channel": "chat",
+    "product": "API Service",
+    "body": "The payment was deducted from my bank account but the transaction shows failed.",
+    "customer": {
+      "name": "John Lopez",
+      "email": "john.lopez318@company.com"
+    },
+    "metaLabels": {
+      "category": "Data Sync Issue",
+      "priority": "Urgent",
+      "escalated": true
+    }
+  },
+  {
+    "id": "55",
+    "channel": "chat",
+    "product": "Billing System",
+    "body": "I found a bug in the latest update affecting report generation.",
+    "customer": {
+      "name": "Elizabeth Brown",
+      "email": "elizabeth.brown520@hotmail.com"
+    },
+    "metaLabels": {
+      "category": "Performance Issue",
+      "priority": "Urgent",
+      "escalated": true
+    }
+  },
+  {
+    "id": "56",
+    "channel": "chat",
+    "product": "API Service",
+    "body": "Two-factor authentication codes are not being delivered to my phone.",
+    "customer": {
+      "name": "Michael Lopez",
+      "email": "michael.lopez695@hotmail.com"
+    },
+    "metaLabels": {
+      "category": "Feature Request",
+      "priority": "Urgent",
+      "escalated": true
+    }
+  },
+  {
+    "id": "57",
+    "channel": "email",
+    "product": "CRM Platform",
+    "body": "Two-factor authentication codes are not being delivered to my phone.",
+    "customer": {
+      "name": "Linda Anderson",
+      "email": "linda.anderson906@outlook.com"
+    },
+    "metaLabels": {
+      "category": "Login Issue",
+      "priority": "Medium",
+      "escalated": false
+    }
+  },
+  {
+    "id": "58",
+    "channel": "chat",
+    "product": "Analytics Dashboard",
+    "body": "I am experiencing very slow performance while using the dashboard.",
+    "customer": {
+      "name": "William Miller",
+      "email": "william.miller856@yahoo.com"
+    },
+    "metaLabels": {
+      "category": "Payment Problem",
+      "priority": "Low",
+      "escalated": true
+    }
+  },
+  {
+    "id": "59",
+    "channel": "web_form",
+    "product": "API Service",
+    "body": "The payment was deducted from my bank account but the transaction shows failed.",
+    "customer": {
+      "name": "Susan Garcia",
+      "email": "susan.garcia681@company.com"
+    },
+    "metaLabels": {
+      "category": "Performance Issue",
+      "priority": "Low",
+      "escalated": true
+    }
+  },
+  {
+    "id": "60",
+    "channel": "email",
+    "product": "Subscription Service",
+    "body": "I am unable to access my account after entering the correct credentials.",
+    "customer": {
+      "name": "Joseph Thomas",
+      "email": "joseph.thomas647@yahoo.com"
+    },
+    "metaLabels": {
+      "category": "Subscription Cancellation",
+      "priority": "Low",
+      "escalated": true
+    }
+  },
+  {
+    "id": "61",
+    "channel": "web_form",
+    "product": "API Service",
+    "body": "I would like to request a refund for the recent charge.",
+    "customer": {
+      "name": "Richard Anderson",
+      "email": "richard.anderson917@icloud.com"
+    },
+    "metaLabels": {
+      "category": "Subscription Cancellation",
+      "priority": "High",
+      "escalated": false
+    }
+  },
+  {
+    "id": "62",
+    "channel": "chat",
+    "product": "CRM Platform",
+    "body": "The payment was deducted from my bank account but the transaction shows failed.",
+    "customer": {
+      "name": "Mary Lopez",
+      "email": "mary.lopez630@icloud.com"
+    },
+    "metaLabels": {
+      "category": "Login Issue",
+      "priority": "Medium",
+      "escalated": false
+    }
+  },
+  {
+    "id": "63",
+    "channel": "social",
+    "product": "Mobile App",
+    "body": "The application crashes whenever I try to upload a file.",
+    "customer": {
+      "name": "Charles Jones",
+      "email": "charles.jones543@outlook.com"
+    },
+    "metaLabels": {
+      "category": "Feature Request",
+      "priority": "Medium",
+      "escalated": false
+    }
+  },
+  {
+    "id": "64",
+    "channel": "chat",
+    "product": "CRM Platform",
+    "body": "My subscription was cancelled without my request and I need clarification.",
+    "customer": {
+      "name": "David Lopez",
+      "email": "david.lopez727@gmail.com"
+    },
+    "metaLabels": {
+      "category": "Feature Request",
+      "priority": "Medium",
+      "escalated": true
+    }
+  },
+  {
+    "id": "65",
+    "channel": "social",
+    "product": "API Service",
+    "body": "I would like to request a refund for the recent charge.",
+    "customer": {
+      "name": "Susan Jackson",
+      "email": "susan.jackson76@yahoo.com"
+    },
+    "metaLabels": {
+      "category": "Payment Problem",
+      "priority": "High",
+      "escalated": false
+    }
+  },
+  {
+    "id": "66",
+    "channel": "social",
+    "product": "Payment Gateway",
+    "body": "The payment was deducted from my bank account but the transaction shows failed.",
+    "customer": {
+      "name": "Michael Moore",
+      "email": "michael.moore282@yahoo.com"
+    },
+    "metaLabels": {
+      "category": "Security Concern",
+      "priority": "Medium",
+      "escalated": true
+    }
+  },
+  {
+    "id": "67",
+    "channel": "web_form",
+    "product": "Web Portal",
+    "body": "I am experiencing very slow performance while using the dashboard.",
+    "customer": {
+      "name": "Sarah Martinez",
+      "email": "sarah.martinez658@outlook.com"
+    },
+    "metaLabels": {
+      "category": "Refund Request",
+      "priority": "Low",
+      "escalated": false
+    }
+  },
+  {
+    "id": "68",
+    "channel": "chat",
+    "product": "E-commerce Store",
+    "body": "I am unable to access my account after entering the correct credentials.",
+    "customer": {
+      "name": "Joseph Brown",
+      "email": "joseph.brown274@icloud.com"
+    },
+    "metaLabels": {
+      "category": "Payment Problem",
+      "priority": "Urgent",
+      "escalated": false
+    }
+  },
+  {
+    "id": "69",
+    "channel": "web_form",
+    "product": "API Service",
+    "body": "I would like to request a refund for the recent charge.",
+    "customer": {
+      "name": "Charles Lopez",
+      "email": "charles.lopez50@gmail.com"
+    },
+    "metaLabels": {
+      "category": "Data Sync Issue",
+      "priority": "Low",
+      "escalated": true
+    }
+  },
+  {
+    "id": "70",
+    "channel": "social",
+    "product": "CRM Platform",
+    "body": "There seems to be a discrepancy in my billing statement for this month.",
+    "customer": {
+      "name": "Karen Martin",
+      "email": "karen.martin122@yahoo.com"
+    },
+    "metaLabels": {
+      "category": "Performance Issue",
+      "priority": "Medium",
+      "escalated": false
+    }
+  },
+  {
+    "id": "71",
+    "channel": "email",
+    "product": "Billing System",
+    "body": "The system is not syncing data across devices properly.",
+    "customer": {
+      "name": "Karen Martinez",
+      "email": "karen.martinez608@outlook.com"
+    },
+    "metaLabels": {
+      "category": "Security Concern",
+      "priority": "High",
+      "escalated": true
+    }
+  },
+  {
+    "id": "72",
+    "channel": "web_form",
+    "product": "Web Portal",
+    "body": "I am unable to access my account after entering the correct credentials.",
+    "customer": {
+      "name": "Jennifer Taylor",
+      "email": "jennifer.taylor645@company.com"
+    },
+    "metaLabels": {
+      "category": "Bug Report",
+      "priority": "Medium",
+      "escalated": false
+    }
+  },
+  {
+    "id": "73",
+    "channel": "web_form",
+    "product": "CRM Platform",
+    "body": "There seems to be a discrepancy in my billing statement for this month.",
+    "customer": {
+      "name": "Richard Hernandez",
+      "email": "richard.hernandez980@yahoo.com"
+    },
+    "metaLabels": {
+      "category": "Security Concern",
+      "priority": "High",
+      "escalated": false
+    }
+  },
+  {
+    "id": "74",
+    "channel": "web_form",
+    "product": "Analytics Dashboard",
+    "body": "I am experiencing very slow performance while using the dashboard.",
+    "customer": {
+      "name": "Charles Moore",
+      "email": "charles.moore389@icloud.com"
+    },
+    "metaLabels": {
+      "category": "Account Suspension",
+      "priority": "Low",
+      "escalated": false
+    }
+  },
+  {
+    "id": "75",
+    "channel": "social",
+    "product": "Web Portal",
+    "body": "There seems to be a discrepancy in my billing statement for this month.",
+    "customer": {
+      "name": "Thomas Davis",
+      "email": "thomas.davis654@yahoo.com"
+    },
+    "metaLabels": {
+      "category": "Refund Request",
+      "priority": "Medium",
+      "escalated": false
+    }
+  },
+  {
+    "id": "76",
+    "channel": "phone",
+    "product": "Analytics Dashboard",
+    "body": "I am unable to access my account after entering the correct credentials.",
+    "customer": {
+      "name": "Jennifer Johnson",
+      "email": "jennifer.johnson857@icloud.com"
+    },
+    "metaLabels": {
+      "category": "Feature Request",
+      "priority": "Low",
+      "escalated": true
+    }
+  },
+  {
+    "id": "77",
+    "channel": "web_form",
+    "product": "API Service",
+    "body": "Two-factor authentication codes are not being delivered to my phone.",
+    "customer": {
+      "name": "David Martinez",
+      "email": "david.martinez582@company.com"
+    },
+    "metaLabels": {
+      "category": "Data Sync Issue",
+      "priority": "High",
+      "escalated": false
+    }
+  },
+  {
+    "id": "78",
+    "channel": "phone",
+    "product": "API Service",
+    "body": "My subscription was cancelled without my request and I need clarification.",
+    "customer": {
+      "name": "Barbara Davis",
+      "email": "barbara.davis64@company.com"
+    },
+    "metaLabels": {
+      "category": "Feature Request",
+      "priority": "High",
+      "escalated": false
+    }
+  },
+  {
+    "id": "79",
+    "channel": "social",
+    "product": "Web Portal",
+    "body": "The payment was deducted from my bank account but the transaction shows failed.",
+    "customer": {
+      "name": "Karen Williams",
+      "email": "karen.williams539@icloud.com"
+    },
+    "metaLabels": {
+      "category": "Performance Issue",
+      "priority": "Low",
+      "escalated": false
+    }
+  },
+  {
+    "id": "80",
+    "channel": "social",
+    "product": "Analytics Dashboard",
+    "body": "I am unable to access my account after entering the correct credentials.",
+    "customer": {
+      "name": "Joseph Jackson",
+      "email": "joseph.jackson60@hotmail.com"
+    },
+    "metaLabels": {
+      "category": "Feature Request",
+      "priority": "Low",
+      "escalated": true
+    }
+  },
+  {
+    "id": "81",
+    "channel": "web_form",
+    "product": "Web Portal",
+    "body": "My subscription was cancelled without my request and I need clarification.",
+    "customer": {
+      "name": "Richard Anderson",
+      "email": "richard.anderson891@icloud.com"
+    },
+    "metaLabels": {
+      "category": "Security Concern",
+      "priority": "Medium",
+      "escalated": false
+    }
+  },
+  {
+    "id": "82",
+    "channel": "email",
+    "product": "Web Portal",
+    "body": "The application crashes whenever I try to upload a file.",
+    "customer": {
+      "name": "Patricia Johnson",
+      "email": "patricia.johnson829@company.com"
+    },
+    "metaLabels": {
+      "category": "Login Issue",
+      "priority": "Low",
+      "escalated": true
+    }
+  },
+  {
+    "id": "83",
+    "channel": "social",
+    "product": "Mobile App",
+    "body": "I am experiencing very slow performance while using the dashboard.",
+    "customer": {
+      "name": "David Davis",
+      "email": "david.davis310@yahoo.com"
+    },
+    "metaLabels": {
+      "category": "Refund Request",
+      "priority": "Medium",
+      "escalated": false
+    }
+  },
+  {
+    "id": "84",
+    "channel": "chat",
+    "product": "E-commerce Store",
+    "body": "The system is not syncing data across devices properly.",
+    "customer": {
+      "name": "John Anderson",
+      "email": "john.anderson937@gmail.com"
+    },
+    "metaLabels": {
+      "category": "Security Concern",
+      "priority": "Medium",
+      "escalated": true
+    }
+  },
+  {
+    "id": "85",
+    "channel": "social",
+    "product": "Web Portal",
+    "body": "The application crashes whenever I try to upload a file.",
+    "customer": {
+      "name": "Sarah Miller",
+      "email": "sarah.miller491@yahoo.com"
+    },
+    "metaLabels": {
+      "category": "Login Issue",
+      "priority": "Urgent",
+      "escalated": false
+    }
+  },
+  {
+    "id": "86",
+    "channel": "phone",
+    "product": "Subscription Service",
+    "body": "I am unable to access my account after entering the correct credentials.",
+    "customer": {
+      "name": "Jessica Hernandez",
+      "email": "jessica.hernandez937@yahoo.com"
+    },
+    "metaLabels": {
+      "category": "Refund Request",
+      "priority": "Medium",
+      "escalated": true
+    }
+  },
+  {
+    "id": "87",
+    "channel": "email",
+    "product": "Mobile App",
+    "body": "I am unable to access my account after entering the correct credentials.",
+    "customer": {
+      "name": "Barbara Garcia",
+      "email": "barbara.garcia144@company.com"
+    },
+    "metaLabels": {
+      "category": "Security Concern",
+      "priority": "Low",
+      "escalated": true
+    }
+  },
+  {
+    "id": "88",
+    "channel": "chat",
+    "product": "Web Portal",
+    "body": "My subscription was cancelled without my request and I need clarification.",
+    "customer": {
+      "name": "Thomas Rodriguez",
+      "email": "thomas.rodriguez549@outlook.com"
+    },
+    "metaLabels": {
+      "category": "Refund Request",
+      "priority": "Medium",
+      "escalated": true
+    }
+  },
+  {
+    "id": "89",
+    "channel": "email",
+    "product": "E-commerce Store",
+    "body": "The payment was deducted from my bank account but the transaction shows failed.",
+    "customer": {
+      "name": "Sarah Thomas",
+      "email": "sarah.thomas58@company.com"
+    },
+    "metaLabels": {
+      "category": "Account Suspension",
+      "priority": "High",
+      "escalated": false
+    }
+  },
+  {
+    "id": "90",
+    "channel": "phone",
+    "product": "Payment Gateway",
+    "body": "There seems to be a discrepancy in my billing statement for this month.",
+    "customer": {
+      "name": "Elizabeth Garcia",
+      "email": "elizabeth.garcia578@yahoo.com"
+    },
+    "metaLabels": {
+      "category": "Security Concern",
+      "priority": "Low",
+      "escalated": false
+    }
+  },
+  {
+    "id": "91",
+    "channel": "chat",
+    "product": "Web Portal",
+    "body": "I am experiencing very slow performance while using the dashboard.",
+    "customer": {
+      "name": "Richard Wilson",
+      "email": "richard.wilson191@company.com"
+    },
+    "metaLabels": {
+      "category": "Data Sync Issue",
+      "priority": "Low",
+      "escalated": false
+    }
+  },
+  {
+    "id": "92",
+    "channel": "social",
+    "product": "API Service",
+    "body": "The payment was deducted from my bank account but the transaction shows failed.",
+    "customer": {
+      "name": "Joseph Moore",
+      "email": "joseph.moore569@hotmail.com"
+    },
+    "metaLabels": {
+      "category": "Login Issue",
+      "priority": "Low",
+      "escalated": true
+    }
+  },
+  {
+    "id": "93",
+    "channel": "web_form",
+    "product": "CRM Platform",
+    "body": "I would like to request a refund for the recent charge.",
+    "customer": {
+      "name": "John Williams",
+      "email": "john.williams172@icloud.com"
+    },
+    "metaLabels": {
+      "category": "Feature Request",
+      "priority": "High",
+      "escalated": false
+    }
+  },
+  {
+    "id": "94",
+    "channel": "web_form",
+    "product": "Billing System",
+    "body": "I am experiencing very slow performance while using the dashboard.",
+    "customer": {
+      "name": "Karen Miller",
+      "email": "karen.miller491@outlook.com"
+    },
+    "metaLabels": {
+      "category": "Performance Issue",
+      "priority": "Medium",
+      "escalated": true
+    }
+  },
+  {
+    "id": "95",
+    "channel": "web_form",
+    "product": "Web Portal",
+    "body": "Two-factor authentication codes are not being delivered to my phone.",
+    "customer": {
+      "name": "Jessica Jones",
+      "email": "jessica.jones649@outlook.com"
+    },
+    "metaLabels": {
+      "category": "Account Suspension",
+      "priority": "Urgent",
+      "escalated": true
+    }
+  },
+  {
+    "id": "96",
+    "channel": "phone",
+    "product": "API Service",
+    "body": "I am experiencing very slow performance while using the dashboard.",
+    "customer": {
+      "name": "Richard Hernandez",
+      "email": "richard.hernandez989@icloud.com"
+    },
+    "metaLabels": {
+      "category": "Payment Problem",
+      "priority": "Medium",
+      "escalated": true
+    }
+  },
+  {
+    "id": "97",
+    "channel": "email",
+    "product": "Analytics Dashboard",
+    "body": "There seems to be a discrepancy in my billing statement for this month.",
+    "customer": {
+      "name": "Jessica Lopez",
+      "email": "jessica.lopez488@gmail.com"
+    },
+    "metaLabels": {
+      "category": "Subscription Cancellation",
+      "priority": "Low",
+      "escalated": false
+    }
+  },
+  {
+    "id": "98",
+    "channel": "email",
+    "product": "Analytics Dashboard",
+    "body": "The application crashes whenever I try to upload a file.",
+    "customer": {
+      "name": "Karen Miller",
+      "email": "karen.miller461@hotmail.com"
+    },
+    "metaLabels": {
+      "category": "Login Issue",
+      "priority": "Low",
+      "escalated": false
+    }
+  },
+  {
+    "id": "99",
+    "channel": "chat",
+    "product": "Payment Gateway",
+    "body": "I found a bug in the latest update affecting report generation.",
+    "customer": {
+      "name": "Karen Garcia",
+      "email": "karen.garcia834@company.com"
+    },
+    "metaLabels": {
+      "category": "Data Sync Issue",
+      "priority": "High",
+      "escalated": false
+    }
+  },
+  {
+    "id": "100",
+    "channel": "chat",
+    "product": "CRM Platform",
+    "body": "I found a bug in the latest update affecting report generation.",
+    "customer": {
+      "name": "Jessica Martinez",
+      "email": "jessica.martinez144@yahoo.com"
+    },
+    "metaLabels": {
+      "category": "Subscription Cancellation",
+      "priority": "Low",
+      "escalated": true
+    }
+  },
+  {
+    "id": "101",
+    "channel": "phone",
+    "product": "Web Portal",
+    "body": "The payment was deducted from my bank account but the transaction shows failed.",
+    "customer": {
+      "name": "Sarah Martinez",
+      "email": "sarah.martinez173@icloud.com"
+    },
+    "metaLabels": {
+      "category": "Security Concern",
+      "priority": "High",
+      "escalated": true
+    }
+  },
+  {
+    "id": "102",
+    "channel": "chat",
+    "product": "Billing System",
+    "body": "Two-factor authentication codes are not being delivered to my phone.",
+    "customer": {
+      "name": "Linda Miller",
+      "email": "linda.miller831@company.com"
+    },
+    "metaLabels": {
+      "category": "Data Sync Issue",
+      "priority": "Medium",
+      "escalated": false
+    }
+  },
+  {
+    "id": "103",
+    "channel": "web_form",
+    "product": "Payment Gateway",
+    "body": "Two-factor authentication codes are not being delivered to my phone.",
+    "customer": {
+      "name": "John Jones",
+      "email": "john.jones256@yahoo.com"
+    },
+    "metaLabels": {
+      "category": "Bug Report",
+      "priority": "High",
+      "escalated": false
+    }
+  },
+  {
+    "id": "104",
+    "channel": "phone",
+    "product": "Analytics Dashboard",
+    "body": "The application crashes whenever I try to upload a file.",
+    "customer": {
+      "name": "Barbara Williams",
+      "email": "barbara.williams815@hotmail.com"
+    },
+    "metaLabels": {
+      "category": "Refund Request",
+      "priority": "High",
+      "escalated": false
+    }
+  },
+  {
+    "id": "105",
+    "channel": "web_form",
+    "product": "CRM Platform",
+    "body": "I am experiencing very slow performance while using the dashboard.",
+    "customer": {
+      "name": "John Martinez",
+      "email": "john.martinez163@outlook.com"
+    },
+    "metaLabels": {
+      "category": "Performance Issue",
+      "priority": "Medium",
+      "escalated": false
+    }
+  },
+  {
+    "id": "106",
+    "channel": "phone",
+    "product": "Web Portal",
+    "body": "The application crashes whenever I try to upload a file.",
+    "customer": {
+      "name": "David Brown",
+      "email": "david.brown881@icloud.com"
+    },
+    "metaLabels": {
+      "category": "Payment Problem",
+      "priority": "Low",
+      "escalated": true
+    }
+  },
+  {
+    "id": "107",
+    "channel": "chat",
+    "product": "Subscription Service",
+    "body": "There seems to be a discrepancy in my billing statement for this month.",
+    "customer": {
+      "name": "Patricia Jones",
+      "email": "patricia.jones771@gmail.com"
+    },
+    "metaLabels": {
+      "category": "Refund Request",
+      "priority": "High",
+      "escalated": true
+    }
+  },
+  {
+    "id": "108",
+    "channel": "social",
+    "product": "Billing System",
+    "body": "My subscription was cancelled without my request and I need clarification.",
+    "customer": {
+      "name": "Jessica Martin",
+      "email": "jessica.martin73@hotmail.com"
+    },
+    "metaLabels": {
+      "category": "Performance Issue",
+      "priority": "Urgent",
+      "escalated": true
+    }
+  },
+  {
+    "id": "109",
+    "channel": "phone",
+    "product": "Subscription Service",
+    "body": "The payment was deducted from my bank account but the transaction shows failed.",
+    "customer": {
+      "name": "Sarah Moore",
+      "email": "sarah.moore631@yahoo.com"
+    },
+    "metaLabels": {
+      "category": "Feature Request",
+      "priority": "Medium",
+      "escalated": false
+    }
+  },
+  {
+    "id": "110",
+    "channel": "chat",
+    "product": "Analytics Dashboard",
+    "body": "The system is not syncing data across devices properly.",
+    "customer": {
+      "name": "James Jones",
+      "email": "james.jones719@gmail.com"
+    },
+    "metaLabels": {
+      "category": "Performance Issue",
+      "priority": "Medium",
+      "escalated": true
+    }
+  },
+  {
+    "id": "111",
+    "channel": "email",
+    "product": "Subscription Service",
+    "body": "I found a bug in the latest update affecting report generation.",
+    "customer": {
+      "name": "Charles Garcia",
+      "email": "charles.garcia377@yahoo.com"
+    },
+    "metaLabels": {
+      "category": "Payment Problem",
+      "priority": "Low",
+      "escalated": false
+    }
+  },
+  {
+    "id": "112",
+    "channel": "phone",
+    "product": "E-commerce Store",
+    "body": "The system is not syncing data across devices properly.",
+    "customer": {
+      "name": "Charles Lopez",
+      "email": "charles.lopez123@hotmail.com"
+    },
+    "metaLabels": {
+      "category": "Bug Report",
+      "priority": "Low",
+      "escalated": true
+    }
+  },
+  {
+    "id": "113",
+    "channel": "chat",
+    "product": "E-commerce Store",
+    "body": "There seems to be a discrepancy in my billing statement for this month.",
+    "customer": {
+      "name": "Susan Smith",
+      "email": "susan.smith239@hotmail.com"
+    },
+    "metaLabels": {
+      "category": "Login Issue",
+      "priority": "High",
+      "escalated": false
+    }
+  },
+  {
+    "id": "114",
+    "channel": "web_form",
+    "product": "E-commerce Store",
+    "body": "I am experiencing very slow performance while using the dashboard.",
+    "customer": {
+      "name": "Charles Jackson",
+      "email": "charles.jackson64@icloud.com"
+    },
+    "metaLabels": {
+      "category": "Feature Request",
+      "priority": "High",
+      "escalated": false
+    }
+  },
+  {
+    "id": "115",
+    "channel": "email",
+    "product": "Subscription Service",
+    "body": "I found a bug in the latest update affecting report generation.",
+    "customer": {
+      "name": "Joseph Rodriguez",
+      "email": "joseph.rodriguez873@gmail.com"
+    },
+    "metaLabels": {
+      "category": "Feature Request",
+      "priority": "High",
+      "escalated": true
+    }
+  },
+  {
+    "id": "116",
+    "channel": "email",
+    "product": "Web Portal",
+    "body": "Two-factor authentication codes are not being delivered to my phone.",
+    "customer": {
+      "name": "John Brown",
+      "email": "john.brown13@gmail.com"
+    },
+    "metaLabels": {
+      "category": "Bug Report",
+      "priority": "High",
+      "escalated": false
+    }
+  },
+  {
+    "id": "117",
+    "channel": "email",
+    "product": "Analytics Dashboard",
+    "body": "My subscription was cancelled without my request and I need clarification.",
+    "customer": {
+      "name": "James Gonzalez",
+      "email": "james.gonzalez700@icloud.com"
+    },
+    "metaLabels": {
+      "category": "Bug Report",
+      "priority": "Urgent",
+      "escalated": true
+    }
+  },
+  {
+    "id": "118",
+    "channel": "phone",
+    "product": "Billing System",
+    "body": "I would like to request a refund for the recent charge.",
+    "customer": {
+      "name": "Sarah Smith",
+      "email": "sarah.smith392@company.com"
+    },
+    "metaLabels": {
+      "category": "Security Concern",
+      "priority": "High",
+      "escalated": false
+    }
+  },
+  {
+    "id": "119",
+    "channel": "social",
+    "product": "Billing System",
+    "body": "My subscription was cancelled without my request and I need clarification.",
+    "customer": {
+      "name": "Mary Davis",
+      "email": "mary.davis590@icloud.com"
+    },
+    "metaLabels": {
+      "category": "Account Suspension",
+      "priority": "High",
+      "escalated": false
+    }
+  },
+  {
+    "id": "120",
+    "channel": "email",
+    "product": "CRM Platform",
+    "body": "The application crashes whenever I try to upload a file.",
+    "customer": {
+      "name": "Linda Smith",
+      "email": "linda.smith540@icloud.com"
+    },
+    "metaLabels": {
+      "category": "Data Sync Issue",
+      "priority": "Medium",
+      "escalated": false
+    }
+  },
+  {
+    "id": "121",
+    "channel": "phone",
+    "product": "Subscription Service",
+    "body": "I found a bug in the latest update affecting report generation.",
+    "customer": {
+      "name": "Susan Thomas",
+      "email": "susan.thomas665@outlook.com"
+    },
+    "metaLabels": {
+      "category": "Security Concern",
+      "priority": "Medium",
+      "escalated": true
+    }
+  },
+  {
+    "id": "122",
+    "channel": "chat",
+    "product": "Mobile App",
+    "body": "There seems to be a discrepancy in my billing statement for this month.",
+    "customer": {
+      "name": "David Williams",
+      "email": "david.williams244@outlook.com"
+    },
+    "metaLabels": {
+      "category": "Payment Problem",
+      "priority": "High",
+      "escalated": false
+    }
+  },
+  {
+    "id": "123",
+    "channel": "email",
+    "product": "CRM Platform",
+    "body": "I am experiencing very slow performance while using the dashboard.",
+    "customer": {
+      "name": "Charles Davis",
+      "email": "charles.davis167@icloud.com"
+    },
+    "metaLabels": {
+      "category": "Login Issue",
+      "priority": "High",
+      "escalated": false
+    }
+  },
+  {
+    "id": "124",
+    "channel": "email",
+    "product": "Analytics Dashboard",
+    "body": "The system is not syncing data across devices properly.",
+    "customer": {
+      "name": "Patricia Hernandez",
+      "email": "patricia.hernandez211@yahoo.com"
+    },
+    "metaLabels": {
+      "category": "Security Concern",
+      "priority": "High",
+      "escalated": false
+    }
+  },
+  {
+    "id": "125",
+    "channel": "web_form",
+    "product": "E-commerce Store",
+    "body": "The payment was deducted from my bank account but the transaction shows failed.",
+    "customer": {
+      "name": "Patricia Martinez",
+      "email": "patricia.martinez804@icloud.com"
+    },
+    "metaLabels": {
+      "category": "Feature Request",
+      "priority": "Medium",
+      "escalated": true
+    }
+  },
+  {
+    "id": "126",
+    "channel": "email",
+    "product": "Subscription Service",
+    "body": "I would like to request a refund for the recent charge.",
+    "customer": {
+      "name": "Sarah Johnson",
+      "email": "sarah.johnson861@icloud.com"
+    },
+    "metaLabels": {
+      "category": "Security Concern",
+      "priority": "Urgent",
+      "escalated": true
+    }
+  },
+  {
+    "id": "127",
+    "channel": "web_form",
+    "product": "CRM Platform",
+    "body": "I found a bug in the latest update affecting report generation.",
+    "customer": {
+      "name": "Susan Williams",
+      "email": "susan.williams700@icloud.com"
+    },
+    "metaLabels": {
+      "category": "Account Suspension",
+      "priority": "Low",
+      "escalated": false
+    }
+  },
+  {
+    "id": "128",
+    "channel": "chat",
+    "product": "Cloud Storage",
+    "body": "I am experiencing very slow performance while using the dashboard.",
+    "customer": {
+      "name": "Patricia Martinez",
+      "email": "patricia.martinez889@hotmail.com"
+    },
+    "metaLabels": {
+      "category": "Refund Request",
+      "priority": "Urgent",
+      "escalated": false
+    }
+  },
+  {
+    "id": "129",
+    "channel": "web_form",
+    "product": "Billing System",
+    "body": "I am experiencing very slow performance while using the dashboard.",
+    "customer": {
+      "name": "Patricia Davis",
+      "email": "patricia.davis138@outlook.com"
+    },
+    "metaLabels": {
+      "category": "Performance Issue",
+      "priority": "Low",
+      "escalated": true
+    }
+  },
+  {
+    "id": "130",
+    "channel": "web_form",
+    "product": "CRM Platform",
+    "body": "The application crashes whenever I try to upload a file.",
+    "customer": {
+      "name": "Michael Johnson",
+      "email": "michael.johnson256@gmail.com"
+    },
+    "metaLabels": {
+      "category": "Performance Issue",
+      "priority": "Urgent",
+      "escalated": false
+    }
+  },
+  {
+    "id": "131",
+    "channel": "email",
+    "product": "Analytics Dashboard",
+    "body": "The application crashes whenever I try to upload a file.",
+    "customer": {
+      "name": "Richard Johnson",
+      "email": "richard.johnson167@hotmail.com"
+    },
+    "metaLabels": {
+      "category": "Bug Report",
+      "priority": "Urgent",
+      "escalated": false
+    }
+  },
+  {
+    "id": "132",
+    "channel": "email",
+    "product": "CRM Platform",
+    "body": "I am unable to access my account after entering the correct credentials.",
+    "customer": {
+      "name": "Elizabeth Taylor",
+      "email": "elizabeth.taylor845@hotmail.com"
+    },
+    "metaLabels": {
+      "category": "Payment Problem",
+      "priority": "High",
+      "escalated": false
+    }
+  },
+  {
+    "id": "133",
+    "channel": "chat",
+    "product": "Mobile App",
+    "body": "Two-factor authentication codes are not being delivered to my phone.",
+    "customer": {
+      "name": "John Smith",
+      "email": "john.smith672@icloud.com"
+    },
+    "metaLabels": {
+      "category": "Refund Request",
+      "priority": "Medium",
+      "escalated": true
+    }
+  },
+  {
+    "id": "134",
+    "channel": "phone",
+    "product": "CRM Platform",
+    "body": "Two-factor authentication codes are not being delivered to my phone.",
+    "customer": {
+      "name": "David Williams",
+      "email": "david.williams228@outlook.com"
+    },
+    "metaLabels": {
+      "category": "Feature Request",
+      "priority": "High",
+      "escalated": false
+    }
+  },
+  {
+    "id": "135",
+    "channel": "phone",
+    "product": "Payment Gateway",
+    "body": "My subscription was cancelled without my request and I need clarification.",
+    "customer": {
+      "name": "John Jones",
+      "email": "john.jones206@outlook.com"
+    },
+    "metaLabels": {
+      "category": "Subscription Cancellation",
+      "priority": "Low",
+      "escalated": true
+    }
+  },
+  {
+    "id": "136",
+    "channel": "email",
+    "product": "API Service",
+    "body": "I am unable to access my account after entering the correct credentials.",
+    "customer": {
+      "name": "Jessica Gonzalez",
+      "email": "jessica.gonzalez5@gmail.com"
+    },
+    "metaLabels": {
+      "category": "Performance Issue",
+      "priority": "Medium",
+      "escalated": false
+    }
+  },
+  {
+    "id": "137",
+    "channel": "chat",
+    "product": "Payment Gateway",
+    "body": "There seems to be a discrepancy in my billing statement for this month.",
+    "customer": {
+      "name": "Thomas Hernandez",
+      "email": "thomas.hernandez445@company.com"
+    },
+    "metaLabels": {
+      "category": "Subscription Cancellation",
+      "priority": "Urgent",
+      "escalated": true
+    }
+  },
+  {
+    "id": "138",
+    "channel": "chat",
+    "product": "Analytics Dashboard",
+    "body": "The payment was deducted from my bank account but the transaction shows failed.",
+    "customer": {
+      "name": "James Johnson",
+      "email": "james.johnson707@gmail.com"
+    },
+    "metaLabels": {
+      "category": "Refund Request",
+      "priority": "Urgent",
+      "escalated": true
+    }
+  },
+  {
+    "id": "139",
+    "channel": "email",
+    "product": "E-commerce Store",
+    "body": "The application crashes whenever I try to upload a file.",
+    "customer": {
+      "name": "Jessica Miller",
+      "email": "jessica.miller624@yahoo.com"
+    },
+    "metaLabels": {
+      "category": "Security Concern",
+      "priority": "High",
+      "escalated": true
+    }
+  },
+  {
+    "id": "140",
+    "channel": "web_form",
+    "product": "Analytics Dashboard",
+    "body": "My subscription was cancelled without my request and I need clarification.",
+    "customer": {
+      "name": "Linda Anderson",
+      "email": "linda.anderson304@outlook.com"
+    },
+    "metaLabels": {
+      "category": "Payment Problem",
+      "priority": "High",
+      "escalated": false
+    }
+  },
+  {
+    "id": "141",
+    "channel": "web_form",
+    "product": "Mobile App",
+    "body": "The payment was deducted from my bank account but the transaction shows failed.",
+    "customer": {
+      "name": "William Gonzalez",
+      "email": "william.gonzalez707@icloud.com"
+    },
+    "metaLabels": {
+      "category": "Account Suspension",
+      "priority": "Medium",
+      "escalated": true
+    }
+  },
+  {
+    "id": "142",
+    "channel": "chat",
+    "product": "CRM Platform",
+    "body": "I found a bug in the latest update affecting report generation.",
+    "customer": {
+      "name": "David Smith",
+      "email": "david.smith722@company.com"
+    },
+    "metaLabels": {
+      "category": "Data Sync Issue",
+      "priority": "Low",
+      "escalated": true
+    }
+  },
+  {
+    "id": "143",
+    "channel": "web_form",
+    "product": "Cloud Storage",
+    "body": "The payment was deducted from my bank account but the transaction shows failed.",
+    "customer": {
+      "name": "William Johnson",
+      "email": "william.johnson520@yahoo.com"
+    },
+    "metaLabels": {
+      "category": "Bug Report",
+      "priority": "Urgent",
+      "escalated": true
+    }
+  },
+  {
+    "id": "144",
+    "channel": "email",
+    "product": "Cloud Storage",
+    "body": "I found a bug in the latest update affecting report generation.",
+    "customer": {
+      "name": "Barbara Johnson",
+      "email": "barbara.johnson837@yahoo.com"
+    },
+    "metaLabels": {
+      "category": "Security Concern",
+      "priority": "High",
+      "escalated": false
+    }
+  },
+  {
+    "id": "145",
+    "channel": "web_form",
+    "product": "Subscription Service",
+    "body": "The application crashes whenever I try to upload a file.",
+    "customer": {
+      "name": "William Martin",
+      "email": "william.martin201@yahoo.com"
+    },
+    "metaLabels": {
+      "category": "Refund Request",
+      "priority": "High",
+      "escalated": true
+    }
+  },
+  {
+    "id": "146",
+    "channel": "web_form",
+    "product": "Billing System",
+    "body": "The payment was deducted from my bank account but the transaction shows failed.",
+    "customer": {
+      "name": "Thomas Garcia",
+      "email": "thomas.garcia709@hotmail.com"
+    },
+    "metaLabels": {
+      "category": "Account Suspension",
+      "priority": "High",
+      "escalated": true
+    }
+  },
+  {
+    "id": "147",
+    "channel": "phone",
+    "product": "API Service",
+    "body": "My subscription was cancelled without my request and I need clarification.",
+    "customer": {
+      "name": "Michael Miller",
+      "email": "michael.miller215@hotmail.com"
+    },
+    "metaLabels": {
+      "category": "Performance Issue",
+      "priority": "High",
+      "escalated": true
+    }
+  },
+  {
+    "id": "148",
+    "channel": "web_form",
+    "product": "API Service",
+    "body": "I am experiencing very slow performance while using the dashboard.",
+    "customer": {
+      "name": "Jennifer Martinez",
+      "email": "jennifer.martinez700@outlook.com"
+    },
+    "metaLabels": {
+      "category": "Login Issue",
+      "priority": "Low",
+      "escalated": false
+    }
+  },
+  {
+    "id": "149",
+    "channel": "phone",
+    "product": "API Service",
+    "body": "There seems to be a discrepancy in my billing statement for this month.",
+    "customer": {
+      "name": "James Rodriguez",
+      "email": "james.rodriguez208@hotmail.com"
+    },
+    "metaLabels": {
+      "category": "Bug Report",
+      "priority": "Medium",
+      "escalated": false
+    }
+  },
+  {
+    "id": "150",
+    "channel": "phone",
+    "product": "Billing System",
+    "body": "I am experiencing very slow performance while using the dashboard.",
+    "customer": {
+      "name": "John Johnson",
+      "email": "john.johnson158@outlook.com"
+    },
+    "metaLabels": {
+      "category": "Data Sync Issue",
+      "priority": "High",
+      "escalated": true
+    }
+  },
+  {
+    "id": "151",
+    "channel": "phone",
+    "product": "Billing System",
+    "body": "I would like to request a refund for the recent charge.",
+    "customer": {
+      "name": "Karen Taylor",
+      "email": "karen.taylor487@hotmail.com"
+    },
+    "metaLabels": {
+      "category": "Performance Issue",
+      "priority": "Medium",
+      "escalated": false
+    }
+  },
+  {
+    "id": "152",
+    "channel": "social",
+    "product": "E-commerce Store",
+    "body": "The application crashes whenever I try to upload a file.",
+    "customer": {
+      "name": "Robert Brown",
+      "email": "robert.brown172@hotmail.com"
+    },
+    "metaLabels": {
+      "category": "Payment Problem",
+      "priority": "Low",
+      "escalated": true
+    }
+  },
+  {
+    "id": "153",
+    "channel": "email",
+    "product": "Web Portal",
+    "body": "I am unable to access my account after entering the correct credentials.",
+    "customer": {
+      "name": "William Wilson",
+      "email": "william.wilson398@icloud.com"
+    },
+    "metaLabels": {
+      "category": "Performance Issue",
+      "priority": "Low",
+      "escalated": true
+    }
+  },
+  {
+    "id": "154",
+    "channel": "social",
+    "product": "Analytics Dashboard",
+    "body": "I am experiencing very slow performance while using the dashboard.",
+    "customer": {
+      "name": "Sarah Davis",
+      "email": "sarah.davis140@company.com"
+    },
+    "metaLabels": {
+      "category": "Security Concern",
+      "priority": "High",
+      "escalated": true
+    }
+  },
+  {
+    "id": "155",
+    "channel": "email",
+    "product": "API Service",
+    "body": "I found a bug in the latest update affecting report generation.",
+    "customer": {
+      "name": "Linda Martin",
+      "email": "linda.martin855@outlook.com"
+    },
+    "metaLabels": {
+      "category": "Account Suspension",
+      "priority": "Urgent",
+      "escalated": true
+    }
+  },
+  {
+    "id": "156",
+    "channel": "web_form",
+    "product": "Billing System",
+    "body": "My subscription was cancelled without my request and I need clarification.",
+    "customer": {
+      "name": "Joseph Hernandez",
+      "email": "joseph.hernandez632@company.com"
+    },
+    "metaLabels": {
+      "category": "Data Sync Issue",
+      "priority": "High",
+      "escalated": false
+    }
+  },
+  {
+    "id": "157",
+    "channel": "social",
+    "product": "Web Portal",
+    "body": "The application crashes whenever I try to upload a file.",
+    "customer": {
+      "name": "Jennifer Martin",
+      "email": "jennifer.martin84@outlook.com"
+    },
+    "metaLabels": {
+      "category": "Security Concern",
+      "priority": "Low",
+      "escalated": false
+    }
+  },
+  {
+    "id": "158",
+    "channel": "chat",
+    "product": "Payment Gateway",
+    "body": "The application crashes whenever I try to upload a file.",
+    "customer": {
+      "name": "Thomas Taylor",
+      "email": "thomas.taylor93@icloud.com"
+    },
+    "metaLabels": {
+      "category": "Login Issue",
+      "priority": "Medium",
+      "escalated": true
+    }
+  },
+  {
+    "id": "159",
+    "channel": "social",
+    "product": "Analytics Dashboard",
+    "body": "The payment was deducted from my bank account but the transaction shows failed.",
+    "customer": {
+      "name": "Richard Thomas",
+      "email": "richard.thomas940@icloud.com"
+    },
+    "metaLabels": {
+      "category": "Performance Issue",
+      "priority": "High",
+      "escalated": true
+    }
+  },
+  {
+    "id": "160",
+    "channel": "social",
+    "product": "Payment Gateway",
+    "body": "The application crashes whenever I try to upload a file.",
+    "customer": {
+      "name": "Joseph Garcia",
+      "email": "joseph.garcia236@gmail.com"
+    },
+    "metaLabels": {
+      "category": "Feature Request",
+      "priority": "Medium",
+      "escalated": true
+    }
+  },
+  {
+    "id": "161",
+    "channel": "social",
+    "product": "Payment Gateway",
+    "body": "My subscription was cancelled without my request and I need clarification.",
+    "customer": {
+      "name": "Jennifer Jones",
+      "email": "jennifer.jones645@hotmail.com"
+    },
+    "metaLabels": {
+      "category": "Data Sync Issue",
+      "priority": "High",
+      "escalated": false
+    }
+  },
+  {
+    "id": "162",
+    "channel": "web_form",
+    "product": "Web Portal",
+    "body": "I found a bug in the latest update affecting report generation.",
+    "customer": {
+      "name": "Karen Taylor",
+      "email": "karen.taylor271@yahoo.com"
+    },
+    "metaLabels": {
+      "category": "Subscription Cancellation",
+      "priority": "Medium",
+      "escalated": true
+    }
+  },
+  {
+    "id": "163",
+    "channel": "web_form",
+    "product": "API Service",
+    "body": "There seems to be a discrepancy in my billing statement for this month.",
+    "customer": {
+      "name": "John Martin",
+      "email": "john.martin553@gmail.com"
+    },
+    "metaLabels": {
+      "category": "Refund Request",
+      "priority": "Urgent",
+      "escalated": true
+    }
+  },
+  {
+    "id": "164",
+    "channel": "chat",
+    "product": "E-commerce Store",
+    "body": "The application crashes whenever I try to upload a file.",
+    "customer": {
+      "name": "James Jackson",
+      "email": "james.jackson536@gmail.com"
+    },
+    "metaLabels": {
+      "category": "Refund Request",
+      "priority": "High",
+      "escalated": false
+    }
+  },
+  {
+    "id": "165",
+    "channel": "email",
+    "product": "Subscription Service",
+    "body": "My subscription was cancelled without my request and I need clarification.",
+    "customer": {
+      "name": "Sarah Thomas",
+      "email": "sarah.thomas260@outlook.com"
+    },
+    "metaLabels": {
+      "category": "Refund Request",
+      "priority": "Urgent",
+      "escalated": true
+    }
+  },
+  {
+    "id": "166",
+    "channel": "email",
+    "product": "API Service",
+    "body": "Two-factor authentication codes are not being delivered to my phone.",
+    "customer": {
+      "name": "William Davis",
+      "email": "william.davis380@gmail.com"
+    },
+    "metaLabels": {
+      "category": "Refund Request",
+      "priority": "High",
+      "escalated": true
+    }
+  },
+  {
+    "id": "167",
+    "channel": "social",
+    "product": "Mobile App",
+    "body": "The application crashes whenever I try to upload a file.",
+    "customer": {
+      "name": "William Gonzalez",
+      "email": "william.gonzalez362@company.com"
+    },
+    "metaLabels": {
+      "category": "Data Sync Issue",
+      "priority": "Low",
+      "escalated": false
+    }
+  },
+  {
+    "id": "168",
+    "channel": "web_form",
+    "product": "Cloud Storage",
+    "body": "I found a bug in the latest update affecting report generation.",
+    "customer": {
+      "name": "Thomas Martinez",
+      "email": "thomas.martinez349@gmail.com"
+    },
+    "metaLabels": {
+      "category": "Security Concern",
+      "priority": "Urgent",
+      "escalated": false
+    }
+  },
+  {
+    "id": "169",
+    "channel": "phone",
+    "product": "Web Portal",
+    "body": "Two-factor authentication codes are not being delivered to my phone.",
+    "customer": {
+      "name": "Sarah Smith",
+      "email": "sarah.smith718@outlook.com"
+    },
+    "metaLabels": {
+      "category": "Payment Problem",
+      "priority": "Medium",
+      "escalated": true
+    }
+  },
+  {
+    "id": "170",
+    "channel": "phone",
+    "product": "Cloud Storage",
+    "body": "The system is not syncing data across devices properly.",
+    "customer": {
+      "name": "Patricia Williams",
+      "email": "patricia.williams693@company.com"
+    },
+    "metaLabels": {
+      "category": "Login Issue",
+      "priority": "High",
+      "escalated": true
+    }
+  },
+  {
+    "id": "171",
+    "channel": "email",
+    "product": "Subscription Service",
+    "body": "I am unable to access my account after entering the correct credentials.",
+    "customer": {
+      "name": "Richard Garcia",
+      "email": "richard.garcia469@gmail.com"
+    },
+    "metaLabels": {
+      "category": "Performance Issue",
+      "priority": "Urgent",
+      "escalated": false
+    }
+  },
+  {
+    "id": "172",
+    "channel": "chat",
+    "product": "Subscription Service",
+    "body": "The payment was deducted from my bank account but the transaction shows failed.",
+    "customer": {
+      "name": "Richard Rodriguez",
+      "email": "richard.rodriguez462@yahoo.com"
+    },
+    "metaLabels": {
+      "category": "Bug Report",
+      "priority": "Urgent",
+      "escalated": false
+    }
+  },
+  {
+    "id": "173",
+    "channel": "social",
+    "product": "Analytics Dashboard",
+    "body": "I would like to request a refund for the recent charge.",
+    "customer": {
+      "name": "Jennifer Johnson",
+      "email": "jennifer.johnson221@outlook.com"
+    },
+    "metaLabels": {
+      "category": "Payment Problem",
+      "priority": "High",
+      "escalated": true
+    }
+  },
+  {
+    "id": "174",
+    "channel": "email",
+    "product": "Billing System",
+    "body": "There seems to be a discrepancy in my billing statement for this month.",
+    "customer": {
+      "name": "Richard Martin",
+      "email": "richard.martin294@icloud.com"
+    },
+    "metaLabels": {
+      "category": "Account Suspension",
+      "priority": "Urgent",
+      "escalated": false
+    }
+  },
+  {
+    "id": "175",
+    "channel": "email",
+    "product": "Payment Gateway",
+    "body": "The payment was deducted from my bank account but the transaction shows failed.",
+    "customer": {
+      "name": "Jennifer Smith",
+      "email": "jennifer.smith129@company.com"
+    },
+    "metaLabels": {
+      "category": "Feature Request",
+      "priority": "Urgent",
+      "escalated": false
+    }
+  },
+  {
+    "id": "176",
+    "channel": "web_form",
+    "product": "Cloud Storage",
+    "body": "There seems to be a discrepancy in my billing statement for this month.",
+    "customer": {
+      "name": "John Jones",
+      "email": "john.jones540@yahoo.com"
+    },
+    "metaLabels": {
+      "category": "Performance Issue",
+      "priority": "High",
+      "escalated": false
+    }
+  },
+  {
+    "id": "177",
+    "channel": "social",
+    "product": "CRM Platform",
+    "body": "The system is not syncing data across devices properly.",
+    "customer": {
+      "name": "Barbara Wilson",
+      "email": "barbara.wilson267@yahoo.com"
+    },
+    "metaLabels": {
+      "category": "Login Issue",
+      "priority": "High",
+      "escalated": true
+    }
+  },
+  {
+    "id": "178",
+    "channel": "phone",
+    "product": "Analytics Dashboard",
+    "body": "The system is not syncing data across devices properly.",
+    "customer": {
+      "name": "Richard Gonzalez",
+      "email": "richard.gonzalez226@outlook.com"
+    },
+    "metaLabels": {
+      "category": "Bug Report",
+      "priority": "High",
+      "escalated": false
+    }
+  },
+  {
+    "id": "179",
+    "channel": "web_form",
+    "product": "Web Portal",
+    "body": "I am unable to access my account after entering the correct credentials.",
+    "customer": {
+      "name": "Jennifer Brown",
+      "email": "jennifer.brown289@outlook.com"
+    },
+    "metaLabels": {
+      "category": "Subscription Cancellation",
+      "priority": "Medium",
+      "escalated": false
+    }
+  },
+  {
+    "id": "180",
+    "channel": "email",
+    "product": "E-commerce Store",
+    "body": "The payment was deducted from my bank account but the transaction shows failed.",
+    "customer": {
+      "name": "Jennifer Miller",
+      "email": "jennifer.miller918@outlook.com"
+    },
+    "metaLabels": {
+      "category": "Login Issue",
+      "priority": "Urgent",
+      "escalated": false
+    }
+  },
+  {
+    "id": "181",
+    "channel": "social",
+    "product": "Mobile App",
+    "body": "Two-factor authentication codes are not being delivered to my phone.",
+    "customer": {
+      "name": "Elizabeth Miller",
+      "email": "elizabeth.miller370@gmail.com"
+    },
+    "metaLabels": {
+      "category": "Bug Report",
+      "priority": "Medium",
+      "escalated": true
+    }
+  },
+  {
+    "id": "182",
+    "channel": "chat",
+    "product": "API Service",
+    "body": "The application crashes whenever I try to upload a file.",
+    "customer": {
+      "name": "Barbara Jones",
+      "email": "barbara.jones719@hotmail.com"
+    },
+    "metaLabels": {
+      "category": "Subscription Cancellation",
+      "priority": "High",
+      "escalated": false
+    }
+  },
+  {
+    "id": "183",
+    "channel": "phone",
+    "product": "Analytics Dashboard",
+    "body": "My subscription was cancelled without my request and I need clarification.",
+    "customer": {
+      "name": "David Anderson",
+      "email": "david.anderson282@hotmail.com"
+    },
+    "metaLabels": {
+      "category": "Security Concern",
+      "priority": "High",
+      "escalated": true
+    }
+  },
+  {
+    "id": "184",
+    "channel": "email",
+    "product": "Mobile App",
+    "body": "The system is not syncing data across devices properly.",
+    "customer": {
+      "name": "Karen Martinez",
+      "email": "karen.martinez331@icloud.com"
+    },
+    "metaLabels": {
+      "category": "Payment Problem",
+      "priority": "Medium",
+      "escalated": false
+    }
+  },
+  {
+    "id": "185",
+    "channel": "email",
+    "product": "Mobile App",
+    "body": "Two-factor authentication codes are not being delivered to my phone.",
+    "customer": {
+      "name": "Jessica Williams",
+      "email": "jessica.williams480@company.com"
+    },
+    "metaLabels": {
+      "category": "Security Concern",
+      "priority": "High",
+      "escalated": false
+    }
+  },
+  {
+    "id": "186",
+    "channel": "web_form",
+    "product": "Payment Gateway",
+    "body": "Two-factor authentication codes are not being delivered to my phone.",
+    "customer": {
+      "name": "Sarah Wilson",
+      "email": "sarah.wilson765@gmail.com"
+    },
+    "metaLabels": {
+      "category": "Subscription Cancellation",
+      "priority": "Medium",
+      "escalated": false
+    }
+  },
+  {
+    "id": "187",
+    "channel": "social",
+    "product": "Mobile App",
+    "body": "I would like to request a refund for the recent charge.",
+    "customer": {
+      "name": "Michael Gonzalez",
+      "email": "michael.gonzalez785@hotmail.com"
+    },
+    "metaLabels": {
+      "category": "Subscription Cancellation",
+      "priority": "Low",
+      "escalated": false
+    }
+  },
+  {
+    "id": "188",
+    "channel": "phone",
+    "product": "E-commerce Store",
+    "body": "The payment was deducted from my bank account but the transaction shows failed.",
+    "customer": {
+      "name": "Barbara Jackson",
+      "email": "barbara.jackson256@yahoo.com"
+    },
+    "metaLabels": {
+      "category": "Feature Request",
+      "priority": "Medium",
+      "escalated": false
+    }
+  },
+  {
+    "id": "189",
+    "channel": "social",
+    "product": "CRM Platform",
+    "body": "The system is not syncing data across devices properly.",
+    "customer": {
+      "name": "Karen Smith",
+      "email": "karen.smith650@company.com"
+    },
+    "metaLabels": {
+      "category": "Feature Request",
+      "priority": "Medium",
+      "escalated": true
+    }
+  },
+  {
+    "id": "190",
+    "channel": "web_form",
+    "product": "E-commerce Store",
+    "body": "Two-factor authentication codes are not being delivered to my phone.",
+    "customer": {
+      "name": "Jessica Jackson",
+      "email": "jessica.jackson764@gmail.com"
+    },
+    "metaLabels": {
+      "category": "Payment Problem",
+      "priority": "Medium",
+      "escalated": true
+    }
+  },
+  {
+    "id": "191",
+    "channel": "social",
+    "product": "Analytics Dashboard",
+    "body": "I found a bug in the latest update affecting report generation.",
+    "customer": {
+      "name": "Susan Wilson",
+      "email": "susan.wilson375@outlook.com"
+    },
+    "metaLabels": {
+      "category": "Performance Issue",
+      "priority": "Medium",
+      "escalated": true
+    }
+  },
+  {
+    "id": "192",
+    "channel": "web_form",
+    "product": "Subscription Service",
+    "body": "The system is not syncing data across devices properly.",
+    "customer": {
+      "name": "Patricia Martinez",
+      "email": "patricia.martinez461@icloud.com"
+    },
+    "metaLabels": {
+      "category": "Bug Report",
+      "priority": "High",
+      "escalated": false
+    }
+  },
+  {
+    "id": "193",
+    "channel": "web_form",
+    "product": "API Service",
+    "body": "The application crashes whenever I try to upload a file.",
+    "customer": {
+      "name": "William Lopez",
+      "email": "william.lopez886@gmail.com"
+    },
+    "metaLabels": {
+      "category": "Refund Request",
+      "priority": "Low",
+      "escalated": true
+    }
+  },
+  {
+    "id": "194",
+    "channel": "social",
+    "product": "Analytics Dashboard",
+    "body": "I am experiencing very slow performance while using the dashboard.",
+    "customer": {
+      "name": "Barbara Lopez",
+      "email": "barbara.lopez364@company.com"
+    },
+    "metaLabels": {
+      "category": "Security Concern",
+      "priority": "Urgent",
+      "escalated": true
+    }
+  },
+  {
+    "id": "195",
+    "channel": "chat",
+    "product": "Analytics Dashboard",
+    "body": "The application crashes whenever I try to upload a file.",
+    "customer": {
+      "name": "Joseph Moore",
+      "email": "joseph.moore135@yahoo.com"
+    },
+    "metaLabels": {
+      "category": "Security Concern",
+      "priority": "Medium",
+      "escalated": false
+    }
+  },
+  {
+    "id": "196",
+    "channel": "social",
+    "product": "Billing System",
+    "body": "I am unable to access my account after entering the correct credentials.",
+    "customer": {
+      "name": "William Jones",
+      "email": "william.jones798@yahoo.com"
+    },
+    "metaLabels": {
+      "category": "Account Suspension",
+      "priority": "High",
+      "escalated": true
+    }
+  },
+  {
+    "id": "197",
+    "channel": "chat",
+    "product": "Subscription Service",
+    "body": "Two-factor authentication codes are not being delivered to my phone.",
+    "customer": {
+      "name": "Michael Davis",
+      "email": "michael.davis34@icloud.com"
+    },
+    "metaLabels": {
+      "category": "Feature Request",
+      "priority": "Medium",
+      "escalated": true
+    }
+  },
+  {
+    "id": "198",
+    "channel": "email",
+    "product": "API Service",
+    "body": "Two-factor authentication codes are not being delivered to my phone.",
+    "customer": {
+      "name": "Joseph Anderson",
+      "email": "joseph.anderson847@gmail.com"
+    },
+    "metaLabels": {
+      "category": "Security Concern",
+      "priority": "Urgent",
+      "escalated": true
+    }
+  },
+  {
+    "id": "199",
+    "channel": "email",
+    "product": "Billing System",
+    "body": "My subscription was cancelled without my request and I need clarification.",
+    "customer": {
+      "name": "Sarah Jones",
+      "email": "sarah.jones403@icloud.com"
+    },
+    "metaLabels": {
+      "category": "Login Issue",
+      "priority": "Medium",
+      "escalated": false
+    }
+  },
+  {
+    "id": "200",
+    "channel": "phone",
+    "product": "Payment Gateway",
+    "body": "My subscription was cancelled without my request and I need clarification.",
+    "customer": {
+      "name": "Richard Johnson",
+      "email": "richard.johnson787@yahoo.com"
+    },
+    "metaLabels": {
+      "category": "Account Suspension",
+      "priority": "Low",
+      "escalated": true
+    }
+  },
+  {
+    "id": "201",
+    "channel": "social",
+    "product": "Billing System",
+    "body": "I would like to request a refund for the recent charge.",
+    "customer": {
+      "name": "Linda Miller",
+      "email": "linda.miller603@company.com"
+    },
+    "metaLabels": {
+      "category": "Refund Request",
+      "priority": "Low",
+      "escalated": true
+    }
+  },
+  {
+    "id": "202",
+    "channel": "phone",
+    "product": "Payment Gateway",
+    "body": "I found a bug in the latest update affecting report generation.",
+    "customer": {
+      "name": "Susan Garcia",
+      "email": "susan.garcia166@company.com"
+    },
+    "metaLabels": {
+      "category": "Data Sync Issue",
+      "priority": "Urgent",
+      "escalated": true
+    }
+  },
+  {
+    "id": "203",
+    "channel": "social",
+    "product": "API Service",
+    "body": "The payment was deducted from my bank account but the transaction shows failed.",
+    "customer": {
+      "name": "Susan Taylor",
+      "email": "susan.taylor215@company.com"
+    },
+    "metaLabels": {
+      "category": "Login Issue",
+      "priority": "Low",
+      "escalated": true
+    }
+  },
+  {
+    "id": "204",
+    "channel": "phone",
+    "product": "E-commerce Store",
+    "body": "I found a bug in the latest update affecting report generation.",
+    "customer": {
+      "name": "James Brown",
+      "email": "james.brown25@icloud.com"
+    },
+    "metaLabels": {
+      "category": "Bug Report",
+      "priority": "Low",
+      "escalated": true
+    }
+  },
+  {
+    "id": "205",
+    "channel": "email",
+    "product": "CRM Platform",
+    "body": "The application crashes whenever I try to upload a file.",
+    "customer": {
+      "name": "David Hernandez",
+      "email": "david.hernandez406@company.com"
+    },
+    "metaLabels": {
+      "category": "Account Suspension",
+      "priority": "Urgent",
+      "escalated": false
+    }
+  },
+  {
+    "id": "206",
+    "channel": "web_form",
+    "product": "Analytics Dashboard",
+    "body": "The payment was deducted from my bank account but the transaction shows failed.",
+    "customer": {
+      "name": "James Miller",
+      "email": "james.miller592@company.com"
+    },
+    "metaLabels": {
+      "category": "Performance Issue",
+      "priority": "Low",
+      "escalated": false
+    }
+  },
+  {
+    "id": "207",
+    "channel": "email",
+    "product": "Web Portal",
+    "body": "I am unable to access my account after entering the correct credentials.",
+    "customer": {
+      "name": "Elizabeth Miller",
+      "email": "elizabeth.miller538@outlook.com"
+    },
+    "metaLabels": {
+      "category": "Performance Issue",
+      "priority": "Urgent",
+      "escalated": false
+    }
+  },
+  {
+    "id": "208",
+    "channel": "social",
+    "product": "Cloud Storage",
+    "body": "The payment was deducted from my bank account but the transaction shows failed.",
+    "customer": {
+      "name": "Thomas Brown",
+      "email": "thomas.brown5@outlook.com"
+    },
+    "metaLabels": {
+      "category": "Data Sync Issue",
+      "priority": "Low",
+      "escalated": false
+    }
+  },
+  {
+    "id": "209",
+    "channel": "phone",
+    "product": "CRM Platform",
+    "body": "There seems to be a discrepancy in my billing statement for this month.",
+    "customer": {
+      "name": "James Martin",
+      "email": "james.martin574@hotmail.com"
+    },
+    "metaLabels": {
+      "category": "Security Concern",
+      "priority": "High",
+      "escalated": true
+    }
+  },
+  {
+    "id": "210",
+    "channel": "social",
+    "product": "Subscription Service",
+    "body": "I am experiencing very slow performance while using the dashboard.",
+    "customer": {
+      "name": "Jennifer Martin",
+      "email": "jennifer.martin913@hotmail.com"
+    },
+    "metaLabels": {
+      "category": "Performance Issue",
+      "priority": "Low",
+      "escalated": false
+    }
+  },
+  {
+    "id": "211",
+    "channel": "web_form",
+    "product": "Web Portal",
+    "body": "The payment was deducted from my bank account but the transaction shows failed.",
+    "customer": {
+      "name": "Jennifer Hernandez",
+      "email": "jennifer.hernandez808@outlook.com"
+    },
+    "metaLabels": {
+      "category": "Login Issue",
+      "priority": "High",
+      "escalated": false
+    }
+  },
+  {
+    "id": "212",
+    "channel": "phone",
+    "product": "E-commerce Store",
+    "body": "The application crashes whenever I try to upload a file.",
+    "customer": {
+      "name": "Linda Moore",
+      "email": "linda.moore163@icloud.com"
+    },
+    "metaLabels": {
+      "category": "Performance Issue",
+      "priority": "Urgent",
+      "escalated": false
+    }
+  },
+  {
+    "id": "213",
+    "channel": "email",
+    "product": "Subscription Service",
+    "body": "I am unable to access my account after entering the correct credentials.",
+    "customer": {
+      "name": "Karen Brown",
+      "email": "karen.brown702@hotmail.com"
+    },
+    "metaLabels": {
+      "category": "Subscription Cancellation",
+      "priority": "Medium",
+      "escalated": true
+    }
+  },
+  {
+    "id": "214",
+    "channel": "social",
+    "product": "API Service",
+    "body": "I am unable to access my account after entering the correct credentials.",
+    "customer": {
+      "name": "James Martin",
+      "email": "james.martin523@icloud.com"
+    },
+    "metaLabels": {
+      "category": "Feature Request",
+      "priority": "Low",
+      "escalated": false
+    }
+  },
+  {
+    "id": "215",
+    "channel": "chat",
+    "product": "Mobile App",
+    "body": "My subscription was cancelled without my request and I need clarification.",
+    "customer": {
+      "name": "Michael Moore",
+      "email": "michael.moore394@outlook.com"
+    },
+    "metaLabels": {
+      "category": "Feature Request",
+      "priority": "Low",
+      "escalated": false
+    }
+  },
+  {
+    "id": "216",
+    "channel": "social",
+    "product": "Subscription Service",
+    "body": "I found a bug in the latest update affecting report generation.",
+    "customer": {
+      "name": "Richard Lopez",
+      "email": "richard.lopez232@yahoo.com"
+    },
+    "metaLabels": {
+      "category": "Login Issue",
+      "priority": "High",
+      "escalated": true
+    }
+  },
+  {
+    "id": "217",
+    "channel": "social",
+    "product": "Billing System",
+    "body": "I found a bug in the latest update affecting report generation.",
+    "customer": {
+      "name": "Robert Davis",
+      "email": "robert.davis484@company.com"
+    },
+    "metaLabels": {
+      "category": "Security Concern",
+      "priority": "Low",
+      "escalated": false
+    }
+  },
+  {
+    "id": "218",
+    "channel": "chat",
+    "product": "Analytics Dashboard",
+    "body": "I found a bug in the latest update affecting report generation.",
+    "customer": {
+      "name": "Mary Thomas",
+      "email": "mary.thomas593@yahoo.com"
+    },
+    "metaLabels": {
+      "category": "Feature Request",
+      "priority": "Urgent",
+      "escalated": true
+    }
+  },
+  {
+    "id": "219",
+    "channel": "web_form",
+    "product": "Payment Gateway",
+    "body": "My subscription was cancelled without my request and I need clarification.",
+    "customer": {
+      "name": "Linda Thomas",
+      "email": "linda.thomas186@hotmail.com"
+    },
+    "metaLabels": {
+      "category": "Payment Problem",
+      "priority": "Urgent",
+      "escalated": true
+    }
+  },
+  {
+    "id": "220",
+    "channel": "web_form",
+    "product": "E-commerce Store",
+    "body": "My subscription was cancelled without my request and I need clarification.",
+    "customer": {
+      "name": "Sarah Davis",
+      "email": "sarah.davis389@company.com"
+    },
+    "metaLabels": {
+      "category": "Feature Request",
+      "priority": "Low",
+      "escalated": false
+    }
+  },
+  {
+    "id": "221",
+    "channel": "email",
+    "product": "Mobile App",
+    "body": "There seems to be a discrepancy in my billing statement for this month.",
+    "customer": {
+      "name": "Linda Jackson",
+      "email": "linda.jackson789@yahoo.com"
+    },
+    "metaLabels": {
+      "category": "Account Suspension",
+      "priority": "Low",
+      "escalated": true
+    }
+  },
+  {
+    "id": "222",
+    "channel": "web_form",
+    "product": "Payment Gateway",
+    "body": "My subscription was cancelled without my request and I need clarification.",
+    "customer": {
+      "name": "Patricia Brown",
+      "email": "patricia.brown89@hotmail.com"
+    },
+    "metaLabels": {
+      "category": "Data Sync Issue",
+      "priority": "High",
+      "escalated": false
+    }
+  },
+  {
+    "id": "223",
+    "channel": "web_form",
+    "product": "Billing System",
+    "body": "I would like to request a refund for the recent charge.",
+    "customer": {
+      "name": "Mary Rodriguez",
+      "email": "mary.rodriguez979@outlook.com"
+    },
+    "metaLabels": {
+      "category": "Payment Problem",
+      "priority": "Urgent",
+      "escalated": true
+    }
+  },
+  {
+    "id": "224",
+    "channel": "social",
+    "product": "Payment Gateway",
+    "body": "Two-factor authentication codes are not being delivered to my phone.",
+    "customer": {
+      "name": "Jessica Jones",
+      "email": "jessica.jones669@company.com"
+    },
+    "metaLabels": {
+      "category": "Login Issue",
+      "priority": "High",
+      "escalated": true
+    }
+  },
+  {
+    "id": "225",
+    "channel": "chat",
+    "product": "Cloud Storage",
+    "body": "There seems to be a discrepancy in my billing statement for this month.",
+    "customer": {
+      "name": "Elizabeth Gonzalez",
+      "email": "elizabeth.gonzalez57@company.com"
+    },
+    "metaLabels": {
+      "category": "Security Concern",
+      "priority": "High",
+      "escalated": true
+    }
+  },
+  {
+    "id": "226",
+    "channel": "phone",
+    "product": "Mobile App",
+    "body": "I would like to request a refund for the recent charge.",
+    "customer": {
+      "name": "Jessica Gonzalez",
+      "email": "jessica.gonzalez65@hotmail.com"
+    },
+    "metaLabels": {
+      "category": "Security Concern",
+      "priority": "High",
+      "escalated": true
+    }
+  },
+  {
+    "id": "227",
+    "channel": "chat",
+    "product": "Web Portal",
+    "body": "I am unable to access my account after entering the correct credentials.",
+    "customer": {
+      "name": "Mary Davis",
+      "email": "mary.davis719@company.com"
+    },
+    "metaLabels": {
+      "category": "Account Suspension",
+      "priority": "Urgent",
+      "escalated": false
+    }
+  },
+  {
+    "id": "228",
+    "channel": "chat",
+    "product": "Payment Gateway",
+    "body": "My subscription was cancelled without my request and I need clarification.",
+    "customer": {
+      "name": "Mary Jackson",
+      "email": "mary.jackson178@outlook.com"
+    },
+    "metaLabels": {
+      "category": "Feature Request",
+      "priority": "High",
+      "escalated": false
+    }
+  },
+  {
+    "id": "229",
+    "channel": "chat",
+    "product": "Payment Gateway",
+    "body": "Two-factor authentication codes are not being delivered to my phone.",
+    "customer": {
+      "name": "Jessica Jones",
+      "email": "jessica.jones212@yahoo.com"
+    },
+    "metaLabels": {
+      "category": "Subscription Cancellation",
+      "priority": "Low",
+      "escalated": true
+    }
+  },
+  {
+    "id": "230",
+    "channel": "email",
+    "product": "Payment Gateway",
+    "body": "I would like to request a refund for the recent charge.",
+    "customer": {
+      "name": "Michael Rodriguez",
+      "email": "michael.rodriguez55@yahoo.com"
+    },
+    "metaLabels": {
+      "category": "Account Suspension",
+      "priority": "Medium",
+      "escalated": false
+    }
+  },
+  {
+    "id": "231",
+    "channel": "email",
+    "product": "Subscription Service",
+    "body": "There seems to be a discrepancy in my billing statement for this month.",
+    "customer": {
+      "name": "Thomas Brown",
+      "email": "thomas.brown73@yahoo.com"
+    },
+    "metaLabels": {
+      "category": "Data Sync Issue",
+      "priority": "High",
+      "escalated": false
+    }
+  },
+  {
+    "id": "232",
+    "channel": "social",
+    "product": "CRM Platform",
+    "body": "I am experiencing very slow performance while using the dashboard.",
+    "customer": {
+      "name": "Barbara Jones",
+      "email": "barbara.jones469@company.com"
+    },
+    "metaLabels": {
+      "category": "Performance Issue",
+      "priority": "Medium",
+      "escalated": true
+    }
+  },
+  {
+    "id": "233",
+    "channel": "phone",
+    "product": "E-commerce Store",
+    "body": "I am experiencing very slow performance while using the dashboard.",
+    "customer": {
+      "name": "Thomas Thomas",
+      "email": "thomas.thomas883@yahoo.com"
+    },
+    "metaLabels": {
+      "category": "Subscription Cancellation",
+      "priority": "Medium",
+      "escalated": false
+    }
+  },
+  {
+    "id": "234",
+    "channel": "web_form",
+    "product": "Subscription Service",
+    "body": "There seems to be a discrepancy in my billing statement for this month.",
+    "customer": {
+      "name": "Linda Williams",
+      "email": "linda.williams572@gmail.com"
+    },
+    "metaLabels": {
+      "category": "Account Suspension",
+      "priority": "Low",
+      "escalated": true
+    }
+  },
+  {
+    "id": "235",
+    "channel": "social",
+    "product": "Billing System",
+    "body": "I found a bug in the latest update affecting report generation.",
+    "customer": {
+      "name": "David Taylor",
+      "email": "david.taylor34@outlook.com"
+    },
+    "metaLabels": {
+      "category": "Feature Request",
+      "priority": "Medium",
+      "escalated": true
+    }
+  },
+  {
+    "id": "236",
+    "channel": "phone",
+    "product": "Subscription Service",
+    "body": "I found a bug in the latest update affecting report generation.",
+    "customer": {
+      "name": "Michael Jones",
+      "email": "michael.jones343@yahoo.com"
+    },
+    "metaLabels": {
+      "category": "Subscription Cancellation",
+      "priority": "High",
+      "escalated": true
+    }
+  },
+  {
+    "id": "237",
+    "channel": "web_form",
+    "product": "Analytics Dashboard",
+    "body": "The payment was deducted from my bank account but the transaction shows failed.",
+    "customer": {
+      "name": "Joseph Williams",
+      "email": "joseph.williams83@icloud.com"
+    },
+    "metaLabels": {
+      "category": "Payment Problem",
+      "priority": "Low",
+      "escalated": false
+    }
+  },
+  {
+    "id": "238",
+    "channel": "social",
+    "product": "Cloud Storage",
+    "body": "The system is not syncing data across devices properly.",
+    "customer": {
+      "name": "David Wilson",
+      "email": "david.wilson593@outlook.com"
+    },
+    "metaLabels": {
+      "category": "Data Sync Issue",
+      "priority": "Urgent",
+      "escalated": true
+    }
+  },
+  {
+    "id": "239",
+    "channel": "phone",
+    "product": "CRM Platform",
+    "body": "The payment was deducted from my bank account but the transaction shows failed.",
+    "customer": {
+      "name": "Jennifer Garcia",
+      "email": "jennifer.garcia860@company.com"
+    },
+    "metaLabels": {
+      "category": "Bug Report",
+      "priority": "Medium",
+      "escalated": true
+    }
+  },
+  {
+    "id": "240",
+    "channel": "web_form",
+    "product": "Billing System",
+    "body": "I would like to request a refund for the recent charge.",
+    "customer": {
+      "name": "John Smith",
+      "email": "john.smith994@company.com"
+    },
+    "metaLabels": {
+      "category": "Feature Request",
+      "priority": "Medium",
+      "escalated": true
+    }
+  },
+  {
+    "id": "241",
+    "channel": "social",
+    "product": "Web Portal",
+    "body": "The application crashes whenever I try to upload a file.",
+    "customer": {
+      "name": "Karen Miller",
+      "email": "karen.miller598@hotmail.com"
+    },
+    "metaLabels": {
+      "category": "Feature Request",
+      "priority": "Urgent",
+      "escalated": false
+    }
+  },
+  {
+    "id": "242",
+    "channel": "web_form",
+    "product": "Analytics Dashboard",
+    "body": "Two-factor authentication codes are not being delivered to my phone.",
+    "customer": {
+      "name": "Barbara Lopez",
+      "email": "barbara.lopez316@icloud.com"
+    },
+    "metaLabels": {
+      "category": "Subscription Cancellation",
+      "priority": "Medium",
+      "escalated": false
+    }
+  },
+  {
+    "id": "243",
+    "channel": "phone",
+    "product": "API Service",
+    "body": "Two-factor authentication codes are not being delivered to my phone.",
+    "customer": {
+      "name": "Jennifer Moore",
+      "email": "jennifer.moore474@company.com"
+    },
+    "metaLabels": {
+      "category": "Account Suspension",
+      "priority": "Urgent",
+      "escalated": false
+    }
+  },
+  {
+    "id": "244",
+    "channel": "phone",
+    "product": "Analytics Dashboard",
+    "body": "I found a bug in the latest update affecting report generation.",
+    "customer": {
+      "name": "William Thomas",
+      "email": "william.thomas994@gmail.com"
+    },
+    "metaLabels": {
+      "category": "Subscription Cancellation",
+      "priority": "Urgent",
+      "escalated": false
+    }
+  },
+  {
+    "id": "245",
+    "channel": "chat",
+    "product": "Payment Gateway",
+    "body": "The system is not syncing data across devices properly.",
+    "customer": {
+      "name": "Barbara Johnson",
+      "email": "barbara.johnson297@outlook.com"
+    },
+    "metaLabels": {
+      "category": "Payment Problem",
+      "priority": "Low",
+      "escalated": true
+    }
+  },
+  {
+    "id": "246",
+    "channel": "web_form",
+    "product": "API Service",
+    "body": "The system is not syncing data across devices properly.",
+    "customer": {
+      "name": "Jennifer Brown",
+      "email": "jennifer.brown224@yahoo.com"
+    },
+    "metaLabels": {
+      "category": "Bug Report",
+      "priority": "Low",
+      "escalated": false
+    }
+  },
+  {
+    "id": "247",
+    "channel": "web_form",
+    "product": "Web Portal",
+    "body": "Two-factor authentication codes are not being delivered to my phone.",
+    "customer": {
+      "name": "John Davis",
+      "email": "john.davis315@yahoo.com"
+    },
+    "metaLabels": {
+      "category": "Payment Problem",
+      "priority": "Low",
+      "escalated": false
+    }
+  },
+  {
+    "id": "248",
+    "channel": "chat",
+    "product": "Billing System",
+    "body": "My subscription was cancelled without my request and I need clarification.",
+    "customer": {
+      "name": "Charles Miller",
+      "email": "charles.miller190@company.com"
+    },
+    "metaLabels": {
+      "category": "Payment Problem",
+      "priority": "High",
+      "escalated": true
+    }
+  },
+  {
+    "id": "249",
+    "channel": "social",
+    "product": "E-commerce Store",
+    "body": "My subscription was cancelled without my request and I need clarification.",
+    "customer": {
+      "name": "Thomas Thomas",
+      "email": "thomas.thomas376@company.com"
+    },
+    "metaLabels": {
+      "category": "Payment Problem",
+      "priority": "Urgent",
+      "escalated": false
+    }
+  },
+  {
+    "id": "250",
+    "channel": "chat",
+    "product": "E-commerce Store",
+    "body": "The application crashes whenever I try to upload a file.",
+    "customer": {
+      "name": "Elizabeth Anderson",
+      "email": "elizabeth.anderson615@company.com"
+    },
+    "metaLabels": {
+      "category": "Subscription Cancellation",
+      "priority": "High",
+      "escalated": true
+    }
+  },
+  {
+    "id": "251",
+    "channel": "phone",
+    "product": "Analytics Dashboard",
+    "body": "Two-factor authentication codes are not being delivered to my phone.",
+    "customer": {
+      "name": "Barbara Miller",
+      "email": "barbara.miller347@yahoo.com"
+    },
+    "metaLabels": {
+      "category": "Bug Report",
+      "priority": "High",
+      "escalated": true
+    }
+  },
+  {
+    "id": "252",
+    "channel": "social",
+    "product": "Payment Gateway",
+    "body": "I found a bug in the latest update affecting report generation.",
+    "customer": {
+      "name": "Mary Williams",
+      "email": "mary.williams511@company.com"
+    },
+    "metaLabels": {
+      "category": "Refund Request",
+      "priority": "High",
+      "escalated": false
+    }
+  },
+  {
+    "id": "253",
+    "channel": "web_form",
+    "product": "API Service",
+    "body": "I am unable to access my account after entering the correct credentials.",
+    "customer": {
+      "name": "Joseph Hernandez",
+      "email": "joseph.hernandez874@icloud.com"
+    },
+    "metaLabels": {
+      "category": "Login Issue",
+      "priority": "High",
+      "escalated": false
+    }
+  },
+  {
+    "id": "254",
+    "channel": "phone",
+    "product": "Mobile App",
+    "body": "There seems to be a discrepancy in my billing statement for this month.",
+    "customer": {
+      "name": "Charles Gonzalez",
+      "email": "charles.gonzalez632@company.com"
+    },
+    "metaLabels": {
+      "category": "Feature Request",
+      "priority": "Low",
+      "escalated": false
+    }
+  },
+  {
+    "id": "255",
+    "channel": "web_form",
+    "product": "CRM Platform",
+    "body": "I am unable to access my account after entering the correct credentials.",
+    "customer": {
+      "name": "Robert Williams",
+      "email": "robert.williams890@outlook.com"
+    },
+    "metaLabels": {
+      "category": "Account Suspension",
+      "priority": "Low",
+      "escalated": false
+    }
+  },
+  {
+    "id": "256",
+    "channel": "phone",
+    "product": "Web Portal",
+    "body": "The application crashes whenever I try to upload a file.",
+    "customer": {
+      "name": "Thomas Hernandez",
+      "email": "thomas.hernandez171@hotmail.com"
+    },
+    "metaLabels": {
+      "category": "Refund Request",
+      "priority": "Medium",
+      "escalated": true
+    }
+  },
+  {
+    "id": "257",
+    "channel": "web_form",
+    "product": "CRM Platform",
+    "body": "Two-factor authentication codes are not being delivered to my phone.",
+    "customer": {
+      "name": "Barbara Williams",
+      "email": "barbara.williams668@outlook.com"
+    },
+    "metaLabels": {
+      "category": "Feature Request",
+      "priority": "Medium",
+      "escalated": true
+    }
+  },
+  {
+    "id": "258",
+    "channel": "email",
+    "product": "E-commerce Store",
+    "body": "My subscription was cancelled without my request and I need clarification.",
+    "customer": {
+      "name": "Mary Taylor",
+      "email": "mary.taylor206@outlook.com"
+    },
+    "metaLabels": {
+      "category": "Bug Report",
+      "priority": "Urgent",
+      "escalated": false
+    }
+  },
+  {
+    "id": "259",
+    "channel": "social",
+    "product": "Mobile App",
+    "body": "I am experiencing very slow performance while using the dashboard.",
+    "customer": {
+      "name": "Jessica Moore",
+      "email": "jessica.moore447@icloud.com"
+    },
+    "metaLabels": {
+      "category": "Account Suspension",
+      "priority": "High",
+      "escalated": false
+    }
+  },
+  {
+    "id": "260",
+    "channel": "social",
+    "product": "Cloud Storage",
+    "body": "The system is not syncing data across devices properly.",
+    "customer": {
+      "name": "Charles Taylor",
+      "email": "charles.taylor956@gmail.com"
+    },
+    "metaLabels": {
+      "category": "Data Sync Issue",
+      "priority": "Low",
+      "escalated": false
+    }
+  },
+  {
+    "id": "261",
+    "channel": "phone",
+    "product": "E-commerce Store",
+    "body": "There seems to be a discrepancy in my billing statement for this month.",
+    "customer": {
+      "name": "William Jackson",
+      "email": "william.jackson58@icloud.com"
+    },
+    "metaLabels": {
+      "category": "Payment Problem",
+      "priority": "Urgent",
+      "escalated": true
+    }
+  },
+  {
+    "id": "262",
+    "channel": "phone",
+    "product": "Analytics Dashboard",
+    "body": "Two-factor authentication codes are not being delivered to my phone.",
+    "customer": {
+      "name": "Patricia Moore",
+      "email": "patricia.moore888@yahoo.com"
+    },
+    "metaLabels": {
+      "category": "Login Issue",
+      "priority": "Low",
+      "escalated": true
+    }
+  },
+  {
+    "id": "263",
+    "channel": "web_form",
+    "product": "Mobile App",
+    "body": "There seems to be a discrepancy in my billing statement for this month.",
+    "customer": {
+      "name": "William Taylor",
+      "email": "william.taylor68@outlook.com"
+    },
+    "metaLabels": {
+      "category": "Security Concern",
+      "priority": "Low",
+      "escalated": true
+    }
+  },
+  {
+    "id": "264",
+    "channel": "web_form",
+    "product": "E-commerce Store",
+    "body": "The application crashes whenever I try to upload a file.",
+    "customer": {
+      "name": "Jessica Jones",
+      "email": "jessica.jones267@yahoo.com"
+    },
+    "metaLabels": {
+      "category": "Feature Request",
+      "priority": "High",
+      "escalated": true
+    }
+  },
+  {
+    "id": "265",
+    "channel": "web_form",
+    "product": "API Service",
+    "body": "The payment was deducted from my bank account but the transaction shows failed.",
+    "customer": {
+      "name": "Karen Rodriguez",
+      "email": "karen.rodriguez153@gmail.com"
+    },
+    "metaLabels": {
+      "category": "Data Sync Issue",
+      "priority": "Urgent",
+      "escalated": false
+    }
+  },
+  {
+    "id": "266",
+    "channel": "email",
+    "product": "CRM Platform",
+    "body": "I would like to request a refund for the recent charge.",
+    "customer": {
+      "name": "Susan Jones",
+      "email": "susan.jones30@outlook.com"
+    },
+    "metaLabels": {
+      "category": "Data Sync Issue",
+      "priority": "Urgent",
+      "escalated": false
+    }
+  },
+  {
+    "id": "267",
+    "channel": "phone",
+    "product": "E-commerce Store",
+    "body": "The system is not syncing data across devices properly.",
+    "customer": {
+      "name": "Barbara Martin",
+      "email": "barbara.martin962@company.com"
+    },
+    "metaLabels": {
+      "category": "Feature Request",
+      "priority": "High",
+      "escalated": false
+    }
+  },
+  {
+    "id": "268",
+    "channel": "phone",
+    "product": "Analytics Dashboard",
+    "body": "There seems to be a discrepancy in my billing statement for this month.",
+    "customer": {
+      "name": "Patricia Hernandez",
+      "email": "patricia.hernandez46@yahoo.com"
+    },
+    "metaLabels": {
+      "category": "Feature Request",
+      "priority": "High",
+      "escalated": false
+    }
+  },
+  {
+    "id": "269",
+    "channel": "web_form",
+    "product": "CRM Platform",
+    "body": "I am unable to access my account after entering the correct credentials.",
+    "customer": {
+      "name": "William Garcia",
+      "email": "william.garcia723@icloud.com"
+    },
+    "metaLabels": {
+      "category": "Subscription Cancellation",
+      "priority": "Urgent",
+      "escalated": true
+    }
+  },
+  {
+    "id": "270",
+    "channel": "web_form",
+    "product": "Mobile App",
+    "body": "The payment was deducted from my bank account but the transaction shows failed.",
+    "customer": {
+      "name": "Jennifer Wilson",
+      "email": "jennifer.wilson943@gmail.com"
+    },
+    "metaLabels": {
+      "category": "Subscription Cancellation",
+      "priority": "High",
+      "escalated": false
+    }
+  },
+  {
+    "id": "271",
+    "channel": "web_form",
+    "product": "Web Portal",
+    "body": "There seems to be a discrepancy in my billing statement for this month.",
+    "customer": {
+      "name": "David Jackson",
+      "email": "david.jackson133@yahoo.com"
+    },
+    "metaLabels": {
+      "category": "Feature Request",
+      "priority": "Urgent",
+      "escalated": false
+    }
+  },
+  {
+    "id": "272",
+    "channel": "social",
+    "product": "Cloud Storage",
+    "body": "I would like to request a refund for the recent charge.",
+    "customer": {
+      "name": "Barbara Brown",
+      "email": "barbara.brown853@outlook.com"
+    },
+    "metaLabels": {
+      "category": "Subscription Cancellation",
+      "priority": "High",
+      "escalated": false
+    }
+  },
+  {
+    "id": "273",
+    "channel": "social",
+    "product": "API Service",
+    "body": "I am experiencing very slow performance while using the dashboard.",
+    "customer": {
+      "name": "Susan Williams",
+      "email": "susan.williams929@icloud.com"
+    },
+    "metaLabels": {
+      "category": "Account Suspension",
+      "priority": "Urgent",
+      "escalated": false
+    }
+  },
+  {
+    "id": "274",
+    "channel": "social",
+    "product": "CRM Platform",
+    "body": "Two-factor authentication codes are not being delivered to my phone.",
+    "customer": {
+      "name": "Joseph Garcia",
+      "email": "joseph.garcia806@yahoo.com"
+    },
+    "metaLabels": {
+      "category": "Payment Problem",
+      "priority": "Urgent",
+      "escalated": false
+    }
+  },
+  {
+    "id": "275",
+    "channel": "chat",
+    "product": "Analytics Dashboard",
+    "body": "There seems to be a discrepancy in my billing statement for this month.",
+    "customer": {
+      "name": "Richard Martin",
+      "email": "richard.martin744@icloud.com"
+    },
+    "metaLabels": {
+      "category": "Data Sync Issue",
+      "priority": "Low",
+      "escalated": true
+    }
+  },
+  {
+    "id": "276",
+    "channel": "chat",
+    "product": "Mobile App",
+    "body": "I would like to request a refund for the recent charge.",
+    "customer": {
+      "name": "Susan Smith",
+      "email": "susan.smith120@yahoo.com"
+    },
+    "metaLabels": {
+      "category": "Subscription Cancellation",
+      "priority": "Urgent",
+      "escalated": false
+    }
+  },
+  {
+    "id": "277",
+    "channel": "email",
+    "product": "E-commerce Store",
+    "body": "The system is not syncing data across devices properly.",
+    "customer": {
+      "name": "Richard Thomas",
+      "email": "richard.thomas526@hotmail.com"
+    },
+    "metaLabels": {
+      "category": "Login Issue",
+      "priority": "High",
+      "escalated": false
+    }
+  },
+  {
+    "id": "278",
+    "channel": "phone",
+    "product": "Analytics Dashboard",
+    "body": "I would like to request a refund for the recent charge.",
+    "customer": {
+      "name": "Joseph Davis",
+      "email": "joseph.davis520@yahoo.com"
+    },
+    "metaLabels": {
+      "category": "Data Sync Issue",
+      "priority": "Urgent",
+      "escalated": false
+    }
+  },
+  {
+    "id": "279",
+    "channel": "web_form",
+    "product": "Mobile App",
+    "body": "My subscription was cancelled without my request and I need clarification.",
+    "customer": {
+      "name": "James Lopez",
+      "email": "james.lopez903@outlook.com"
+    },
+    "metaLabels": {
+      "category": "Account Suspension",
+      "priority": "Low",
+      "escalated": false
+    }
+  },
+  {
+    "id": "280",
+    "channel": "chat",
+    "product": "Web Portal",
+    "body": "I am unable to access my account after entering the correct credentials.",
+    "customer": {
+      "name": "Joseph Brown",
+      "email": "joseph.brown999@gmail.com"
+    },
+    "metaLabels": {
+      "category": "Security Concern",
+      "priority": "Medium",
+      "escalated": true
+    }
+  },
+  {
+    "id": "281",
+    "channel": "chat",
+    "product": "E-commerce Store",
+    "body": "I am experiencing very slow performance while using the dashboard.",
+    "customer": {
+      "name": "Linda Thomas",
+      "email": "linda.thomas350@outlook.com"
+    },
+    "metaLabels": {
+      "category": "Payment Problem",
+      "priority": "High",
+      "escalated": false
+    }
+  },
+  {
+    "id": "282",
+    "channel": "phone",
+    "product": "Billing System",
+    "body": "I am unable to access my account after entering the correct credentials.",
+    "customer": {
+      "name": "David Gonzalez",
+      "email": "david.gonzalez791@yahoo.com"
+    },
+    "metaLabels": {
+      "category": "Refund Request",
+      "priority": "Low",
+      "escalated": true
+    }
+  },
+  {
+    "id": "283",
+    "channel": "email",
+    "product": "Payment Gateway",
+    "body": "There seems to be a discrepancy in my billing statement for this month.",
+    "customer": {
+      "name": "Richard Miller",
+      "email": "richard.miller903@outlook.com"
+    },
+    "metaLabels": {
+      "category": "Security Concern",
+      "priority": "High",
+      "escalated": false
+    }
+  },
+  {
+    "id": "284",
+    "channel": "social",
+    "product": "Cloud Storage",
+    "body": "I found a bug in the latest update affecting report generation.",
+    "customer": {
+      "name": "Thomas Lopez",
+      "email": "thomas.lopez127@gmail.com"
+    },
+    "metaLabels": {
+      "category": "Feature Request",
+      "priority": "High",
+      "escalated": true
+    }
+  },
+  {
+    "id": "285",
+    "channel": "web_form",
+    "product": "Payment Gateway",
+    "body": "I am unable to access my account after entering the correct credentials.",
+    "customer": {
+      "name": "Patricia Jones",
+      "email": "patricia.jones729@icloud.com"
+    },
+    "metaLabels": {
+      "category": "Payment Problem",
+      "priority": "Urgent",
+      "escalated": false
+    }
+  },
+  {
+    "id": "286",
+    "channel": "chat",
+    "product": "Cloud Storage",
+    "body": "The payment was deducted from my bank account but the transaction shows failed.",
+    "customer": {
+      "name": "Jessica Anderson",
+      "email": "jessica.anderson133@company.com"
+    },
+    "metaLabels": {
+      "category": "Security Concern",
+      "priority": "Urgent",
+      "escalated": true
+    }
+  },
+  {
+    "id": "287",
+    "channel": "email",
+    "product": "Payment Gateway",
+    "body": "I am experiencing very slow performance while using the dashboard.",
+    "customer": {
+      "name": "John Jones",
+      "email": "john.jones803@hotmail.com"
+    },
+    "metaLabels": {
+      "category": "Feature Request",
+      "priority": "Urgent",
+      "escalated": false
+    }
+  },
+  {
+    "id": "288",
+    "channel": "phone",
+    "product": "E-commerce Store",
+    "body": "I found a bug in the latest update affecting report generation.",
+    "customer": {
+      "name": "Joseph Jones",
+      "email": "joseph.jones888@company.com"
+    },
+    "metaLabels": {
+      "category": "Data Sync Issue",
+      "priority": "Medium",
+      "escalated": false
+    }
+  },
+  {
+    "id": "289",
+    "channel": "social",
+    "product": "Analytics Dashboard",
+    "body": "My subscription was cancelled without my request and I need clarification.",
+    "customer": {
+      "name": "Michael Thomas",
+      "email": "michael.thomas515@gmail.com"
+    },
+    "metaLabels": {
+      "category": "Security Concern",
+      "priority": "Medium",
+      "escalated": false
+    }
+  },
+  {
+    "id": "290",
+    "channel": "web_form",
+    "product": "Web Portal",
+    "body": "My subscription was cancelled without my request and I need clarification.",
+    "customer": {
+      "name": "Robert Brown",
+      "email": "robert.brown102@hotmail.com"
+    },
+    "metaLabels": {
+      "category": "Account Suspension",
+      "priority": "Medium",
+      "escalated": true
+    }
+  },
+  {
+    "id": "291",
+    "channel": "web_form",
+    "product": "Analytics Dashboard",
+    "body": "Two-factor authentication codes are not being delivered to my phone.",
+    "customer": {
+      "name": "Karen Jackson",
+      "email": "karen.jackson243@icloud.com"
+    },
+    "metaLabels": {
+      "category": "Security Concern",
+      "priority": "Low",
+      "escalated": true
+    }
+  },
+  {
+    "id": "292",
+    "channel": "email",
+    "product": "E-commerce Store",
+    "body": "The application crashes whenever I try to upload a file.",
+    "customer": {
+      "name": "Thomas Miller",
+      "email": "thomas.miller802@yahoo.com"
+    },
+    "metaLabels": {
+      "category": "Account Suspension",
+      "priority": "Urgent",
+      "escalated": false
+    }
+  },
+  {
+    "id": "293",
+    "channel": "social",
+    "product": "Analytics Dashboard",
+    "body": "My subscription was cancelled without my request and I need clarification.",
+    "customer": {
+      "name": "Sarah Jackson",
+      "email": "sarah.jackson72@outlook.com"
+    },
+    "metaLabels": {
+      "category": "Payment Problem",
+      "priority": "Urgent",
+      "escalated": false
+    }
+  },
+  {
+    "id": "294",
+    "channel": "email",
+    "product": "Cloud Storage",
+    "body": "Two-factor authentication codes are not being delivered to my phone.",
+    "customer": {
+      "name": "James Martin",
+      "email": "james.martin488@gmail.com"
+    },
+    "metaLabels": {
+      "category": "Account Suspension",
+      "priority": "Urgent",
+      "escalated": false
+    }
+  },
+  {
+    "id": "295",
+    "channel": "chat",
+    "product": "Billing System",
+    "body": "The application crashes whenever I try to upload a file.",
+    "customer": {
+      "name": "James Davis",
+      "email": "james.davis761@gmail.com"
+    },
+    "metaLabels": {
+      "category": "Performance Issue",
+      "priority": "High",
+      "escalated": false
+    }
+  },
+  {
+    "id": "296",
+    "channel": "phone",
+    "product": "Analytics Dashboard",
+    "body": "The payment was deducted from my bank account but the transaction shows failed.",
+    "customer": {
+      "name": "Charles Martin",
+      "email": "charles.martin579@yahoo.com"
+    },
+    "metaLabels": {
+      "category": "Account Suspension",
+      "priority": "Medium",
+      "escalated": false
+    }
+  },
+  {
+    "id": "297",
+    "channel": "web_form",
+    "product": "Analytics Dashboard",
+    "body": "The application crashes whenever I try to upload a file.",
+    "customer": {
+      "name": "Thomas Anderson",
+      "email": "thomas.anderson508@outlook.com"
+    },
+    "metaLabels": {
+      "category": "Login Issue",
+      "priority": "Urgent",
+      "escalated": true
+    }
+  },
+  {
+    "id": "298",
+    "channel": "phone",
+    "product": "Web Portal",
+    "body": "I am experiencing very slow performance while using the dashboard.",
+    "customer": {
+      "name": "Patricia Smith",
+      "email": "patricia.smith492@icloud.com"
+    },
+    "metaLabels": {
+      "category": "Performance Issue",
+      "priority": "Urgent",
+      "escalated": false
+    }
+  },
+  {
+    "id": "299",
+    "channel": "web_form",
+    "product": "Mobile App",
+    "body": "I am unable to access my account after entering the correct credentials.",
+    "customer": {
+      "name": "Mary Anderson",
+      "email": "mary.anderson57@outlook.com"
+    },
+    "metaLabels": {
+      "category": "Payment Problem",
+      "priority": "High",
+      "escalated": false
+    }
+  },
+  {
+    "id": "300",
+    "channel": "web_form",
+    "product": "API Service",
+    "body": "I found a bug in the latest update affecting report generation.",
+    "customer": {
+      "name": "Patricia Brown",
+      "email": "patricia.brown13@hotmail.com"
+    },
+    "metaLabels": {
+      "category": "Bug Report",
+      "priority": "High",
+      "escalated": false
+    }
+  },
+  {
+    "id": "301",
+    "channel": "social",
+    "product": "Mobile App",
+    "body": "I found a bug in the latest update affecting report generation.",
+    "customer": {
+      "name": "Elizabeth Martin",
+      "email": "elizabeth.martin352@outlook.com"
+    },
+    "metaLabels": {
+      "category": "Security Concern",
+      "priority": "Medium",
+      "escalated": false
+    }
+  },
+  {
+    "id": "302",
+    "channel": "web_form",
+    "product": "Mobile App",
+    "body": "I would like to request a refund for the recent charge.",
+    "customer": {
+      "name": "Susan Hernandez",
+      "email": "susan.hernandez167@gmail.com"
+    },
+    "metaLabels": {
+      "category": "Login Issue",
+      "priority": "Medium",
+      "escalated": true
+    }
+  },
+  {
+    "id": "303",
+    "channel": "phone",
+    "product": "Analytics Dashboard",
+    "body": "The application crashes whenever I try to upload a file.",
+    "customer": {
+      "name": "Joseph Miller",
+      "email": "joseph.miller647@hotmail.com"
+    },
+    "metaLabels": {
+      "category": "Login Issue",
+      "priority": "Medium",
+      "escalated": true
+    }
+  },
+  {
+    "id": "304",
+    "channel": "chat",
+    "product": "Web Portal",
+    "body": "Two-factor authentication codes are not being delivered to my phone.",
+    "customer": {
+      "name": "Linda Lopez",
+      "email": "linda.lopez829@outlook.com"
+    },
+    "metaLabels": {
+      "category": "Data Sync Issue",
+      "priority": "Medium",
+      "escalated": true
+    }
+  },
+  {
+    "id": "305",
+    "channel": "web_form",
+    "product": "Web Portal",
+    "body": "I would like to request a refund for the recent charge.",
+    "customer": {
+      "name": "William Jones",
+      "email": "william.jones872@hotmail.com"
+    },
+    "metaLabels": {
+      "category": "Payment Problem",
+      "priority": "Medium",
+      "escalated": false
+    }
+  },
+  {
+    "id": "306",
+    "channel": "phone",
+    "product": "Billing System",
+    "body": "Two-factor authentication codes are not being delivered to my phone.",
+    "customer": {
+      "name": "Michael Anderson",
+      "email": "michael.anderson884@yahoo.com"
+    },
+    "metaLabels": {
+      "category": "Feature Request",
+      "priority": "Medium",
+      "escalated": false
+    }
+  },
+  {
+    "id": "307",
+    "channel": "social",
+    "product": "CRM Platform",
+    "body": "I am experiencing very slow performance while using the dashboard.",
+    "customer": {
+      "name": "David Rodriguez",
+      "email": "david.rodriguez392@gmail.com"
+    },
+    "metaLabels": {
+      "category": "Bug Report",
+      "priority": "Low",
+      "escalated": true
+    }
+  },
+  {
+    "id": "308",
+    "channel": "email",
+    "product": "E-commerce Store",
+    "body": "I am experiencing very slow performance while using the dashboard.",
+    "customer": {
+      "name": "Karen Jones",
+      "email": "karen.jones876@company.com"
+    },
+    "metaLabels": {
+      "category": "Feature Request",
+      "priority": "Urgent",
+      "escalated": false
+    }
+  },
+  {
+    "id": "309",
+    "channel": "social",
+    "product": "Mobile App",
+    "body": "I would like to request a refund for the recent charge.",
+    "customer": {
+      "name": "David Miller",
+      "email": "david.miller440@company.com"
+    },
+    "metaLabels": {
+      "category": "Subscription Cancellation",
+      "priority": "High",
+      "escalated": false
+    }
+  },
+  {
+    "id": "310",
+    "channel": "web_form",
+    "product": "API Service",
+    "body": "Two-factor authentication codes are not being delivered to my phone.",
+    "customer": {
+      "name": "David Jackson",
+      "email": "david.jackson645@hotmail.com"
+    },
+    "metaLabels": {
+      "category": "Bug Report",
+      "priority": "Urgent",
+      "escalated": true
+    }
+  },
+  {
+    "id": "311",
+    "channel": "phone",
+    "product": "API Service",
+    "body": "I am unable to access my account after entering the correct credentials.",
+    "customer": {
+      "name": "Elizabeth Miller",
+      "email": "elizabeth.miller239@outlook.com"
+    },
+    "metaLabels": {
+      "category": "Subscription Cancellation",
+      "priority": "Low",
+      "escalated": true
+    }
+  },
+  {
+    "id": "312",
+    "channel": "email",
+    "product": "Mobile App",
+    "body": "I am experiencing very slow performance while using the dashboard.",
+    "customer": {
+      "name": "Charles Martinez",
+      "email": "charles.martinez602@yahoo.com"
+    },
+    "metaLabels": {
+      "category": "Subscription Cancellation",
+      "priority": "Medium",
+      "escalated": true
+    }
+  },
+  {
+    "id": "313",
+    "channel": "chat",
+    "product": "E-commerce Store",
+    "body": "I found a bug in the latest update affecting report generation.",
+    "customer": {
+      "name": "Jennifer Martin",
+      "email": "jennifer.martin751@icloud.com"
+    },
+    "metaLabels": {
+      "category": "Account Suspension",
+      "priority": "Low",
+      "escalated": true
+    }
+  },
+  {
+    "id": "314",
+    "channel": "web_form",
+    "product": "CRM Platform",
+    "body": "I would like to request a refund for the recent charge.",
+    "customer": {
+      "name": "William Miller",
+      "email": "william.miller519@gmail.com"
+    },
+    "metaLabels": {
+      "category": "Payment Problem",
+      "priority": "Urgent",
+      "escalated": false
+    }
+  },
+  {
+    "id": "315",
+    "channel": "email",
+    "product": "E-commerce Store",
+    "body": "The payment was deducted from my bank account but the transaction shows failed.",
+    "customer": {
+      "name": "William Garcia",
+      "email": "william.garcia175@gmail.com"
+    },
+    "metaLabels": {
+      "category": "Feature Request",
+      "priority": "Medium",
+      "escalated": true
+    }
+  },
+  {
+    "id": "316",
+    "channel": "web_form",
+    "product": "Subscription Service",
+    "body": "There seems to be a discrepancy in my billing statement for this month.",
+    "customer": {
+      "name": "Karen Smith",
+      "email": "karen.smith50@icloud.com"
+    },
+    "metaLabels": {
+      "category": "Bug Report",
+      "priority": "Low",
+      "escalated": true
+    }
+  },
+  {
+    "id": "317",
+    "channel": "chat",
+    "product": "Web Portal",
+    "body": "The application crashes whenever I try to upload a file.",
+    "customer": {
+      "name": "Michael Martin",
+      "email": "michael.martin213@hotmail.com"
+    },
+    "metaLabels": {
+      "category": "Payment Problem",
+      "priority": "High",
+      "escalated": false
+    }
+  },
+  {
+    "id": "318",
+    "channel": "chat",
+    "product": "E-commerce Store",
+    "body": "I found a bug in the latest update affecting report generation.",
+    "customer": {
+      "name": "Patricia Moore",
+      "email": "patricia.moore811@hotmail.com"
+    },
+    "metaLabels": {
+      "category": "Payment Problem",
+      "priority": "Medium",
+      "escalated": false
+    }
+  },
+  {
+    "id": "319",
+    "channel": "web_form",
+    "product": "Mobile App",
+    "body": "I found a bug in the latest update affecting report generation.",
+    "customer": {
+      "name": "Karen Brown",
+      "email": "karen.brown317@yahoo.com"
+    },
+    "metaLabels": {
+      "category": "Bug Report",
+      "priority": "Medium",
+      "escalated": false
+    }
+  },
+  {
+    "id": "320",
+    "channel": "social",
+    "product": "Mobile App",
+    "body": "The application crashes whenever I try to upload a file.",
+    "customer": {
+      "name": "Elizabeth Smith",
+      "email": "elizabeth.smith235@company.com"
+    },
+    "metaLabels": {
+      "category": "Bug Report",
+      "priority": "Medium",
+      "escalated": true
+    }
+  },
+  {
+    "id": "321",
+    "channel": "chat",
+    "product": "Subscription Service",
+    "body": "I am experiencing very slow performance while using the dashboard.",
+    "customer": {
+      "name": "Michael Davis",
+      "email": "michael.davis520@gmail.com"
+    },
+    "metaLabels": {
+      "category": "Subscription Cancellation",
+      "priority": "Medium",
+      "escalated": true
+    }
+  },
+  {
+    "id": "322",
+    "channel": "chat",
+    "product": "Analytics Dashboard",
+    "body": "Two-factor authentication codes are not being delivered to my phone.",
+    "customer": {
+      "name": "Karen Wilson",
+      "email": "karen.wilson779@yahoo.com"
+    },
+    "metaLabels": {
+      "category": "Refund Request",
+      "priority": "Medium",
+      "escalated": false
+    }
+  },
+  {
+    "id": "323",
+    "channel": "email",
+    "product": "Analytics Dashboard",
+    "body": "Two-factor authentication codes are not being delivered to my phone.",
+    "customer": {
+      "name": "Barbara Thomas",
+      "email": "barbara.thomas415@icloud.com"
+    },
+    "metaLabels": {
+      "category": "Performance Issue",
+      "priority": "Low",
+      "escalated": false
+    }
+  },
+  {
+    "id": "324",
+    "channel": "chat",
+    "product": "Cloud Storage",
+    "body": "I am experiencing very slow performance while using the dashboard.",
+    "customer": {
+      "name": "Mary Lopez",
+      "email": "mary.lopez647@company.com"
+    },
+    "metaLabels": {
+      "category": "Account Suspension",
+      "priority": "Medium",
+      "escalated": false
+    }
+  },
+  {
+    "id": "325",
+    "channel": "phone",
+    "product": "Web Portal",
+    "body": "Two-factor authentication codes are not being delivered to my phone.",
+    "customer": {
+      "name": "Elizabeth Taylor",
+      "email": "elizabeth.taylor991@hotmail.com"
+    },
+    "metaLabels": {
+      "category": "Feature Request",
+      "priority": "High",
+      "escalated": true
+    }
+  },
+  {
+    "id": "326",
+    "channel": "chat",
+    "product": "Web Portal",
+    "body": "My subscription was cancelled without my request and I need clarification.",
+    "customer": {
+      "name": "Jennifer Lopez",
+      "email": "jennifer.lopez191@company.com"
+    },
+    "metaLabels": {
+      "category": "Subscription Cancellation",
+      "priority": "Urgent",
+      "escalated": false
+    }
+  },
+  {
+    "id": "327",
+    "channel": "social",
+    "product": "Mobile App",
+    "body": "The payment was deducted from my bank account but the transaction shows failed.",
+    "customer": {
+      "name": "Robert Hernandez",
+      "email": "robert.hernandez31@hotmail.com"
+    },
+    "metaLabels": {
+      "category": "Subscription Cancellation",
+      "priority": "High",
+      "escalated": false
+    }
+  },
+  {
+    "id": "328",
+    "channel": "web_form",
+    "product": "Web Portal",
+    "body": "There seems to be a discrepancy in my billing statement for this month.",
+    "customer": {
+      "name": "Linda Lopez",
+      "email": "linda.lopez682@icloud.com"
+    },
+    "metaLabels": {
+      "category": "Login Issue",
+      "priority": "Low",
+      "escalated": true
+    }
+  },
+  {
+    "id": "329",
+    "channel": "social",
+    "product": "Billing System",
+    "body": "I would like to request a refund for the recent charge.",
+    "customer": {
+      "name": "David Smith",
+      "email": "david.smith649@outlook.com"
+    },
+    "metaLabels": {
+      "category": "Performance Issue",
+      "priority": "Urgent",
+      "escalated": true
+    }
+  },
+  {
+    "id": "330",
+    "channel": "chat",
+    "product": "Web Portal",
+    "body": "My subscription was cancelled without my request and I need clarification.",
+    "customer": {
+      "name": "Patricia Thomas",
+      "email": "patricia.thomas679@hotmail.com"
+    },
+    "metaLabels": {
+      "category": "Bug Report",
+      "priority": "Urgent",
+      "escalated": true
+    }
+  },
+  {
+    "id": "331",
+    "channel": "phone",
+    "product": "Web Portal",
+    "body": "The payment was deducted from my bank account but the transaction shows failed.",
+    "customer": {
+      "name": "Richard Moore",
+      "email": "richard.moore990@icloud.com"
+    },
+    "metaLabels": {
+      "category": "Feature Request",
+      "priority": "Low",
+      "escalated": true
+    }
+  },
+  {
+    "id": "332",
+    "channel": "phone",
+    "product": "Cloud Storage",
+    "body": "I am unable to access my account after entering the correct credentials.",
+    "customer": {
+      "name": "Barbara Jones",
+      "email": "barbara.jones533@company.com"
+    },
+    "metaLabels": {
+      "category": "Refund Request",
+      "priority": "High",
+      "escalated": true
+    }
+  },
+  {
+    "id": "333",
+    "channel": "phone",
+    "product": "Payment Gateway",
+    "body": "The application crashes whenever I try to upload a file.",
+    "customer": {
+      "name": "Elizabeth Gonzalez",
+      "email": "elizabeth.gonzalez61@outlook.com"
+    },
+    "metaLabels": {
+      "category": "Bug Report",
+      "priority": "Urgent",
+      "escalated": false
+    }
+  },
+  {
+    "id": "334",
+    "channel": "chat",
+    "product": "Cloud Storage",
+    "body": "I am unable to access my account after entering the correct credentials.",
+    "customer": {
+      "name": "Michael Moore",
+      "email": "michael.moore404@gmail.com"
+    },
+    "metaLabels": {
+      "category": "Data Sync Issue",
+      "priority": "Medium",
+      "escalated": true
+    }
+  },
+  {
+    "id": "335",
+    "channel": "web_form",
+    "product": "Billing System",
+    "body": "The system is not syncing data across devices properly.",
+    "customer": {
+      "name": "Patricia Lopez",
+      "email": "patricia.lopez998@icloud.com"
+    },
+    "metaLabels": {
+      "category": "Payment Problem",
+      "priority": "Urgent",
+      "escalated": false
+    }
+  },
+  {
+    "id": "336",
+    "channel": "email",
+    "product": "Billing System",
+    "body": "The application crashes whenever I try to upload a file.",
+    "customer": {
+      "name": "Patricia Brown",
+      "email": "patricia.brown85@gmail.com"
+    },
+    "metaLabels": {
+      "category": "Security Concern",
+      "priority": "Urgent",
+      "escalated": true
+    }
+  },
+  {
+    "id": "337",
+    "channel": "social",
+    "product": "Billing System",
+    "body": "The payment was deducted from my bank account but the transaction shows failed.",
+    "customer": {
+      "name": "Charles Moore",
+      "email": "charles.moore731@company.com"
+    },
+    "metaLabels": {
+      "category": "Bug Report",
+      "priority": "Medium",
+      "escalated": false
+    }
+  },
+  {
+    "id": "338",
+    "channel": "social",
+    "product": "Payment Gateway",
+    "body": "The system is not syncing data across devices properly.",
+    "customer": {
+      "name": "Susan Smith",
+      "email": "susan.smith255@outlook.com"
+    },
+    "metaLabels": {
+      "category": "Feature Request",
+      "priority": "Urgent",
+      "escalated": false
+    }
+  },
+  {
+    "id": "339",
+    "channel": "web_form",
+    "product": "Cloud Storage",
+    "body": "My subscription was cancelled without my request and I need clarification.",
+    "customer": {
+      "name": "Karen Wilson",
+      "email": "karen.wilson77@hotmail.com"
+    },
+    "metaLabels": {
+      "category": "Refund Request",
+      "priority": "Low",
+      "escalated": true
+    }
+  },
+  {
+    "id": "340",
+    "channel": "phone",
+    "product": "Web Portal",
+    "body": "The payment was deducted from my bank account but the transaction shows failed.",
+    "customer": {
+      "name": "Susan Gonzalez",
+      "email": "susan.gonzalez27@hotmail.com"
+    },
+    "metaLabels": {
+      "category": "Feature Request",
+      "priority": "Urgent",
+      "escalated": true
+    }
+  },
+  {
+    "id": "341",
+    "channel": "email",
+    "product": "API Service",
+    "body": "I found a bug in the latest update affecting report generation.",
+    "customer": {
+      "name": "Elizabeth Jackson",
+      "email": "elizabeth.jackson842@icloud.com"
+    },
+    "metaLabels": {
+      "category": "Performance Issue",
+      "priority": "High",
+      "escalated": false
+    }
+  },
+  {
+    "id": "342",
+    "channel": "web_form",
+    "product": "E-commerce Store",
+    "body": "The application crashes whenever I try to upload a file.",
+    "customer": {
+      "name": "Richard Jackson",
+      "email": "richard.jackson754@outlook.com"
+    },
+    "metaLabels": {
+      "category": "Performance Issue",
+      "priority": "Urgent",
+      "escalated": true
+    }
+  },
+  {
+    "id": "343",
+    "channel": "chat",
+    "product": "Mobile App",
+    "body": "The system is not syncing data across devices properly.",
+    "customer": {
+      "name": "Linda Williams",
+      "email": "linda.williams170@hotmail.com"
+    },
+    "metaLabels": {
+      "category": "Feature Request",
+      "priority": "Urgent",
+      "escalated": true
+    }
+  },
+  {
+    "id": "344",
+    "channel": "web_form",
+    "product": "CRM Platform",
+    "body": "My subscription was cancelled without my request and I need clarification.",
+    "customer": {
+      "name": "Jennifer Taylor",
+      "email": "jennifer.taylor926@yahoo.com"
+    },
+    "metaLabels": {
+      "category": "Performance Issue",
+      "priority": "Low",
+      "escalated": false
+    }
+  },
+  {
+    "id": "345",
+    "channel": "email",
+    "product": "Cloud Storage",
+    "body": "I would like to request a refund for the recent charge.",
+    "customer": {
+      "name": "Michael Martinez",
+      "email": "michael.martinez952@company.com"
+    },
+    "metaLabels": {
+      "category": "Login Issue",
+      "priority": "Low",
+      "escalated": false
+    }
+  },
+  {
+    "id": "346",
+    "channel": "phone",
+    "product": "Cloud Storage",
+    "body": "I am experiencing very slow performance while using the dashboard.",
+    "customer": {
+      "name": "Thomas Jones",
+      "email": "thomas.jones421@gmail.com"
+    },
+    "metaLabels": {
+      "category": "Account Suspension",
+      "priority": "Urgent",
+      "escalated": false
+    }
+  },
+  {
+    "id": "347",
+    "channel": "social",
+    "product": "Web Portal",
+    "body": "I would like to request a refund for the recent charge.",
+    "customer": {
+      "name": "Richard Wilson",
+      "email": "richard.wilson762@outlook.com"
+    },
+    "metaLabels": {
+      "category": "Bug Report",
+      "priority": "Urgent",
+      "escalated": false
+    }
+  },
+  {
+    "id": "348",
+    "channel": "web_form",
+    "product": "Cloud Storage",
+    "body": "I am unable to access my account after entering the correct credentials.",
+    "customer": {
+      "name": "James Davis",
+      "email": "james.davis54@company.com"
+    },
+    "metaLabels": {
+      "category": "Data Sync Issue",
+      "priority": "High",
+      "escalated": true
+    }
+  },
+  {
+    "id": "349",
+    "channel": "chat",
+    "product": "Mobile App",
+    "body": "My subscription was cancelled without my request and I need clarification.",
+    "customer": {
+      "name": "Jennifer Miller",
+      "email": "jennifer.miller876@hotmail.com"
+    },
+    "metaLabels": {
+      "category": "Payment Problem",
+      "priority": "High",
+      "escalated": true
+    }
+  },
+  {
+    "id": "350",
+    "channel": "email",
+    "product": "Mobile App",
+    "body": "The application crashes whenever I try to upload a file.",
+    "customer": {
+      "name": "Patricia Rodriguez",
+      "email": "patricia.rodriguez373@outlook.com"
+    },
+    "metaLabels": {
+      "category": "Refund Request",
+      "priority": "Medium",
+      "escalated": false
+    }
+  },
+  {
+    "id": "351",
+    "channel": "phone",
+    "product": "Billing System",
+    "body": "I found a bug in the latest update affecting report generation.",
+    "customer": {
+      "name": "James Moore",
+      "email": "james.moore789@yahoo.com"
+    },
+    "metaLabels": {
+      "category": "Performance Issue",
+      "priority": "High",
+      "escalated": true
+    }
+  },
+  {
+    "id": "352",
+    "channel": "phone",
+    "product": "API Service",
+    "body": "The application crashes whenever I try to upload a file.",
+    "customer": {
+      "name": "Jessica Miller",
+      "email": "jessica.miller547@company.com"
+    },
+    "metaLabels": {
+      "category": "Account Suspension",
+      "priority": "High",
+      "escalated": true
+    }
+  },
+  {
+    "id": "353",
+    "channel": "web_form",
+    "product": "Cloud Storage",
+    "body": "The payment was deducted from my bank account but the transaction shows failed.",
+    "customer": {
+      "name": "Michael Gonzalez",
+      "email": "michael.gonzalez507@company.com"
+    },
+    "metaLabels": {
+      "category": "Security Concern",
+      "priority": "Urgent",
+      "escalated": true
+    }
+  },
+  {
+    "id": "354",
+    "channel": "chat",
+    "product": "Mobile App",
+    "body": "The application crashes whenever I try to upload a file.",
+    "customer": {
+      "name": "William Moore",
+      "email": "william.moore122@yahoo.com"
+    },
+    "metaLabels": {
+      "category": "Security Concern",
+      "priority": "Medium",
+      "escalated": false
+    }
+  },
+  {
+    "id": "355",
+    "channel": "social",
+    "product": "Payment Gateway",
+    "body": "The application crashes whenever I try to upload a file.",
+    "customer": {
+      "name": "Elizabeth Hernandez",
+      "email": "elizabeth.hernandez59@company.com"
+    },
+    "metaLabels": {
+      "category": "Performance Issue",
+      "priority": "High",
+      "escalated": true
+    }
+  },
+  {
+    "id": "356",
+    "channel": "social",
+    "product": "Payment Gateway",
+    "body": "My subscription was cancelled without my request and I need clarification.",
+    "customer": {
+      "name": "Linda Wilson",
+      "email": "linda.wilson378@yahoo.com"
+    },
+    "metaLabels": {
+      "category": "Subscription Cancellation",
+      "priority": "Medium",
+      "escalated": true
+    }
+  },
+  {
+    "id": "357",
+    "channel": "chat",
+    "product": "Mobile App",
+    "body": "I am unable to access my account after entering the correct credentials.",
+    "customer": {
+      "name": "Thomas Jones",
+      "email": "thomas.jones745@gmail.com"
+    },
+    "metaLabels": {
+      "category": "Refund Request",
+      "priority": "Low",
+      "escalated": true
+    }
+  },
+  {
+    "id": "358",
+    "channel": "phone",
+    "product": "Mobile App",
+    "body": "The payment was deducted from my bank account but the transaction shows failed.",
+    "customer": {
+      "name": "Jessica Jones",
+      "email": "jessica.jones250@gmail.com"
+    },
+    "metaLabels": {
+      "category": "Security Concern",
+      "priority": "Low",
+      "escalated": false
+    }
+  },
+  {
+    "id": "359",
+    "channel": "web_form",
+    "product": "Billing System",
+    "body": "The payment was deducted from my bank account but the transaction shows failed.",
+    "customer": {
+      "name": "Patricia Martinez",
+      "email": "patricia.martinez366@gmail.com"
+    },
+    "metaLabels": {
+      "category": "Performance Issue",
+      "priority": "Medium",
+      "escalated": false
+    }
+  },
+  {
+    "id": "360",
+    "channel": "social",
+    "product": "Cloud Storage",
+    "body": "Two-factor authentication codes are not being delivered to my phone.",
+    "customer": {
+      "name": "Robert Smith",
+      "email": "robert.smith883@yahoo.com"
+    },
+    "metaLabels": {
+      "category": "Account Suspension",
+      "priority": "Low",
+      "escalated": false
+    }
+  },
+  {
+    "id": "361",
+    "channel": "email",
+    "product": "API Service",
+    "body": "I would like to request a refund for the recent charge.",
+    "customer": {
+      "name": "Linda Gonzalez",
+      "email": "linda.gonzalez429@hotmail.com"
+    },
+    "metaLabels": {
+      "category": "Security Concern",
+      "priority": "Medium",
+      "escalated": true
+    }
+  },
+  {
+    "id": "362",
+    "channel": "web_form",
+    "product": "Payment Gateway",
+    "body": "The application crashes whenever I try to upload a file.",
+    "customer": {
+      "name": "John Martinez",
+      "email": "john.martinez472@yahoo.com"
+    },
+    "metaLabels": {
+      "category": "Bug Report",
+      "priority": "Low",
+      "escalated": true
+    }
+  },
+  {
+    "id": "363",
+    "channel": "web_form",
+    "product": "Cloud Storage",
+    "body": "The system is not syncing data across devices properly.",
+    "customer": {
+      "name": "Charles Wilson",
+      "email": "charles.wilson154@yahoo.com"
+    },
+    "metaLabels": {
+      "category": "Account Suspension",
+      "priority": "Urgent",
+      "escalated": true
+    }
+  },
+  {
+    "id": "364",
+    "channel": "chat",
+    "product": "API Service",
+    "body": "I am experiencing very slow performance while using the dashboard.",
+    "customer": {
+      "name": "William Jackson",
+      "email": "william.jackson514@outlook.com"
+    },
+    "metaLabels": {
+      "category": "Account Suspension",
+      "priority": "Urgent",
+      "escalated": false
+    }
+  },
+  {
+    "id": "365",
+    "channel": "chat",
+    "product": "Mobile App",
+    "body": "I found a bug in the latest update affecting report generation.",
+    "customer": {
+      "name": "Susan Miller",
+      "email": "susan.miller277@gmail.com"
+    },
+    "metaLabels": {
+      "category": "Performance Issue",
+      "priority": "Medium",
+      "escalated": true
+    }
+  },
+  {
+    "id": "366",
+    "channel": "web_form",
+    "product": "API Service",
+    "body": "I am experiencing very slow performance while using the dashboard.",
+    "customer": {
+      "name": "Mary Johnson",
+      "email": "mary.johnson323@gmail.com"
+    },
+    "metaLabels": {
+      "category": "Performance Issue",
+      "priority": "Medium",
+      "escalated": true
+    }
+  },
+  {
+    "id": "367",
+    "channel": "chat",
+    "product": "Payment Gateway",
+    "body": "The application crashes whenever I try to upload a file.",
+    "customer": {
+      "name": "John Anderson",
+      "email": "john.anderson81@company.com"
+    },
+    "metaLabels": {
+      "category": "Bug Report",
+      "priority": "High",
+      "escalated": true
+    }
+  },
+  {
+    "id": "368",
+    "channel": "email",
+    "product": "Analytics Dashboard",
+    "body": "My subscription was cancelled without my request and I need clarification.",
+    "customer": {
+      "name": "Robert Thomas",
+      "email": "robert.thomas97@icloud.com"
+    },
+    "metaLabels": {
+      "category": "Feature Request",
+      "priority": "High",
+      "escalated": true
+    }
+  },
+  {
+    "id": "369",
+    "channel": "web_form",
+    "product": "Web Portal",
+    "body": "There seems to be a discrepancy in my billing statement for this month.",
+    "customer": {
+      "name": "Karen Jones",
+      "email": "karen.jones452@outlook.com"
+    },
+    "metaLabels": {
+      "category": "Data Sync Issue",
+      "priority": "Urgent",
+      "escalated": true
+    }
+  },
+  {
+    "id": "370",
+    "channel": "email",
+    "product": "Web Portal",
+    "body": "The system is not syncing data across devices properly.",
+    "customer": {
+      "name": "Richard Anderson",
+      "email": "richard.anderson686@gmail.com"
+    },
+    "metaLabels": {
+      "category": "Subscription Cancellation",
+      "priority": "Low",
+      "escalated": false
+    }
+  },
+  {
+    "id": "371",
+    "channel": "web_form",
+    "product": "Mobile App",
+    "body": "I found a bug in the latest update affecting report generation.",
+    "customer": {
+      "name": "Jessica Jones",
+      "email": "jessica.jones656@yahoo.com"
+    },
+    "metaLabels": {
+      "category": "Login Issue",
+      "priority": "High",
+      "escalated": true
+    }
+  },
+  {
+    "id": "372",
+    "channel": "web_form",
+    "product": "Payment Gateway",
+    "body": "There seems to be a discrepancy in my billing statement for this month.",
+    "customer": {
+      "name": "Michael Rodriguez",
+      "email": "michael.rodriguez189@gmail.com"
+    },
+    "metaLabels": {
+      "category": "Refund Request",
+      "priority": "Medium",
+      "escalated": true
+    }
+  },
+  {
+    "id": "373",
+    "channel": "chat",
+    "product": "Analytics Dashboard",
+    "body": "The payment was deducted from my bank account but the transaction shows failed.",
+    "customer": {
+      "name": "John Anderson",
+      "email": "john.anderson957@yahoo.com"
+    },
+    "metaLabels": {
+      "category": "Performance Issue",
+      "priority": "Low",
+      "escalated": true
+    }
+  },
+  {
+    "id": "374",
+    "channel": "phone",
+    "product": "E-commerce Store",
+    "body": "I would like to request a refund for the recent charge.",
+    "customer": {
+      "name": "James Martinez",
+      "email": "james.martinez919@outlook.com"
+    },
+    "metaLabels": {
+      "category": "Payment Problem",
+      "priority": "Urgent",
+      "escalated": true
+    }
+  },
+  {
+    "id": "375",
+    "channel": "social",
+    "product": "Billing System",
+    "body": "The payment was deducted from my bank account but the transaction shows failed.",
+    "customer": {
+      "name": "Robert Brown",
+      "email": "robert.brown92@company.com"
+    },
+    "metaLabels": {
+      "category": "Refund Request",
+      "priority": "Low",
+      "escalated": false
+    }
+  },
+  {
+    "id": "376",
+    "channel": "email",
+    "product": "Analytics Dashboard",
+    "body": "I am experiencing very slow performance while using the dashboard.",
+    "customer": {
+      "name": "Richard Smith",
+      "email": "richard.smith963@outlook.com"
+    },
+    "metaLabels": {
+      "category": "Feature Request",
+      "priority": "Urgent",
+      "escalated": false
+    }
+  },
+  {
+    "id": "377",
+    "channel": "chat",
+    "product": "CRM Platform",
+    "body": "My subscription was cancelled without my request and I need clarification.",
+    "customer": {
+      "name": "Richard Johnson",
+      "email": "richard.johnson821@hotmail.com"
+    },
+    "metaLabels": {
+      "category": "Refund Request",
+      "priority": "Medium",
+      "escalated": false
+    }
+  },
+  {
+    "id": "378",
+    "channel": "chat",
+    "product": "Cloud Storage",
+    "body": "I am unable to access my account after entering the correct credentials.",
+    "customer": {
+      "name": "Charles Jones",
+      "email": "charles.jones29@hotmail.com"
+    },
+    "metaLabels": {
+      "category": "Refund Request",
+      "priority": "High",
+      "escalated": false
+    }
+  },
+  {
+    "id": "379",
+    "channel": "web_form",
+    "product": "Payment Gateway",
+    "body": "I am experiencing very slow performance while using the dashboard.",
+    "customer": {
+      "name": "Patricia Anderson",
+      "email": "patricia.anderson950@hotmail.com"
+    },
+    "metaLabels": {
+      "category": "Account Suspension",
+      "priority": "Low",
+      "escalated": true
+    }
+  },
+  {
+    "id": "380",
+    "channel": "social",
+    "product": "Billing System",
+    "body": "There seems to be a discrepancy in my billing statement for this month.",
+    "customer": {
+      "name": "Elizabeth Smith",
+      "email": "elizabeth.smith926@yahoo.com"
+    },
+    "metaLabels": {
+      "category": "Performance Issue",
+      "priority": "Low",
+      "escalated": true
+    }
+  },
+  {
+    "id": "381",
+    "channel": "web_form",
+    "product": "Analytics Dashboard",
+    "body": "There seems to be a discrepancy in my billing statement for this month.",
+    "customer": {
+      "name": "Robert Jones",
+      "email": "robert.jones275@outlook.com"
+    },
+    "metaLabels": {
+      "category": "Payment Problem",
+      "priority": "Urgent",
+      "escalated": false
+    }
+  },
+  {
+    "id": "382",
+    "channel": "chat",
+    "product": "CRM Platform",
+    "body": "I found a bug in the latest update affecting report generation.",
+    "customer": {
+      "name": "William Hernandez",
+      "email": "william.hernandez638@gmail.com"
+    },
+    "metaLabels": {
+      "category": "Bug Report",
+      "priority": "Low",
+      "escalated": true
+    }
+  },
+  {
+    "id": "383",
+    "channel": "phone",
+    "product": "Subscription Service",
+    "body": "I am unable to access my account after entering the correct credentials.",
+    "customer": {
+      "name": "Barbara Lopez",
+      "email": "barbara.lopez149@outlook.com"
+    },
+    "metaLabels": {
+      "category": "Performance Issue",
+      "priority": "Urgent",
+      "escalated": false
+    }
+  },
+  {
+    "id": "384",
+    "channel": "web_form",
+    "product": "Payment Gateway",
+    "body": "The payment was deducted from my bank account but the transaction shows failed.",
+    "customer": {
+      "name": "Mary Thomas",
+      "email": "mary.thomas511@gmail.com"
+    },
+    "metaLabels": {
+      "category": "Payment Problem",
+      "priority": "High",
+      "escalated": false
+    }
+  },
+  {
+    "id": "385",
+    "channel": "social",
+    "product": "CRM Platform",
+    "body": "I am experiencing very slow performance while using the dashboard.",
+    "customer": {
+      "name": "James Williams",
+      "email": "james.williams482@gmail.com"
+    },
+    "metaLabels": {
+      "category": "Feature Request",
+      "priority": "Urgent",
+      "escalated": true
+    }
+  },
+  {
+    "id": "386",
+    "channel": "phone",
+    "product": "CRM Platform",
+    "body": "The payment was deducted from my bank account but the transaction shows failed.",
+    "customer": {
+      "name": "Patricia Hernandez",
+      "email": "patricia.hernandez883@company.com"
+    },
+    "metaLabels": {
+      "category": "Account Suspension",
+      "priority": "Low",
+      "escalated": false
+    }
+  },
+  {
+    "id": "387",
+    "channel": "phone",
+    "product": "Subscription Service",
+    "body": "The system is not syncing data across devices properly.",
+    "customer": {
+      "name": "John Jackson",
+      "email": "john.jackson910@icloud.com"
+    },
+    "metaLabels": {
+      "category": "Payment Problem",
+      "priority": "Urgent",
+      "escalated": false
+    }
+  },
+  {
+    "id": "388",
+    "channel": "web_form",
+    "product": "Billing System",
+    "body": "There seems to be a discrepancy in my billing statement for this month.",
+    "customer": {
+      "name": "Michael Anderson",
+      "email": "michael.anderson839@icloud.com"
+    },
+    "metaLabels": {
+      "category": "Payment Problem",
+      "priority": "High",
+      "escalated": false
+    }
+  },
+  {
+    "id": "389",
+    "channel": "phone",
+    "product": "Mobile App",
+    "body": "The payment was deducted from my bank account but the transaction shows failed.",
+    "customer": {
+      "name": "Elizabeth Jackson",
+      "email": "elizabeth.jackson664@gmail.com"
+    },
+    "metaLabels": {
+      "category": "Payment Problem",
+      "priority": "Urgent",
+      "escalated": false
+    }
+  },
+  {
+    "id": "390",
+    "channel": "social",
+    "product": "Subscription Service",
+    "body": "The application crashes whenever I try to upload a file.",
+    "customer": {
+      "name": "William Lopez",
+      "email": "william.lopez101@gmail.com"
+    },
+    "metaLabels": {
+      "category": "Refund Request",
+      "priority": "Urgent",
+      "escalated": true
+    }
+  },
+  {
+    "id": "391",
+    "channel": "chat",
+    "product": "Analytics Dashboard",
+    "body": "The payment was deducted from my bank account but the transaction shows failed.",
+    "customer": {
+      "name": "Sarah Brown",
+      "email": "sarah.brown283@yahoo.com"
+    },
+    "metaLabels": {
+      "category": "Refund Request",
+      "priority": "Urgent",
+      "escalated": false
+    }
+  },
+  {
+    "id": "392",
+    "channel": "email",
+    "product": "Analytics Dashboard",
+    "body": "I am unable to access my account after entering the correct credentials.",
+    "customer": {
+      "name": "David Anderson",
+      "email": "david.anderson146@gmail.com"
+    },
+    "metaLabels": {
+      "category": "Performance Issue",
+      "priority": "Low",
+      "escalated": false
+    }
+  },
+  {
+    "id": "394",
+    "channel": "chat",
+    "product": "API Service",
+    "body": "The payment was deducted from my bank account but the transaction shows failed.",
+    "customer": {
+      "name": "Susan Lopez",
+      "email": "susan.lopez212@company.com"
+    },
+    "metaLabels": {
+      "category": "Refund Request",
+      "priority": "Urgent",
+      "escalated": true
+    }
+  },
+  {
+    "id": "395",
+    "channel": "social",
+    "product": "API Service",
+    "body": "I would like to request a refund for the recent charge.",
+    "customer": {
+      "name": "Charles Lopez",
+      "email": "charles.lopez296@gmail.com"
+    },
+    "metaLabels": {
+      "category": "Account Suspension",
+      "priority": "High",
+      "escalated": false
+    }
+  },
+  {
+    "id": "397",
+    "channel": "phone",
+    "product": "E-commerce Store",
+    "body": "I am experiencing very slow performance while using the dashboard.",
+    "customer": {
+      "name": "Susan Hernandez",
+      "email": "susan.hernandez824@hotmail.com"
+    },
+    "metaLabels": {
+      "category": "Bug Report",
+      "priority": "Medium",
+      "escalated": true
+    }
+  },
+  {
+    "id": "398",
+    "channel": "phone",
+    "product": "Web Portal",
+    "body": "I am unable to access my account after entering the correct credentials.",
+    "customer": {
+      "name": "Susan Anderson",
+      "email": "susan.anderson431@icloud.com"
+    },
+    "metaLabels": {
+      "category": "Security Concern",
+      "priority": "Medium",
+      "escalated": true
+    }
+  },
+  {
+    "id": "399",
+    "channel": "email",
+    "product": "Billing System",
+    "body": "The payment was deducted from my bank account but the transaction shows failed.",
+    "customer": {
+      "name": "Mary Rodriguez",
+      "email": "mary.rodriguez850@company.com"
+    },
+    "metaLabels": {
+      "category": "Data Sync Issue",
+      "priority": "Urgent",
+      "escalated": false
+    }
+  },
+  {
+    "id": "400",
+    "channel": "email",
+    "product": "Web Portal",
+    "body": "The payment was deducted from my bank account but the transaction shows failed.",
+    "customer": {
+      "name": "Karen Miller",
+      "email": "karen.miller118@gmail.com"
+    },
+    "metaLabels": {
+      "category": "Data Sync Issue",
+      "priority": "Medium",
+      "escalated": true
+    }
+  },
+  {
+    "id": "401",
+    "channel": "web_form",
+    "product": "API Service",
+    "body": "My subscription was cancelled without my request and I need clarification.",
+    "customer": {
+      "name": "Susan Jones",
+      "email": "susan.jones652@gmail.com"
+    },
+    "metaLabels": {
+      "category": "Bug Report",
+      "priority": "Medium",
+      "escalated": true
+    }
+  },
+  {
+    "id": "402",
+    "channel": "web_form",
+    "product": "CRM Platform",
+    "body": "I would like to request a refund for the recent charge.",
+    "customer": {
+      "name": "Charles Gonzalez",
+      "email": "charles.gonzalez12@hotmail.com"
+    },
+    "metaLabels": {
+      "category": "Data Sync Issue",
+      "priority": "Medium",
+      "escalated": false
+    }
+  },
+  {
+    "id": "403",
+    "channel": "chat",
+    "product": "E-commerce Store",
+    "body": "The payment was deducted from my bank account but the transaction shows failed.",
+    "customer": {
+      "name": "John Rodriguez",
+      "email": "john.rodriguez804@company.com"
+    },
+    "metaLabels": {
+      "category": "Refund Request",
+      "priority": "Urgent",
+      "escalated": false
+    }
+  },
+  {
+    "id": "404",
+    "channel": "phone",
+    "product": "Web Portal",
+    "body": "Two-factor authentication codes are not being delivered to my phone.",
+    "customer": {
+      "name": "Jessica Hernandez",
+      "email": "jessica.hernandez779@yahoo.com"
+    },
+    "metaLabels": {
+      "category": "Account Suspension",
+      "priority": "Low",
+      "escalated": true
+    }
+  },
+  {
+    "id": "405",
+    "channel": "email",
+    "product": "Subscription Service",
+    "body": "Two-factor authentication codes are not being delivered to my phone.",
+    "customer": {
+      "name": "Jessica Anderson",
+      "email": "jessica.anderson696@outlook.com"
+    },
+    "metaLabels": {
+      "category": "Account Suspension",
+      "priority": "Low",
+      "escalated": true
+    }
+  },
+  {
+    "id": "406",
+    "channel": "email",
+    "product": "E-commerce Store",
+    "body": "I would like to request a refund for the recent charge.",
+    "customer": {
+      "name": "Thomas Lopez",
+      "email": "thomas.lopez366@hotmail.com"
+    },
+    "metaLabels": {
+      "category": "Payment Problem",
+      "priority": "Low",
+      "escalated": false
+    }
+  },
+  {
+    "id": "407",
+    "channel": "email",
+    "product": "Analytics Dashboard",
+    "body": "I found a bug in the latest update affecting report generation.",
+    "customer": {
+      "name": "Elizabeth Williams",
+      "email": "elizabeth.williams548@hotmail.com"
+    },
+    "metaLabels": {
+      "category": "Security Concern",
+      "priority": "Urgent",
+      "escalated": true
+    }
+  },
+  {
+    "id": "408",
+    "channel": "web_form",
+    "product": "Billing System",
+    "body": "Two-factor authentication codes are not being delivered to my phone.",
+    "customer": {
+      "name": "Jessica Williams",
+      "email": "jessica.williams825@hotmail.com"
+    },
+    "metaLabels": {
+      "category": "Payment Problem",
+      "priority": "Low",
+      "escalated": false
+    }
+  },
+  {
+    "id": "409",
+    "channel": "web_form",
+    "product": "E-commerce Store",
+    "body": "I am unable to access my account after entering the correct credentials.",
+    "customer": {
+      "name": "Karen Gonzalez",
+      "email": "karen.gonzalez699@company.com"
+    },
+    "metaLabels": {
+      "category": "Subscription Cancellation",
+      "priority": "Medium",
+      "escalated": true
+    }
+  },
+  {
+    "id": "410",
+    "channel": "phone",
+    "product": "Payment Gateway",
+    "body": "The payment was deducted from my bank account but the transaction shows failed.",
+    "customer": {
+      "name": "Sarah Jackson",
+      "email": "sarah.jackson47@gmail.com"
+    },
+    "metaLabels": {
+      "category": "Login Issue",
+      "priority": "Urgent",
+      "escalated": true
+    }
+  },
+  {
+    "id": "411",
+    "channel": "phone",
+    "product": "CRM Platform",
+    "body": "The system is not syncing data across devices properly.",
+    "customer": {
+      "name": "Elizabeth Lopez",
+      "email": "elizabeth.lopez799@hotmail.com"
+    },
+    "metaLabels": {
+      "category": "Bug Report",
+      "priority": "Low",
+      "escalated": true
+    }
+  },
+  {
+    "id": "412",
+    "channel": "email",
+    "product": "Billing System",
+    "body": "I am experiencing very slow performance while using the dashboard.",
+    "customer": {
+      "name": "Joseph Anderson",
+      "email": "joseph.anderson976@gmail.com"
+    },
+    "metaLabels": {
+      "category": "Login Issue",
+      "priority": "Urgent",
+      "escalated": true
+    }
+  },
+  {
+    "id": "415",
+    "channel": "email",
+    "product": "E-commerce Store",
+    "body": "The system is not syncing data across devices properly.",
+    "customer": {
+      "name": "James Anderson",
+      "email": "james.anderson10@icloud.com"
+    },
+    "metaLabels": {
+      "category": "Subscription Cancellation",
+      "priority": "Low",
+      "escalated": false
+    }
+  },
+  {
+    "id": "416",
+    "channel": "phone",
+    "product": "Subscription Service",
+    "body": "I am unable to access my account after entering the correct credentials.",
+    "customer": {
+      "name": "Mary Garcia",
+      "email": "mary.garcia701@hotmail.com"
+    },
+    "metaLabels": {
+      "category": "Performance Issue",
+      "priority": "Low",
+      "escalated": true
+    }
+  },
+  {
+    "id": "417",
+    "channel": "social",
+    "product": "CRM Platform",
+    "body": "There seems to be a discrepancy in my billing statement for this month.",
+    "customer": {
+      "name": "Susan Martinez",
+      "email": "susan.martinez147@gmail.com"
+    },
+    "metaLabels": {
+      "category": "Performance Issue",
+      "priority": "Urgent",
+      "escalated": false
+    }
+  },
+  {
+    "id": "418",
+    "channel": "web_form",
+    "product": "Web Portal",
+    "body": "Two-factor authentication codes are not being delivered to my phone.",
+    "customer": {
+      "name": "Robert Williams",
+      "email": "robert.williams982@yahoo.com"
+    },
+    "metaLabels": {
+      "category": "Security Concern",
+      "priority": "Low",
+      "escalated": true
+    }
+  },
+  {
+    "id": "419",
+    "channel": "social",
+    "product": "Web Portal",
+    "body": "The system is not syncing data across devices properly.",
+    "customer": {
+      "name": "Linda Anderson",
+      "email": "linda.anderson751@icloud.com"
+    },
+    "metaLabels": {
+      "category": "Performance Issue",
+      "priority": "High",
+      "escalated": true
+    }
+  },
+  {
+    "id": "420",
+    "channel": "phone",
+    "product": "Payment Gateway",
+    "body": "I would like to request a refund for the recent charge.",
+    "customer": {
+      "name": "Thomas Jones",
+      "email": "thomas.jones590@icloud.com"
+    },
+    "metaLabels": {
+      "category": "Account Suspension",
+      "priority": "Low",
+      "escalated": true
+    }
+  },
+  {
+    "id": "421",
+    "channel": "email",
+    "product": "Billing System",
+    "body": "I found a bug in the latest update affecting report generation.",
+    "customer": {
+      "name": "Sarah Davis",
+      "email": "sarah.davis730@outlook.com"
+    },
+    "metaLabels": {
+      "category": "Performance Issue",
+      "priority": "Low",
+      "escalated": true
+    }
+  },
+  {
+    "id": "422",
+    "channel": "web_form",
+    "product": "Web Portal",
+    "body": "I found a bug in the latest update affecting report generation.",
+    "customer": {
+      "name": "Barbara Anderson",
+      "email": "barbara.anderson389@outlook.com"
+    },
+    "metaLabels": {
+      "category": "Security Concern",
+      "priority": "Medium",
+      "escalated": true
+    }
+  },
+  {
+    "id": "423",
+    "channel": "email",
+    "product": "Analytics Dashboard",
+    "body": "The application crashes whenever I try to upload a file.",
+    "customer": {
+      "name": "Elizabeth Garcia",
+      "email": "elizabeth.garcia122@outlook.com"
+    },
+    "metaLabels": {
+      "category": "Subscription Cancellation",
+      "priority": "High",
+      "escalated": true
+    }
+  },
+  {
+    "id": "424",
+    "channel": "email",
+    "product": "Cloud Storage",
+    "body": "The system is not syncing data across devices properly.",
+    "customer": {
+      "name": "Michael Martinez",
+      "email": "michael.martinez965@hotmail.com"
+    },
+    "metaLabels": {
+      "category": "Subscription Cancellation",
+      "priority": "High",
+      "escalated": true
+    }
+  },
+  {
+    "id": "425",
+    "channel": "phone",
+    "product": "E-commerce Store",
+    "body": "There seems to be a discrepancy in my billing statement for this month.",
+    "customer": {
+      "name": "William Anderson",
+      "email": "william.anderson646@company.com"
+    },
+    "metaLabels": {
+      "category": "Payment Problem",
+      "priority": "Low",
+      "escalated": true
+    }
+  },
+  {
+    "id": "426",
+    "channel": "social",
+    "product": "Web Portal",
+    "body": "I am unable to access my account after entering the correct credentials.",
+    "customer": {
+      "name": "John Miller",
+      "email": "john.miller651@gmail.com"
+    },
+    "metaLabels": {
+      "category": "Bug Report",
+      "priority": "Urgent",
+      "escalated": false
+    }
+  },
+  {
+    "id": "427",
+    "channel": "phone",
+    "product": "Analytics Dashboard",
+    "body": "The application crashes whenever I try to upload a file.",
+    "customer": {
+      "name": "Richard Martin",
+      "email": "richard.martin366@hotmail.com"
+    },
+    "metaLabels": {
+      "category": "Payment Problem",
+      "priority": "Urgent",
+      "escalated": false
+    }
+  },
+  {
+    "id": "428",
+    "channel": "web_form",
+    "product": "E-commerce Store",
+    "body": "I am experiencing very slow performance while using the dashboard.",
+    "customer": {
+      "name": "William Taylor",
+      "email": "william.taylor221@icloud.com"
+    },
+    "metaLabels": {
+      "category": "Performance Issue",
+      "priority": "Urgent",
+      "escalated": false
+    }
+  },
+  {
+    "id": "429",
+    "channel": "email",
+    "product": "CRM Platform",
+    "body": "Two-factor authentication codes are not being delivered to my phone.",
+    "customer": {
+      "name": "Karen Hernandez",
+      "email": "karen.hernandez133@hotmail.com"
+    },
+    "metaLabels": {
+      "category": "Login Issue",
+      "priority": "High",
+      "escalated": false
+    }
+  },
+  {
+    "id": "431",
+    "channel": "web_form",
+    "product": "Billing System",
+    "body": "Two-factor authentication codes are not being delivered to my phone.",
+    "customer": {
+      "name": "Sarah Martin",
+      "email": "sarah.martin942@yahoo.com"
+    },
+    "metaLabels": {
+      "category": "Data Sync Issue",
+      "priority": "High",
+      "escalated": false
+    }
+  },
+  {
+    "id": "432",
+    "channel": "social",
+    "product": "Cloud Storage",
+    "body": "Two-factor authentication codes are not being delivered to my phone.",
+    "customer": {
+      "name": "Jessica Martinez",
+      "email": "jessica.martinez930@company.com"
+    },
+    "metaLabels": {
+      "category": "Bug Report",
+      "priority": "Urgent",
+      "escalated": false
+    }
+  },
+  {
+    "id": "433",
+    "channel": "web_form",
+    "product": "Cloud Storage",
+    "body": "Two-factor authentication codes are not being delivered to my phone.",
+    "customer": {
+      "name": "Jennifer Miller",
+      "email": "jennifer.miller886@icloud.com"
+    },
+    "metaLabels": {
+      "category": "Account Suspension",
+      "priority": "Medium",
+      "escalated": false
+    }
+  },
+  {
+    "id": "435",
+    "channel": "phone",
+    "product": "Billing System",
+    "body": "I found a bug in the latest update affecting report generation.",
+    "customer": {
+      "name": "Elizabeth Brown",
+      "email": "elizabeth.brown446@outlook.com"
+    },
+    "metaLabels": {
+      "category": "Performance Issue",
+      "priority": "Medium",
+      "escalated": false
+    }
+  },
+  {
+    "id": "436",
+    "channel": "email",
+    "product": "API Service",
+    "body": "The application crashes whenever I try to upload a file.",
+    "customer": {
+      "name": "John Thomas",
+      "email": "john.thomas69@gmail.com"
+    },
+    "metaLabels": {
+      "category": "Bug Report",
+      "priority": "Urgent",
+      "escalated": true
+    }
+  },
+  {
+    "id": "437",
+    "channel": "phone",
+    "product": "Subscription Service",
+    "body": "My subscription was cancelled without my request and I need clarification.",
+    "customer": {
+      "name": "Richard Rodriguez",
+      "email": "richard.rodriguez575@hotmail.com"
+    },
+    "metaLabels": {
+      "category": "Data Sync Issue",
+      "priority": "High",
+      "escalated": false
+    }
+  },
+  {
+    "id": "438",
+    "channel": "phone",
+    "product": "Cloud Storage",
+    "body": "My subscription was cancelled without my request and I need clarification.",
+    "customer": {
+      "name": "John Garcia",
+      "email": "john.garcia487@gmail.com"
+    },
+    "metaLabels": {
+      "category": "Login Issue",
+      "priority": "Urgent",
+      "escalated": false
+    }
+  },
+  {
+    "id": "440",
+    "channel": "phone",
+    "product": "Mobile App",
+    "body": "I am experiencing very slow performance while using the dashboard.",
+    "customer": {
+      "name": "Michael Smith",
+      "email": "michael.smith601@outlook.com"
+    },
+    "metaLabels": {
+      "category": "Performance Issue",
+      "priority": "High",
+      "escalated": true
+    }
+  },
+  {
+    "id": "441",
+    "channel": "web_form",
+    "product": "E-commerce Store",
+    "body": "My subscription was cancelled without my request and I need clarification.",
+    "customer": {
+      "name": "Mary Lopez",
+      "email": "mary.lopez30@hotmail.com"
+    },
+    "metaLabels": {
+      "category": "Account Suspension",
+      "priority": "Low",
+      "escalated": true
+    }
+  },
+  {
+    "id": "442",
+    "channel": "web_form",
+    "product": "Analytics Dashboard",
+    "body": "The system is not syncing data across devices properly.",
+    "customer": {
+      "name": "Richard Wilson",
+      "email": "richard.wilson858@company.com"
+    },
+    "metaLabels": {
+      "category": "Bug Report",
+      "priority": "Low",
+      "escalated": true
+    }
+  },
+  {
+    "id": "443",
+    "channel": "email",
+    "product": "Payment Gateway",
+    "body": "My subscription was cancelled without my request and I need clarification.",
+    "customer": {
+      "name": "Robert Jackson",
+      "email": "robert.jackson953@icloud.com"
+    },
+    "metaLabels": {
+      "category": "Payment Problem",
+      "priority": "High",
+      "escalated": true
+    }
+  },
+  {
+    "id": "444",
+    "channel": "web_form",
+    "product": "Payment Gateway",
+    "body": "I am experiencing very slow performance while using the dashboard.",
+    "customer": {
+      "name": "William Jones",
+      "email": "william.jones579@outlook.com"
+    },
+    "metaLabels": {
+      "category": "Bug Report",
+      "priority": "High",
+      "escalated": true
+    }
+  },
+  {
+    "id": "447",
+    "channel": "social",
+    "product": "Payment Gateway",
+    "body": "My subscription was cancelled without my request and I need clarification.",
+    "customer": {
+      "name": "Susan Wilson",
+      "email": "susan.wilson793@outlook.com"
+    },
+    "metaLabels": {
+      "category": "Login Issue",
+      "priority": "High",
+      "escalated": true
+    }
+  },
+  {
+    "id": "448",
+    "channel": "phone",
+    "product": "Subscription Service",
+    "body": "Two-factor authentication codes are not being delivered to my phone.",
+    "customer": {
+      "name": "Jennifer Martinez",
+      "email": "jennifer.martinez315@gmail.com"
+    },
+    "metaLabels": {
+      "category": "Bug Report",
+      "priority": "Medium",
+      "escalated": false
+    }
+  },
+  {
+    "id": "449",
+    "channel": "email",
+    "product": "CRM Platform",
+    "body": "The system is not syncing data across devices properly.",
+    "customer": {
+      "name": "Richard Hernandez",
+      "email": "richard.hernandez920@outlook.com"
+    },
+    "metaLabels": {
+      "category": "Refund Request",
+      "priority": "Urgent",
+      "escalated": true
+    }
+  },
+  {
+    "id": "450",
+    "channel": "web_form",
+    "product": "Analytics Dashboard",
+    "body": "Two-factor authentication codes are not being delivered to my phone.",
+    "customer": {
+      "name": "Elizabeth Wilson",
+      "email": "elizabeth.wilson96@outlook.com"
+    },
+    "metaLabels": {
+      "category": "Account Suspension",
+      "priority": "High",
+      "escalated": true
+    }
+  },
+  {
+    "id": "451",
+    "channel": "email",
+    "product": "Analytics Dashboard",
+    "body": "Two-factor authentication codes are not being delivered to my phone.",
+    "customer": {
+      "name": "Thomas Gonzalez",
+      "email": "thomas.gonzalez703@icloud.com"
+    },
+    "metaLabels": {
+      "category": "Refund Request",
+      "priority": "Urgent",
+      "escalated": true
+    }
+  },
+  {
+    "id": "452",
+    "channel": "email",
+    "product": "Mobile App",
+    "body": "I would like to request a refund for the recent charge.",
+    "customer": {
+      "name": "David Jackson",
+      "email": "david.jackson265@yahoo.com"
+    },
+    "metaLabels": {
+      "category": "Data Sync Issue",
+      "priority": "Urgent",
+      "escalated": false
+    }
+  },
+  {
+    "id": "455",
+    "channel": "chat",
+    "product": "Analytics Dashboard",
+    "body": "My subscription was cancelled without my request and I need clarification.",
+    "customer": {
+      "name": "Jennifer Rodriguez",
+      "email": "jennifer.rodriguez514@company.com"
+    },
+    "metaLabels": {
+      "category": "Refund Request",
+      "priority": "Low",
+      "escalated": false
+    }
+  },
+  {
+    "id": "456",
+    "channel": "social",
+    "product": "API Service",
+    "body": "I found a bug in the latest update affecting report generation.",
+    "customer": {
+      "name": "Karen Martinez",
+      "email": "karen.martinez746@company.com"
+    },
+    "metaLabels": {
+      "category": "Refund Request",
+      "priority": "Urgent",
+      "escalated": true
+    }
+  },
+  {
+    "id": "460",
+    "channel": "web_form",
+    "product": "API Service",
+    "body": "Two-factor authentication codes are not being delivered to my phone.",
+    "customer": {
+      "name": "Jessica Williams",
+      "email": "jessica.williams975@outlook.com"
+    },
+    "metaLabels": {
+      "category": "Data Sync Issue",
+      "priority": "Medium",
+      "escalated": true
+    }
+  },
+  {
+    "id": "461",
+    "channel": "web_form",
+    "product": "Web Portal",
+    "body": "The application crashes whenever I try to upload a file.",
+    "customer": {
+      "name": "Joseph Taylor",
+      "email": "joseph.taylor657@gmail.com"
+    },
+    "metaLabels": {
+      "category": "Account Suspension",
+      "priority": "Low",
+      "escalated": true
+    }
+  },
+  {
+    "id": "464",
+    "channel": "social",
+    "product": "CRM Platform",
+    "body": "I am unable to access my account after entering the correct credentials.",
+    "customer": {
+      "name": "Linda Smith",
+      "email": "linda.smith872@yahoo.com"
+    },
+    "metaLabels": {
+      "category": "Data Sync Issue",
+      "priority": "Urgent",
+      "escalated": false
+    }
+  },
+  {
+    "id": "467",
+    "channel": "web_form",
+    "product": "Subscription Service",
+    "body": "There seems to be a discrepancy in my billing statement for this month.",
+    "customer": {
+      "name": "Charles Jackson",
+      "email": "charles.jackson489@icloud.com"
+    },
+    "metaLabels": {
+      "category": "Login Issue",
+      "priority": "Urgent",
+      "escalated": true
+    }
+  },
+  {
+    "id": "475",
+    "channel": "web_form",
+    "product": "API Service",
+    "body": "There seems to be a discrepancy in my billing statement for this month.",
+    "customer": {
+      "name": "Joseph Jones",
+      "email": "joseph.jones667@outlook.com"
+    },
+    "metaLabels": {
+      "category": "Data Sync Issue",
+      "priority": "Urgent",
+      "escalated": true
+    }
+  },
+  {
+    "id": "476",
+    "channel": "phone",
+    "product": "Mobile App",
+    "body": "The system is not syncing data across devices properly.",
+    "customer": {
+      "name": "Michael Jones",
+      "email": "michael.jones212@outlook.com"
+    },
+    "metaLabels": {
+      "category": "Login Issue",
+      "priority": "Medium",
+      "escalated": false
+    }
+  },
+  {
+    "id": "477",
+    "channel": "web_form",
+    "product": "E-commerce Store",
+    "body": "I would like to request a refund for the recent charge.",
+    "customer": {
+      "name": "James Anderson",
+      "email": "james.anderson889@company.com"
+    },
+    "metaLabels": {
+      "category": "Login Issue",
+      "priority": "Medium",
+      "escalated": true
+    }
+  },
+  {
+    "id": "481",
+    "channel": "chat",
+    "product": "Cloud Storage",
+    "body": "I am unable to access my account after entering the correct credentials.",
+    "customer": {
+      "name": "Patricia Thomas",
+      "email": "patricia.thomas476@icloud.com"
+    },
+    "metaLabels": {
+      "category": "Data Sync Issue",
+      "priority": "Urgent",
+      "escalated": true
+    }
+  },
+  {
+    "id": "482",
+    "channel": "social",
+    "product": "Analytics Dashboard",
+    "body": "I am experiencing very slow performance while using the dashboard.",
+    "customer": {
+      "name": "Patricia Gonzalez",
+      "email": "patricia.gonzalez290@hotmail.com"
+    },
+    "metaLabels": {
+      "category": "Bug Report",
+      "priority": "High",
+      "escalated": true
+    }
+  },
+  {
+    "id": "484",
+    "channel": "email",
+    "product": "Web Portal",
+    "body": "The system is not syncing data across devices properly.",
+    "customer": {
+      "name": "William Williams",
+      "email": "william.williams801@outlook.com"
+    },
+    "metaLabels": {
+      "category": "Login Issue",
+      "priority": "Medium",
+      "escalated": true
+    }
+  },
+  {
+    "id": "485",
+    "channel": "chat",
+    "product": "API Service",
+    "body": "The system is not syncing data across devices properly.",
+    "customer": {
+      "name": "Barbara Taylor",
+      "email": "barbara.taylor616@yahoo.com"
+    },
+    "metaLabels": {
+      "category": "Login Issue",
+      "priority": "Medium",
+      "escalated": true
+    }
+  },
+  {
+    "id": "487",
+    "channel": "chat",
+    "product": "Payment Gateway",
+    "body": "The payment was deducted from my bank account but the transaction shows failed.",
+    "customer": {
+      "name": "Robert Davis",
+      "email": "robert.davis987@outlook.com"
+    },
+    "metaLabels": {
+      "category": "Refund Request",
+      "priority": "Medium",
+      "escalated": false
+    }
+  },
+  {
+    "id": "490",
+    "channel": "social",
+    "product": "Cloud Storage",
+    "body": "I am unable to access my account after entering the correct credentials.",
+    "customer": {
+      "name": "Patricia Davis",
+      "email": "patricia.davis370@hotmail.com"
+    },
+    "metaLabels": {
+      "category": "Refund Request",
+      "priority": "Urgent",
+      "escalated": false
+    }
+  },
+  {
+    "id": "491",
+    "channel": "social",
+    "product": "Analytics Dashboard",
+    "body": "There seems to be a discrepancy in my billing statement for this month.",
+    "customer": {
+      "name": "Barbara Lopez",
+      "email": "barbara.lopez997@yahoo.com"
+    },
+    "metaLabels": {
+      "category": "Login Issue",
+      "priority": "Medium",
+      "escalated": false
+    }
+  },
+  {
+    "id": "494",
+    "channel": "social",
+    "product": "Cloud Storage",
+    "body": "I found a bug in the latest update affecting report generation.",
+    "customer": {
+      "name": "Joseph Miller",
+      "email": "joseph.miller149@gmail.com"
+    },
+    "metaLabels": {
+      "category": "Login Issue",
+      "priority": "Urgent",
+      "escalated": false
+    }
+  },
+  {
+    "id": "495",
+    "channel": "web_form",
+    "product": "Payment Gateway",
+    "body": "The system is not syncing data across devices properly.",
+    "customer": {
+      "name": "Sarah Lopez",
+      "email": "sarah.lopez79@company.com"
+    },
+    "metaLabels": {
+      "category": "Bug Report",
+      "priority": "Low",
+      "escalated": false
+    }
+  },
+  {
+    "id": "498",
+    "channel": "phone",
+    "product": "Payment Gateway",
+    "body": "My subscription was cancelled without my request and I need clarification.",
+    "customer": {
+      "name": "Charles Gonzalez",
+      "email": "charles.gonzalez825@icloud.com"
+    },
+    "metaLabels": {
+      "category": "Subscription Cancellation",
+      "priority": "Low",
+      "escalated": false
+    }
+  },
+  {
+    "id": "500",
+    "channel": "email",
+    "product": "Web Portal",
+    "body": "I am unable to access my account after entering the correct credentials.",
+    "customer": {
+      "name": "Joseph Garcia",
+      "email": "joseph.garcia520@yahoo.com"
+    },
+    "metaLabels": {
+      "category": "Data Sync Issue",
+      "priority": "High",
+      "escalated": false
+    }
+  },
+  {
+    "id": "501",
+    "channel": "email",
+    "product": "Mobile App",
+    "body": "I am unable to access my account after entering the correct credentials.",
+    "customer": {
+      "name": "Barbara Jones",
+      "email": "barbara.jones246@icloud.com"
+    },
+    "metaLabels": {
+      "category": "Refund Request",
+      "priority": "Urgent",
+      "escalated": false
+    }
+  },
+  {
+    "id": "502",
+    "channel": "web_form",
+    "product": "CRM Platform",
+    "body": "I would like to request a refund for the recent charge.",
+    "customer": {
+      "name": "Susan Gonzalez",
+      "email": "susan.gonzalez446@icloud.com"
+    },
+    "metaLabels": {
+      "category": "Login Issue",
+      "priority": "Urgent",
+      "escalated": true
+    }
+  },
+  {
+    "id": "504",
+    "channel": "phone",
+    "product": "Payment Gateway",
+    "body": "I am unable to access my account after entering the correct credentials.",
+    "customer": {
+      "name": "David Garcia",
+      "email": "david.garcia400@yahoo.com"
+    },
+    "metaLabels": {
+      "category": "Refund Request",
+      "priority": "Medium",
+      "escalated": false
+    }
+  },
+  {
+    "id": "506",
+    "channel": "chat",
+    "product": "Payment Gateway",
+    "body": "I am unable to access my account after entering the correct credentials.",
+    "customer": {
+      "name": "Thomas Johnson",
+      "email": "thomas.johnson481@icloud.com"
+    },
+    "metaLabels": {
+      "category": "Bug Report",
+      "priority": "Low",
+      "escalated": true
+    }
+  },
+  {
+    "id": "507",
+    "channel": "chat",
+    "product": "API Service",
+    "body": "My subscription was cancelled without my request and I need clarification.",
+    "customer": {
+      "name": "Jennifer Lopez",
+      "email": "jennifer.lopez474@yahoo.com"
+    },
+    "metaLabels": {
+      "category": "Refund Request",
+      "priority": "Low",
+      "escalated": false
+    }
+  },
+  {
+    "id": "509",
+    "channel": "chat",
+    "product": "CRM Platform",
+    "body": "I found a bug in the latest update affecting report generation.",
+    "customer": {
+      "name": "Karen Gonzalez",
+      "email": "karen.gonzalez461@company.com"
+    },
+    "metaLabels": {
+      "category": "Subscription Cancellation",
+      "priority": "Urgent",
+      "escalated": false
+    }
+  },
+  {
+    "id": "512",
+    "channel": "phone",
+    "product": "Subscription Service",
+    "body": "There seems to be a discrepancy in my billing statement for this month.",
+    "customer": {
+      "name": "Charles Jones",
+      "email": "charles.jones657@icloud.com"
+    },
+    "metaLabels": {
+      "category": "Refund Request",
+      "priority": "Medium",
+      "escalated": true
+    }
+  },
+  {
+    "id": "514",
+    "channel": "email",
+    "product": "Cloud Storage",
+    "body": "I found a bug in the latest update affecting report generation.",
+    "customer": {
+      "name": "Richard Thomas",
+      "email": "richard.thomas389@icloud.com"
+    },
+    "metaLabels": {
+      "category": "Login Issue",
+      "priority": "Medium",
+      "escalated": true
+    }
+  },
+  {
+    "id": "515",
+    "channel": "social",
+    "product": "CRM Platform",
+    "body": "Two-factor authentication codes are not being delivered to my phone.",
+    "customer": {
+      "name": "Robert Lopez",
+      "email": "robert.lopez618@icloud.com"
+    },
+    "metaLabels": {
+      "category": "Data Sync Issue",
+      "priority": "High",
+      "escalated": false
+    }
+  },
+  {
+    "id": "516",
+    "channel": "web_form",
+    "product": "E-commerce Store",
+    "body": "I am unable to access my account after entering the correct credentials.",
+    "customer": {
+      "name": "Sarah Johnson",
+      "email": "sarah.johnson134@hotmail.com"
+    },
+    "metaLabels": {
+      "category": "Data Sync Issue",
+      "priority": "Medium",
+      "escalated": false
+    }
+  },
+  {
+    "id": "521",
+    "channel": "social",
+    "product": "CRM Platform",
+    "body": "I am experiencing very slow performance while using the dashboard.",
+    "customer": {
+      "name": "David Anderson",
+      "email": "david.anderson367@company.com"
+    },
+    "metaLabels": {
+      "category": "Subscription Cancellation",
+      "priority": "Medium",
+      "escalated": false
+    }
+  },
+  {
+    "id": "523",
+    "channel": "social",
+    "product": "Web Portal",
+    "body": "There seems to be a discrepancy in my billing statement for this month.",
+    "customer": {
+      "name": "Jessica Wilson",
+      "email": "jessica.wilson446@yahoo.com"
+    },
+    "metaLabels": {
+      "category": "Login Issue",
+      "priority": "High",
+      "escalated": true
+    }
+  },
+  {
+    "id": "525",
+    "channel": "social",
+    "product": "Cloud Storage",
+    "body": "I would like to request a refund for the recent charge.",
+    "customer": {
+      "name": "Charles Davis",
+      "email": "charles.davis726@hotmail.com"
+    },
+    "metaLabels": {
+      "category": "Bug Report",
+      "priority": "Low",
+      "escalated": false
+    }
+  },
+  {
+    "id": "530",
+    "channel": "chat",
+    "product": "Mobile App",
+    "body": "I would like to request a refund for the recent charge.",
+    "customer": {
+      "name": "Linda Davis",
+      "email": "linda.davis58@company.com"
+    },
+    "metaLabels": {
+      "category": "Bug Report",
+      "priority": "Medium",
+      "escalated": false
+    }
+  },
+  {
+    "id": "532",
+    "channel": "email",
+    "product": "Web Portal",
+    "body": "The application crashes whenever I try to upload a file.",
+    "customer": {
+      "name": "Elizabeth Anderson",
+      "email": "elizabeth.anderson30@icloud.com"
+    },
+    "metaLabels": {
+      "category": "Refund Request",
+      "priority": "Low",
+      "escalated": false
+    }
+  },
+  {
+    "id": "534",
+    "channel": "email",
+    "product": "Subscription Service",
+    "body": "There seems to be a discrepancy in my billing statement for this month.",
+    "customer": {
+      "name": "James Martinez",
+      "email": "james.martinez456@icloud.com"
+    },
+    "metaLabels": {
+      "category": "Login Issue",
+      "priority": "Urgent",
+      "escalated": true
+    }
+  },
+  {
+    "id": "535",
+    "channel": "email",
+    "product": "Web Portal",
+    "body": "I found a bug in the latest update affecting report generation.",
+    "customer": {
+      "name": "Linda Anderson",
+      "email": "linda.anderson891@hotmail.com"
+    },
+    "metaLabels": {
+      "category": "Login Issue",
+      "priority": "Medium",
+      "escalated": true
+    }
+  },
+  {
+    "id": "536",
+    "channel": "web_form",
+    "product": "Billing System",
+    "body": "I am unable to access my account after entering the correct credentials.",
+    "customer": {
+      "name": "James Rodriguez",
+      "email": "james.rodriguez987@yahoo.com"
+    },
+    "metaLabels": {
+      "category": "Subscription Cancellation",
+      "priority": "Urgent",
+      "escalated": false
+    }
+  },
+  {
+    "id": "537",
+    "channel": "web_form",
+    "product": "Payment Gateway",
+    "body": "There seems to be a discrepancy in my billing statement for this month.",
+    "customer": {
+      "name": "Barbara Wilson",
+      "email": "barbara.wilson179@hotmail.com"
+    },
+    "metaLabels": {
+      "category": "Subscription Cancellation",
+      "priority": "Urgent",
+      "escalated": false
+    }
+  },
+  {
+    "id": "538",
+    "channel": "social",
+    "product": "E-commerce Store",
+    "body": "Two-factor authentication codes are not being delivered to my phone.",
+    "customer": {
+      "name": "Sarah Garcia",
+      "email": "sarah.garcia872@hotmail.com"
+    },
+    "metaLabels": {
+      "category": "Bug Report",
+      "priority": "Low",
+      "escalated": false
+    }
+  },
+  {
+    "id": "541",
+    "channel": "web_form",
+    "product": "Mobile App",
+    "body": "I am unable to access my account after entering the correct credentials.",
+    "customer": {
+      "name": "Sarah Brown",
+      "email": "sarah.brown433@company.com"
+    },
+    "metaLabels": {
+      "category": "Subscription Cancellation",
+      "priority": "Urgent",
+      "escalated": true
+    }
+  },
+  {
+    "id": "542",
+    "channel": "phone",
+    "product": "Web Portal",
+    "body": "The system is not syncing data across devices properly.",
+    "customer": {
+      "name": "Susan Brown",
+      "email": "susan.brown11@company.com"
+    },
+    "metaLabels": {
+      "category": "Login Issue",
+      "priority": "Medium",
+      "escalated": false
+    }
+  },
+  {
+    "id": "543",
+    "channel": "chat",
+    "product": "E-commerce Store",
+    "body": "Two-factor authentication codes are not being delivered to my phone.",
+    "customer": {
+      "name": "John Williams",
+      "email": "john.williams204@icloud.com"
+    },
+    "metaLabels": {
+      "category": "Login Issue",
+      "priority": "Low",
+      "escalated": true
+    }
+  },
+  {
+    "id": "545",
+    "channel": "phone",
+    "product": "Payment Gateway",
+    "body": "My subscription was cancelled without my request and I need clarification.",
+    "customer": {
+      "name": "Jennifer Jackson",
+      "email": "jennifer.jackson424@gmail.com"
+    },
+    "metaLabels": {
+      "category": "Bug Report",
+      "priority": "Urgent",
+      "escalated": true
+    }
+  },
+  {
+    "id": "550",
+    "channel": "social",
+    "product": "E-commerce Store",
+    "body": "There seems to be a discrepancy in my billing statement for this month.",
+    "customer": {
+      "name": "Linda Miller",
+      "email": "linda.miller613@company.com"
+    },
+    "metaLabels": {
+      "category": "Subscription Cancellation",
+      "priority": "Urgent",
+      "escalated": false
+    }
+  },
+  {
+    "id": "551",
+    "channel": "web_form",
+    "product": "Billing System",
+    "body": "Two-factor authentication codes are not being delivered to my phone.",
+    "customer": {
+      "name": "William Taylor",
+      "email": "william.taylor582@icloud.com"
+    },
+    "metaLabels": {
+      "category": "Login Issue",
+      "priority": "Low",
+      "escalated": true
+    }
+  },
+  {
+    "id": "555",
+    "channel": "web_form",
+    "product": "Billing System",
+    "body": "I would like to request a refund for the recent charge.",
+    "customer": {
+      "name": "William Davis",
+      "email": "william.davis733@outlook.com"
+    },
+    "metaLabels": {
+      "category": "Data Sync Issue",
+      "priority": "Medium",
+      "escalated": false
+    }
+  },
+  {
+    "id": "556",
+    "channel": "web_form",
+    "product": "API Service",
+    "body": "The system is not syncing data across devices properly.",
+    "customer": {
+      "name": "William Thomas",
+      "email": "william.thomas162@yahoo.com"
+    },
+    "metaLabels": {
+      "category": "Data Sync Issue",
+      "priority": "Medium",
+      "escalated": false
+    }
+  },
+  {
+    "id": "558",
+    "channel": "social",
+    "product": "Analytics Dashboard",
+    "body": "There seems to be a discrepancy in my billing statement for this month.",
+    "customer": {
+      "name": "Barbara Garcia",
+      "email": "barbara.garcia157@hotmail.com"
+    },
+    "metaLabels": {
+      "category": "Login Issue",
+      "priority": "Low",
+      "escalated": false
+    }
+  },
+  {
+    "id": "560",
+    "channel": "email",
+    "product": "E-commerce Store",
+    "body": "Two-factor authentication codes are not being delivered to my phone.",
+    "customer": {
+      "name": "Michael Williams",
+      "email": "michael.williams615@outlook.com"
+    },
+    "metaLabels": {
+      "category": "Data Sync Issue",
+      "priority": "High",
+      "escalated": true
+    }
+  },
+  {
+    "id": "561",
+    "channel": "chat",
+    "product": "E-commerce Store",
+    "body": "I would like to request a refund for the recent charge.",
+    "customer": {
+      "name": "Jessica Gonzalez",
+      "email": "jessica.gonzalez478@company.com"
+    },
+    "metaLabels": {
+      "category": "Bug Report",
+      "priority": "Low",
+      "escalated": false
+    }
+  },
+  {
+    "id": "564",
+    "channel": "social",
+    "product": "Payment Gateway",
+    "body": "The application crashes whenever I try to upload a file.",
+    "customer": {
+      "name": "Elizabeth Smith",
+      "email": "elizabeth.smith977@yahoo.com"
+    },
+    "metaLabels": {
+      "category": "Data Sync Issue",
+      "priority": "Urgent",
+      "escalated": true
+    }
+  },
+  {
+    "id": "567",
+    "channel": "chat",
+    "product": "Subscription Service",
+    "body": "Two-factor authentication codes are not being delivered to my phone.",
+    "customer": {
+      "name": "David Lopez",
+      "email": "david.lopez122@outlook.com"
+    },
+    "metaLabels": {
+      "category": "Subscription Cancellation",
+      "priority": "Urgent",
+      "escalated": true
+    }
+  },
+  {
+    "id": "569",
+    "channel": "social",
+    "product": "API Service",
+    "body": "I am experiencing very slow performance while using the dashboard.",
+    "customer": {
+      "name": "Robert Martin",
+      "email": "robert.martin292@yahoo.com"
+    },
+    "metaLabels": {
+      "category": "Data Sync Issue",
+      "priority": "Low",
+      "escalated": false
+    }
+  },
+  {
+    "id": "572",
+    "channel": "email",
+    "product": "Subscription Service",
+    "body": "I would like to request a refund for the recent charge.",
+    "customer": {
+      "name": "John Johnson",
+      "email": "john.johnson906@yahoo.com"
+    },
+    "metaLabels": {
+      "category": "Data Sync Issue",
+      "priority": "Medium",
+      "escalated": true
+    }
+  },
+  {
+    "id": "573",
+    "channel": "phone",
+    "product": "API Service",
+    "body": "The system is not syncing data across devices properly.",
+    "customer": {
+      "name": "Karen Martin",
+      "email": "karen.martin202@icloud.com"
+    },
+    "metaLabels": {
+      "category": "Data Sync Issue",
+      "priority": "Urgent",
+      "escalated": true
+    }
+  },
+  {
+    "id": "574",
+    "channel": "email",
+    "product": "Cloud Storage",
+    "body": "I am unable to access my account after entering the correct credentials.",
+    "customer": {
+      "name": "Charles Rodriguez",
+      "email": "charles.rodriguez405@outlook.com"
+    },
+    "metaLabels": {
+      "category": "Bug Report",
+      "priority": "Medium",
+      "escalated": false
+    }
+  }
+]
