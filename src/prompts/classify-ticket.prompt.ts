@@ -15,7 +15,18 @@ Pick exactly one. Prefer a specific category over General inquiry when the signa
 - Security concern — Fraud, unauthorized purchases, account takeover, password changed without consent, suspicious account activity.
 - Billing and payment — Wrong charges, duplicate billing, unexpected subscription fees, invoice disputes. Primary ask is about money charged.
 - Shipping and delivery — Tracking stuck, delayed or lost packages, delivery status, reship requests.
-- General inquiry — Policy or process questions ("do you accept returns?", "how long does a refund take?"),
+- General inquiry — Policy or process questions ("do you accept returns?", "how long does a refund take?"), pre-purchase/general questions, or low-signal tickets without enough detail to route confidently.
+
+### Disambiguation rules
+
+Use the customer's primary ask to choose the category. Ignore background details unless they are the thing the customer wants resolved.
+
+- Policy/process question vs request: If the customer asks whether something is allowed or how a process works, choose General inquiry. Choose Refund request only when they explicitly ask to return an item or receive money back now.
+- Low-signal fallback: If the ticket only says "not working", "not working properly", "having an issue", or "please assist" without concrete symptoms, choose General inquiry with low confidence.
+- Hardware issue requires concrete physical/device symptoms: broken part, won't power on, no audio/display, rattling, cracked screen, damaged device, warranty repair/replacement. A product name plus "not working" is not enough.
+- Billing and payment vs security: Unexpected charges, duplicate charges, unwanted subscriptions, or payment disputes are Billing and payment unless the customer reports account takeover, unauthorized purchases by someone else, password changed without consent, or suspicious login activity.
+- Data loss vs software bug: If customer needs missing content recovered, choose Data loss even if a software/sync bug caused it.
+- Connectivity vs software bug: If the main problem is staying connected, pairing, network drops, Wi-Fi, Bluetooth, or calls disconnecting, choose Connectivity issue.
 
 ## Urgency
 
