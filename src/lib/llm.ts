@@ -1,5 +1,5 @@
 import type { PropagateAttributesParams } from "@langfuse/core";
-import { observe, propagateAttributes } from "@langfuse/tracing";
+import { observe, propagateAttributes, updateActiveObservation } from "@langfuse/tracing";
 import { createOpenRouter, type OpenRouterUsageAccounting } from "@openrouter/ai-sdk-provider";
 import type { generateText, TelemetrySettings } from "ai";
 import { env } from "@/config/env";
@@ -32,13 +32,25 @@ export const getOpenRouterUsage = (
   return openRouterMetadata?.usage;
 };
 
+type WithLangfuseTraceOptions = PropagateAttributesParams & {
+  input?: unknown;
+};
+
 /** wrap a workflow step with a named Langfuse trace and optional session/user/tags. */
 export function withLangfuseTrace<T>(
   traceName: string,
-  attributes: PropagateAttributesParams,
+  options: WithLangfuseTraceOptions,
   run: () => Promise<T>
 ): Promise<T> {
-  return observe(() => propagateAttributes({ traceName, ...attributes }, run), {
-    name: traceName,
-  })();
+  const { input, ...attributes } = options;
+
+  return observe(
+    async () => {
+      if (input !== undefined) {
+        updateActiveObservation({ input });
+      }
+      return await propagateAttributes({ traceName, ...attributes }, run);
+    },
+    { name: traceName }
+  )();
 }
