@@ -8,6 +8,7 @@ import { flushLangfuseTraces } from "@/lib/instrumentation";
 import { withLangfuseTrace } from "@/lib/llm";
 import type { ClassifiedTicket } from "@/schemas/classify-ticket.schema";
 import { buildKbSearchQuery, searchKb } from "@/tools/search-kb";
+import logger from "./lib/logger";
 
 type GoldenTicket = {
   ticket: Ticket;
@@ -38,8 +39,23 @@ const processTicket = async (ticket: Ticket) =>
   );
 
 const evalGoldenTickets = async () => {
+  const evalLog = logger.child({
+    script: "evalGoldenTickets",
+    datasetSize: goldenTickets.length,
+  });
+
+  evalLog.info(
+    {
+      model: classifier.agentModel,
+      temperature: classifier.temperature,
+      reasoningEffort: classifier.reasoning.effort,
+    },
+    "START GOLDEN TICKET EVAL"
+  );
+
   let pass = 0;
-  let _fail = 0;
+  let fail = 0;
+  let errors = 0;
   let categoryPass = 0;
   let needsHumanPass = 0;
   let urgencyPass = 0;
@@ -48,22 +64,34 @@ const evalGoldenTickets = async () => {
   let totalCost = 0;
   let ticketsWithCost = 0;
 
-  console.dir({ classifier });
-
   for (const { ticket, expected } of goldenTickets) {
+    const ticketLog = evalLog.child({ ticketId: ticket.id, product: ticket.product });
     const start = performance.now();
-    const {
-      usage: openRouterUsage,
-      classification: actual,
-      // kbResults,
-    } = await processTicket(ticket);
+
+    let openRouterUsage: Awaited<ReturnType<typeof processTicket>>["usage"];
+    let actual: ClassifiedTicket;
+
+    try {
+      const result = await processTicket(ticket);
+      openRouterUsage = result.usage;
+      actual = result.classification;
+    } catch (error) {
+      errors += 1;
+
+      ticketLog.error(
+        { err: error instanceof Error ? error.message : String(error) },
+        "CASE ERRORED"
+      );
+      continue;
+    }
+
     const latencyMs = performance.now() - start;
 
     totalLatencyMs += latencyMs;
 
     if (typeof openRouterUsage?.cost === "number") {
       totalCost += openRouterUsage.cost;
-      ticketsWithCost++;
+      ticketsWithCost += 1;
     }
 
     const categoryMatch = actual.category === expected.category;
@@ -73,52 +101,74 @@ const evalGoldenTickets = async () => {
     const ok = categoryMatch && needsHumanMatch;
 
     if (ok) {
-      pass++;
+      pass += 1;
+
+      ticketLog.debug(
+        {
+          category: actual.category,
+          needsHuman: actual.needsHuman,
+          urgency: actual.urgency,
+          confidence: actual.confidence,
+        },
+        "CASE PASSED"
+      );
     } else {
-      _fail++;
+      fail += 1;
+
+      ticketLog.warn(
+        {
+          category: { actual: actual.category, expected: expected.category, match: categoryMatch },
+          needsHuman: {
+            actual: actual.needsHuman,
+            expected: expected.needsHuman,
+            match: needsHumanMatch,
+          },
+          urgency: { actual: actual.urgency, expected: expected.urgency, match: urgencyMatch },
+          confidence: {
+            actual: actual.confidence,
+            expected: expected.confidence,
+            match: confidenceMatch,
+          },
+        },
+        "CASE FAILED"
+      );
     }
 
     if (categoryMatch) {
-      categoryPass++;
+      categoryPass += 1;
     }
 
     if (needsHumanMatch) {
-      needsHumanPass++;
+      needsHumanPass += 1;
     }
 
     if (urgencyMatch) {
-      urgencyPass++;
+      urgencyPass += 1;
     }
 
     if (confidenceMatch) {
-      confidencePass++;
+      confidencePass += 1;
     }
-
-    console.log(
-      `${ok ? "✓" : "✗"} [${ticket.id}] ${ticket.product}`,
-      `\n  category : ${categoryMatch ? "✓" : "✗"} actual=${actual.category} expected=${expected.category}`,
-      `\n  needsHuman: ${needsHumanMatch ? "✓" : "✗"} actual=${actual.needsHuman} expected=${expected.needsHuman}`,
-      `\n  urgency  : ${urgencyMatch ? "✓" : "✗"} actual=${actual.urgency} expected=${expected.urgency}`,
-      `\n  confidence: ${confidenceMatch ? "✓" : "✗"} actual=${actual.confidence} expected=${expected.confidence}`,
-      `\n  latency : ${latencyMs.toFixed(0)}ms`,
-      openRouterUsage
-        ? `\n  cost    : ${openRouterUsage.cost?.toFixed(6) ?? "n/a"} credits`
-        : "\n  cost    : n/a"
-    );
   }
 
-  console.log(`\n--- Results: ${pass}/${goldenTickets.length} passed (category + needsHuman) ---`);
-  console.log(`--- Category: ${categoryPass}/${goldenTickets.length} ---`);
-  console.log(`--- needsHuman: ${needsHumanPass}/${goldenTickets.length} ---`);
-  console.log(`--- Urgency: ${urgencyPass}/${goldenTickets.length} ---`);
-  console.log(`--- Confidence exact: ${confidencePass}/${goldenTickets.length} ---`);
-  console.log(
-    `--- Avg latency: ${(totalLatencyMs / goldenTickets.length).toFixed(0)}ms/ticket ---`
-  );
-  console.log(
-    ticketsWithCost === goldenTickets.length
-      ? `--- Total cost: ${totalCost.toFixed(6)} credits ---`
-      : `--- Total cost: ${totalCost.toFixed(6)} credits (${ticketsWithCost}/${goldenTickets.length} tickets reported cost) ---`
+  const datasetSize = goldenTickets.length;
+  const processedCount = datasetSize - errors;
+
+  evalLog.info(
+    {
+      pass,
+      fail,
+      errors,
+      primaryAccuracy: pass / datasetSize,
+      category: { pass: categoryPass, total: datasetSize },
+      needsHuman: { pass: needsHumanPass, total: datasetSize },
+      urgency: { pass: urgencyPass, total: datasetSize },
+      confidence: { pass: confidencePass, total: datasetSize },
+      avgLatencyMs: processedCount > 0 ? Math.round(totalLatencyMs / processedCount) : 0,
+      totalCostCredits: Number(totalCost.toFixed(6)),
+      ticketsWithCost,
+    },
+    "GOLDEN TICKET EVAL COMPLETE"
   );
 };
 
