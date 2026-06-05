@@ -6,6 +6,7 @@ import { classifierAgent } from "@/agents/classifier.agent";
 import type { Ticket } from "@/domain/tickets";
 import { flushLangfuseTraces } from "@/lib/instrumentation";
 import type { ClassifiedTicket } from "@/schemas/classify-ticket.schema";
+import { classifier } from "./config/models";
 
 type GoldenTicket = {
   ticket: Ticket;
@@ -23,6 +24,8 @@ const golden = JSON.parse(await readFile(goldenPath, "utf8")) as GoldenTicket[];
 
 let pass = 0;
 let _fail = 0;
+
+console.dir({ classifier });
 
 for (const { ticket, expected } of golden) {
   const actual = await classifierAgent(ticket.body);

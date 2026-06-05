@@ -35,7 +35,7 @@
     }
   },
   {
-    "_comment": "CLEAR — Shipping and delivery. Order lost in transit. Standard policy (resend or refund) applies. needsHuman: false — routing agent can draft reply citing refund/reship policy.",
+    "_comment": "CLEAR — Shipping and delivery. Order lost in transit. Standard policy (resend or refund) applies. needsHuman: false — routing agent can draft reply citing refund/reship policy. Urgency is can reasonably be medium/high, medium is preferred. 'blocked from critical work TODAY' system prompt rubric",
     "ticket": {
       "id": "g-003",
       "channel": "email",
