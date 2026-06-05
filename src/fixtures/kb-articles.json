@@ -1,0 +1,122 @@
+[
+  {
+    "articleId": "kb-hardware-001",
+    "category": "Hardware issue",
+    "title": "Troubleshooting devices that will not power on",
+    "content": "Ask the customer to confirm the device has charged for at least 30 minutes with the original cable or power adapter. Have them try a different wall outlet and check for visible cable damage. If the device still shows no lights, sound, vibration, or display activity, collect the order number, serial number, and photos of the charging port before starting the warranty review."
+  },
+  {
+    "articleId": "kb-hardware-002",
+    "category": "Hardware issue",
+    "title": "Physical damage and warranty review",
+    "content": "Physical damage includes cracked screens, broken hinges, bent connectors, liquid exposure, rattling parts, or burned smells. Support can collect photos and basic troubleshooting details, but replacement approval requires human review. Do not promise a free replacement until warranty eligibility and damage cause are checked."
+  },
+  {
+    "articleId": "kb-software-001",
+    "category": "Software / app bug",
+    "title": "App crashes, freezes, or will not open",
+    "content": "For app crashes, ask the customer to update to the latest app version, restart the device, and confirm the operating system version. If the app still crashes, collect the product model, app version, operating system, steps to reproduce, and any screenshots. Known app defects should be logged for engineering with reproduction steps."
+  },
+  {
+    "articleId": "kb-software-002",
+    "category": "Software / app bug",
+    "title": "Sync or settings changes not saving",
+    "content": "When settings do not save or sync, ask the customer to sign out and back in, confirm they have a stable connection, and check that the app has required permissions. If multiple devices are involved, ask which device shows the correct data. Escalate only when the issue affects multiple accounts or repeats after reinstalling the app."
+  },
+  {
+    "articleId": "kb-connectivity-001",
+    "category": "Connectivity issue",
+    "title": "Wi-Fi pairing checklist",
+    "content": "Most smart devices require a 2.4 GHz Wi-Fi network during setup. Ask the customer to keep the product near the router, disable VPN during pairing, and confirm the Wi-Fi password. If the router combines 2.4 GHz and 5 GHz under one name, suggest temporarily separating the bands or using a guest network for setup."
+  },
+  {
+    "articleId": "kb-connectivity-002",
+    "category": "Connectivity issue",
+    "title": "Bluetooth connection drops",
+    "content": "For Bluetooth drops, ask the customer to forget the device from Bluetooth settings, restart both devices, and pair again from the app if required. Check battery level and distance from the phone. If the device disconnects from several phones, collect firmware version and product serial number for escalation."
+  },
+  {
+    "articleId": "kb-account-001",
+    "category": "Account access",
+    "title": "Password reset and login help",
+    "content": "Customers who cannot sign in should use the password reset link on the login screen and check spam or junk folders for the email. Confirm the email address on the order if they are unsure which account was used. Support should not ask for passwords or verification codes."
+  },
+  {
+    "articleId": "kb-account-002",
+    "category": "Account access",
+    "title": "Locked account verification",
+    "content": "If an account is locked after too many login attempts, ask the customer to wait 30 minutes and then reset their password. If they no longer have access to the email address, collect order details and proof of purchase for human verification. Account ownership changes must be handled by a human."
+  },
+  {
+    "articleId": "kb-data-loss-001",
+    "category": "Data loss",
+    "title": "Missing app history or saved settings",
+    "content": "Ask whether the customer recently changed phones, deleted the app, reset the product, or signed in with a different email address. Some local-only settings cannot be recovered after uninstalling the app or factory resetting the device. If cloud history should exist but is missing, collect account email, approximate date range, and screenshots."
+  },
+  {
+    "articleId": "kb-data-loss-002",
+    "category": "Data loss",
+    "title": "Data recovery expectations",
+    "content": "Support can guide customers through checking the correct account, restoring from device backup, and re-syncing connected devices. Manual data recovery is not guaranteed and requires human review. Do not promise restored data, especially after factory reset, account deletion, or local-only storage loss."
+  },
+  {
+    "articleId": "kb-refund-001",
+    "category": "Refund request",
+    "title": "Standard refund window",
+    "content": "Customers may request a refund within 30 days of delivery if the product is unused or returned in resellable condition, unless a regional policy says otherwise. Ask for the order number and reason for return. Refunds are issued to the original payment method after the returned item is received and inspected."
+  },
+  {
+    "articleId": "kb-refund-002",
+    "category": "Refund request",
+    "title": "Refund exceptions and damaged items",
+    "content": "Refund exceptions include defective products, duplicate orders, missing accessories, or delivery damage. Collect photos, order number, packaging condition, and a short description of the problem. Policy exceptions, late returns, and goodwill refunds require human approval."
+  },
+  {
+    "articleId": "kb-security-001",
+    "category": "Security concern",
+    "title": "Suspected account takeover",
+    "content": "If a customer reports unfamiliar login activity, password changes, unknown orders, or changed account details, treat the ticket as a security concern. Advise the customer to reset their password and secure their email account. Escalate to a human for account review and do not disclose sensitive account details in the reply."
+  },
+  {
+    "articleId": "kb-security-002",
+    "category": "Security concern",
+    "title": "Phishing or suspicious messages",
+    "content": "Customers may report emails, texts, or websites pretending to represent the company. Ask them not to click links or share payment details. Request the sender address, screenshots, and message headers if available. Confirm official support channels and escalate confirmed phishing reports for security review."
+  },
+  {
+    "articleId": "kb-billing-001",
+    "category": "Billing and payment",
+    "title": "Duplicate charge or pending authorization",
+    "content": "Some banks show a temporary authorization before the final charge posts. Pending authorizations usually drop within 3 to 7 business days. If the customer sees two posted charges for the same order, collect the order number, charge dates, amounts, and payment method last four digits for billing review."
+  },
+  {
+    "articleId": "kb-billing-002",
+    "category": "Billing and payment",
+    "title": "Invoice, receipt, and tax details",
+    "content": "Customers can usually download receipts from the order confirmation email or account order history. For invoice changes, business tax details, or missing receipts, ask for the order number and preferred billing information. Do not edit tax details after fulfillment unless billing policy allows it."
+  },
+  {
+    "articleId": "kb-shipping-001",
+    "category": "Shipping and delivery",
+    "title": "Tracking says delivered but package is missing",
+    "content": "Ask the customer to check nearby doors, mailrooms, building reception, and household members. Carriers sometimes mark packages delivered up to 24 hours before final drop-off. If the package is still missing after 24 hours, collect the order number, shipping address confirmation, and any carrier case number."
+  },
+  {
+    "articleId": "kb-shipping-002",
+    "category": "Shipping and delivery",
+    "title": "Delayed shipment or address correction",
+    "content": "If tracking has not moved for several business days, check the carrier status and estimated delivery date before escalating. Address corrections are only possible before fulfillment or when the carrier supports interception. Once an order has shipped, support can guide the customer through carrier options but cannot guarantee rerouting."
+  },
+  {
+    "articleId": "kb-general-001",
+    "category": "General inquiry",
+    "title": "Product compatibility questions",
+    "content": "For compatibility questions, confirm the exact product model, region, device operating system, and any connected accessories. Provide the relevant compatibility limits and avoid guessing about unlisted third-party devices. If the customer has not purchased yet, keep the answer informational and low urgency."
+  },
+  {
+    "articleId": "kb-general-002",
+    "category": "General inquiry",
+    "title": "Warranty coverage overview",
+    "content": "Most products include a limited warranty against manufacturing defects for the stated warranty period from purchase. Warranty does not usually cover accidental damage, misuse, unauthorized repair, normal wear, or consumables. Ask for order number, purchase date, and product issue when the customer wants a warranty eligibility check."
+  }
+]
