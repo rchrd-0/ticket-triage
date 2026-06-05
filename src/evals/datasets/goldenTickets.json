@@ -1,0 +1,209 @@
+[
+  {
+    "_comment": "CLEAR — Hardware issue. Device dead, warranty claim. Needs human because no KB article can fix a physically broken device remotely.",
+    "ticket": {
+      "id": "g-001",
+      "channel": "email",
+      "product": "Sony WH-1000XM5",
+      "body": "My Sony WH-1000XM5 headphones stopped working completely after I dropped them. The left earcup makes a rattling sound and produces no audio at all. I've tried resetting them and reconnecting via Bluetooth but nothing helps. They're only 3 months old — I'd like a replacement or repair.",
+      "customer": {
+        "name": "James Holloway",
+        "email": "james.holloway@example.com"
+      }
+    },
+    "expected": {
+      "category": "Hardware issue",
+      "urgency": "medium",
+      "needsHuman": true,
+      "confidence": 0.95
+    }
+  },
+  {
+    "_comment": "CLEAR — Software bug. Repeatable crash, version identified. KB article (known bug + workaround) can handle this. needsHuman: false.",
+    "ticket": {
+      "id": "g-002",
+      "channel": "chat",
+      "product": "Adobe Premiere Pro",
+      "body": "Premiere Pro crashes every time I try to export a sequence longer than 10 minutes. Error message says 'Media encoder not responding'. I'm on version 24.3, macOS Sonoma. This started after last week's update. Other shorter exports work fine.",
+      "customer": { "name": "Priya Nair", "email": "priya.nair@example.com" }
+    },
+    "expected": {
+      "category": "Software / app bug",
+      "urgency": "medium",
+      "needsHuman": false,
+      "confidence": 0.9
+    }
+  },
+  {
+    "_comment": "CLEAR — Shipping and delivery. Order lost in transit. Standard policy (resend or refund) applies. needsHuman: false — routing agent can draft reply citing refund/reship policy.",
+    "ticket": {
+      "id": "g-003",
+      "channel": "email",
+      "product": "Logitech MX Master 3",
+      "body": "My order (ORD-88421) was supposed to arrive 5 days ago. The tracking page says it's been stuck at 'In transit — sorting facility' for the past week. I need this mouse for work. Can you tell me what's happening and either deliver it or send a replacement?",
+      "customer": { "name": "Marcus Webb", "email": "marcus.webb@example.com" }
+    },
+    "expected": {
+      "category": "Shipping and delivery",
+      "urgency": "medium",
+      "needsHuman": false,
+      "confidence": 0.92
+    }
+  },
+  {
+    "_comment": "CLEAR — Refund request. Explicit, in-policy (within 30 days). Refund policy KB article handles this. needsHuman: false.",
+    "ticket": {
+      "id": "g-004",
+      "channel": "email",
+      "product": "Dyson V15 Detect",
+      "body": "I purchased the Dyson V15 Detect 12 days ago but it's not picking up debris from my hardwood floors the way the demo showed. I'd like to return it for a full refund. Order number is ORD-55102. I haven't registered the product yet.",
+      "customer": {
+        "name": "Caitlin Marsh",
+        "email": "caitlin.marsh@example.com"
+      }
+    },
+    "expected": {
+      "category": "Refund request",
+      "urgency": "low",
+      "needsHuman": false,
+      "confidence": 0.95
+    }
+  },
+  {
+    "_comment": "CLEAR — Account access. Locked out, standard reset flow. Password reset SOP applies. needsHuman: false.",
+    "ticket": {
+      "id": "g-005",
+      "channel": "chat",
+      "product": "Adobe Creative Cloud",
+      "body": "I can't log into my Creative Cloud account. I tried resetting my password via email but the reset link keeps saying it's expired. I've tried three times in the last hour. I have an active subscription and need access urgently for a client deadline today.",
+      "customer": { "name": "Omar Farouk", "email": "omar.farouk@example.com" }
+    },
+    "expected": {
+      "category": "Account access",
+      "urgency": "high",
+      "needsHuman": false,
+      "confidence": 0.9
+    }
+  },
+  {
+    "_comment": "CLEAR — Security concern. Unauthorized purchases, fraud in progress. Requires human account action — freeze, investigation. needsHuman: true.",
+    "ticket": {
+      "id": "g-006",
+      "channel": "phone",
+      "product": "Amazon account",
+      "body": "I just received two order confirmation emails for items I did not purchase — a $340 graphics card and a $120 gift card. I did not place these orders. My account password was changed last night without my permission. I need these orders cancelled immediately and my account secured.",
+      "customer": { "name": "Yuki Tanaka", "email": "yuki.tanaka@example.com" }
+    },
+    "expected": {
+      "category": "Security concern",
+      "urgency": "high",
+      "needsHuman": true,
+      "confidence": 0.97
+    }
+  },
+  {
+    "_comment": "CLEAR — Billing and payment. Overcharged, has receipts. Billing correction SOP applies. needsHuman: false — routing agent can draft apology + credit note.",
+    "ticket": {
+      "id": "g-007",
+      "channel": "email",
+      "product": "Spotify Premium",
+      "body": "I was charged $19.99 twice for my monthly Spotify Premium plan on the 1st of this month. My bank statement shows two identical charges on the same day. I'm on the individual plan which should be $9.99. Can you refund the duplicate charge and explain what happened?",
+      "customer": { "name": "Sofia Reyes", "email": "sofia.reyes@example.com" }
+    },
+    "expected": {
+      "category": "Billing and payment",
+      "urgency": "medium",
+      "needsHuman": false,
+      "confidence": 0.93
+    }
+  },
+  {
+    "_comment": "AMBIGUOUS — connectivity vs software_bug. Intermittent drop during calls on a specific app could be either. Lean connectivity because the problem is network-layer (drops mid-call across devices). needsHuman: false — standard connectivity troubleshooting SOP.",
+    "ticket": {
+      "id": "g-008",
+      "channel": "chat",
+      "product": "Zoom",
+      "body": "My Zoom calls keep dropping every 10–15 minutes. It reconnects by itself after about 30 seconds. This happens on both my laptop and my phone when I'm at home, but not when I use it at the office. My other internet usage seems fine during the drops.",
+      "customer": {
+        "name": "Tanya Okonkwo",
+        "email": "tanya.okonkwo@example.com"
+      }
+    },
+    "expected": {
+      "category": "Connectivity issue",
+      "urgency": "medium",
+      "needsHuman": false,
+      "confidence": 0.75
+    }
+  },
+  {
+    "_comment": "AMBIGUOUS — general_inquiry vs refund_request. Customer is asking a policy question, not yet requesting a refund. Should stay general_inquiry and be routed to the returns policy FAQ, not a refund handler.",
+    "ticket": {
+      "id": "g-009",
+      "channel": "chat",
+      "product": "Nintendo Switch OLED",
+      "body": "Hi, I bought a Nintendo Switch OLED last month as a gift but the recipient already has one. I haven't opened the box. Do you accept returns for unopened items? What's the process and how long does a refund take?",
+      "customer": {
+        "name": "Ben Whitfield",
+        "email": "ben.whitfield@example.com"
+      }
+    },
+    "expected": {
+      "category": "General inquiry",
+      "urgency": "low",
+      "needsHuman": false,
+      "confidence": 0.78
+    }
+  },
+  {
+    "_comment": "AMBIGUOUS — data_loss vs software_bug. Cloud sync failure caused data loss — the proximate cause is software, but the impact and urgency are data loss. Data loss wins because that's what the customer needs resolved and what routes to a specialist. needsHuman: true — data recovery requires manual investigation.",
+    "ticket": {
+      "id": "g-010",
+      "channel": "email",
+      "product": "Notion",
+      "body": "Three weeks of notes in my Notion workspace have disappeared after I upgraded my plan from Free to Plus. My workspace shows the pages existed (I can see them in version history) but the content is blank or shows only partial text. I need these notes recovered — they contain client project work.",
+      "customer": { "name": "Rachel Kim", "email": "rachel.kim@example.com" }
+    },
+    "expected": {
+      "category": "Data loss",
+      "urgency": "high",
+      "needsHuman": true,
+      "confidence": 0.82
+    }
+  },
+  {
+    "_comment": "STRESS TEST — noisy, multi-issue body (mirrors fixture quality). Customer mentions billing AND hardware AND frustration. Primary issue is billing (the charge). Hardware complaint is context, not the ask. needsHuman: false — billing correction SOP applies.",
+    "ticket": {
+      "id": "g-011",
+      "channel": "social",
+      "product": "Samsung Galaxy S24",
+      "body": "Absolutely furious right now. My Galaxy S24 has had a cracked screen for 2 weeks (yes my fault, I know) but I never asked for insurance. Yet you've been charging me $8.99/month for 'device protection' since I bought it 6 months ago — I never opted in. I want all those charges refunded immediately or I'm going to my bank.",
+      "customer": {
+        "name": "Derek Hollis",
+        "email": "derek.hollis@example.com"
+      }
+    },
+    "expected": {
+      "category": "Billing and payment",
+      "urgency": "high",
+      "needsHuman": false,
+      "confidence": 0.72
+    }
+  },
+  {
+    "_comment": "STRESS TEST — very low signal body (mirrors worst-case fixture quality). Product name and 'not working' only. Should fall back to general_inquiry with low confidence, not hallucinate a specific category.",
+    "ticket": {
+      "id": "g-012",
+      "channel": "social",
+      "product": "Philips Air Purifier",
+      "body": "Hi my Philips air purifier is not working properly. Please assist.",
+      "customer": { "name": "Anita Lim", "email": "anita.lim@example.com" }
+    },
+    "expected": {
+      "category": "General inquiry",
+      "urgency": "low",
+      "needsHuman": false,
+      "confidence": 0.5
+    }
+  }
+]

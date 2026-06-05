@@ -5,32 +5,47 @@ import "@/lib/instrumentation";
 import { classifierAgent } from "@/agents/classifier.agent";
 import type { Ticket } from "@/domain/tickets";
 import { flushLangfuseTraces } from "@/lib/instrumentation";
+import type { ClassifiedTicket } from "@/schemas/classify-ticket.schema";
 
-const fixturesPath = path.join(
+type GoldenTicket = {
+  ticket: Ticket;
+  expected: ClassifiedTicket;
+};
+
+const goldenPath = path.join(
   path.dirname(fileURLToPath(import.meta.url)),
-  "fixtures",
-  "tickets.json"
+  "evals",
+  "datasets",
+  "goldenTickets.json"
 );
-const allTickets = JSON.parse(await readFile(fixturesPath, "utf8")) as Ticket[];
-const tickets = allTickets.slice(0, 5);
 
-for await (const ticket of tickets) {
-  console.log(`Classifying ticket ${ticket.id} (${ticket.product})...`);
+const golden = JSON.parse(await readFile(goldenPath, "utf8")) as GoldenTicket[];
 
-  const classification = await classifierAgent(ticket.body);
+let pass = 0;
+let _fail = 0;
 
-  // console.dir(JSON.stringify({ id: ticket.id, body: ticket.body, classification }, null, 2));
-  console.dir(
-    {
-      id: ticket.id,
-      body: ticket.body,
-      classification,
-    },
-    {
-      depth: null,
-      colors: true,
-    }
+for (const { ticket, expected } of golden) {
+  const actual = await classifierAgent(ticket.body);
+
+  const categoryMatch = actual.category === expected.category;
+  const needsHumanMatch = actual.needsHuman === expected.needsHuman;
+  const ok = categoryMatch && needsHumanMatch;
+
+  if (ok) {
+    pass++;
+  } else {
+    _fail++;
+  }
+
+  console.log(
+    `${ok ? "✓" : "✗"} [${ticket.id}] ${ticket.product}`,
+    `\n  category : ${categoryMatch ? "✓" : "✗"} actual=${actual.category} expected=${expected.category}`,
+    `\n  needsHuman: ${needsHumanMatch ? "✓" : "✗"} actual=${actual.needsHuman} expected=${expected.needsHuman}`,
+    `\n  urgency  : actual=${actual.urgency} expected=${expected.urgency}`,
+    `\n  confidence: actual=${actual.confidence} expected=${expected.confidence}`
   );
 }
+
+console.log(`\n--- Results: ${pass}/${golden.length} passed (category + needsHuman) ---`);
 
 await flushLangfuseTraces();
