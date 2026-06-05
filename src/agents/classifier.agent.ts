@@ -2,7 +2,10 @@ import { valibotSchema } from "@ai-sdk/valibot";
 import { generateText, Output } from "ai";
 import { classifier } from "@/config/models";
 import { aiTelemetry, openrouter } from "@/lib/llm";
-import { buildClassifyTicketPrompt } from "@/prompts/classify-ticket.prompt";
+import {
+  buildClassifyTicketPrompt,
+  classifyTicketSystemPrompt,
+} from "@/prompts/classify-ticket.prompt";
 import { type ClassifiedTicket, ClassifyTicketSchema } from "@/schemas/classify-ticket.schema";
 
 export const classifierAgent = async (ticketBody: string): Promise<ClassifiedTicket> => {
@@ -14,6 +17,7 @@ export const classifierAgent = async (ticketBody: string): Promise<ClassifiedTic
         reasoning: classifier.reasoning,
       },
     },
+    system: classifyTicketSystemPrompt,
     prompt: buildClassifyTicketPrompt(ticketBody),
     output: Output.object({
       schema: valibotSchema(ClassifyTicketSchema),
