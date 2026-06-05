@@ -1,7 +1,7 @@
 export const classifier = {
-  agentModel: "openai/gpt-5-nano",
+  agentModel: "google/gemini-2.5-flash-lite",
   temperature: 0,
   reasoning: {
-    effort: "minimal",
+    effort: "none",
   },
 } as const;
