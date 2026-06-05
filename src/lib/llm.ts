@@ -1,7 +1,7 @@
 import type { PropagateAttributesParams } from "@langfuse/core";
 import { observe, propagateAttributes } from "@langfuse/tracing";
-import { createOpenRouter } from "@openrouter/ai-sdk-provider";
-import type { TelemetrySettings } from "ai";
+import { createOpenRouter, type OpenRouterUsageAccounting } from "@openrouter/ai-sdk-provider";
+import type { generateText, TelemetrySettings } from "ai";
 import { env } from "@/config/env";
 
 import "@/lib/instrumentation";
@@ -21,6 +21,16 @@ export function aiTelemetry(overrides?: Partial<TelemetrySettings>): TelemetrySe
     ...overrides,
   };
 }
+
+export type LlmRunUsage = OpenRouterUsageAccounting;
+
+export const getOpenRouterUsage = (
+  providerMetadata: Awaited<ReturnType<typeof generateText>>["providerMetadata"]
+): LlmRunUsage | undefined => {
+  const openRouterMetadata = providerMetadata?.openrouter as { usage?: LlmRunUsage } | undefined;
+
+  return openRouterMetadata?.usage;
+};
 
 /** wrap a workflow step with a named Langfuse trace and optional session/user/tags. */
 export function withLangfuseTrace<T>(
