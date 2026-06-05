@@ -1,6 +1,7 @@
 import { readFile } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+import { observe } from "@langfuse/tracing";
 import type { KbArticle, KbSearchResult } from "@/domain/kb";
 import type { ClassifiedTicket } from "@/schemas/classify-ticket.schema";
 
@@ -92,10 +93,7 @@ const buildSnippet = (article: KbArticle, terms: string[]): string => {
   return `${source.slice(0, SNIPPET_LENGTH).trimEnd()}...`;
 };
 
-export const buildKbSearchQuery = (category: ClassifiedTicket["category"], ticketBody: string) =>
-  `${category} ${ticketBody}`;
-
-export const searchKb = async (
+const searchKbInternal = async (
   query: string,
   limit = DEFAULT_RESULT_LIMIT
 ): Promise<KbSearchResult[]> => {
@@ -141,3 +139,11 @@ export const searchKb = async (
     snippet: buildSnippet(article, terms),
   }));
 };
+
+export const buildKbSearchQuery = (category: ClassifiedTicket["category"], ticketBody: string) =>
+  `${category} ${ticketBody}`;
+
+export const searchKb = observe(searchKbInternal, {
+  name: "search-kb",
+  asType: "tool",
+});
