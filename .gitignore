@@ -4,6 +4,7 @@ node_modules
 # output
 out
 dist
+.mastra/
 *.tgz
 
 # code coverage
