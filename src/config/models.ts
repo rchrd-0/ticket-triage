@@ -5,3 +5,11 @@ export const classifier = {
     effort: "none",
   },
 } as const;
+
+export const drafter = {
+  agentModel: "openai/gpt-5-mini",
+  temperature: 0.3,
+  reasoning: {
+    effort: "none",
+  },
+} as const;

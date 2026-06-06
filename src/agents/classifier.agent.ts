@@ -45,7 +45,7 @@ export const classifierEvalAgent = async (ticketBody: string): Promise<Classifie
 
 export const classifierAgent = new Agent({
   id: "classifier-agent",
-  name: "classifier",
+  name: "Classifier",
   instructions: classifyTicketSystemPrompt,
   model: `openrouter/${classifier.agentModel}`,
   defaultOptions: {
@@ -60,7 +60,7 @@ export const classifierAgent = new Agent({
   },
 });
 
-export const classifyTicket = async (ticketBody: string) => {
+export const classifyTicket = async (ticketBody: string): Promise<ClassifiedTicket> => {
   const prompt = buildClassifyTicketPrompt(ticketBody);
 
   const { object } = await classifierAgent.generate(prompt, {
