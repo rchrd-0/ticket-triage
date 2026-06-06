@@ -1,11 +1,11 @@
-import { type InferOutput, object, picklist } from "valibot";
+import { z } from "zod";
 
 export const ROUTE_PATHS = ["draft", "human_review"] as const;
 export const ROUTE_REASONS = ["automatable", "classifier_requires_human"] as const;
 
-export const RouteTicketSchema = object({
-  path: picklist(ROUTE_PATHS),
-  reason: picklist(ROUTE_REASONS),
+export const RouteTicketSchema = z.object({
+  path: z.enum(ROUTE_PATHS),
+  reason: z.enum(ROUTE_REASONS),
 });
 
-export type RouteTicket = InferOutput<typeof RouteTicketSchema>;
+export type RouteTicket = z.infer<typeof RouteTicketSchema>;

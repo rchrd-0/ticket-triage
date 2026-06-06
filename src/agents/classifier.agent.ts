@@ -1,6 +1,4 @@
-import { valibotSchema } from "@ai-sdk/valibot";
 import { Agent } from "@mastra/core/agent";
-import { toStandardJsonSchema } from "@valibot/to-json-schema";
 import { generateText, Output } from "ai";
 import { classifier } from "@/config/models";
 import { aiTelemetry, getOpenRouterUsage, type LlmRunUsage, openrouter } from "@/lib/llm";
@@ -32,7 +30,7 @@ export const classifierEvalAgent = async (ticketBody: string): Promise<Classifie
     system: classifyTicketSystemPrompt,
     prompt: buildClassifyTicketPrompt(ticketBody),
     output: Output.object({
-      schema: valibotSchema(ClassifyTicketSchema),
+      schema: ClassifyTicketSchema,
     }),
     experimental_telemetry: aiTelemetry({ functionId: "classify-ticket" }),
   });
@@ -65,7 +63,7 @@ export const classifyTicket = async (ticketBody: string): Promise<ClassifiedTick
 
   const { object } = await classifierAgent.generate(prompt, {
     structuredOutput: {
-      schema: toStandardJsonSchema(ClassifyTicketSchema),
+      schema: ClassifyTicketSchema,
     },
   });
 
