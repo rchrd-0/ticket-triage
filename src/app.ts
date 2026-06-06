@@ -3,10 +3,10 @@ import path from "node:path";
 import { performance } from "node:perf_hooks";
 import { classifierEvalAgent } from "@/agents/classifier.agent";
 import { classifier } from "@/config/models";
-import type { Ticket } from "@/domain/tickets";
 import { flushLangfuseTraces } from "@/lib/instrumentation";
 import { withLangfuseTrace } from "@/lib/llm";
 import type { ClassifiedTicket } from "@/schemas/classify-ticket.schema";
+import type { Ticket } from "@/schemas/ticket.schema";
 import { buildKbSearchQuery, searchKb } from "@/tools/search-kb";
 import logger from "./lib/logger";
 

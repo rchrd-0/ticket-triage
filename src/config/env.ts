@@ -6,7 +6,7 @@ export const env = createEnv({
     OPENROUTER_API_KEY: z.string().min(1),
     LANGFUSE_SECRET_KEY: z.string().min(1),
     LANGFUSE_PUBLIC_KEY: z.string().min(1),
-    LANGFUSE_BASE_URL: z.string().url().default("https://cloud.langfuse.com"),
+    LANGFUSE_BASE_URL: z.url().default("https://cloud.langfuse.com"),
     LOG_LEVEL: z.enum(["debug", "info", "warn", "error"]).default("info"),
     NODE_ENV: z.enum(["development", "production", "test"]).default("development"),
   },

@@ -1,5 +1,5 @@
-import type { Ticket } from "@/domain/tickets";
 import type { ClassifiedTicket } from "@/schemas/classify-ticket.schema";
+import type { Ticket } from "@/schemas/ticket.schema";
 
 export const draftReplySystemPrompt = `You draft concise customer support replies for an e-commerce support team.
 
