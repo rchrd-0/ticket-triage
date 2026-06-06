@@ -1,7 +1,7 @@
 import { readFile } from "node:fs/promises";
 import path from "node:path";
 import { performance } from "node:perf_hooks";
-import { classifierAgentRun } from "@/agents/classifier.agent";
+import { classifierEvalAgent } from "@/agents/classifier.agent";
 import { classifier } from "@/config/models";
 import type { Ticket } from "@/domain/tickets";
 import { flushLangfuseTraces } from "@/lib/instrumentation";
@@ -31,7 +31,7 @@ const processTicket = async (ticket: Ticket) =>
       },
     },
     async () => {
-      const { usage, output: classification } = await classifierAgentRun(ticket.body);
+      const { usage, output: classification } = await classifierEvalAgent(ticket.body);
       const kbResults = await searchKb(buildKbSearchQuery(classification.category, ticket.body));
 
       return { usage, classification, kbResults };

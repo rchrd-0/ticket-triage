@@ -1,4 +1,6 @@
 import { valibotSchema } from "@ai-sdk/valibot";
+import { Agent } from "@mastra/core/agent";
+import { toStandardJsonSchema } from "@valibot/to-json-schema";
 import { generateText, Output } from "ai";
 import { classifier } from "@/config/models";
 import { aiTelemetry, getOpenRouterUsage, type LlmRunUsage, openrouter } from "@/lib/llm";
@@ -13,7 +15,8 @@ export type ClassifierAgentRun = {
   usage?: LlmRunUsage;
 };
 
-export const classifierAgentRun = async (ticketBody: string): Promise<ClassifierAgentRun> => {
+/** phase 1 AI sdk implementation, for eval purposes. pending removal */
+export const classifierEvalAgent = async (ticketBody: string): Promise<ClassifierAgentRun> => {
   const { output, providerMetadata } = await generateText({
     model: openrouter.chat(classifier.agentModel, {
       usage: {
@@ -40,8 +43,31 @@ export const classifierAgentRun = async (ticketBody: string): Promise<Classifier
   };
 };
 
-export const classifierAgent = async (ticketBody: string): Promise<ClassifiedTicket> => {
-  const { output } = await classifierAgentRun(ticketBody);
+export const classifierAgent = new Agent({
+  id: "classifier-agent",
+  name: "classifier",
+  instructions: classifyTicketSystemPrompt,
+  model: `openrouter/${classifier.agentModel}`,
+  defaultOptions: {
+    modelSettings: {
+      temperature: classifier.temperature,
+    },
+    providerOptions: {
+      openrouter: {
+        reasoning: classifier.reasoning,
+      },
+    },
+  },
+});
 
-  return output;
+export const classifyTicket = async (ticketBody: string) => {
+  const prompt = buildClassifyTicketPrompt(ticketBody);
+
+  const { object } = await classifierAgent.generate(prompt, {
+    structuredOutput: {
+      schema: toStandardJsonSchema(ClassifyTicketSchema),
+    },
+  });
+
+  return object;
 };
