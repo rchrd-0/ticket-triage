@@ -36,6 +36,12 @@
     "content": "For Bluetooth drops, ask the customer to forget the device from Bluetooth settings, restart both devices, and pair again from the app if required. Check battery level and distance from the phone. If the device disconnects from several phones, collect firmware version and product serial number for escalation."
   },
   {
+    "articleId": "kb-connectivity-003",
+    "category": "Connectivity issue",
+    "title": "Video calls dropping or home network instability",
+    "content": "For calls or sessions that disconnect repeatedly, ask whether the issue happens on multiple devices, multiple networks, or only at one location. Have the customer restart the router, move closer to the access point, disable VPN temporarily, and test on another network if available. If the issue happens only on a home network but not elsewhere, collect device type, app version, router model, connection type, and approximate disconnect frequency before escalating."
+  },
+  {
     "articleId": "kb-account-001",
     "category": "Account access",
     "title": "Password reset and login help",
@@ -46,6 +52,12 @@
     "category": "Account access",
     "title": "Locked account verification",
     "content": "If an account is locked after too many login attempts, ask the customer to wait 30 minutes and then reset their password. If they no longer have access to the email address, collect order details and proof of purchase for human verification. Account ownership changes must be handled by a human."
+  },
+  {
+    "articleId": "kb-account-003",
+    "category": "Account access",
+    "title": "Lost authenticator or ordinary 2FA recovery",
+    "content": "If a customer knows their password but cannot complete a two-factor authentication prompt because they replaced their phone, lost an authenticator app, or no longer have access to a trusted device, guide them through the standard account recovery process. Confirm whether they still control the account email address and whether there are any suspicious logins, unknown purchases, or password changes. If there are no compromise indicators, provide the normal recovery steps and explain that support will never ask for passwords or one-time codes. If the customer reports suspicious activity, unauthorized purchases, or a password change they did not make, treat the case as a security concern and escalate for human review."
   },
   {
     "articleId": "kb-data-loss-001",
@@ -96,6 +108,12 @@
     "content": "Customers can usually download receipts from the order confirmation email or account order history. For invoice changes, business tax details, or missing receipts, ask for the order number and preferred billing information. Do not edit tax details after fulfillment unless billing policy allows it."
   },
   {
+    "articleId": "kb-billing-003",
+    "category": "Billing and payment",
+    "title": "Unwanted subscription, add-on, or protection-plan charge",
+    "content": "If a customer reports being charged for an add-on, protection plan, subscription, or service they do not recognize, ask for the order number, charge dates, amounts, and the payment method last four digits. Clarify whether the charge is a duplicate, a renewal, an optional add-on, or a service attached during checkout. Do not imply fraud unless the customer also reports suspicious login activity, account takeover, or unauthorized purchases by someone else. Standard billing disputes can be reviewed through the billing process, but goodwill refunds, old charges, or policy exceptions may require human approval."
+  },
+  {
     "articleId": "kb-shipping-001",
     "category": "Shipping and delivery",
     "title": "Tracking says delivered but package is missing",
@@ -118,5 +136,17 @@
     "category": "General inquiry",
     "title": "Warranty coverage overview",
     "content": "Most products include a limited warranty against manufacturing defects for the stated warranty period from purchase. Warranty does not usually cover accidental damage, misuse, unauthorized repair, normal wear, or consumables. Ask for order number, purchase date, and product issue when the customer wants a warranty eligibility check."
+  },
+  {
+    "articleId": "kb-general-003",
+    "category": "General inquiry",
+    "title": "Returns process questions before requesting a refund",
+    "content": "When a customer asks whether returns are accepted, how the return process works, or how long a refund usually takes, treat the case as an informational returns question unless they explicitly ask to start a return or receive money back now. Explain the standard return window, item-condition requirements, and that refunds are usually issued to the original payment method after the returned item is received and inspected. Ask for the order number only if the customer wants to begin the return process."
+  },
+  {
+    "articleId": "kb-general-004",
+    "category": "General inquiry",
+    "title": "Low-signal issue intake",
+    "content": "If a customer says a product is acting weird, not working properly, or asks for help without describing a concrete symptom, do not assume a specific hardware, software, connectivity, billing, or account issue. Ask for the exact problem, when it started, any error messages, the product model, recent changes, and what troubleshooting steps they already tried. Keep the reply neutral and avoid promising replacements, refunds, repairs, account actions, or technical conclusions until more details are available."
   }
 ]
