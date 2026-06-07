@@ -1,44 +1,15 @@
 import { Agent } from "@mastra/core/agent";
-import { generateText, Output } from "ai";
 import { classifier } from "@/config/models";
-import { aiTelemetry, getOpenRouterUsage, type LlmRunUsage, openrouter } from "@/lib/llm";
+import { getOpenRouterUsage, type LlmRunUsage } from "@/lib/openrouter-usage";
 import {
   buildClassifyTicketPrompt,
   classifyTicketSystemPrompt,
 } from "@/prompts/classify-ticket.prompt";
 import { type ClassifiedTicket, ClassifyTicketSchema } from "@/schemas/classify-ticket.schema";
 
-export type ClassifierAgentRun = {
-  output: ClassifiedTicket;
+export type ClassifyTicketResult = {
+  classification: ClassifiedTicket;
   usage?: LlmRunUsage;
-};
-
-/** phase 1 AI sdk implementation, for eval purposes. pending removal */
-export const classifierEvalAgent = async (ticketBody: string): Promise<ClassifierAgentRun> => {
-  const { output, providerMetadata } = await generateText({
-    model: openrouter.chat(classifier.agentModel, {
-      usage: {
-        include: true,
-      },
-    }),
-    temperature: classifier.temperature,
-    providerOptions: {
-      openrouter: {
-        reasoning: classifier.reasoning,
-      },
-    },
-    system: classifyTicketSystemPrompt,
-    prompt: buildClassifyTicketPrompt(ticketBody),
-    output: Output.object({
-      schema: ClassifyTicketSchema,
-    }),
-    experimental_telemetry: aiTelemetry({ functionId: "classify-ticket" }),
-  });
-
-  return {
-    output,
-    usage: getOpenRouterUsage(providerMetadata),
-  };
 };
 
 export const classifierAgent = new Agent({
@@ -58,14 +29,17 @@ export const classifierAgent = new Agent({
   },
 });
 
-export const classifyTicket = async (ticketBody: string): Promise<ClassifiedTicket> => {
+export const classifyTicket = async (ticketBody: string): Promise<ClassifyTicketResult> => {
   const prompt = buildClassifyTicketPrompt(ticketBody);
 
-  const { object } = await classifierAgent.generate(prompt, {
+  const { object, providerMetadata } = await classifierAgent.generate(prompt, {
     structuredOutput: {
       schema: ClassifyTicketSchema,
     },
   });
 
-  return object;
+  return {
+    classification: object,
+    usage: getOpenRouterUsage(providerMetadata),
+  };
 };

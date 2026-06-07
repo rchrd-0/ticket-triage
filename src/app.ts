@@ -1,13 +1,10 @@
 import { readFile } from "node:fs/promises";
 import path from "node:path";
 import { performance } from "node:perf_hooks";
-import { classifierEvalAgent } from "@/agents/classifier.agent";
+import { classifyTicket } from "@/agents/classifier.agent";
 import { classifier } from "@/config/models";
-import { flushLangfuseTraces } from "@/lib/instrumentation";
-import { withLangfuseTrace } from "@/lib/llm";
 import type { ClassifiedTicket } from "@/schemas/classify-ticket.schema";
 import type { Ticket } from "@/schemas/ticket.schema";
-import { buildKbSearchQuery, searchKb } from "@/tools/search-kb";
 import logger from "./lib/logger";
 
 type GoldenTicket = {
@@ -18,25 +15,11 @@ type GoldenTicket = {
 const goldenTicketsPath = path.resolve(import.meta.dir, "evals", "datasets", "golden-tickets.json");
 const goldenTickets = JSON.parse(await readFile(goldenTicketsPath, "utf8")) as GoldenTicket[];
 
-const processTicket = async (ticket: Ticket) =>
-  withLangfuseTrace(
-    "process-ticket",
-    {
-      traceName: `ticket-${ticket.id}`,
-      metadata: { ticketId: ticket.id, product: ticket.product },
-      input: {
-        ticketId: ticket.id,
-        product: ticket.product,
-        body: ticket.body,
-      },
-    },
-    async () => {
-      const { usage, output: classification } = await classifierEvalAgent(ticket.body);
-      const kbResults = await searchKb(buildKbSearchQuery(classification.category, ticket.body));
+const processTicket = async (ticket: Ticket) => {
+  const { usage, classification } = await classifyTicket(ticket.body);
 
-      return { usage, classification, kbResults };
-    }
-  );
+  return { usage, classification };
+};
 
 const evalGoldenTickets = async () => {
   const evalLog = logger.child({
@@ -176,8 +159,4 @@ const main = async () => {
   await evalGoldenTickets();
 };
 
-try {
-  await main();
-} finally {
-  await flushLangfuseTraces();
-}
+await main();

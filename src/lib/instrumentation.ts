@@ -2,6 +2,10 @@ import { LangfuseSpanProcessor } from "@langfuse/otel";
 import { NodeSDK } from "@opentelemetry/sdk-node";
 import { env } from "@/config/env";
 
+/**
+ * Legacy AI SDK OTEL instrumentation from Week 1.
+ * Mastra workflow traces now use @mastra/observability + @mastra/langfuse in src/index.ts.
+ */
 export const langfuseSpanProcessor = new LangfuseSpanProcessor({
   publicKey: env.LANGFUSE_PUBLIC_KEY,
   secretKey: env.LANGFUSE_SECRET_KEY,

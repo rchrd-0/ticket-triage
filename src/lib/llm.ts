@@ -1,10 +1,15 @@
 import type { PropagateAttributesParams } from "@langfuse/core";
 import { observe, propagateAttributes, updateActiveObservation } from "@langfuse/tracing";
-import { createOpenRouter, type OpenRouterUsageAccounting } from "@openrouter/ai-sdk-provider";
-import type { generateText, TelemetrySettings } from "ai";
+import { createOpenRouter } from "@openrouter/ai-sdk-provider";
+import type { TelemetrySettings } from "ai";
 import { env } from "@/config/env";
 
 import "@/lib/instrumentation";
+
+/**
+ * legacy AI SDK + langfuse OTEL helpers from the phase 1 eval path
+ * mastra workflow observability now uses @mastra/observability + @mastra/langfuse in src/index.ts
+ */
 
 export const openrouter = createOpenRouter({
   apiKey: env.OPENROUTER_API_KEY,
@@ -21,16 +26,6 @@ export function aiTelemetry(overrides?: Partial<TelemetrySettings>): TelemetrySe
     ...overrides,
   };
 }
-
-export type LlmRunUsage = OpenRouterUsageAccounting;
-
-export const getOpenRouterUsage = (
-  providerMetadata: Awaited<ReturnType<typeof generateText>>["providerMetadata"]
-): LlmRunUsage | undefined => {
-  const openRouterMetadata = providerMetadata?.openrouter as { usage?: LlmRunUsage } | undefined;
-
-  return openRouterMetadata?.usage;
-};
 
 type WithLangfuseTraceOptions = PropagateAttributesParams & {
   input?: unknown;

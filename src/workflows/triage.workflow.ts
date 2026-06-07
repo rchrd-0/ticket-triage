@@ -34,7 +34,7 @@ const classifyStep = createStep({
   inputSchema: TriageInputSchema,
   outputSchema: ClassifyOutputSchema,
   execute: async ({ inputData }) => {
-    const classification = await classifyTicket(inputData.ticket.body);
+    const { classification } = await classifyTicket(inputData.ticket.body);
 
     return {
       ticket: inputData.ticket,
