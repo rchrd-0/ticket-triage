@@ -205,5 +205,142 @@
       "needsHuman": false,
       "confidence": 0.5
     }
+  },
+  {
+    "_comment": "BOUNDARY — Account access. Ordinary locked account plus expired reset links, no compromise indicators. Standard account recovery SOP should handle this. needsHuman: false.",
+    "ticket": {
+      "id": "g-013",
+      "channel": "chat",
+      "product": "Shopify admin",
+      "body": "I'm locked out of my Shopify admin account after entering the wrong password too many times. The reset emails arrive, but each link says it has already expired when I click it. I still control the email address on the account and there are no suspicious orders or charges. Can you help me get back in?",
+      "customer": { "name": "Maya Chen", "email": "maya.chen@example.com" }
+    },
+    "expected": {
+      "category": "Account access",
+      "urgency": "medium",
+      "needsHuman": false,
+      "confidence": 0.9
+    }
+  },
+  {
+    "_comment": "BOUNDARY — Security concern. Account access failure with password changed without consent and suspicious login. Human/security action required. needsHuman: true.",
+    "ticket": {
+      "id": "g-014",
+      "channel": "email",
+      "product": "Shopify admin",
+      "body": "I cannot log into my Shopify admin account because the password was changed without my permission this morning. I also received a login alert from another country that I don't recognize. Please lock down the account before anyone changes my store or payout details.",
+      "customer": { "name": "Nadia Patel", "email": "nadia.patel@example.com" }
+    },
+    "expected": {
+      "category": "Security concern",
+      "urgency": "high",
+      "needsHuman": true,
+      "confidence": 0.96
+    }
+  },
+  {
+    "_comment": "BOUNDARY — Account access. Lost authenticator but still controls email and recovery codes are not mentioned. Standard 2FA recovery SOP can collect details and guide next steps. needsHuman: false.",
+    "ticket": {
+      "id": "g-015",
+      "channel": "email",
+      "product": "GitHub account",
+      "body": "I replaced my phone and no longer have the authenticator app for my GitHub account. I still have access to the account email and I know my password, but I can't complete the 2FA prompt. There are no suspicious logins; I just need the normal recovery process.",
+      "customer": {
+        "name": "Elliot Brooks",
+        "email": "elliot.brooks@example.com"
+      }
+    },
+    "expected": {
+      "category": "Account access",
+      "urgency": "medium",
+      "needsHuman": false,
+      "confidence": 0.88
+    }
+  },
+  {
+    "_comment": "BOUNDARY — Security concern. 2FA/account access issue tied to suspicious foreign login and purchases. This is not ordinary recovery. needsHuman: true.",
+    "ticket": {
+      "id": "g-016",
+      "channel": "phone",
+      "product": "PlayStation Network",
+      "body": "My PlayStation Network account is asking for a 2FA code I never set up. I also got emails about a login from another country and two game purchases I did not make. I can't get into the account to stop it. Please secure it and reverse the charges.",
+      "customer": { "name": "Leo Martin", "email": "leo.martin@example.com" }
+    },
+    "expected": {
+      "category": "Security concern",
+      "urgency": "high",
+      "needsHuman": true,
+      "confidence": 0.97
+    }
+  },
+  {
+    "_comment": "BOUNDARY — Shipping and delivery. Delayed tracking with order id and no policy exception. Standard tracking/reship/refund flow can handle after order lookup. needsHuman: false.",
+    "ticket": {
+      "id": "g-017",
+      "channel": "email",
+      "product": "Apple Magic Keyboard",
+      "body": "Order ORD-73291 for an Apple Magic Keyboard has shown 'label created' for 6 days and the carrier says they have not received the package. I don't need a special exception; I just want to know whether it can be shipped again or refunded under your normal delivery policy.",
+      "customer": {
+        "name": "Hannah Moore",
+        "email": "hannah.moore@example.com"
+      }
+    },
+    "expected": {
+      "category": "Shipping and delivery",
+      "urgency": "medium",
+      "needsHuman": false,
+      "confidence": 0.92
+    }
+  },
+  {
+    "_comment": "BOUNDARY — Shipping and delivery. Delivered-not-received with repeated prior claims and explicit exception request. Policy judgment / fraud-risk review required. needsHuman: true.",
+    "ticket": {
+      "id": "g-018",
+      "channel": "email",
+      "product": "Bose QuietComfort Ultra Earbuds",
+      "body": "Tracking says my Bose earbuds were delivered yesterday, but I did not receive them. This is the third delivered-but-missing package on my account this year, but I need you to make an exception and send another replacement without requiring a signature or police report.",
+      "customer": { "name": "Victor Lane", "email": "victor.lane@example.com" }
+    },
+    "expected": {
+      "category": "Shipping and delivery",
+      "urgency": "medium",
+      "needsHuman": true,
+      "confidence": 0.86
+    }
+  },
+  {
+    "_comment": "BOUNDARY — Billing and payment. Duplicate charge without compromise indicators. Billing SOP/payment lookup can handle. needsHuman: false.",
+    "ticket": {
+      "id": "g-019",
+      "channel": "chat",
+      "product": "Canva Pro",
+      "body": "My Canva Pro subscription renewed yesterday and I was charged twice for the same annual plan. Both charges have the same amount and timestamp on my card statement. I recognize the subscription and there is no account takeover issue; I just need the duplicate charge refunded.",
+      "customer": { "name": "Grace Wong", "email": "grace.wong@example.com" }
+    },
+    "expected": {
+      "category": "Billing and payment",
+      "urgency": "medium",
+      "needsHuman": false,
+      "confidence": 0.94
+    }
+  },
+  {
+    "_comment": "BOUNDARY — General inquiry. Vague low-signal request with no concrete symptom. Should not over-classify; safest automated reply asks for details. needsHuman: false.",
+    "ticket": {
+      "id": "g-020",
+      "channel": "social",
+      "product": "Kindle Paperwhite",
+      "body": "My Kindle Paperwhite has been acting weird since yesterday. I don't know what happened. Can someone help?",
+      "customer": {
+        "name": "Isabel Torres",
+        "email": "isabel.torres@example.com"
+      }
+    },
+    "expected": {
+      "category": "General inquiry",
+      "urgency": "low",
+      "needsHuman": false,
+      "confidence": 0.55
+    }
   }
 ]
