@@ -7,10 +7,9 @@ import { env } from "@/config/env";
 import "@/lib/instrumentation";
 
 /**
- * legacy AI SDK + langfuse OTEL helpers from the phase 1 eval path
- * mastra workflow observability now uses @mastra/observability + @mastra/langfuse in src/index.ts
+ * Legacy AI SDK + langfuse OTEL helpers from the phase 1 eval path
+ * Mastra workflow observability now uses @mastra/observability + @mastra/langfuse in src/index.ts
  */
-
 export const openrouter = createOpenRouter({
   apiKey: env.OPENROUTER_API_KEY,
 });

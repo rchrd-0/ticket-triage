@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "mastra dev --dir src",
     "build": "mastra build --dir src",
-    "eval": "bun src/app.ts",
+    "eval": "bun src/evals/run-classifier.ts",
     "check-types": "tsc -b",
     "check": "ultracite check",
     "fix": "ultracite fix",
