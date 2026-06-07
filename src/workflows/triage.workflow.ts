@@ -22,7 +22,7 @@ const RouteOutputSchema = z.object({
   route: RouteTicketSchema,
 });
 
-const TriageOutputSchema = z.object({
+export const TriageOutputSchema = z.object({
   ticketId: z.string(),
   classification: ClassifyTicketSchema,
   route: RouteTicketSchema,
