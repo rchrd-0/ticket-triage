@@ -1,7 +1,9 @@
 import { createReadStream, promises } from "node:fs";
 import path from "node:path";
 import Papa from "papaparse";
-import type { Ticket, TicketChannel } from "@/domain/tickets";
+import type { TICKET_CHANNELS, Ticket } from "../src/schemas/ticket.schema";
+
+type TicketChannel = (typeof TICKET_CHANNELS)[number];
 
 type CsvRow = {
   "Ticket ID": string;
