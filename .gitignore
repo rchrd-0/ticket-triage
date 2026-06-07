@@ -12,7 +12,8 @@ coverage
 *.lcov
 
 # logs
-logs
+logs/*
+!logs/.gitignore
 _.log
 report.[0-9]_.[0-9]_.[0-9]_.[0-9]_.json
 

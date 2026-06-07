@@ -1,4 +1,4 @@
-import { readFile } from "node:fs/promises";
+import { mkdir, readFile, writeFile } from "node:fs/promises";
 import path from "node:path";
 import { performance } from "node:perf_hooks";
 import { classifyTicket } from "@/agents/classifier.agent";
@@ -14,6 +14,40 @@ type GoldenTicket = {
 
 const goldenTicketsPath = path.resolve(import.meta.dir, "evals", "datasets", "golden-tickets.json");
 const goldenTickets = JSON.parse(await readFile(goldenTicketsPath, "utf8")) as GoldenTicket[];
+const logsDir = path.resolve(import.meta.dir, "..", "logs");
+
+type EvalCaseLog = {
+  ticketId: string;
+  product: string;
+  ok: boolean;
+  latencyMs: number;
+  actual: ClassifiedTicket;
+  expected: ClassifiedTicket;
+  matches: {
+    category: boolean;
+    needsHuman: boolean;
+    urgency: boolean;
+    confidence: boolean;
+  };
+  costCredits?: number;
+};
+
+type EvalErrorLog = {
+  ticketId: string;
+  product: string;
+  error: string;
+};
+
+const buildLogFileName = () => {
+  const timestamp = new Date().toISOString().replace(/[:.]/g, "-");
+
+  return `eval-${timestamp}.json`;
+};
+
+const writeEvalLog = async (payload: unknown) => {
+  await mkdir(logsDir, { recursive: true });
+  await writeFile(path.join(logsDir, buildLogFileName()), JSON.stringify(payload, null, 2));
+};
 
 const processTicket = async (ticket: Ticket) => {
   const { usage, classification } = await classifyTicket(ticket.body);
@@ -46,6 +80,8 @@ const evalGoldenTickets = async () => {
   let totalLatencyMs = 0;
   let totalCost = 0;
   let ticketsWithCost = 0;
+  const cases: EvalCaseLog[] = [];
+  const errorCases: EvalErrorLog[] = [];
 
   for (const { ticket, expected } of goldenTickets) {
     const ticketLog = evalLog.child({ ticketId: ticket.id, product: ticket.product });
@@ -60,6 +96,11 @@ const evalGoldenTickets = async () => {
       actual = result.classification;
     } catch (error) {
       errors += 1;
+      errorCases.push({
+        ticketId: ticket.id,
+        product: ticket.product,
+        error: error instanceof Error ? error.message : String(error),
+      });
 
       ticketLog.error(
         { err: error instanceof Error ? error.message : String(error) },
@@ -82,6 +123,23 @@ const evalGoldenTickets = async () => {
     const urgencyMatch = actual.urgency === expected.urgency;
     const confidenceMatch = actual.confidence === expected.confidence;
     const ok = categoryMatch && needsHumanMatch;
+    const costCredits = openRouterUsage?.cost;
+
+    cases.push({
+      ticketId: ticket.id,
+      product: ticket.product,
+      ok,
+      latencyMs: Math.round(latencyMs),
+      actual,
+      expected,
+      matches: {
+        category: categoryMatch,
+        needsHuman: needsHumanMatch,
+        urgency: urgencyMatch,
+        confidence: confidenceMatch,
+      },
+      ...(typeof costCredits === "number" ? { costCredits } : {}),
+    });
 
     if (ok) {
       pass += 1;
@@ -137,22 +195,37 @@ const evalGoldenTickets = async () => {
   const datasetSize = goldenTickets.length;
   const processedCount = datasetSize - errors;
 
-  evalLog.info(
-    {
-      pass,
-      fail,
-      errors,
-      primaryAccuracy: pass / datasetSize,
-      category: { pass: categoryPass, total: datasetSize },
-      needsHuman: { pass: needsHumanPass, total: datasetSize },
-      urgency: { pass: urgencyPass, total: datasetSize },
-      confidence: { pass: confidencePass, total: datasetSize },
-      avgLatencyMs: processedCount > 0 ? Math.round(totalLatencyMs / processedCount) : 0,
-      totalCostCredits: Number(totalCost.toFixed(6)),
-      ticketsWithCost,
+  const summary = {
+    pass,
+    fail,
+    errors,
+    primaryAccuracy: pass / datasetSize,
+    category: { pass: categoryPass, total: datasetSize },
+    needsHuman: { pass: needsHumanPass, total: datasetSize },
+    urgency: { pass: urgencyPass, total: datasetSize },
+    confidence: { pass: confidencePass, total: datasetSize },
+    avgLatencyMs: processedCount > 0 ? Math.round(totalLatencyMs / processedCount) : 0,
+    totalCostCredits: Number(totalCost.toFixed(6)),
+    ticketsWithCost,
+  };
+
+  await writeEvalLog({
+    runAt: new Date().toISOString(),
+    dataset: {
+      path: path.relative(path.resolve(import.meta.dir, ".."), goldenTicketsPath),
+      size: datasetSize,
     },
-    "GOLDEN TICKET EVAL COMPLETE"
-  );
+    model: {
+      name: classifier.agentModel,
+      temperature: classifier.temperature,
+      reasoningEffort: classifier.reasoning.effort,
+    },
+    summary,
+    cases,
+    errors: errorCases,
+  });
+
+  evalLog.info(summary, "GOLDEN TICKET EVAL COMPLETE");
 };
 
 const main = async () => {
