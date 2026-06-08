@@ -70,13 +70,14 @@ const retrieveKbStep = createStep({
   id: "retrieve-kb-context",
   inputSchema: RouteOutputSchema,
   outputSchema: RetrievedRouteOutputSchema,
+  // biome-ignore lint/suspicious/useAwait: Mastra execute must return a Promise; searchKb is sync
   execute: async ({ inputData }) => {
     const searchQuery = buildKbSearchQuery(
       inputData.classification.category,
       inputData.ticket.body
     );
 
-    const kbResults = await searchKb(searchQuery);
+    const kbResults = searchKb(searchQuery);
 
     return {
       ...inputData,

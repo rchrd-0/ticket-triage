@@ -8,8 +8,8 @@ import { writeEvalLog } from "./log-writer";
 
 const smokeTicketIds = ["g-002", "g-006"] as const;
 const expectedSmokeResults = {
-  "g-002": { routePath: "draft", hasReply: true },
-  "g-006": { routePath: "human_review", hasReply: false },
+  "g-002": { routePath: "draft", hasReply: true, minCitations: 1 },
+  "g-006": { routePath: "human_review", hasReply: false, minCitations: 0 },
 } as const;
 
 const goldenTicketsPath = path.resolve(import.meta.dir, "datasets", "golden-tickets.json");
@@ -23,6 +23,7 @@ type SmokeCaseLog = {
   actualRoute?: string;
   expectedReply: boolean;
   actualReply?: boolean;
+  expectedMinCitations: number;
   citedArticleIds?: string[];
   ok: boolean;
   error?: string;
@@ -48,8 +49,14 @@ const runSmokeTicket = async (ticket: Ticket) => {
     throw new Error(`Workflow smoke failed for ${ticket.id}: ${result.status}`);
   }
 
+  const directParse = TriageOutputSchema.safeParse(result.result);
+
+  if (directParse.success) {
+    return directParse.data;
+  }
+
   const branchOutputs = result.result as Record<string, unknown>;
-  const output = branchOutputs["draft-reply"] ?? branchOutputs["human-review"];
+  const output = branchOutputs["draft-workflow"] ?? branchOutputs["human-review"];
 
   return TriageOutputSchema.parse(output);
 };
@@ -66,7 +73,7 @@ for (const ticketId of smokeTicketIds) {
     const ok =
       result.route.path === expected.routePath &&
       hasReply === expected.hasReply &&
-      citedArticleIds.length === 0;
+      citedArticleIds.length >= expected.minCitations;
 
     cases.push({
       ticketId,
@@ -74,6 +81,7 @@ for (const ticketId of smokeTicketIds) {
       actualRoute: result.route.path,
       expectedReply: expected.hasReply,
       actualReply: hasReply,
+      expectedMinCitations: expected.minCitations,
       citedArticleIds,
       ok,
       ...(ok ? {} : { error: `Unexpected smoke result for ${ticketId}` }),
@@ -97,6 +105,7 @@ for (const ticketId of smokeTicketIds) {
           actualRoute: result.route.path,
           expectedReply: expected.hasReply,
           actualReply: hasReply,
+          expectedMinCitations: expected.minCitations,
           citedArticleIds,
         },
         `WORKFLOW SMOKE FAILED: ${ticketId}`
@@ -109,6 +118,7 @@ for (const ticketId of smokeTicketIds) {
       ticketId,
       expectedRoute: expected.routePath,
       expectedReply: expected.hasReply,
+      expectedMinCitations: expected.minCitations,
       ok: false,
       error: errorMessage,
     });
