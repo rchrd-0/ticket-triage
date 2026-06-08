@@ -1,10 +1,13 @@
 import { readFile } from "node:fs/promises";
 import path from "node:path";
 import type { GoldenTicket } from "@/evals/types";
+import { mastra } from "@/index";
 import logger from "@/lib/logger";
 import type { Ticket } from "@/schemas/ticket.schema";
-import { TriageOutputSchema, triageWorkflow } from "@/workflows/triage.workflow";
+import { TriageOutputSchema } from "@/workflows/triage.workflow";
 import { writeEvalLog } from "./log-writer";
+
+const workflow = mastra.getWorkflowById("triage-workflow");
 
 const smokeTicketIds = ["g-002", "g-006"] as const;
 const expectedSmokeResults = {
@@ -42,7 +45,7 @@ const getSmokeTicket = (ticketId: (typeof smokeTicketIds)[number]) => {
 };
 
 const runSmokeTicket = async (ticket: Ticket) => {
-  const run = await triageWorkflow.createRun();
+  const run = await workflow.createRun();
   const result = await run.start({ inputData: { ticket } });
 
   if (result.status !== "success") {
@@ -61,88 +64,96 @@ const runSmokeTicket = async (ticket: Ticket) => {
   return TriageOutputSchema.parse(output);
 };
 
-const cases: SmokeCaseLog[] = [];
+const main = async () => {
+  const cases: SmokeCaseLog[] = [];
 
-for (const ticketId of smokeTicketIds) {
-  const expected = expectedSmokeResults[ticketId];
+  for (const ticketId of smokeTicketIds) {
+    const expected = expectedSmokeResults[ticketId];
 
-  try {
-    const result = await runSmokeTicket(getSmokeTicket(ticketId));
-    const hasReply = Boolean(result.reply);
-    const citedArticleIds = result.reply?.citedArticleIds ?? [];
-    const ok =
-      result.route.path === expected.routePath &&
-      hasReply === expected.hasReply &&
-      citedArticleIds.length >= expected.minCitations;
+    try {
+      const result = await runSmokeTicket(getSmokeTicket(ticketId));
+      const hasReply = Boolean(result.reply);
+      const citedArticleIds = result.reply?.citedArticleIds ?? [];
+      const ok =
+        result.route.path === expected.routePath &&
+        hasReply === expected.hasReply &&
+        citedArticleIds.length >= expected.minCitations;
 
-    cases.push({
-      ticketId,
-      expectedRoute: expected.routePath,
-      actualRoute: result.route.path,
-      expectedReply: expected.hasReply,
-      actualReply: hasReply,
-      expectedMinCitations: expected.minCitations,
-      citedArticleIds,
-      ok,
-      ...(ok ? {} : { error: `Unexpected smoke result for ${ticketId}` }),
-    });
+      cases.push({
+        ticketId,
+        expectedRoute: expected.routePath,
+        actualRoute: result.route.path,
+        expectedReply: expected.hasReply,
+        actualReply: hasReply,
+        expectedMinCitations: expected.minCitations,
+        citedArticleIds,
+        ok,
+        ...(ok ? {} : { error: `Unexpected smoke result for ${ticketId}` }),
+      });
 
-    if (ok) {
-      smokeLog.info(
-        {
-          ticketId,
-          routePath: result.route.path,
-          hasReply,
-          citedArticleIds,
-        },
-        `${ticketId} -> ${result.route.path} -> reply ${hasReply ? "yes" : "no"}`
-      );
-    } else {
-      smokeLog.error(
-        {
-          ticketId,
-          expectedRoute: expected.routePath,
-          actualRoute: result.route.path,
-          expectedReply: expected.hasReply,
-          actualReply: hasReply,
-          expectedMinCitations: expected.minCitations,
-          citedArticleIds,
-        },
-        `WORKFLOW SMOKE FAILED: ${ticketId}`
-      );
+      if (ok) {
+        smokeLog.info(
+          {
+            ticketId,
+            routePath: result.route.path,
+            hasReply,
+            citedArticleIds,
+          },
+          `${ticketId} -> ${result.route.path} -> reply ${hasReply ? "yes" : "no"}`
+        );
+      } else {
+        smokeLog.error(
+          {
+            ticketId,
+            expectedRoute: expected.routePath,
+            actualRoute: result.route.path,
+            expectedReply: expected.hasReply,
+            actualReply: hasReply,
+            expectedMinCitations: expected.minCitations,
+            citedArticleIds,
+          },
+          `WORKFLOW SMOKE FAILED: ${ticketId}`
+        );
+      }
+    } catch (error) {
+      const errorMessage = toErrorMessage(error);
+
+      cases.push({
+        ticketId,
+        expectedRoute: expected.routePath,
+        expectedReply: expected.hasReply,
+        expectedMinCitations: expected.minCitations,
+        ok: false,
+        error: errorMessage,
+      });
+
+      smokeLog.error({ ticketId, err: errorMessage }, `WORKFLOW SMOKE ERRORED: ${ticketId}`);
     }
-  } catch (error) {
-    const errorMessage = toErrorMessage(error);
-
-    cases.push({
-      ticketId,
-      expectedRoute: expected.routePath,
-      expectedReply: expected.hasReply,
-      expectedMinCitations: expected.minCitations,
-      ok: false,
-      error: errorMessage,
-    });
-
-    smokeLog.error({ ticketId, err: errorMessage }, `WORKFLOW SMOKE ERRORED: ${ticketId}`);
   }
-}
 
-const summary = {
-  pass: cases.filter((smokeCase) => smokeCase.ok).length,
-  fail: cases.filter((smokeCase) => !smokeCase.ok).length,
+  const summary = {
+    pass: cases.filter((smokeCase) => smokeCase.ok).length,
+    fail: cases.filter((smokeCase) => !smokeCase.ok).length,
+  };
+
+  await writeEvalLog("workflow-smoke", {
+    runAt: new Date().toISOString(),
+    script: "workflow:smoke",
+    dataset: {
+      path: path.relative(path.resolve(import.meta.dir, "..", ".."), goldenTicketsPath),
+      ticketIds: smokeTicketIds,
+    },
+    summary,
+    cases,
+  });
+
+  if (summary.fail > 0) {
+    process.exitCode = 1;
+  }
 };
 
-await writeEvalLog("workflow-smoke", {
-  runAt: new Date().toISOString(),
-  script: "workflow:smoke",
-  dataset: {
-    path: path.relative(path.resolve(import.meta.dir, "..", ".."), goldenTicketsPath),
-    ticketIds: smokeTicketIds,
-  },
-  summary,
-  cases,
-});
-
-if (summary.fail > 0) {
-  process.exit(1);
+try {
+  await main();
+} finally {
+  await mastra.shutdown();
 }
