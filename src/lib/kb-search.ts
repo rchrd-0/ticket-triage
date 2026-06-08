@@ -73,27 +73,32 @@ const scoreArticle = (
   const normalizedTitle = normalizeText(article.title);
   const normalizedContent = normalizeText(article.content);
 
-  let score = 0;
+  let categoryBoost = 0;
+  let termScore = 0;
 
   if (options.category === article.category) {
-    score += 6;
+    categoryBoost += 6;
   }
 
   for (const term of terms) {
     if (normalizedTitle.includes(term)) {
-      score += 4;
+      termScore += 4;
     }
 
     if (normalizedCategory.includes(term)) {
-      score += 3;
+      termScore += 3;
     }
 
     if (normalizedContent.includes(term)) {
-      score += 1;
+      termScore += 1;
     }
   }
 
-  return score;
+  if (termScore === 0) {
+    return 0;
+  }
+
+  return termScore + categoryBoost;
 };
 
 const buildSnippet = (article: KbArticle, terms: string[]): string => {
