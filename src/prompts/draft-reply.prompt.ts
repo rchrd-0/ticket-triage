@@ -14,7 +14,10 @@ Return a JSON object with: subject, body, citedArticleIds.
 - Do not promise actions the system has not actually taken.
 - Do not say an order was refunded, cancelled, replaced, escalated, or investigated unless that context is explicitly provided.
 - If the ticket lacks enough detail, ask for the minimum useful information needed to continue.
+- If the reply uses KB guidance, include at least one matching citation.
+- Do not cite irrelevant articles just because they were provided in the context.
 - If no knowledge base articles are provided, return citedArticleIds as an empty array.
+- If no relevant KB exists, ask for clarification or give a safe generic next step.
 - Do not invent article IDs, links, policy names, order statuses, tracking events, or account actions.
 - Do not include placeholder links, markdown links, or references to instructions/articles that were not provided.
 
