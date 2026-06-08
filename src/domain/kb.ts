@@ -1,14 +1,8 @@
-import type { ClassifiedTicket } from "@/schemas/classify-ticket.schema";
+import type { TicketCategories } from "@/schemas/classify-ticket.schema";
 
 export type KbArticle = {
   articleId: string;
-  category: ClassifiedTicket["category"];
+  category: TicketCategories;
   title: string;
   content: string;
-};
-
-export type KbSearchResult = {
-  articleId: string;
-  title: string;
-  snippet: string;
 };

@@ -1,6 +1,6 @@
 import { z } from "zod";
 
-export const TICKET_CATEGORIES = [
+export const TicketCategoriesEnum = z.enum([
   "Hardware issue",
   "Software / app bug",
   "Connectivity issue",
@@ -11,21 +11,19 @@ export const TICKET_CATEGORIES = [
   "Billing and payment",
   "Shipping and delivery",
   "General inquiry",
-] as const;
+]);
+export type TicketCategories = z.infer<typeof TicketCategoriesEnum>;
 
-export const URGENCY_VALUES = ["low", "medium", "high"] as const;
+const UrgencyEnum = z.enum(["low", "medium", "high"]);
+export type Urgency = z.infer<typeof UrgencyEnum>;
 
 export const ClassifyTicketSchema = z.object({
-  category: z
-    .enum(TICKET_CATEGORIES)
-    .describe(
-      "Primary routing category. Prefer a specific category when the ticket has clear signal; use General inquiry for policy questions, general questions, or low-signal tickets without enough detail to route confidently."
-    ),
-  urgency: z
-    .enum(URGENCY_VALUES)
-    .describe(
-      "Ticket priority. high = active financial harm, data loss, fraud, or same-day critical blockage; medium = affects use/work without immediate deadline; low = policy/general question or no time pressure."
-    ),
+  category: TicketCategoriesEnum.describe(
+    "Primary routing category. Prefer a specific category when the ticket has clear signal; use General inquiry for policy questions, general questions, or low-signal tickets without enough detail to route confidently."
+  ),
+  urgency: UrgencyEnum.describe(
+    "Ticket priority. high = active financial harm, data loss, fraud, or same-day critical blockage; medium = affects use/work without immediate deadline; low = policy/general question or no time pressure."
+  ),
   needsHuman: z
     .boolean()
     .describe(
