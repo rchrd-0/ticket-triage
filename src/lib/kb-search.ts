@@ -1,8 +1,6 @@
-import { readFile } from "node:fs/promises";
-import path from "node:path";
-import { fileURLToPath } from "node:url";
 import type { z } from "zod";
 import type { KbArticle } from "@/domain/kb";
+import { kbArticles } from "@/fixtures/kb-articles";
 import type { TicketCategories } from "@/schemas/classify-ticket.schema";
 import type { SearchKbResult, SearchKbSchema } from "@/schemas/search-kb.schema";
 
@@ -54,13 +52,6 @@ const STOP_WORDS = new Set([
   "customer",
 ]);
 
-const kbArticlesPath = path.join(
-  path.dirname(fileURLToPath(import.meta.url)),
-  "..",
-  "fixtures",
-  "kb-articles.json"
-);
-
 const normalizeText = (value: string): string =>
   value.toLowerCase().replace(NON_WORD_REGEX, " ").trim();
 
@@ -69,19 +60,6 @@ const tokenize = (query: string): string[] => {
   const filteredTerms = terms.filter((term) => term.length > 2 && !STOP_WORDS.has(term));
 
   return [...new Set(filteredTerms)];
-};
-
-let cachedArticles: KbArticle[] | null = null;
-
-const readKbArticles = async (): Promise<KbArticle[]> => {
-  if (cachedArticles) {
-    return cachedArticles;
-  }
-
-  const rawArticles = await readFile(kbArticlesPath, "utf8");
-  cachedArticles = JSON.parse(rawArticles) as KbArticle[];
-
-  return cachedArticles;
 };
 
 const scoreArticle = (
@@ -141,9 +119,7 @@ export const searchKbCore = async (input: ParsedSearchKbInput): Promise<SearchKb
     return [];
   }
 
-  const articles = await readKbArticles();
-
-  const scoredArticles = articles.map((article) => ({
+  const scoredArticles = kbArticles.map((article) => ({
     article,
     score: scoreArticle(article, terms, {
       category: input.category,
