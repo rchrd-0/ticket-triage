@@ -1,0 +1,113 @@
+[
+  {
+    "ticketId": "g-002",
+    "expectedPrimaryArticleId": "kb-software-001",
+    "expectedAnyArticleIds": ["kb-software-001"],
+    "allowedArticleIds": ["kb-software-001", "kb-software-002"],
+    "forbiddenArticleIds": ["kb-hardware-001", "kb-hardware-002"],
+    "notes": "Repeatable app crash during export. Should retrieve the app crash troubleshooting article."
+  },
+  {
+    "ticketId": "g-003",
+    "expectedPrimaryArticleId": "kb-shipping-002",
+    "expectedAnyArticleIds": ["kb-shipping-002"],
+    "allowedArticleIds": ["kb-shipping-002"],
+    "forbiddenArticleIds": ["kb-shipping-001"],
+    "notes": "Tracking stuck in transit for several days. Delayed shipment article is the right retrieval target, not delivered-but-missing."
+  },
+  {
+    "ticketId": "g-004",
+    "expectedPrimaryArticleId": "kb-refund-001",
+    "expectedAnyArticleIds": ["kb-refund-001"],
+    "allowedArticleIds": ["kb-refund-001", "kb-general-003"],
+    "forbiddenArticleIds": ["kb-refund-002"],
+    "notes": "Explicit in-window refund request. Standard refund window should be retrieved before exception/damaged item policy."
+  },
+  {
+    "ticketId": "g-005",
+    "expectedAnyArticleIds": ["kb-account-001", "kb-account-002"],
+    "expectedPrimaryArticleId": "kb-account-001",
+    "allowedArticleIds": ["kb-account-001", "kb-account-002"],
+    "forbiddenArticleIds": ["kb-security-001"],
+    "notes": "Expired reset link with no compromise indicators. Should retrieve login/reset or locked-account help, not account takeover."
+  },
+  {
+    "ticketId": "g-007",
+    "expectedPrimaryArticleId": "kb-billing-001",
+    "expectedAnyArticleIds": ["kb-billing-001"],
+    "allowedArticleIds": ["kb-billing-001", "kb-billing-003"],
+    "forbiddenArticleIds": ["kb-security-001"],
+    "notes": "Duplicate monthly charge. Should retrieve duplicate charge/pending authorization billing article."
+  },
+  {
+    "ticketId": "g-008",
+    "expectedAnyArticleIds": ["kb-connectivity-003"],
+    "expectedPrimaryArticleId": "kb-connectivity-003",
+    "allowedArticleIds": ["kb-connectivity-003", "kb-connectivity-001"],
+    "forbiddenArticleIds": ["kb-software-001"],
+    "notes": "Calls drop every 10–15 minutes at home on multiple devices. Should retrieve home network/video-call instability guidance."
+  },
+  {
+    "ticketId": "g-009",
+    "expectedPrimaryArticleId": "kb-general-003",
+    "expectedAnyArticleIds": ["kb-general-003"],
+    "allowedArticleIds": ["kb-general-003", "kb-refund-001"],
+    "forbiddenArticleIds": ["kb-refund-002"],
+    "notes": "Customer asks how returns work before requesting action. Returns process question article should be retrieved."
+  },
+  {
+    "ticketId": "g-011",
+    "expectedPrimaryArticleId": "kb-billing-003",
+    "expectedAnyArticleIds": ["kb-billing-003"],
+    "allowedArticleIds": ["kb-billing-003", "kb-billing-001"],
+    "forbiddenArticleIds": ["kb-hardware-002", "kb-security-001"],
+    "notes": "Primary ask is unwanted device protection charges. Hardware damage is background context, not the retrieval target."
+  },
+  {
+    "ticketId": "g-012",
+    "expectedPrimaryArticleId": "kb-general-004",
+    "expectedAnyArticleIds": ["kb-general-004"],
+    "allowedArticleIds": ["kb-general-004", "kb-general-002"],
+    "forbiddenArticleIds": ["kb-hardware-001", "kb-hardware-002"],
+    "notes": "Low-signal 'not working properly' ticket. Should retrieve intake/clarification guidance, not hardware troubleshooting."
+  },
+  {
+    "ticketId": "g-013",
+    "expectedAnyArticleIds": ["kb-account-002", "kb-account-001"],
+    "expectedPrimaryArticleId": "kb-account-002",
+    "allowedArticleIds": ["kb-account-001", "kb-account-002"],
+    "forbiddenArticleIds": ["kb-security-001"],
+    "notes": "Locked account plus expired reset links, no compromise indicators. Should retrieve locked-account/login recovery SOP."
+  },
+  {
+    "ticketId": "g-015",
+    "expectedPrimaryArticleId": "kb-account-003",
+    "expectedAnyArticleIds": ["kb-account-003"],
+    "allowedArticleIds": ["kb-account-003", "kb-account-001"],
+    "forbiddenArticleIds": ["kb-security-001"],
+    "notes": "Lost authenticator with no compromise indicators. Should retrieve ordinary 2FA recovery, not account takeover."
+  },
+  {
+    "ticketId": "g-017",
+    "expectedPrimaryArticleId": "kb-shipping-002",
+    "expectedAnyArticleIds": ["kb-shipping-002"],
+    "allowedArticleIds": ["kb-shipping-002", "kb-refund-001"],
+    "forbiddenArticleIds": ["kb-shipping-001"],
+    "notes": "Label created for 6 days and carrier has not received package. Should retrieve delayed shipment/address correction article."
+  },
+  {
+    "ticketId": "g-019",
+    "expectedAnyArticleIds": ["kb-billing-001", "kb-billing-003"],
+    "allowedArticleIds": ["kb-billing-001", "kb-billing-003"],
+    "forbiddenArticleIds": ["kb-security-001"],
+    "notes": "At least one billing article should appear; security should not appear without compromise indicators."
+  },
+  {
+    "ticketId": "g-020",
+    "expectedPrimaryArticleId": "kb-general-004",
+    "expectedAnyArticleIds": ["kb-general-004"],
+    "allowedArticleIds": ["kb-general-004"],
+    "forbiddenArticleIds": ["kb-hardware-001", "kb-software-001"],
+    "notes": "Vague 'acting weird' request. Should retrieve low-signal intake guidance."
+  }
+]
