@@ -112,7 +112,7 @@ const buildSnippet = (article: KbArticle, terms: string[]): string => {
   return `${source.slice(0, SNIPPET_LENGTH).trimEnd()}...`;
 };
 
-export const searchKbCore = async (input: ParsedSearchKbInput): Promise<SearchKbResult[]> => {
+export const searchKbCore = (input: ParsedSearchKbInput): SearchKbResult[] => {
   const terms = tokenize(input.query);
 
   if (terms.length === 0) {

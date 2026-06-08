@@ -1,4 +1,5 @@
 import type { ClassifiedTicket } from "@/schemas/classify-ticket.schema";
+import type { SearchKbResult } from "@/schemas/search-kb.schema";
 import type { Ticket } from "@/schemas/ticket.schema";
 
 export const draftReplySystemPrompt = `You draft concise customer support replies for an e-commerce support team.
@@ -28,10 +29,25 @@ Return JSON only. No explanation outside the object.`;
 export const buildDraftReplyPrompt = ({
   ticket,
   classification,
+  kbResults,
 }: {
   ticket: Ticket;
   classification: ClassifiedTicket;
-}) => `Customer ticket:
+  kbResults: SearchKbResult[];
+}) => {
+  const kbContext =
+    kbResults.length > 0
+      ? kbResults
+          .map((result) => `- ${result.articleId} | ${result.title}\n  ${result.snippet}`)
+          .join("\n")
+      : "No KB articles were provided for this draft.";
+
+  const allowedCitationIds =
+    kbResults.length > 0
+      ? `[${kbResults.map((result) => `"${result.articleId}"`).join(", ")}]`
+      : "[]";
+
+  return `Customer ticket:
 Product: ${ticket.product}
 Channel: ${ticket.channel}
 Body:
@@ -44,4 +60,10 @@ Needs human: ${classification.needsHuman}
 Confidence: ${classification.confidence}
 
 Knowledge base context:
-No KB articles were provided for this draft. citedArticleIds must be [].`;
+${kbContext}
+
+Citation rules:
+- citedArticleIds must be a subset of: ${allowedCitationIds}
+- If no KB articles are provided, citedArticleIds must be [].
+- Do not cite article IDs that are not listed above.`;
+};

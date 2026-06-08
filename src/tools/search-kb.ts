@@ -4,14 +4,15 @@ import { searchKbCore } from "@/lib/kb-search";
 import logger from "@/lib/logger";
 import {
   type SearchKbInput,
+  type SearchKbResult,
   SearchKbResultSchema,
   SearchKbSchema,
 } from "@/schemas/search-kb.schema";
 
-export const searchKb = async (input: SearchKbInput) => {
+export const searchKb = (input: SearchKbInput): SearchKbResult[] => {
   const startedAt = performance.now();
   const parsedInput = SearchKbSchema.parse(input);
-  const results = await searchKbCore(parsedInput);
+  const results = searchKbCore(parsedInput);
 
   logger.info(
     {
@@ -33,8 +34,9 @@ export const searchKbTool = createTool({
     "Searches support knowledge-base articles and returns article IDs, titles, and snippets for grounded drafting.",
   inputSchema: SearchKbSchema,
   outputSchema: z.array(SearchKbResultSchema),
+  // biome-ignore lint/suspicious/useAwait: Mastra execute must return a Promise; searchKb is sync
   execute: async (inputData: SearchKbInput) => {
     // type inference broken re: https://github.com/mastra-ai/mastra/pull/17011
-    return await searchKb(inputData);
+    return searchKb(inputData);
   },
 });

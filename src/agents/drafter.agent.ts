@@ -3,6 +3,7 @@ import { drafter } from "@/config/models";
 import { buildDraftReplyPrompt, draftReplySystemPrompt } from "@/prompts/draft-reply.prompt";
 import type { ClassifiedTicket } from "@/schemas/classify-ticket.schema";
 import { type DraftReply, DraftReplySchema } from "@/schemas/draft-reply.schema";
+import type { SearchKbResult } from "@/schemas/search-kb.schema";
 import type { Ticket } from "@/schemas/ticket.schema";
 
 export const drafterAgent = new Agent({
@@ -24,9 +25,10 @@ export const drafterAgent = new Agent({
 
 export const draftReply = async (
   ticket: Ticket,
-  classification: ClassifiedTicket
+  classification: ClassifiedTicket,
+  kbResults: SearchKbResult[]
 ): Promise<DraftReply> => {
-  const prompt = buildDraftReplyPrompt({ ticket, classification });
+  const prompt = buildDraftReplyPrompt({ ticket, classification, kbResults });
 
   const { object } = await drafterAgent.generate(prompt, {
     structuredOutput: {
