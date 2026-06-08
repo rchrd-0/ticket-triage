@@ -7,7 +7,7 @@
     "dev": "mastra dev --dir src",
     "build": "mastra build --dir src",
     "test": "bun test",
-    "eval": "bun src/evals/run-classifier.ts",
+    "eval:classifier": "bun src/evals/run-classifier-eval.ts",
     "workflow:smoke": "bun src/evals/workflow-smoke.ts",
     "check-types": "tsc -b",
     "check": "ultracite check",

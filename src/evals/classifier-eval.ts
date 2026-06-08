@@ -1,9 +1,13 @@
 import type { ClassifyTicketResult } from "@/agents/classifier.agent";
 import type { ClassifiedTicket } from "@/schemas/classify-ticket.schema";
 import type { Ticket } from "@/schemas/ticket.schema";
-import type { EvalCaseLog, EvalSummary, EvalTotals } from "./types";
+import type {
+  ClassifierEvalCaseLog,
+  ClassifierEvalSummary,
+  ClassifierEvalTotals,
+} from "./classifier-types";
 
-export const createEvalTotals = (): EvalTotals => ({
+export const createEvalTotals = (): ClassifierEvalTotals => ({
   pass: 0,
   fail: 0,
   errors: 0,
@@ -29,7 +33,7 @@ export const buildCaseLog = (
   actual: ClassifiedTicket,
   usage: ClassifyTicketResult["usage"],
   latencyMs: number
-): EvalCaseLog => {
+): ClassifierEvalCaseLog => {
   const matches = compareClassification(actual, expected);
   const costCredits = usage?.cost;
 
@@ -45,7 +49,7 @@ export const buildCaseLog = (
   };
 };
 
-export const addCaseToTotals = (totals: EvalTotals, caseLog: EvalCaseLog) => {
+export const addCaseToTotals = (totals: ClassifierEvalTotals, caseLog: ClassifierEvalCaseLog) => {
   totals.pass += Number(caseLog.ok);
   totals.fail += Number(!caseLog.ok);
   totals.categoryPass += Number(caseLog.matches.category);
@@ -60,7 +64,10 @@ export const addCaseToTotals = (totals: EvalTotals, caseLog: EvalCaseLog) => {
   }
 };
 
-export const buildSummary = (totals: EvalTotals, datasetSize: number): EvalSummary => {
+export const buildSummary = (
+  totals: ClassifierEvalTotals,
+  datasetSize: number
+): ClassifierEvalSummary => {
   const processedCount = datasetSize - totals.errors;
 
   return {

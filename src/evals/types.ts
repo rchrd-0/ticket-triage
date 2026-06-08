@@ -6,60 +6,14 @@ export type GoldenTicket = {
   expected: ClassifiedTicket;
 };
 
-export type ClassificationMatches = {
-  category: boolean;
-  needsHuman: boolean;
-  urgency: boolean;
-  confidence: boolean;
-};
-
-export type EvalCaseLog = {
+export type GoldenRetrieval = {
   ticketId: string;
-  product: string;
-  ok: boolean;
-  latencyMs: number;
-  actual: ClassifiedTicket;
-  expected: ClassifiedTicket;
-  matches: ClassificationMatches;
-  costCredits?: number;
+  expectedPrimaryArticleId?: string;
+  expectedAnyArticleIds: string[];
+  allowedArticleIds?: string[];
+  forbiddenArticleIds?: string[];
+  notes: string;
 };
-
-export type EvalErrorLog = {
-  ticketId: string;
-  product: string;
-  error: string;
-};
-
-export type EvalTotals = {
-  pass: number;
-  fail: number;
-  errors: number;
-  categoryPass: number;
-  needsHumanPass: number;
-  urgencyPass: number;
-  confidencePass: number;
-  totalLatencyMs: number;
-  totalCost: number;
-  ticketsWithCost: number;
-};
-
-export type EvalSummary = {
-  pass: number;
-  fail: number;
-  errors: number;
-  primaryAccuracy: number;
-  category: { pass: number; total: number };
-  needsHuman: { pass: number; total: number };
-  urgency: { pass: number; total: number };
-  confidence: { pass: number; total: number };
-  avgLatencyMs: number;
-  totalCostCredits: number;
-  ticketsWithCost: number;
-};
-
-export type EvalCaseOutcome =
-  | { kind: "success"; caseLog: EvalCaseLog }
-  | { kind: "error"; errorLog: EvalErrorLog };
 
 export type EvalLogger = {
   child(bindings: Record<string, unknown>): EvalLogger;

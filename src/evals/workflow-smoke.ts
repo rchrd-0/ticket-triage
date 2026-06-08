@@ -1,7 +1,7 @@
-import { readFile } from "node:fs/promises";
 import path from "node:path";
-import type { GoldenTicket } from "@/evals/types";
+import { goldenTickets, goldenTicketsPath } from "@/evals/load-datasets";
 import { mastra } from "@/index";
+import { toErrorMessage } from "@/lib/format";
 import logger from "@/lib/logger";
 import type { Ticket } from "@/schemas/ticket.schema";
 import { TriageOutputSchema } from "@/workflows/triage.workflow";
@@ -15,9 +15,6 @@ const expectedSmokeResults = {
   "g-006": { routePath: "human_review", hasReply: false, minCitations: 0 },
 } as const;
 
-const goldenTicketsPath = path.resolve(import.meta.dir, "datasets", "golden-tickets.json");
-
-const goldenTickets = JSON.parse(await readFile(goldenTicketsPath, "utf8")) as GoldenTicket[];
 const smokeLog = logger.child({ script: "workflowSmoke", datasetSize: smokeTicketIds.length });
 
 type SmokeCaseLog = {
@@ -31,8 +28,6 @@ type SmokeCaseLog = {
   ok: boolean;
   error?: string;
 };
-
-const toErrorMessage = (error: unknown) => (error instanceof Error ? error.message : String(error));
 
 const getSmokeTicket = (ticketId: (typeof smokeTicketIds)[number]) => {
   const goldenTicket = goldenTickets.find(({ ticket }) => ticket.id === ticketId);

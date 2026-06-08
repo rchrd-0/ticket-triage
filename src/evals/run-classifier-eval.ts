@@ -1,4 +1,3 @@
-import { readFile } from "node:fs/promises";
 import path from "node:path";
 import { performance } from "node:perf_hooks";
 import { classifyTicket } from "@/agents/classifier.agent";
@@ -10,21 +9,17 @@ import {
   createEvalTotals,
 } from "@/evals/classifier-eval";
 import type {
-  EvalCaseLog,
-  EvalCaseOutcome,
-  EvalErrorLog,
-  EvalLogger,
-  GoldenTicket,
-} from "@/evals/types";
+  ClassifierEvalCaseLog,
+  ClassifierEvalCaseOutcome,
+  ClassifierEvalErrorLog,
+} from "@/evals/classifier-types";
+import { goldenTickets, goldenTicketsPath } from "@/evals/load-datasets";
+import type { EvalLogger, GoldenTicket } from "@/evals/types";
+import { toErrorMessage } from "@/lib/format";
 import logger from "@/lib/logger";
 import { writeEvalLog } from "./log-writer";
 
-const goldenTicketsPath = path.resolve(import.meta.dir, "datasets", "golden-tickets.json");
-const goldenTickets = JSON.parse(await readFile(goldenTicketsPath, "utf8")) as GoldenTicket[];
-
-const toErrorMessage = (error: unknown) => (error instanceof Error ? error.message : String(error));
-
-const logCaseResult = (ticketLog: EvalLogger, caseLog: EvalCaseLog) => {
+const logCaseResult = (ticketLog: EvalLogger, caseLog: ClassifierEvalCaseLog) => {
   if (caseLog.ok) {
     ticketLog.debug(
       {
@@ -69,7 +64,7 @@ const logCaseResult = (ticketLog: EvalLogger, caseLog: EvalCaseLog) => {
 const evaluateGoldenTicket = async (
   { ticket, expected }: GoldenTicket,
   evalLog: EvalLogger
-): Promise<EvalCaseOutcome> => {
+): Promise<ClassifierEvalCaseOutcome> => {
   const ticketLog = evalLog.child({ ticketId: ticket.id, product: ticket.product });
   const start = performance.now();
 
@@ -111,8 +106,8 @@ const evalGoldenTickets = async () => {
   );
 
   const totals = createEvalTotals();
-  const cases: EvalCaseLog[] = [];
-  const errorCases: EvalErrorLog[] = [];
+  const cases: ClassifierEvalCaseLog[] = [];
+  const errorCases: ClassifierEvalErrorLog[] = [];
 
   for (const goldenTicket of goldenTickets) {
     const outcome = await evaluateGoldenTicket(goldenTicket, evalLog);
