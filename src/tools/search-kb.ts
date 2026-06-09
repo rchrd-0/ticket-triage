@@ -34,9 +34,8 @@ export const searchKbTool = createTool({
     "Searches support knowledge-base articles and returns article IDs, titles, and snippets for grounded drafting.",
   inputSchema: SearchKbSchema,
   outputSchema: z.array(SearchKbResultSchema),
-  // biome-ignore lint/suspicious/useAwait: Mastra execute must return a Promise; searchKb is sync
-  execute: async (inputData: SearchKbInput) => {
+  execute: (inputData: SearchKbInput) => {
     // type inference broken re: https://github.com/mastra-ai/mastra/pull/17011
-    return searchKb(inputData);
+    return Promise.resolve(searchKb(inputData));
   },
 });

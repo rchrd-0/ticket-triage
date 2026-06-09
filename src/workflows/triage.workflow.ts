@@ -55,14 +55,13 @@ const routeStep = createStep({
   id: "route-ticket",
   inputSchema: ClassifyOutputSchema,
   outputSchema: RouteOutputSchema,
-  // biome-ignore lint/suspicious/useAwait: Mastra execute must return a Promise; routeTicket is sync
-  execute: async ({ inputData }) => {
+  execute: ({ inputData }) => {
     const route = routeTicket(inputData.classification);
 
-    return {
+    return Promise.resolve({
       ...inputData,
       route,
-    };
+    });
   },
 });
 
@@ -70,8 +69,7 @@ const retrieveKbStep = createStep({
   id: "retrieve-kb-context",
   inputSchema: RouteOutputSchema,
   outputSchema: RetrievedRouteOutputSchema,
-  // biome-ignore lint/suspicious/useAwait: Mastra execute must return a Promise; searchKb is sync
-  execute: async ({ inputData }) => {
+  execute: ({ inputData }) => {
     const searchQuery = buildKbSearchQuery(
       inputData.classification.category,
       inputData.ticket.body
@@ -79,10 +77,10 @@ const retrieveKbStep = createStep({
 
     const kbResults = searchKb(searchQuery);
 
-    return {
+    return Promise.resolve({
       ...inputData,
       kbResults,
-    };
+    });
   },
 });
 
