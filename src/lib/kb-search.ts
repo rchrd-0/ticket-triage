@@ -1,13 +1,10 @@
-import type { z } from "zod";
 import type { KbArticle } from "@/domain/kb";
 import { kbArticles } from "@/fixtures/kb-articles";
 import type { TicketCategories } from "@/schemas/classify-ticket.schema";
-import type { SearchKbResult, SearchKbSchema } from "@/schemas/search-kb.schema";
+import type { ParsedSearchKbInput, SearchKbResult } from "@/schemas/search-kb.schema";
 
 const MINIMUM_SCORE = 2;
 const SNIPPET_LENGTH = 220;
-
-type ParsedSearchKbInput = z.output<typeof SearchKbSchema>;
 
 const WORD_REGEX = /[a-z0-9]+/g;
 const NON_WORD_REGEX = /[^a-z0-9]+/g;

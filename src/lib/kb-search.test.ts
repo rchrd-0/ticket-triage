@@ -19,11 +19,8 @@ const getGoldenTicket = (ticketId: string): GoldenTicket => {
   return goldenTicket;
 };
 
-const parseSearchInput = (
-  category: TicketCategories,
-  query: string,
-  limit = 3
-) => SearchKbSchema.parse({ category, query, limit });
+const parseSearchInput = (category: TicketCategories, query: string, limit = 3) =>
+  SearchKbSchema.parse({ category, query, limit });
 
 describe("buildKbSearchQuery", () => {
   test("removes emails and order ids from the query", () => {
@@ -96,41 +93,35 @@ describe("searchKbCore", () => {
         "g-020",
       ].includes(retrievalCase.ticketId)
     )
-  )(
-    "finds an expected article for representative draftable ticket $ticketId",
-    (retrievalCase: RetrievalGoldenCase) => {
-      const goldenTicket = getGoldenTicket(retrievalCase.ticketId);
-      const searchInput = buildKbSearchQuery(
-        goldenTicket.expected.category as TicketCategories,
-        goldenTicket.ticket.body
-      );
-      const parsedSearchInput = SearchKbSchema.parse(searchInput);
-      const articleIds = searchKbCore(parsedSearchInput).map((result) => result.articleId);
+  )("finds an expected article for representative draftable ticket $ticketId", (retrievalCase: RetrievalGoldenCase) => {
+    const goldenTicket = getGoldenTicket(retrievalCase.ticketId);
+    const searchInput = buildKbSearchQuery(
+      goldenTicket.expected.category as TicketCategories,
+      goldenTicket.ticket.body
+    );
+    const parsedSearchInput = SearchKbSchema.parse(searchInput);
+    const articleIds = searchKbCore(parsedSearchInput).map((result) => result.articleId);
 
-      expect(
-        retrievalCase.expectedAnyArticleIds.some((articleId) => articleIds.includes(articleId))
-      ).toBeTrue();
-    }
-  );
+    expect(
+      retrievalCase.expectedAnyArticleIds.some((articleId) => articleIds.includes(articleId))
+    ).toBeTrue();
+  });
 
   test.each(
     goldenRetrievals.filter((retrievalCase) => retrievalCase.forbiddenArticleIds?.length)
-  )(
-    "excludes obvious forbidden articles for safety boundaries on $ticketId",
-    (retrievalCase: RetrievalGoldenCase) => {
-      const goldenTicket = getGoldenTicket(retrievalCase.ticketId);
-      const searchInput = buildKbSearchQuery(
-        goldenTicket.expected.category as TicketCategories,
-        goldenTicket.ticket.body
-      );
-      const parsedSearchInput = SearchKbSchema.parse(searchInput);
-      const articleIds = searchKbCore(parsedSearchInput).map((result) => result.articleId);
+  )("excludes obvious forbidden articles for safety boundaries on $ticketId", (retrievalCase: RetrievalGoldenCase) => {
+    const goldenTicket = getGoldenTicket(retrievalCase.ticketId);
+    const searchInput = buildKbSearchQuery(
+      goldenTicket.expected.category as TicketCategories,
+      goldenTicket.ticket.body
+    );
+    const parsedSearchInput = SearchKbSchema.parse(searchInput);
+    const articleIds = searchKbCore(parsedSearchInput).map((result) => result.articleId);
 
-      for (const forbiddenArticleId of retrievalCase.forbiddenArticleIds ?? []) {
-        expect(articleIds).not.toContain(forbiddenArticleId);
-      }
+    for (const forbiddenArticleId of retrievalCase.forbiddenArticleIds ?? []) {
+      expect(articleIds).not.toContain(forbiddenArticleId);
     }
-  );
+  });
 
   test.each(
     goldenRetrievals

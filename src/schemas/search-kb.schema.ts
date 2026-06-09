@@ -31,6 +31,7 @@ export const SearchKbSchema = z
   );
 
 export type SearchKbInput = z.input<typeof SearchKbSchema>;
+export type ParsedSearchKbInput = z.output<typeof SearchKbSchema>;
 
 export const SearchKbResultSchema = z.object({
   articleId: z.string().describe("Unique identifier for the KB article."),

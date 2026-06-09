@@ -88,7 +88,11 @@
     "ticketId": "g-017",
     "expectedPrimaryArticleId": "kb-shipping-002",
     "expectedAnyArticleIds": ["kb-shipping-002"],
-    "allowedArticleIds": ["kb-shipping-002", "kb-shipping-001", "kb-refund-001"],
+    "allowedArticleIds": [
+      "kb-shipping-002",
+      "kb-shipping-001",
+      "kb-refund-001"
+    ],
     "notes": "Label created for 6 days and carrier has not received package. Delayed shipment/address correction is the preferred target, but adjacent shipping articles may still appear under simple lexical scoring."
   },
   {
