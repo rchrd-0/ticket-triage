@@ -6,13 +6,9 @@ export type GoldenTicket = {
   expected: ClassifiedTicket;
 };
 
-export type GoldenRetrieval = {
+export type DrafterGroundingCase = {
   ticketId: string;
-  expectedPrimaryArticleId?: string;
-  expectedAnyArticleIds: string[];
-  allowedArticleIds?: string[];
-  forbiddenArticleIds?: string[];
-  notes: string;
+  providedArticleIds: string[];
 };
 
 export type EvalLogger = {

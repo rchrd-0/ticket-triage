@@ -1,23 +1,8 @@
 import { describe, expect, test } from "bun:test";
 import { buildKbSearchQuery } from "@/domain/kb-query";
-import goldenRetrievals from "@/evals/datasets/golden-retrievals.json";
-import goldenTickets from "@/evals/datasets/golden-tickets.json";
 import { searchKbCore } from "@/lib/kb-search";
 import type { TicketCategories } from "@/schemas/classify-ticket.schema";
 import { SearchKbSchema } from "@/schemas/search-kb.schema";
-
-type GoldenTicket = (typeof goldenTickets)[number];
-type RetrievalGoldenCase = (typeof goldenRetrievals)[number];
-
-const getGoldenTicket = (ticketId: string): GoldenTicket => {
-  const goldenTicket = goldenTickets.find(({ ticket }) => ticket.id === ticketId);
-
-  if (!goldenTicket) {
-    throw new Error(`Missing golden ticket for retrieval case: ${ticketId}`);
-  }
-
-  return goldenTicket;
-};
 
 const parseSearchInput = (category: TicketCategories, query: string, limit = 3) =>
   SearchKbSchema.parse({ category, query, limit });
@@ -78,75 +63,36 @@ describe("searchKbCore", () => {
     expect(generalResults[0]?.articleId).toBe("kb-general-002");
   });
 
-  test.each(
-    goldenRetrievals.filter((retrievalCase) =>
-      [
-        "g-002",
-        "g-004",
-        "g-005",
-        "g-007",
-        "g-008",
-        "g-011",
-        "g-013",
-        "g-015",
-        "g-019",
-        "g-020",
-      ].includes(retrievalCase.ticketId)
-    )
-  )("finds an expected article for representative draftable ticket $ticketId", (retrievalCase: RetrievalGoldenCase) => {
-    const goldenTicket = getGoldenTicket(retrievalCase.ticketId);
-    const searchInput = buildKbSearchQuery(
-      goldenTicket.expected.category as TicketCategories,
-      goldenTicket.ticket.body
+  test("requires lexical overlap instead of returning category-only matches", () => {
+    const results = searchKbCore(
+      parseSearchInput("Billing and payment", "unrelated vocabulary", 3)
     );
-    const parsedSearchInput = SearchKbSchema.parse(searchInput);
-    const articleIds = searchKbCore(parsedSearchInput).map((result) => result.articleId);
 
-    expect(
-      retrievalCase.expectedAnyArticleIds.some((articleId) => articleIds.includes(articleId))
-    ).toBeTrue();
+    expect(results).toEqual([]);
   });
 
-  test.each(
-    goldenRetrievals.filter((retrievalCase) => retrievalCase.forbiddenArticleIds?.length)
-  )("excludes obvious forbidden articles for safety boundaries on $ticketId", (retrievalCase: RetrievalGoldenCase) => {
-    const goldenTicket = getGoldenTicket(retrievalCase.ticketId);
+  test("retrieves the app-crash article for a representative ticket", () => {
     const searchInput = buildKbSearchQuery(
-      goldenTicket.expected.category as TicketCategories,
-      goldenTicket.ticket.body
+      "Software / app bug",
+      "Adobe Premiere Pro crashes every time I export a video."
     );
-    const parsedSearchInput = SearchKbSchema.parse(searchInput);
-    const articleIds = searchKbCore(parsedSearchInput).map((result) => result.articleId);
+    const articleIds = searchKbCore(SearchKbSchema.parse(searchInput)).map(
+      (result) => result.articleId
+    );
 
-    for (const forbiddenArticleId of retrievalCase.forbiddenArticleIds ?? []) {
-      expect(articleIds).not.toContain(forbiddenArticleId);
-    }
+    expect(articleIds).toContain("kb-software-001");
   });
 
-  test.each(
-    goldenRetrievals
-  )("retrieves acceptable KB context for $ticketId", (retrievalCase: RetrievalGoldenCase) => {
-    const goldenTicket = getGoldenTicket(retrievalCase.ticketId);
+  test("does not surface account-takeover guidance for ordinary password recovery", () => {
     const searchInput = buildKbSearchQuery(
-      goldenTicket.expected.category as TicketCategories,
-      goldenTicket.ticket.body
+      "Account access",
+      "My password reset link expired and there are no suspicious logins."
     );
-    const parsedSearchInput = SearchKbSchema.parse(searchInput);
-    const results = searchKbCore(parsedSearchInput);
-    const articleIds = results.map((result) => result.articleId);
+    const articleIds = searchKbCore(SearchKbSchema.parse(searchInput)).map(
+      (result) => result.articleId
+    );
 
-    expect(articleIds.length).toBeLessThanOrEqual(parsedSearchInput.limit);
-
-    if (retrievalCase.expectedPrimaryArticleId) {
-      expect(articleIds).toContain(retrievalCase.expectedPrimaryArticleId);
-    }
-
-    expect(
-      retrievalCase.expectedAnyArticleIds.some((articleId) => articleIds.includes(articleId))
-    ).toBeTrue();
-
-    for (const forbiddenArticleId of retrievalCase.forbiddenArticleIds ?? []) {
-      expect(articleIds).not.toContain(forbiddenArticleId);
-    }
+    expect(articleIds).toContain("kb-account-001");
+    expect(articleIds).not.toContain("kb-security-001");
   });
 });

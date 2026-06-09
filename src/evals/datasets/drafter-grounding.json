@@ -1,0 +1,22 @@
+[
+  {
+    "ticketId": "g-002",
+    "providedArticleIds": ["kb-software-001"]
+  },
+  {
+    "ticketId": "g-005",
+    "providedArticleIds": ["kb-account-001", "kb-account-002"]
+  },
+  {
+    "ticketId": "g-009",
+    "providedArticleIds": ["kb-general-003", "kb-refund-001"]
+  },
+  {
+    "ticketId": "g-019",
+    "providedArticleIds": ["kb-billing-001", "kb-billing-003"]
+  },
+  {
+    "ticketId": "g-020",
+    "providedArticleIds": []
+  }
+]
