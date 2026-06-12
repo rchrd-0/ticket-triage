@@ -1,0 +1,80 @@
+[
+  {
+    "sopId": "sop-account-recovery-001",
+    "title": "Standard account recovery",
+    "content": "Use the standard recovery path when the customer still controls the account email and reports no suspicious login, password change, purchase, or payout activity. Confirm which recovery method is failing and direct the customer to request a fresh reset link or use available backup codes. Never ask for a password or one-time verification code. Loss of the account email, disputed ownership, or any compromise indicator requires human review.",
+    "keywords": [
+      "account recovery",
+      "expired reset link",
+      "locked account",
+      "lost authenticator",
+      "2fa",
+      "backup codes"
+    ]
+  },
+  {
+    "sopId": "sop-shipping-delay-001",
+    "title": "Delayed shipment review",
+    "content": "Check the current order and carrier status before discussing a replacement or refund. If tracking is moving, provide the latest known event and estimated delivery information without guaranteeing an arrival date. If tracking has not progressed beyond the normal carrier window, collect the order details and follow the standard delayed-shipment review. Replacement, refund, or address-interception approval must come from the applicable policy or a human reviewer.",
+    "keywords": [
+      "shipping delay",
+      "stuck in transit",
+      "label created",
+      "carrier delay",
+      "replacement",
+      "refund"
+    ]
+  },
+  {
+    "sopId": "sop-return-eligibility-001",
+    "title": "Standard return eligibility",
+    "content": "Verify the delivery date, item condition, and whether the request is inside the standard return window. Unopened or resellable items inside the window may follow the normal return process. Explain that refunds are issued to the original payment method after the returned item is received and inspected. Late returns, used items outside policy, goodwill refunds, and other exceptions require human approval.",
+    "keywords": [
+      "return eligibility",
+      "return window",
+      "unopened item",
+      "item condition",
+      "original payment method",
+      "refund timing"
+    ]
+  },
+  {
+    "sopId": "sop-billing-dispute-001",
+    "title": "Duplicate or unwanted charge review",
+    "content": "Confirm the charge date, amount, merchant description, and whether the charge is pending or posted. Ask whether the customer recognizes the related order, subscription, add-on, or renewal. A recognized duplicate or unwanted service charge follows the standard billing-dispute process. Suspicious account activity, unknown purchases by another person, old-charge exceptions, or requests beyond standard policy require human review.",
+    "keywords": [
+      "duplicate charge",
+      "unwanted charge",
+      "subscription renewal",
+      "optional add-on",
+      "pending charge",
+      "billing dispute"
+    ]
+  },
+  {
+    "sopId": "sop-missing-delivery-001",
+    "title": "Delivered but missing package intake",
+    "content": "Verify that tracking shows delivered and confirm the delivery timestamp. Ask the customer to check nearby entrances, household members, reception areas, mailrooms, and any carrier delivery photo or notice. If the package remains missing after the standard waiting period, collect the order number, address confirmation, and carrier case details. Repeated claims, signature exceptions, or replacement approval require human review.",
+    "keywords": [
+      "delivered but missing",
+      "missing package",
+      "delivery photo",
+      "mailroom",
+      "carrier case",
+      "replacement"
+    ]
+  },
+  {
+    "sopId": "sop-warranty-review-001",
+    "title": "Warranty and physical damage intake",
+    "content": "Collect the order number, purchase date, product identifier, issue description, and clear photos when damage is visible. Standard troubleshooting may be provided before review when it is safe to do so. Do not promise warranty coverage, free repair, or replacement. Accidental damage, liquid exposure, disputed cause, missing proof of purchase, and policy exceptions require human review.",
+    "keywords": [
+      "warranty review",
+      "physical damage",
+      "cracked screen",
+      "repair",
+      "replacement",
+      "proof of purchase"
+    ]
+  }
+]

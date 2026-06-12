@@ -1,6 +1,5 @@
 import path from "node:path";
 import { draftReply } from "@/agents/drafter.agent";
-import type { KbArticle } from "@/domain/kb";
 import {
   drafterGroundingCases,
   drafterGroundingCasesPath,
@@ -11,6 +10,7 @@ import type { DrafterGroundingCase, EvalLogger } from "@/evals/types";
 import { kbArticles } from "@/fixtures/kb-articles";
 import { toErrorMessage } from "@/lib/format";
 import logger from "@/lib/logger";
+import type { KbArticle } from "@/schemas/kb-article.schema";
 import type { SearchKbResult } from "@/schemas/search-kb.schema";
 
 type DrafterGroundingResult = {

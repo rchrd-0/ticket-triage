@@ -1,1 +1,90 @@
-[]
+[
+  {
+    "orderId": "ORD-88421",
+    "sourceId": "order-88421",
+    "status": "in_transit",
+    "lastUpdated": "2026-06-02T08:40:00.000Z",
+    "trackingEvents": [
+      {
+        "timestamp": "2026-05-28T14:20:00.000Z",
+        "description": "Package accepted by carrier."
+      },
+      {
+        "timestamp": "2026-05-30T03:15:00.000Z",
+        "description": "Package arrived at regional sorting facility."
+      },
+      {
+        "timestamp": "2026-06-02T08:40:00.000Z",
+        "description": "Package remains in transit with no newer carrier scan."
+      }
+    ],
+    "eligibleActions": [
+      "Provide the latest tracking event.",
+      "Begin the standard delayed-shipment review."
+    ]
+  },
+  {
+    "orderId": "ORD-55102",
+    "sourceId": "order-55102",
+    "status": "delivered",
+    "lastUpdated": "2026-05-28T11:05:00.000Z",
+    "trackingEvents": [
+      {
+        "timestamp": "2026-05-25T09:10:00.000Z",
+        "description": "Package accepted by carrier."
+      },
+      {
+        "timestamp": "2026-05-27T16:30:00.000Z",
+        "description": "Package arrived at local delivery facility."
+      },
+      {
+        "timestamp": "2026-05-28T11:05:00.000Z",
+        "description": "Package marked delivered by carrier."
+      }
+    ],
+    "eligibleActions": [
+      "Confirm standard return eligibility.",
+      "Provide the standard return instructions."
+    ]
+  },
+  {
+    "orderId": "ORD-73291",
+    "sourceId": "order-73291",
+    "status": "label_created",
+    "lastUpdated": "2026-06-03T07:25:00.000Z",
+    "trackingEvents": [
+      {
+        "timestamp": "2026-06-03T07:25:00.000Z",
+        "description": "Shipping label created; carrier has not recorded possession of the package."
+      }
+    ],
+    "eligibleActions": [
+      "Confirm that the carrier has not received the package.",
+      "Begin the standard delayed-shipment review."
+    ]
+  },
+  {
+    "orderId": "ORD-66014",
+    "sourceId": "order-66014",
+    "status": "delivered",
+    "lastUpdated": "2026-06-07T13:42:00.000Z",
+    "trackingEvents": [
+      {
+        "timestamp": "2026-06-05T10:00:00.000Z",
+        "description": "Package accepted by carrier."
+      },
+      {
+        "timestamp": "2026-06-07T06:50:00.000Z",
+        "description": "Package loaded onto vehicle for delivery."
+      },
+      {
+        "timestamp": "2026-06-07T13:42:00.000Z",
+        "description": "Package marked delivered at the destination."
+      }
+    ],
+    "eligibleActions": [
+      "Provide the recorded delivery timestamp.",
+      "Begin the delivered-but-missing package intake."
+    ]
+  }
+]
