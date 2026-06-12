@@ -1,6 +1,6 @@
 import path from "node:path";
 import { performance } from "node:perf_hooks";
-import { classifyTicket } from "@/agents/classifier.agent";
+import type { ClassifyTicketResult } from "@/agents/classifier.agent";
 import { classifier } from "@/config/models";
 import {
   addCaseToTotals,
@@ -15,9 +15,31 @@ import type {
 } from "@/evals/classifier-types";
 import { goldenTickets, goldenTicketsPath } from "@/evals/load-datasets";
 import type { EvalLogger, GoldenTicket } from "@/evals/types";
+import { mastra } from "@/index";
 import { toErrorMessage } from "@/lib/format";
 import logger from "@/lib/logger";
+import { getOpenRouterUsage } from "@/lib/openrouter-usage";
+import { buildClassifyTicketPrompt } from "@/prompts/classify-ticket.prompt";
+import { ClassifyTicketSchema } from "@/schemas/classify-ticket.schema";
 import { writeEvalLog } from "./log-writer";
+
+const classifierAgent = mastra.getAgent("classifierAgent");
+
+const classifyTicket = async (ticketBody: string): Promise<ClassifyTicketResult> => {
+  const { object, providerMetadata } = await classifierAgent.generate(
+    buildClassifyTicketPrompt(ticketBody),
+    {
+      structuredOutput: {
+        schema: ClassifyTicketSchema,
+      },
+    }
+  );
+
+  return {
+    classification: object,
+    usage: getOpenRouterUsage(providerMetadata),
+  };
+};
 
 const logCaseResult = (ticketLog: EvalLogger, caseLog: ClassifierEvalCaseLog) => {
   if (caseLog.ok) {
@@ -125,7 +147,7 @@ const evalGoldenTickets = async () => {
   const datasetSize = goldenTickets.length;
   const summary = buildSummary(totals, datasetSize);
 
-  await writeEvalLog("eval", {
+  await writeEvalLog("eval-classifier", {
     runAt: new Date().toISOString(),
     dataset: {
       path: path.relative(path.resolve(import.meta.dir, "..", ".."), goldenTicketsPath),
@@ -148,4 +170,8 @@ const main = async () => {
   await evalGoldenTickets();
 };
 
-await main();
+try {
+  await main();
+} finally {
+  await mastra.shutdown();
+}
