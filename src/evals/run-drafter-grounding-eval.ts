@@ -1,5 +1,4 @@
 import path from "node:path";
-import { draftReply } from "@/agents/drafter.agent";
 import {
   drafterGroundingCases,
   drafterGroundingCasesPath,
@@ -7,8 +6,32 @@ import {
 } from "@/evals/load-datasets";
 import { writeEvalLog } from "@/evals/log-writer";
 import type { DrafterGroundingCase, EvalLogger } from "@/evals/types";
+import { mastra } from "@/index";
 import { toErrorMessage } from "@/lib/format";
 import logger from "@/lib/logger";
+import { buildDraftReplyPrompt, type DraftGroundingContext } from "@/prompts/draft-reply.prompt";
+import type { ClassifiedTicket } from "@/schemas/classify-ticket.schema";
+import { type DraftReply, DraftReplySchema } from "@/schemas/draft-reply.schema";
+import type { Ticket } from "@/schemas/ticket.schema";
+
+const drafterAgent = mastra.getAgent("drafterAgent");
+
+const draftReply = async (
+  ticket: Ticket,
+  classification: ClassifiedTicket,
+  groundingContext: DraftGroundingContext
+): Promise<DraftReply> => {
+  const { object } = await drafterAgent.generate(
+    buildDraftReplyPrompt({ ticket, classification, groundingContext }),
+    {
+      structuredOutput: {
+        schema: DraftReplySchema,
+      },
+    }
+  );
+
+  return object;
+};
 
 type DrafterGroundingResult = {
   ticketId: string;
@@ -142,4 +165,8 @@ const main = async () => {
   }
 };
 
-await main();
+try {
+  await main();
+} finally {
+  await mastra.shutdown();
+}
