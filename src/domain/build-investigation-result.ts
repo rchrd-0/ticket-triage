@@ -1,9 +1,10 @@
 import type { ToolCallChunk, ToolResultChunk } from "@mastra/core/stream";
 import type { GetOrderStatusResult } from "@/schemas/get-order-status.schema";
-import type {
-  InvestigationResult,
-  InvestigationSource,
-  InvestigationToolCall,
+import {
+  type InvestigationResult,
+  InvestigationResultSchema,
+  type InvestigationSource,
+  type InvestigationToolCall,
 } from "@/schemas/investigation.schema";
 import type { SearchKbResult } from "@/schemas/search-kb.schema";
 import type { SearchSopResult } from "@/schemas/search-sop.schema";
@@ -114,9 +115,9 @@ export const buildInvestigationResult = (
     hasMissingContext ||= normalizedResult.hasMissingContext;
   }
 
-  return {
+  return InvestigationResultSchema.parse({
     sources: [...sourcesById.values()],
     toolCalls,
     terminationReason: hasMissingContext ? "incomplete_context" : "completed",
-  };
+  });
 };

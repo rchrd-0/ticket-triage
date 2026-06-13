@@ -22,12 +22,10 @@ export const drafter = {
   },
 } as const satisfies AgentModelConfig;
 
-// export const investigator = {
-//   agentModel: "openai/gpt-5.4-mini",
-//   temperature: 0,
-//   reasoning: {
-//     effort: "low",
-//   },
-// } as const satisfies AgentModelConfig;
-
-export const investigator = classifier;
+export const investigator = {
+  agentModel: "openai/gpt-5.4-mini",
+  temperature: 0,
+  reasoning: {
+    effort: "low",
+  },
+} as const satisfies AgentModelConfig;

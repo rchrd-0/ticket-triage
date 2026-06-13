@@ -2,10 +2,12 @@ import { createStep, createWorkflow } from "@mastra/core/workflows";
 import { z } from "zod";
 import { classifyTicket } from "@/agents/classifier.agent";
 import { draftReply } from "@/agents/drafter.agent";
+import { investigateTicket } from "@/agents/investigator.agent";
 import { buildKbSearchQuery } from "@/domain/kb-query";
 import { routeTicket } from "@/domain/routing";
 import { ClassifyTicketSchema } from "@/schemas/classify-ticket.schema";
 import { DraftReplySchema } from "@/schemas/draft-reply.schema";
+import { InvestigationResultSchema } from "@/schemas/investigation.schema";
 import { RouteTicketSchema } from "@/schemas/route-ticket.schema";
 import { SearchKbResultSchema } from "@/schemas/search-kb.schema";
 import { TicketSchema } from "@/schemas/ticket.schema";
@@ -25,9 +27,15 @@ const RouteOutputSchema = z.object({
   route: RouteTicketSchema,
 });
 
+/** @deprecated - remove next phase */
 const RetrievedRouteOutputSchema = z.object({
   ...RouteOutputSchema.shape,
   kbResults: z.array(SearchKbResultSchema),
+});
+
+const InvestigatedRouteOutputSchema = z.object({
+  ...RouteOutputSchema.shape,
+  investigation: InvestigationResultSchema,
 });
 
 export const TriageOutputSchema = z.object({
@@ -65,6 +73,7 @@ const routeStep = createStep({
   },
 });
 
+/** @deprecated - remove next phase */
 const retrieveKbStep = createStep({
   id: "retrieve-kb-context",
   inputSchema: RouteOutputSchema,
@@ -84,12 +93,32 @@ const retrieveKbStep = createStep({
   },
 });
 
+const investigateContextStep = createStep({
+  id: "investigate-context",
+  inputSchema: RouteOutputSchema,
+  outputSchema: InvestigatedRouteOutputSchema,
+  execute: async ({ inputData }) => {
+    const investigationContext = await investigateTicket(
+      inputData.ticket,
+      inputData.classification
+    );
+
+    return {
+      ...inputData,
+      investigation: investigationContext,
+    };
+  },
+});
+
 const draftStep = createStep({
   id: "draft-reply",
-  inputSchema: RetrievedRouteOutputSchema,
+  inputSchema: InvestigatedRouteOutputSchema,
   outputSchema: TriageOutputSchema,
   execute: async ({ inputData }) => {
-    const reply = await draftReply(inputData.ticket, inputData.classification, inputData.kbResults);
+    const reply = await draftReply(inputData.ticket, inputData.classification, {
+      sources: inputData.investigation.sources,
+      terminationReason: inputData.investigation.terminationReason,
+    });
 
     return {
       ticketId: inputData.ticket.id,
@@ -116,7 +145,7 @@ const draftWorkflow = createWorkflow({
   inputSchema: RouteOutputSchema,
   outputSchema: TriageOutputSchema,
 })
-  .then(retrieveKbStep)
+  .then(investigateContextStep)
   .then(draftStep)
   .commit();
 
