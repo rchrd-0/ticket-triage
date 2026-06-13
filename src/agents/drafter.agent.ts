@@ -1,9 +1,12 @@
 import { Agent } from "@mastra/core/agent";
 import { drafter } from "@/config/models";
-import { buildDraftReplyPrompt, draftReplySystemPrompt } from "@/prompts/draft-reply.prompt";
+import {
+  buildDraftReplyPrompt,
+  type DraftGroundingContext,
+  draftReplySystemPrompt,
+} from "@/prompts/draft-reply.prompt";
 import type { ClassifiedTicket } from "@/schemas/classify-ticket.schema";
 import { type DraftReply, DraftReplySchema } from "@/schemas/draft-reply.schema";
-import type { SearchKbResult } from "@/schemas/search-kb.schema";
 import type { Ticket } from "@/schemas/ticket.schema";
 
 export const drafterAgent = new Agent({
@@ -26,9 +29,9 @@ export const drafterAgent = new Agent({
 export const draftReply = async (
   ticket: Ticket,
   classification: ClassifiedTicket,
-  kbResults: SearchKbResult[]
+  groundingContext: DraftGroundingContext
 ): Promise<DraftReply> => {
-  const prompt = buildDraftReplyPrompt({ ticket, classification, kbResults });
+  const prompt = buildDraftReplyPrompt({ ticket, classification, groundingContext });
 
   const { object } = await drafterAgent.generate(prompt, {
     structuredOutput: {

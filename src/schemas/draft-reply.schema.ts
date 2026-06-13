@@ -11,10 +11,10 @@ export const DraftReplySchema = z.object({
     .describe(
       "Customer-facing support reply. Be concise, helpful, and do not expose internal classification or routing labels."
     ),
-  citedArticleIds: z
+  groundingSourceIds: z
     .array(z.string())
     .describe(
-      "IDs of KB articles explicitly provided as context. If no KB article or context is provided, return []. Do not fabricate citations."
+      "IDs of supplied investigation sources used to ground the reply. Must be a subset of the provided source IDs. Return [] when no useful source was used."
     ),
 });
 

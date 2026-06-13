@@ -1,72 +1,82 @@
 import type { ClassifiedTicket } from "@/schemas/classify-ticket.schema";
-import type { SearchKbResult } from "@/schemas/search-kb.schema";
+import type { InvestigationResult, InvestigationSource } from "@/schemas/investigation.schema";
 import type { Ticket } from "@/schemas/ticket.schema";
+
+export type DraftGroundingContext = Pick<InvestigationResult, "sources" | "terminationReason">;
 
 export const draftReplySystemPrompt = `You draft concise customer support replies for an e-commerce support team.
 
-Return a JSON object with: subject, body, citedArticleIds.
+  Return a JSON object with: subject, body, groundingSourceIds.
 
-## Reply rules
+  ## Reply rules
 
-- Be helpful, calm, and specific to the customer's issue.
-- Acknowledge the customer's situation without over-apologizing.
-- Do not expose internal labels such as category, urgency, confidence, needsHuman, or route.
-- Do not promise actions the system has not actually taken.
-- Do not say an order was refunded, cancelled, replaced, escalated, or investigated unless that context is explicitly provided.
-- If the ticket lacks enough detail, ask for the minimum useful information needed to continue.
-- If the reply uses KB guidance, include at least one matching citation.
-- Do not cite irrelevant articles just because they were provided in the context.
-- If no knowledge base articles are provided, return citedArticleIds as an empty array.
-- If no relevant KB exists, ask for clarification or give a safe generic next step.
-- Do not invent article IDs, links, policy names, order statuses, tracking events, or account actions.
-- Do not include placeholder links, markdown links, or references to instructions/articles that were not provided.
+  - Be helpful, calm, and specific to the customer's issue.
+  - Acknowledge the customer's situation without over-apologizing.
+  - Do not expose internal labels such as category, urgency, confidence, needsHuman, route, or investigation status.
+  - Use only the supplied investigation sources for factual claims about policies, procedures, order status, tracking events, or eligible actions.
+  - Do not promise actions the system has not actually taken.
+  - Do not say an order was refunded, cancelled, replaced, escalated, or investigated unless that context is explicitly provided.
+  - If investigation context is incomplete, ask for the minimum useful missing information instead of inventing operational facts.
+  - If the reply relies on a supplied source, include that source's ID in groundingSourceIds.
+  - Do not include irrelevant source IDs just because they were provided.
+  - If no useful sources are provided, return groundingSourceIds as [].
+  - Do not invent source IDs, links, policy names, order statuses, tracking events, or account actions.
+  - Do not include placeholder links, markdown links, or references to internal tools.
 
-## Tone
+  ## Tone
 
-- Professional and human.
-- Clear enough for a customer to act on.
-- Short: usually 1 subject line and 1-3 body paragraphs.
+  - Professional and human.
+  - Clear enough for a customer to act on.
+  - Short: usually 1 subject line and 1-3 body paragraphs.
 
-Return JSON only. No explanation outside the object.`;
+  Return JSON only. No explanation outside the object.`;
+
+const renderInvestigationSources = (sources: InvestigationSource[]) =>
+  sources.length > 0
+    ? sources
+        .map(
+          (source) =>
+            `- ${source.sourceId} | ${source.sourceType} | ${source.title}\n  ${source.content}`
+        )
+        .join("\n")
+    : "No investigation sources were provided for this draft.";
 
 export const buildDraftReplyPrompt = ({
   ticket,
   classification,
-  kbResults,
+  groundingContext,
 }: {
   ticket: Ticket;
   classification: ClassifiedTicket;
-  kbResults: SearchKbResult[];
+  groundingContext: DraftGroundingContext;
 }) => {
-  const kbContext =
-    kbResults.length > 0
-      ? kbResults
-          .map((result) => `- ${result.articleId} | ${result.title}\n  ${result.snippet}`)
-          .join("\n")
-      : "No KB articles were provided for this draft.";
-
-  const allowedCitationIds =
-    kbResults.length > 0
-      ? `[${kbResults.map((result) => `"${result.articleId}"`).join(", ")}]`
+  const allowedSourceIds =
+    groundingContext.sources.length > 0
+      ? `[${groundingContext.sources.map((source) => `"${source.sourceId}"`).join(", ")}]`
       : "[]";
 
   return `Customer ticket:
-Product: ${ticket.product}
-Channel: ${ticket.channel}
-Body:
-${ticket.body}
+  Product: ${ticket.product}
+  Channel: ${ticket.channel}
+  Body:
+  ${ticket.body}
 
-Internal classification context:
-Category: ${classification.category}
-Urgency: ${classification.urgency}
-Needs human: ${classification.needsHuman}
-Confidence: ${classification.confidence}
+  Internal classification context:
+  Category: ${classification.category}
+  Urgency: ${classification.urgency}
+  Needs human: ${classification.needsHuman}
+  Confidence: ${classification.confidence}
 
-Knowledge base context:
-${kbContext}
+  Investigation status:
+  ${groundingContext.terminationReason}
 
-Citation rules:
-- citedArticleIds must be a subset of: ${allowedCitationIds}
-- If no KB articles are provided, citedArticleIds must be [].
-- Do not cite article IDs that are not listed above.`;
+  Investigation sources:
+  ${renderInvestigationSources(groundingContext.sources)}
+
+  Grounding rules:
+  - groundingSourceIds must be a subset of: ${allowedSourceIds}
+  - Include a source ID only when the reply actually relies on that source.
+  - If no useful source is provided, groundingSourceIds must be [].
+  - If investigation status is incomplete_context, ask for missing information rather than inventing facts.
+  - Do not cite source IDs that are not listed above.`;
 };

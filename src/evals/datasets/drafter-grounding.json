@@ -1,22 +1,91 @@
 [
   {
     "ticketId": "g-002",
-    "providedArticleIds": ["kb-software-001"]
+    "terminationReason": "completed",
+    "sources": [
+      {
+        "sourceId": "kb-software-001",
+        "sourceType": "kb_article",
+        "title": "App crashes, freezes, or will not open",
+        "content": "For app crashes, ask the customer to update to the latest app version, restart the device, and confirm the operating system version. If the app still crashes, collect the product model, app version, operating system, steps to reproduce, and any screenshots. Known app defects should be logged for engineering with reproduction steps."
+      }
+    ]
   },
   {
     "ticketId": "g-005",
-    "providedArticleIds": ["kb-account-001", "kb-account-002"]
+    "terminationReason": "completed",
+    "sources": [
+      {
+        "sourceId": "kb-account-001",
+        "sourceType": "kb_article",
+        "title": "Password reset and login help",
+        "content": "Customers who cannot sign in should use the password reset link on the login screen and check spam or junk folders for the email. Confirm the email address on the order if they are unsure which account was used. Support should not ask for passwords or verification codes."
+      },
+      {
+        "sourceId": "sop-account-recovery-001",
+        "sourceType": "sop",
+        "title": "Standard account recovery",
+        "content": "Use the standard recovery path when the customer still controls the account email and reports no suspicious login, password change, purchase, or payout activity. Confirm which recovery method is failing and direct the customer to request a fresh reset link or use available backup codes. Never ask for a password or one-time verification code. Loss of the account email, disputed ownership, or any compromise indicator requires human review."
+      }
+    ]
+  },
+  {
+    "ticketId": "g-003",
+    "terminationReason": "completed",
+    "sources": [
+      {
+        "sourceId": "order-88421",
+        "sourceType": "order_status",
+        "title": "Order ORD-88421 status",
+        "content": "Status: in_transit\nLast updated: 2026-06-02T08:40:00.000Z\nTracking events:\n- 2026-05-28T14:20:00.000Z: Package accepted by carrier.\n- 2026-05-30T03:15:00.000Z: Package arrived at regional sorting facility.\n- 2026-06-02T08:40:00.000Z: Package remains in transit with no newer carrier scan.\nEligible actions:\n- Provide the latest tracking event.\n- Begin the standard delayed-shipment review."
+      },
+      {
+        "sourceId": "sop-shipping-delay-001",
+        "sourceType": "sop",
+        "title": "Delayed shipment review",
+        "content": "Check the current order and carrier status before discussing a replacement or refund. If tracking is moving, provide the latest known event and estimated delivery information without guaranteeing an arrival date. If tracking has not progressed beyond the normal carrier window, collect the order details and follow the standard delayed-shipment review. Replacement, refund, or address-interception approval must come from the applicable policy or a human reviewer."
+      }
+    ]
   },
   {
     "ticketId": "g-009",
-    "providedArticleIds": ["kb-general-003", "kb-refund-001"]
+    "terminationReason": "completed",
+    "sources": [
+      {
+        "sourceId": "kb-general-003",
+        "sourceType": "kb_article",
+        "title": "Returns process questions before requesting a refund",
+        "content": "When a customer asks whether returns are accepted, how the return process works, or how long a refund usually takes, treat the case as an informational returns question unless they explicitly ask to start a return or receive money back now. Explain the standard return window, item-condition requirements, and that refunds are usually issued to the original payment method after the returned item is received and inspected. Ask for the order number only if the customer wants to begin the return process."
+      },
+      {
+        "sourceId": "sop-return-eligibility-001",
+        "sourceType": "sop",
+        "title": "Standard return eligibility",
+        "content": "Verify the delivery date, item condition, and whether the request is inside the standard return window. Unopened or resellable items inside the window may follow the normal return process. Explain that refunds are issued to the original payment method after the returned item is received and inspected. Late returns, used items outside policy, goodwill refunds, and other exceptions require human approval."
+      }
+    ]
   },
   {
     "ticketId": "g-019",
-    "providedArticleIds": ["kb-billing-001", "kb-billing-003"]
+    "terminationReason": "completed",
+    "sources": [
+      {
+        "sourceId": "kb-billing-001",
+        "sourceType": "kb_article",
+        "title": "Duplicate charge or pending authorization",
+        "content": "Some banks show a temporary authorization before the final charge posts. Pending authorizations usually drop within 3 to 7 business days. If the customer sees two posted charges for the same order, collect the order number, charge dates, amounts, and payment method last four digits for billing review."
+      },
+      {
+        "sourceId": "sop-billing-dispute-001",
+        "sourceType": "sop",
+        "title": "Duplicate or unwanted charge review",
+        "content": "Confirm the charge date, amount, merchant description, and whether the charge is pending or posted. Ask whether the customer recognizes the related order, subscription, add-on, or renewal. A recognized duplicate or unwanted service charge follows the standard billing-dispute process. Suspicious account activity, unknown purchases by another person, old-charge exceptions, or requests beyond standard policy require human review."
+      }
+    ]
   },
   {
     "ticketId": "g-020",
-    "providedArticleIds": []
+    "terminationReason": "incomplete_context",
+    "sources": []
   }
 ]

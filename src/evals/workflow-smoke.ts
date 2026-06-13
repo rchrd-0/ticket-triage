@@ -68,7 +68,7 @@ const main = async () => {
     try {
       const result = await runSmokeTicket(getSmokeTicket(ticketId));
       const hasReply = Boolean(result.reply);
-      const citedArticleIds = result.reply?.citedArticleIds ?? [];
+      const citedArticleIds = result.reply?.groundingSourceIds ?? [];
       const ok =
         result.route.path === expected.routePath &&
         hasReply === expected.hasReply &&
