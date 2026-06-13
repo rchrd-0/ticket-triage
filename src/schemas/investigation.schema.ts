@@ -32,3 +32,4 @@ export type InvestigationSource = InvestigationResult["sources"][number];
 export type InvestigationSourceType = InvestigationSource["sourceType"];
 export type InvestigationToolCall = InvestigationResult["toolCalls"][number];
 export type InvestigationToolName = InvestigationToolCall["toolName"];
+export type InvestigationTerminationReason = InvestigationResult["terminationReason"];

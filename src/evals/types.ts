@@ -1,4 +1,8 @@
 import type { ClassifiedTicket } from "@/schemas/classify-ticket.schema";
+import type {
+  InvestigationSource,
+  InvestigationTerminationReason,
+} from "@/schemas/investigation.schema";
 import type { Ticket } from "@/schemas/ticket.schema";
 
 export type GoldenTicket = {
@@ -8,7 +12,8 @@ export type GoldenTicket = {
 
 export type DrafterGroundingCase = {
   ticketId: string;
-  providedArticleIds: string[];
+  terminationReason: InvestigationTerminationReason;
+  sources: InvestigationSource[];
 };
 
 export type EvalLogger = {

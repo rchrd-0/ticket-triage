@@ -7,19 +7,16 @@ import {
 } from "@/evals/load-datasets";
 import { writeEvalLog } from "@/evals/log-writer";
 import type { DrafterGroundingCase, EvalLogger } from "@/evals/types";
-import { kbArticles } from "@/fixtures/kb-articles";
 import { toErrorMessage } from "@/lib/format";
 import logger from "@/lib/logger";
-import type { KbArticle } from "@/schemas/kb-article.schema";
-import type { SearchKbResult } from "@/schemas/search-kb.schema";
 
 type DrafterGroundingResult = {
   ticketId: string;
-  providedArticleIds: string[];
-  citedArticleIds: string[];
+  providedSourceIds: string[];
+  groundingSourceIds: string[];
   checks: {
-    citationsFromProvidedContext: boolean;
-    citationPresenceValid: boolean;
+    groundingFromProvidedSources: boolean;
+    groundingPresenceValid: boolean;
   };
 };
 
@@ -28,7 +25,7 @@ type DrafterGroundingOutcome =
   | { kind: "error"; errorLog: { ticketId: string; error: string } };
 
 const casePassed = (result: DrafterGroundingResult) =>
-  result.checks.citationsFromProvidedContext && result.checks.citationPresenceValid;
+  result.checks.groundingFromProvidedSources && result.checks.groundingPresenceValid;
 
 const getGoldenTicket = (ticketId: string) => {
   const goldenTicket = goldenTickets.find(({ ticket }) => ticket.id === ticketId);
@@ -40,31 +37,17 @@ const getGoldenTicket = (ticketId: string) => {
   return goldenTicket;
 };
 
-const getProvidedContext = (articleIds: string[]): SearchKbResult[] =>
-  articleIds.map((articleId) => {
-    const article = kbArticles.find((candidate) => candidate.articleId === articleId);
-
-    if (!article) {
-      throw new Error(`Missing KB article for drafter grounding case: ${articleId}`);
-    }
-
-    return toSearchResult(article);
-  });
-
-const toSearchResult = (article: KbArticle): SearchKbResult => ({
-  articleId: article.articleId,
-  title: article.title,
-  snippet: article.content,
-});
-
-const evaluateGrounding = (args: { providedArticleIds: string[]; citedArticleIds: string[] }) => ({
-  citationsFromProvidedContext: args.citedArticleIds.every((id) =>
-    args.providedArticleIds.includes(id)
+const evaluateGrounding = (args: {
+  providedSourceIds: string[];
+  groundingSourceIds: string[];
+}) => ({
+  groundingFromProvidedSources: args.groundingSourceIds.every((id) =>
+    args.providedSourceIds.includes(id)
   ),
-  citationPresenceValid:
-    args.providedArticleIds.length === 0
-      ? args.citedArticleIds.length === 0
-      : args.citedArticleIds.length >= 1,
+  groundingPresenceValid:
+    args.providedSourceIds.length === 0
+      ? args.groundingSourceIds.length === 0
+      : args.groundingSourceIds.length >= 1,
 });
 
 const logCaseResult = (caseLog: EvalLogger, result: DrafterGroundingResult) => {
@@ -84,15 +67,20 @@ const evaluateCase = async (
 
   try {
     const { ticket, expected: classification } = getGoldenTicket(groundingCase.ticketId);
-    const providedContext = getProvidedContext(groundingCase.providedArticleIds);
-    const reply = await draftReply(ticket, classification, providedContext);
+    const reply = await draftReply(ticket, classification, {
+      sources: groundingCase.sources,
+      terminationReason: groundingCase.terminationReason,
+    });
+
+    const providedSourceIds = groundingCase.sources.map((source) => source.sourceId);
+
     const result: DrafterGroundingResult = {
       ticketId: ticket.id,
-      providedArticleIds: groundingCase.providedArticleIds,
-      citedArticleIds: reply.citedArticleIds,
+      providedSourceIds,
+      groundingSourceIds: reply.groundingSourceIds,
       checks: evaluateGrounding({
-        providedArticleIds: groundingCase.providedArticleIds,
-        citedArticleIds: reply.citedArticleIds,
+        providedSourceIds,
+        groundingSourceIds: reply.groundingSourceIds,
       }),
     };
 
