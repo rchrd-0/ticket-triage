@@ -4,13 +4,22 @@ type AgentModelConfig = {
   reasoning: {
     effort: "xhigh" | "high" | "medium" | "low" | "minimal" | "none";
   };
+  provider?: {
+    order?: string[];
+    only?: string[];
+    allow_fallbacks?: boolean;
+  };
 };
 
 export const classifier = {
-  agentModel: "xiaomi/mimo-v2-flash",
+  agentModel: "deepseek/deepseek-v4-flash",
   temperature: 0,
   reasoning: {
     effort: "none",
+  },
+  provider: {
+    only: ["alibaba", "cloudflare"],
+    allow_fallbacks: false,
   },
 } as const satisfies AgentModelConfig;
 

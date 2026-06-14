@@ -24,6 +24,7 @@ export const classifierAgent = new Agent({
     providerOptions: {
       openrouter: {
         reasoning: classifier.reasoning,
+        provider: classifier.provider,
       },
     },
   },

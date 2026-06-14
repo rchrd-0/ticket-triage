@@ -74,7 +74,7 @@ const routeStep = createStep({
 });
 
 /** @deprecated - remove next phase */
-const retrieveKbStep = createStep({
+const _retrieveKbStep = createStep({
   id: "retrieve-kb-context",
   inputSchema: RouteOutputSchema,
   outputSchema: RetrievedRouteOutputSchema,
