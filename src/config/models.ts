@@ -17,10 +17,6 @@ export const classifier = {
   reasoning: {
     effort: "none",
   },
-  provider: {
-    only: ["alibaba", "cloudflare"],
-    allow_fallbacks: false,
-  },
 } as const satisfies AgentModelConfig;
 
 export const drafter = {
