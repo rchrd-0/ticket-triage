@@ -9,27 +9,21 @@ import { writeEvalLog } from "./log-writer";
 
 const workflow = mastra.getWorkflowById("triage-workflow");
 
-const smokeTicketIds = ["g-002", "g-006"] as const;
-const expectedSmokeResults = {
-  "g-002": { routePath: "draft", hasReply: true, minCitations: 1 },
-  "g-006": { routePath: "human_review", hasReply: false, minCitations: 0 },
-} as const;
-
-const smokeLog = logger.child({ script: "workflowSmoke", datasetSize: smokeTicketIds.length });
-
-type SmokeCaseLog = {
-  ticketId: (typeof smokeTicketIds)[number];
-  expectedRoute: (typeof expectedSmokeResults)[(typeof smokeTicketIds)[number]]["routePath"];
-  actualRoute?: string;
-  expectedReply: boolean;
-  actualReply?: boolean;
-  expectedMinCitations: number;
-  citedArticleIds?: string[];
-  ok: boolean;
-  error?: string;
+type SmokeExpectation = {
+  routePath: "draft" | "human_review";
+  hasReply: boolean;
+  minGroundingSources: number;
+  requiredGroundingSourceIds?: string[];
+  forbiddenGroundingSourceIds?: string[];
 };
 
-const getSmokeTicket = (ticketId: (typeof smokeTicketIds)[number]) => {
+type SmokeCase = {
+  ticket: Ticket;
+  source: "golden" | "inline";
+  expected: SmokeExpectation;
+};
+
+const getSmokeTicket = (ticketId: string) => {
   const goldenTicket = goldenTickets.find(({ ticket }) => ticket.id === ticketId);
 
   if (!goldenTicket) {
@@ -37,6 +31,70 @@ const getSmokeTicket = (ticketId: (typeof smokeTicketIds)[number]) => {
   }
 
   return goldenTicket.ticket;
+};
+
+const smokeCases: SmokeCase[] = [
+  {
+    ticket: getSmokeTicket("g-002"),
+    source: "golden",
+    expected: { routePath: "draft", hasReply: true, minGroundingSources: 1 },
+  },
+  {
+    ticket: getSmokeTicket("g-003"),
+    source: "golden",
+    expected: {
+      routePath: "draft",
+      hasReply: true,
+      minGroundingSources: 1,
+      requiredGroundingSourceIds: ["order-88421"],
+    },
+  },
+  {
+    ticket: {
+      id: "smoke-unknown-order",
+      channel: "email",
+      product: "Logitech MX Master 3",
+      body: "My order ORD-99999 was supposed to arrive last week, but I cannot find any tracking update. Can you check what happened and tell me whether it can be resent?",
+      customer: {
+        name: "Smoke Test",
+        email: "smoke.unknown.order@example.com",
+      },
+    },
+    source: "inline",
+    expected: {
+      routePath: "draft",
+      hasReply: true,
+      minGroundingSources: 0,
+      forbiddenGroundingSourceIds: ["order-99999"],
+    },
+  },
+  {
+    ticket: getSmokeTicket("g-006"),
+    source: "golden",
+    expected: { routePath: "human_review", hasReply: false, minGroundingSources: 0 },
+  },
+];
+
+const smokeLog = logger.child({ script: "workflowSmoke", datasetSize: smokeCases.length });
+
+type SmokeCaseLog = {
+  ticketId: string;
+  source: SmokeCase["source"];
+  expectedRoute: SmokeExpectation["routePath"];
+  actualRoute?: string;
+  classification?: {
+    category: string;
+    urgency: string;
+    needsHuman: boolean;
+  };
+  expectedReply: boolean;
+  actualReply?: boolean;
+  expectedMinGroundingSources: number;
+  groundingSourceIds?: string[];
+  requiredGroundingSourceIds?: string[];
+  forbiddenGroundingSourceIds?: string[];
+  ok: boolean;
+  error?: string;
 };
 
 const runSmokeTicket = async (ticket: Ticket) => {
@@ -62,67 +120,103 @@ const runSmokeTicket = async (ticket: Ticket) => {
 const main = async () => {
   const cases: SmokeCaseLog[] = [];
 
-  for (const ticketId of smokeTicketIds) {
-    const expected = expectedSmokeResults[ticketId];
+  for (const smokeCase of smokeCases) {
+    const { expected, source, ticket } = smokeCase;
 
     try {
-      const result = await runSmokeTicket(getSmokeTicket(ticketId));
+      const result = await runSmokeTicket(ticket);
       const hasReply = Boolean(result.reply);
-      const citedArticleIds = result.reply?.groundingSourceIds ?? [];
+      const groundingSourceIds = result.reply?.groundingSourceIds ?? [];
+      const classification = {
+        category: result.classification.category,
+        urgency: result.classification.urgency,
+        needsHuman: result.classification.needsHuman,
+      };
+      const hasRequiredGrounding =
+        expected.requiredGroundingSourceIds?.every((sourceId) =>
+          groundingSourceIds.includes(sourceId)
+        ) ?? true;
+      const avoidsForbiddenGrounding =
+        expected.forbiddenGroundingSourceIds?.every(
+          (sourceId) => !groundingSourceIds.includes(sourceId)
+        ) ?? true;
       const ok =
         result.route.path === expected.routePath &&
         hasReply === expected.hasReply &&
-        citedArticleIds.length >= expected.minCitations;
+        groundingSourceIds.length >= expected.minGroundingSources &&
+        hasRequiredGrounding &&
+        avoidsForbiddenGrounding;
 
       cases.push({
-        ticketId,
+        ticketId: ticket.id,
+        source,
         expectedRoute: expected.routePath,
         actualRoute: result.route.path,
+        classification,
         expectedReply: expected.hasReply,
         actualReply: hasReply,
-        expectedMinCitations: expected.minCitations,
-        citedArticleIds,
+        expectedMinGroundingSources: expected.minGroundingSources,
+        groundingSourceIds,
+        requiredGroundingSourceIds: expected.requiredGroundingSourceIds,
+        forbiddenGroundingSourceIds: expected.forbiddenGroundingSourceIds,
         ok,
-        ...(ok ? {} : { error: `Unexpected smoke result for ${ticketId}` }),
+        ...(ok ? {} : { error: `Unexpected smoke result for ${ticket.id}` }),
       });
+
+      smokeLog.info(
+        {
+          ticketId: ticket.id,
+          ...classification,
+          routePath: result.route.path,
+        },
+        `${ticket.id} -> classified ${classification.category} -> ${result.route.path}`
+      );
 
       if (ok) {
         smokeLog.info(
           {
-            ticketId,
+            ticketId: ticket.id,
             routePath: result.route.path,
             hasReply,
-            citedArticleIds,
+            groundingSourceIds,
           },
-          `${ticketId} -> ${result.route.path} -> reply ${hasReply ? "yes" : "no"}`
+          `${ticket.id} -> ${result.route.path} -> reply ${hasReply ? "yes" : "no"}`
         );
       } else {
         smokeLog.error(
           {
-            ticketId,
+            ticketId: ticket.id,
             expectedRoute: expected.routePath,
             actualRoute: result.route.path,
             expectedReply: expected.hasReply,
             actualReply: hasReply,
-            expectedMinCitations: expected.minCitations,
-            citedArticleIds,
+            expectedMinGroundingSources: expected.minGroundingSources,
+            groundingSourceIds,
+            requiredGroundingSourceIds: expected.requiredGroundingSourceIds,
+            forbiddenGroundingSourceIds: expected.forbiddenGroundingSourceIds,
           },
-          `WORKFLOW SMOKE FAILED: ${ticketId}`
+          `WORKFLOW SMOKE FAILED: ${ticket.id}`
         );
       }
     } catch (error) {
       const errorMessage = toErrorMessage(error);
 
       cases.push({
-        ticketId,
+        ticketId: ticket.id,
+        source,
         expectedRoute: expected.routePath,
         expectedReply: expected.hasReply,
-        expectedMinCitations: expected.minCitations,
+        expectedMinGroundingSources: expected.minGroundingSources,
+        requiredGroundingSourceIds: expected.requiredGroundingSourceIds,
+        forbiddenGroundingSourceIds: expected.forbiddenGroundingSourceIds,
         ok: false,
         error: errorMessage,
       });
 
-      smokeLog.error({ ticketId, err: errorMessage }, `WORKFLOW SMOKE ERRORED: ${ticketId}`);
+      smokeLog.error(
+        { ticketId: ticket.id, err: errorMessage },
+        `WORKFLOW SMOKE ERRORED: ${ticket.id}`
+      );
     }
   }
 
@@ -136,7 +230,7 @@ const main = async () => {
     script: "workflow:smoke",
     dataset: {
       path: path.relative(path.resolve(import.meta.dir, "..", ".."), goldenTicketsPath),
-      ticketIds: smokeTicketIds,
+      ticketIds: smokeCases.map(({ ticket }) => ticket.id),
     },
     summary,
     cases,
