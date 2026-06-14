@@ -3,15 +3,12 @@ import { z } from "zod";
 import { classifyTicket } from "@/agents/classifier.agent";
 import { draftReply } from "@/agents/drafter.agent";
 import { investigateTicket } from "@/agents/investigator.agent";
-import { buildKbSearchQuery } from "@/domain/kb-query";
 import { routeTicket } from "@/domain/routing";
 import { ClassifyTicketSchema } from "@/schemas/classify-ticket.schema";
 import { DraftReplySchema } from "@/schemas/draft-reply.schema";
 import { InvestigationResultSchema } from "@/schemas/investigation.schema";
 import { RouteTicketSchema } from "@/schemas/route-ticket.schema";
-import { SearchKbResultSchema } from "@/schemas/search-kb.schema";
 import { TicketSchema } from "@/schemas/ticket.schema";
-import { searchKb } from "@/tools/search-kb";
 
 const TriageInputSchema = z.object({
   ticket: TicketSchema,
@@ -25,12 +22,6 @@ const ClassifyOutputSchema = z.object({
 const RouteOutputSchema = z.object({
   ...ClassifyOutputSchema.shape,
   route: RouteTicketSchema,
-});
-
-/** @deprecated - remove next phase */
-const RetrievedRouteOutputSchema = z.object({
-  ...RouteOutputSchema.shape,
-  kbResults: z.array(SearchKbResultSchema),
 });
 
 const InvestigatedRouteOutputSchema = z.object({
@@ -69,26 +60,6 @@ const routeStep = createStep({
     return Promise.resolve({
       ...inputData,
       route,
-    });
-  },
-});
-
-/** @deprecated - remove next phase */
-const _retrieveKbStep = createStep({
-  id: "retrieve-kb-context",
-  inputSchema: RouteOutputSchema,
-  outputSchema: RetrievedRouteOutputSchema,
-  execute: ({ inputData }) => {
-    const searchQuery = buildKbSearchQuery(
-      inputData.classification.category,
-      inputData.ticket.body
-    );
-
-    const kbResults = searchKb(searchQuery);
-
-    return Promise.resolve({
-      ...inputData,
-      kbResults,
     });
   },
 });
