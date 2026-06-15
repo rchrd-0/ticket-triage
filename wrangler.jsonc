@@ -1,0 +1,23 @@
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "name": "ticket-triage",
+  "main": "src/worker.ts",
+  "compatibility_date": "2026-06-15",
+  "observability": {
+    "enabled": true,
+    "head_sampling_rate": 1
+  },
+  "vars": {
+    "NODE_ENV": "production",
+    "LOG_LEVEL": "info",
+    "LANGFUSE_BASE_URL": "https://jp.cloud.langfuse.com"
+  },
+  "secrets": {
+    "required": [
+      "OPENROUTER_API_KEY",
+      "LANGFUSE_PUBLIC_KEY",
+      "LANGFUSE_SECRET_KEY",
+      "TRIAGE_API_KEY"
+    ]
+  }
+}
