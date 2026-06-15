@@ -14,7 +14,9 @@
     "check": "ultracite check",
     "fix": "ultracite fix",
     "tickets:seed": "bun scripts/seed.ts",
-    "tickets:reset": "rm -f src/fixtures/tickets.json"
+    "tickets:reset": "rm -f src/fixtures/tickets.json",
+    "mcp:stdio": "bun src/mcp/support-context.stdio.ts",
+    "mcp:inspect": "bunx @modelcontextprotocol/inspector bun src/mcp/support-context.stdio.ts"
   },
   "devDependencies": {
     "@biomejs/biome": "2.4.15",
@@ -32,6 +34,7 @@
     "@langfuse/tracing": "^5.4.1",
     "@mastra/core": "^1.42.0",
     "@mastra/langfuse": "^1.3.4",
+    "@mastra/mcp": "^1.10.0",
     "@mastra/observability": "^1.14.1",
     "@openrouter/ai-sdk-provider": "^2.9.0",
     "@opentelemetry/sdk-node": "^0.218.0",

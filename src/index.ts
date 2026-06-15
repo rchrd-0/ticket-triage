@@ -4,6 +4,7 @@ import { Observability } from "@mastra/observability";
 import { classifierAgent } from "@/agents/classifier.agent";
 import { drafterAgent } from "@/agents/drafter.agent";
 import { investigatorAgent } from "@/agents/investigator.agent";
+import { supportContextMcp } from "@/mcp/support-context.mcp";
 import { getOrderStatusTool } from "@/tools/get-order-status";
 import { searchKbTool } from "@/tools/search-kb";
 import { searchSopTool } from "@/tools/search-sop";
@@ -13,6 +14,7 @@ export const mastra = new Mastra({
   agents: { classifierAgent, drafterAgent, investigatorAgent },
   workflows: { triageWorkflow },
   tools: { searchKbTool, searchSopTool, getOrderStatusTool },
+  mcpServers: { supportContextMcp },
   observability: new Observability({
     configs: {
       langfuse: {
