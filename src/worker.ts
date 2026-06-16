@@ -3,6 +3,7 @@ import { HTTPException } from "hono/http-exception";
 import { logger } from "hono/logger";
 import { ZodError, z } from "zod";
 import { createWorkerEnv } from "@/config/worker-env";
+import { installWorkerObservabilityFetchPatch } from "@/lib/worker-observability-fetch";
 import { createCoreMastra } from "@/mastra/core";
 import { TicketSchema } from "@/schemas/ticket.schema";
 import { TriageOutputSchema } from "@/workflows/triage.workflow";
@@ -64,6 +65,7 @@ app.use(logger());
 app.use("/triage", async (c, next) => {
   const workerEnv = createWorkerEnv(c.env);
   c.set("workerEnv", workerEnv);
+  installWorkerObservabilityFetchPatch(workerEnv.LANGFUSE_BASE_URL);
 
   const authorization = c.req.header("Authorization");
   const expected = `Bearer ${workerEnv.TRIAGE_API_KEY}`;
