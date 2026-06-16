@@ -2,20 +2,40 @@ import { Hono } from "hono";
 import { HTTPException } from "hono/http-exception";
 import { logger } from "hono/logger";
 import { ZodError } from "zod";
+import { createWorkerEnv } from "@/config/worker-env";
 
-type Bindings = {
-  LANGFUSE_BASE_URL: string;
-  LANGFUSE_PUBLIC_KEY: string;
-  LANGFUSE_SECRET_KEY: string;
-  LOG_LEVEL: "debug" | "info" | "warn" | "error";
-  NODE_ENV: "development" | "production" | "test";
-  OPENROUTER_API_KEY: string;
-  TRIAGE_API_KEY: string;
+type WorkerConfig = ReturnType<typeof createWorkerEnv>;
+
+type AppEnv = {
+  Bindings: Env;
+  Variables: {
+    workerEnv: WorkerConfig;
+  };
 };
 
-const app = new Hono<{ Bindings: Bindings }>();
+const app = new Hono<AppEnv>();
 
 app.use(logger());
+
+app.use("/triage", async (c, next) => {
+  const workerEnv = createWorkerEnv(c.env);
+  c.set("workerEnv", workerEnv);
+
+  const authorization = c.req.header("Authorization");
+  const expected = `Bearer ${workerEnv.TRIAGE_API_KEY}`;
+
+  if (authorization !== expected) {
+    return c.json(
+      {
+        success: false,
+        message: "Unauthorized",
+      },
+      401
+    );
+  }
+
+  await next();
+});
 
 app.onError((err, c) => {
   if (err instanceof ZodError) {
