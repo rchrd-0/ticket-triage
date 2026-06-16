@@ -25,12 +25,23 @@ const app = new Hono<AppEnv>();
 
 let coreMastra: CoreMastra | undefined;
 
+const flushObservability = async () => {
+  await coreMastra?.observability.getDefaultInstance()?.flush();
+};
+
 const runTriageWorkflow = async (input: z.infer<typeof TriageRequestSchema>) => {
   coreMastra = coreMastra ?? createCoreMastra();
 
   const workflow = coreMastra.getWorkflowById("triage-workflow");
   const run = await workflow.createRun();
-  const result = await run.start({ inputData: input });
+  const result = await run.start({
+    inputData: input,
+    tracingOptions: {
+      metadata: {
+        traceName: "triage-workflow-worker",
+      },
+    },
+  });
 
   if (result.status !== "success") {
     throw new HTTPException(500, { message: `Triage workflow failed: ${result.status}` });
@@ -138,6 +149,15 @@ app.post("/triage", async (c) => {
   });
   const input = TriageRequestSchema.parse(body);
   const output = await runTriageWorkflow(input);
+
+  c.executionCtx.waitUntil(
+    flushObservability().catch((error) => {
+      console.error("Worker observability flush failed", {
+        name: error instanceof Error ? error.name : "UnknownError",
+        message: error instanceof Error ? error.message : String(error),
+      });
+    })
+  );
 
   return c.json(output);
 });

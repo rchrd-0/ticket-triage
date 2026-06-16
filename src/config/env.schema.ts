@@ -5,6 +5,7 @@ export const baseEnvShape = {
   LANGFUSE_SECRET_KEY: z.string().min(1),
   LANGFUSE_PUBLIC_KEY: z.string().min(1),
   LANGFUSE_BASE_URL: z.url().default("https://cloud.langfuse.com"),
+  LANGFUSE_REALTIME: z.coerce.boolean().default(false),
   LOG_LEVEL: z.enum(["debug", "info", "warn", "error"]).default("info"),
   NODE_ENV: z.enum(["development", "production", "test"]).default("development"),
 };

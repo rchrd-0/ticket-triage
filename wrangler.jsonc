@@ -2,6 +2,8 @@
   "$schema": "./node_modules/wrangler/config-schema.json",
   "name": "ticket-triage",
   "main": "src/worker.ts",
+  "workers_dev": true,
+  "preview_urls": false,
   "compatibility_date": "2026-06-15",
   "compatibility_flags": ["nodejs_compat"],
   "observability": {
@@ -11,6 +13,7 @@
   "vars": {
     "NODE_ENV": "production",
     "LOG_LEVEL": "info",
+    "LANGFUSE_REALTIME": "false",
     "LANGFUSE_BASE_URL": "https://jp.cloud.langfuse.com"
   },
   "secrets": {

@@ -4,6 +4,7 @@ import { Observability } from "@mastra/observability";
 import { classifierAgent } from "@/agents/classifier.agent";
 import { drafterAgent } from "@/agents/drafter.agent";
 import { investigatorAgent } from "@/agents/investigator.agent";
+import { env } from "@/config/env";
 import { getOrderStatusTool } from "@/tools/get-order-status";
 import { searchKbTool } from "@/tools/search-kb";
 import { searchSopTool } from "@/tools/search-sop";
@@ -19,7 +20,7 @@ export const createCoreMastraConfig = () => ({
         serviceName: "ticket-triage",
         exporters: [
           new LangfuseExporter({
-            realtime: process.env.NODE_ENV === "development",
+            realtime: env.LANGFUSE_REALTIME,
           }),
         ],
       },
