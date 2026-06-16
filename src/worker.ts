@@ -1,10 +1,18 @@
 import { Hono } from "hono";
 import { HTTPException } from "hono/http-exception";
 import { logger } from "hono/logger";
-import { ZodError } from "zod";
+import { ZodError, z } from "zod";
 import { createWorkerEnv } from "@/config/worker-env";
+import { createCoreMastra } from "@/mastra/core";
+import { TicketSchema } from "@/schemas/ticket.schema";
+import { TriageOutputSchema } from "@/workflows/triage.workflow";
 
 type WorkerConfig = ReturnType<typeof createWorkerEnv>;
+type CoreMastra = ReturnType<typeof createCoreMastra>;
+
+const TriageRequestSchema = z.object({
+  ticket: TicketSchema,
+});
 
 type AppEnv = {
   Bindings: Env;
@@ -14,6 +22,31 @@ type AppEnv = {
 };
 
 const app = new Hono<AppEnv>();
+
+let coreMastra: CoreMastra | undefined;
+
+const runTriageWorkflow = async (input: z.infer<typeof TriageRequestSchema>) => {
+  coreMastra = coreMastra ?? createCoreMastra();
+
+  const workflow = coreMastra.getWorkflowById("triage-workflow");
+  const run = await workflow.createRun();
+  const result = await run.start({ inputData: input });
+
+  if (result.status !== "success") {
+    throw new HTTPException(500, { message: `Triage workflow failed: ${result.status}` });
+  }
+
+  const directParse = TriageOutputSchema.safeParse(result.result);
+
+  if (directParse.success) {
+    return directParse.data;
+  }
+
+  const branchOutputs = result.result as Record<string, unknown>;
+  const output = branchOutputs["draft-workflow"] ?? branchOutputs["human-review"];
+
+  return TriageOutputSchema.parse(output);
+};
 
 app.use(logger());
 
@@ -62,7 +95,10 @@ app.onError((err, c) => {
     );
   }
 
-  console.error("Unhandled error:", err);
+  console.error("Unhandled Worker error", {
+    name: err instanceof Error ? err.name : "UnknownError",
+    message: err instanceof Error ? err.message : String(err),
+  });
   return c.json(
     {
       success: false,
@@ -91,9 +127,19 @@ app.get("/", (c) =>
 
 app.get("/health", (c) =>
   c.json({
-    success: true,
+    ok: true,
     service: "ticket-triage",
   })
 );
+
+app.post("/triage", async (c) => {
+  const body = await c.req.json().catch(() => {
+    throw new HTTPException(400, { message: "Invalid JSON body" });
+  });
+  const input = TriageRequestSchema.parse(body);
+  const output = await runTriageWorkflow(input);
+
+  return c.json(output);
+});
 
 export default app;
