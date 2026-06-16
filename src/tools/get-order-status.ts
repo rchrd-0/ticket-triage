@@ -16,12 +16,14 @@ export const getOrderStatus = (input: GetOrderStatusInput): GetOrderStatusResult
 
   logger.info(
     {
-      tool: "get-order-status",
+      event: "tool.get_order_status.completed",
+      tool: "get_order_status",
       durationMs: Math.round(performance.now() - startedAt),
-      normalizedOrderId: result.orderId,
+      sourceIds: result.found ? [result.sourceId] : [],
+      orderId: result.orderId,
       found: result.found,
     },
-    "Order status lookup completed"
+    "Tool call completed"
   );
 
   return result;

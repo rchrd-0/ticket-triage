@@ -16,13 +16,14 @@ export const searchKb = (input: SearchKbInput): SearchKbResult[] => {
 
   logger.info(
     {
-      tool: "search-kb",
+      event: "tool.search_kb.completed",
+      tool: "search_kb",
       category: parsedInput.category,
       durationMs: Math.round(performance.now() - startedAt),
       resultCount: results.length,
-      articleIds: results.map((result) => result.articleId),
+      sourceIds: results.map((result) => result.articleId),
     },
-    "KB search completed"
+    "Tool call completed"
   );
 
   return results;

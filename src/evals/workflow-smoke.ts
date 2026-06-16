@@ -75,7 +75,7 @@ const smokeCases: SmokeCase[] = [
   },
 ];
 
-const smokeLog = logger.child({ script: "workflowSmoke", datasetSize: smokeCases.length });
+const smokeLog = logger.child({ script: "workflow_smoke", datasetSize: smokeCases.length });
 
 type SmokeCaseLog = {
   ticketId: string;
@@ -163,29 +163,26 @@ const main = async () => {
         ...(ok ? {} : { error: `Unexpected smoke result for ${ticket.id}` }),
       });
 
-      smokeLog.info(
-        {
-          ticketId: ticket.id,
-          ...classification,
-          routePath: result.route.path,
-        },
-        `${ticket.id} -> classified ${classification.category} -> ${result.route.path}`
-      );
-
       if (ok) {
         smokeLog.info(
           {
+            event: "workflow.smoke.case_completed",
             ticketId: ticket.id,
+            ok,
+            ...classification,
             routePath: result.route.path,
             hasReply,
             groundingSourceIds,
           },
-          `${ticket.id} -> ${result.route.path} -> reply ${hasReply ? "yes" : "no"}`
+          "Workflow smoke case completed"
         );
       } else {
         smokeLog.error(
           {
+            event: "workflow.smoke.case_completed",
             ticketId: ticket.id,
+            ok,
+            ...classification,
             expectedRoute: expected.routePath,
             actualRoute: result.route.path,
             expectedReply: expected.hasReply,
@@ -195,7 +192,7 @@ const main = async () => {
             requiredGroundingSourceIds: expected.requiredGroundingSourceIds,
             forbiddenGroundingSourceIds: expected.forbiddenGroundingSourceIds,
           },
-          `WORKFLOW SMOKE FAILED: ${ticket.id}`
+          "Workflow smoke case completed"
         );
       }
     } catch (error) {
@@ -214,8 +211,8 @@ const main = async () => {
       });
 
       smokeLog.error(
-        { ticketId: ticket.id, err: errorMessage },
-        `WORKFLOW SMOKE ERRORED: ${ticket.id}`
+        { event: "workflow.smoke.case_errored", ticketId: ticket.id, err: errorMessage },
+        "Workflow smoke case errored"
       );
     }
   }
@@ -235,6 +232,14 @@ const main = async () => {
     summary,
     cases,
   });
+
+  smokeLog.info(
+    {
+      event: "workflow.smoke.completed",
+      ...summary,
+    },
+    "Workflow smoke completed"
+  );
 
   if (summary.fail > 0) {
     process.exitCode = 1;

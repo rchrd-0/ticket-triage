@@ -1,8 +1,8 @@
 import { Hono } from "hono";
 import { HTTPException } from "hono/http-exception";
-import { logger } from "hono/logger";
 import { ZodError, z } from "zod";
 import { createWorkerEnv } from "@/config/worker-env";
+import logger from "@/lib/logger";
 import { installWorkerObservabilityFetchPatch } from "@/lib/worker-observability-fetch";
 import { createCoreMastra } from "@/mastra/core";
 import { TicketSchema } from "@/schemas/ticket.schema";
@@ -25,6 +25,7 @@ type AppEnv = {
 const app = new Hono<AppEnv>();
 
 let coreMastra: CoreMastra | undefined;
+const workerLog = logger.child({ surface: "worker" });
 
 const flushObservability = async () => {
   await coreMastra?.observability.getDefaultInstance()?.flush();
@@ -60,8 +61,6 @@ const runTriageWorkflow = async (input: z.infer<typeof TriageRequestSchema>) => 
   return TriageOutputSchema.parse(output);
 };
 
-app.use(logger());
-
 app.use("/triage", async (c, next) => {
   const workerEnv = createWorkerEnv(c.env);
   c.set("workerEnv", workerEnv);
@@ -71,6 +70,15 @@ app.use("/triage", async (c, next) => {
   const expected = `Bearer ${workerEnv.TRIAGE_API_KEY}`;
 
   if (authorization !== expected) {
+    workerLog.warn(
+      {
+        event: "worker.triage.unauthorized",
+        method: c.req.method,
+        path: c.req.path,
+      },
+      "Unauthorized triage request rejected"
+    );
+
     return c.json(
       {
         success: false,
@@ -80,7 +88,19 @@ app.use("/triage", async (c, next) => {
     );
   }
 
+  const startedAt = performance.now();
   await next();
+
+  workerLog.info(
+    {
+      event: "worker.triage.completed",
+      method: c.req.method,
+      path: c.req.path,
+      status: c.res.status,
+      durationMs: Math.round(performance.now() - startedAt),
+    },
+    "Triage request completed"
+  );
 });
 
 app.onError((err, c) => {
@@ -108,10 +128,14 @@ app.onError((err, c) => {
     );
   }
 
-  console.error("Unhandled Worker error", {
-    name: err instanceof Error ? err.name : "UnknownError",
-    message: err instanceof Error ? err.message : String(err),
-  });
+  workerLog.error(
+    {
+      event: "worker.unhandled_error",
+      name: err instanceof Error ? err.name : "UnknownError",
+      err: err instanceof Error ? err.message : String(err),
+    },
+    "Unhandled Worker error"
+  );
   return c.json(
     {
       success: false,
@@ -154,10 +178,14 @@ app.post("/triage", async (c) => {
 
   c.executionCtx.waitUntil(
     flushObservability().catch((error) => {
-      console.error("Worker observability flush failed", {
-        name: error instanceof Error ? error.name : "UnknownError",
-        message: error instanceof Error ? error.message : String(error),
-      });
+      workerLog.error(
+        {
+          event: "observability.flush.failed",
+          name: error instanceof Error ? error.name : "UnknownError",
+          err: error instanceof Error ? error.message : String(error),
+        },
+        "Worker observability flush failed"
+      );
     })
   );
 

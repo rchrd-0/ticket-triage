@@ -45,12 +45,14 @@ const logCaseResult = (ticketLog: EvalLogger, caseLog: ClassifierEvalCaseLog) =>
   if (caseLog.ok) {
     ticketLog.debug(
       {
+        event: "eval.classifier.case_completed",
+        ok: true,
         category: caseLog.actual.category,
         needsHuman: caseLog.actual.needsHuman,
         urgency: caseLog.actual.urgency,
         confidence: caseLog.actual.confidence,
       },
-      "CASE PASSED"
+      "Classifier eval case completed"
     );
 
     return;
@@ -58,6 +60,8 @@ const logCaseResult = (ticketLog: EvalLogger, caseLog: ClassifierEvalCaseLog) =>
 
   ticketLog.warn(
     {
+      event: "eval.classifier.case_completed",
+      ok: false,
       category: {
         actual: caseLog.actual.category,
         expected: caseLog.expected.category,
@@ -79,7 +83,7 @@ const logCaseResult = (ticketLog: EvalLogger, caseLog: ClassifierEvalCaseLog) =>
         match: caseLog.matches.confidence,
       },
     },
-    "CASE FAILED"
+    "Classifier eval case completed"
   );
 };
 
@@ -106,7 +110,10 @@ const evaluateGoldenTicket = async (
   } catch (error) {
     const errorLog = { ticketId: ticket.id, product: ticket.product, error: toErrorMessage(error) };
 
-    ticketLog.error({ err: errorLog.error }, "CASE ERRORED");
+    ticketLog.error(
+      { event: "eval.classifier.case_errored", err: errorLog.error },
+      "Classifier eval case errored"
+    );
 
     return { kind: "error", errorLog };
   }
@@ -114,17 +121,18 @@ const evaluateGoldenTicket = async (
 
 const evalGoldenTickets = async () => {
   const evalLog = logger.child({
-    script: "evalGoldenTickets",
+    script: "eval_classifier",
     datasetSize: goldenTickets.length,
   });
 
   evalLog.info(
     {
+      event: "eval.classifier.started",
       model: classifier.agentModel,
       temperature: classifier.temperature,
       reasoningEffort: classifier.reasoning.effort,
     },
-    "START GOLDEN TICKET EVAL"
+    "Classifier eval started"
   );
 
   const totals = createEvalTotals();
@@ -163,7 +171,13 @@ const evalGoldenTickets = async () => {
     errors: errorCases,
   });
 
-  evalLog.info(summary, "GOLDEN TICKET EVAL COMPLETE");
+  evalLog.info(
+    {
+      event: "eval.classifier.completed",
+      ...summary,
+    },
+    "Classifier eval completed"
+  );
 };
 
 const main = async () => {

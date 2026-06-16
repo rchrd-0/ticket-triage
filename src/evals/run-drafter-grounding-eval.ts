@@ -74,12 +74,18 @@ const evaluateGrounding = (args: {
 });
 
 const logCaseResult = (caseLog: EvalLogger, result: DrafterGroundingResult) => {
+  const logFields = {
+    event: "eval.drafter_grounding.case_completed",
+    ok: casePassed(result),
+    ...result,
+  };
+
   if (casePassed(result)) {
-    caseLog.debug(result, "CASE PASSED");
+    caseLog.debug(logFields, "Drafter grounding eval case completed");
     return;
   }
 
-  caseLog.warn(result, "CASE FAILED");
+  caseLog.warn(logFields, "Drafter grounding eval case completed");
 };
 
 const evaluateCase = async (
@@ -112,7 +118,10 @@ const evaluateCase = async (
     return { kind: "success", caseLog: result };
   } catch (error) {
     const errorLog = { ticketId: groundingCase.ticketId, error: toErrorMessage(error) };
-    caseLog.error({ err: errorLog.error }, "CASE ERRORED");
+    caseLog.error(
+      { event: "eval.drafter_grounding.case_errored", err: errorLog.error },
+      "Drafter grounding eval case errored"
+    );
 
     return { kind: "error", errorLog };
   }
@@ -120,12 +129,17 @@ const evaluateCase = async (
 
 const main = async () => {
   const evalLog = logger.child({
-    script: "evalDrafterGrounding",
+    script: "eval_drafter_grounding",
     datasetSize: drafterGroundingCases.length,
   });
   const results: DrafterGroundingOutcome[] = [];
 
-  evalLog.info("START DRAFTER GROUNDING EVAL");
+  evalLog.info(
+    {
+      event: "eval.drafter_grounding.started",
+    },
+    "Drafter grounding eval started"
+  );
 
   for (const groundingCase of drafterGroundingCases) {
     results.push(await evaluateCase(groundingCase, evalLog));
@@ -141,8 +155,9 @@ const main = async () => {
     errored: erroredCases.length,
   };
 
-  logger.info(
+  evalLog.info(
     {
+      event: "eval.drafter_grounding.completed",
       ...summary,
       failures: failedCases.map((result) => result.caseLog),
       errors: erroredCases.map((result) => result.errorLog),

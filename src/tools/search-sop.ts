@@ -16,13 +16,13 @@ export const searchSop = (input: SearchSopInput): SearchSopResult[] => {
 
   logger.info(
     {
-      tool: "search-sop",
+      event: "tool.search_sop.completed",
+      tool: "search_sop",
       durationMs: Math.round(performance.now() - startedAt),
       resultCount: results.length,
       sourceIds: results.map((result) => result.sourceId),
     },
-
-    "SOP search completed"
+    "Tool call completed"
   );
 
   return results;

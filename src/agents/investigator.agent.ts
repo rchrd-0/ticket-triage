@@ -60,12 +60,13 @@ export const investigateTicket = async (
 
   logger.info(
     {
+      event: "investigation.completed",
       toolCallCount: investigationResult.toolCalls.length,
       toolNames: investigationResult.toolCalls.map((call) => call.toolName),
       sourceIds: investigationResult.sources.map((source) => source.sourceId),
       terminationReason: investigationResult.terminationReason,
     },
-    "Ticket investigation completed"
+    "Investigation completed"
   );
 
   return investigationResult;
