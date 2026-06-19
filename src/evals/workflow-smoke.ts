@@ -222,7 +222,7 @@ const main = async () => {
     fail: cases.filter((smokeCase) => !smokeCase.ok).length,
   };
 
-  await writeEvalLog("workflow-smoke", {
+  const logPath = await writeEvalLog("workflow-smoke", {
     runAt: new Date().toISOString(),
     script: "workflow:smoke",
     dataset: {
@@ -236,6 +236,7 @@ const main = async () => {
   smokeLog.info(
     {
       event: "workflow.smoke.completed",
+      logPath,
       ...summary,
     },
     "Workflow smoke completed"

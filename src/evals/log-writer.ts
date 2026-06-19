@@ -2,6 +2,7 @@ import { mkdir, writeFile } from "node:fs/promises";
 import path from "node:path";
 
 const logsDir = path.resolve(import.meta.dir, "..", "..", "logs");
+const projectRoot = path.resolve(import.meta.dir, "..", "..");
 
 const buildLogFileName = (prefix: string) => {
   const timestamp = new Date().toISOString().replace(/[:.]/g, "-");
@@ -10,6 +11,10 @@ const buildLogFileName = (prefix: string) => {
 };
 
 export const writeEvalLog = async (prefix: string, payload: unknown) => {
+  const logPath = path.join(logsDir, buildLogFileName(prefix));
+
   await mkdir(logsDir, { recursive: true });
-  await writeFile(path.join(logsDir, buildLogFileName(prefix)), JSON.stringify(payload, null, 2));
+  await writeFile(logPath, JSON.stringify(payload, null, 2));
+
+  return path.relative(projectRoot, logPath);
 };

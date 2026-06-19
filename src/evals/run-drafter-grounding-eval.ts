@@ -155,17 +155,7 @@ const main = async () => {
     errored: erroredCases.length,
   };
 
-  evalLog.info(
-    {
-      event: "eval.drafter_grounding.completed",
-      ...summary,
-      failures: failedCases.map((result) => result.caseLog),
-      errors: erroredCases.map((result) => result.errorLog),
-    },
-    "Drafter grounding eval completed"
-  );
-
-  await writeEvalLog("eval-drafter-grounding", {
+  const logPath = await writeEvalLog("eval-drafter-grounding", {
     runAt: new Date().toISOString(),
     dataset: {
       path: path.relative(path.resolve(import.meta.dir, "..", ".."), drafterGroundingCasesPath),
@@ -174,6 +164,17 @@ const main = async () => {
     summary,
     results,
   });
+
+  evalLog.info(
+    {
+      event: "eval.drafter_grounding.completed",
+      logPath,
+      ...summary,
+      failures: failedCases.map((result) => result.caseLog),
+      errors: erroredCases.map((result) => result.errorLog),
+    },
+    "Drafter grounding eval completed"
+  );
 
   if (failedCases.length > 0 || erroredCases.length > 0) {
     process.exitCode = 1;

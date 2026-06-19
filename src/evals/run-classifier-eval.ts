@@ -155,7 +155,7 @@ const evalGoldenTickets = async () => {
   const datasetSize = goldenTickets.length;
   const summary = buildSummary(totals, datasetSize);
 
-  await writeEvalLog("eval-classifier", {
+  const logPath = await writeEvalLog("eval-classifier", {
     runAt: new Date().toISOString(),
     dataset: {
       path: path.relative(path.resolve(import.meta.dir, "..", ".."), goldenTicketsPath),
@@ -174,6 +174,7 @@ const evalGoldenTickets = async () => {
   evalLog.info(
     {
       event: "eval.classifier.completed",
+      logPath,
       ...summary,
     },
     "Classifier eval completed"
