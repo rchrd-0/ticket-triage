@@ -1,6 +1,6 @@
-import type { OpenRouterUsageAccounting } from "@openrouter/ai-sdk-provider";
-
-export type LlmRunUsage = OpenRouterUsageAccounting;
+export type LlmRunUsage = {
+  cost?: number;
+};
 
 type ProviderMetadataWithOpenRouterUsage = {
   openrouter?: {
