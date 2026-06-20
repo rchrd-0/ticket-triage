@@ -6,6 +6,7 @@ import {
 } from "@/evals/load-datasets";
 import { writeEvalLog } from "@/evals/log-writer";
 import type { DrafterGroundingCase, EvalLogger } from "@/evals/types";
+import { mapWithWorkerCount } from "@/evals/workers";
 import { mastra } from "@/index";
 import { toErrorMessage } from "@/lib/format";
 import logger from "@/lib/logger";
@@ -13,6 +14,8 @@ import { buildDraftReplyPrompt, type DraftGroundingContext } from "@/prompts/dra
 import type { ClassifiedTicket } from "@/schemas/classify-ticket.schema";
 import { type DraftReply, DraftReplySchema } from "@/schemas/draft-reply.schema";
 import type { Ticket } from "@/schemas/ticket.schema";
+
+const DRAFTER_GROUNDING_EVAL_WORKER_COUNT = 8;
 
 const drafterAgent = mastra.getAgent("drafterAgent");
 
@@ -132,7 +135,6 @@ const main = async () => {
     script: "eval_drafter_grounding",
     datasetSize: drafterGroundingCases.length,
   });
-  const results: DrafterGroundingOutcome[] = [];
 
   evalLog.info(
     {
@@ -141,9 +143,11 @@ const main = async () => {
     "Drafter grounding eval started"
   );
 
-  for (const groundingCase of drafterGroundingCases) {
-    results.push(await evaluateCase(groundingCase, evalLog));
-  }
+  const results = await mapWithWorkerCount(
+    drafterGroundingCases,
+    DRAFTER_GROUNDING_EVAL_WORKER_COUNT,
+    (groundingCase) => evaluateCase(groundingCase, evalLog)
+  );
 
   const successCases = results.filter((result) => result.kind === "success");
   const failedCases = successCases.filter((result) => !casePassed(result.caseLog));

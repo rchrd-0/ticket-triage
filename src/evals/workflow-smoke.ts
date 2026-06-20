@@ -1,11 +1,14 @@
 import path from "node:path";
 import { goldenTickets, goldenTicketsPath } from "@/evals/load-datasets";
+import { mapWithWorkerCount } from "@/evals/workers";
 import { mastra } from "@/index";
 import { toErrorMessage } from "@/lib/format";
 import logger from "@/lib/logger";
 import type { Ticket } from "@/schemas/ticket.schema";
 import { TriageOutputSchema } from "@/workflows/triage.workflow";
 import { writeEvalLog } from "./log-writer";
+
+const WORKFLOW_SMOKE_WORKER_COUNT = 8;
 
 const workflow = mastra.getWorkflowById("triage-workflow");
 
@@ -117,105 +120,110 @@ const runSmokeTicket = async (ticket: Ticket) => {
   return TriageOutputSchema.parse(output);
 };
 
-const main = async () => {
-  const cases: SmokeCaseLog[] = [];
+const evaluateSmokeCase = async ({
+  expected,
+  source,
+  ticket,
+}: SmokeCase): Promise<SmokeCaseLog> => {
+  try {
+    const result = await runSmokeTicket(ticket);
+    const hasReply = Boolean(result.reply);
+    const groundingSourceIds = result.reply?.groundingSourceIds ?? [];
+    const classification = {
+      category: result.classification.category,
+      urgency: result.classification.urgency,
+      needsHuman: result.classification.needsHuman,
+    };
+    const hasRequiredGrounding =
+      expected.requiredGroundingSourceIds?.every((sourceId) =>
+        groundingSourceIds.includes(sourceId)
+      ) ?? true;
+    const avoidsForbiddenGrounding =
+      expected.forbiddenGroundingSourceIds?.every(
+        (sourceId) => !groundingSourceIds.includes(sourceId)
+      ) ?? true;
+    const ok =
+      result.route.path === expected.routePath &&
+      hasReply === expected.hasReply &&
+      groundingSourceIds.length >= expected.minGroundingSources &&
+      hasRequiredGrounding &&
+      avoidsForbiddenGrounding;
+    const caseLog = {
+      ticketId: ticket.id,
+      source,
+      expectedRoute: expected.routePath,
+      actualRoute: result.route.path,
+      classification,
+      expectedReply: expected.hasReply,
+      actualReply: hasReply,
+      expectedMinGroundingSources: expected.minGroundingSources,
+      groundingSourceIds,
+      requiredGroundingSourceIds: expected.requiredGroundingSourceIds,
+      forbiddenGroundingSourceIds: expected.forbiddenGroundingSourceIds,
+      ok,
+      ...(ok ? {} : { error: `Unexpected smoke result for ${ticket.id}` }),
+    };
 
-  for (const smokeCase of smokeCases) {
-    const { expected, source, ticket } = smokeCase;
-
-    try {
-      const result = await runSmokeTicket(ticket);
-      const hasReply = Boolean(result.reply);
-      const groundingSourceIds = result.reply?.groundingSourceIds ?? [];
-      const classification = {
-        category: result.classification.category,
-        urgency: result.classification.urgency,
-        needsHuman: result.classification.needsHuman,
-      };
-      const hasRequiredGrounding =
-        expected.requiredGroundingSourceIds?.every((sourceId) =>
-          groundingSourceIds.includes(sourceId)
-        ) ?? true;
-      const avoidsForbiddenGrounding =
-        expected.forbiddenGroundingSourceIds?.every(
-          (sourceId) => !groundingSourceIds.includes(sourceId)
-        ) ?? true;
-      const ok =
-        result.route.path === expected.routePath &&
-        hasReply === expected.hasReply &&
-        groundingSourceIds.length >= expected.minGroundingSources &&
-        hasRequiredGrounding &&
-        avoidsForbiddenGrounding;
-
-      cases.push({
-        ticketId: ticket.id,
-        source,
-        expectedRoute: expected.routePath,
-        actualRoute: result.route.path,
-        classification,
-        expectedReply: expected.hasReply,
-        actualReply: hasReply,
-        expectedMinGroundingSources: expected.minGroundingSources,
-        groundingSourceIds,
-        requiredGroundingSourceIds: expected.requiredGroundingSourceIds,
-        forbiddenGroundingSourceIds: expected.forbiddenGroundingSourceIds,
-        ok,
-        ...(ok ? {} : { error: `Unexpected smoke result for ${ticket.id}` }),
-      });
-
-      if (ok) {
-        smokeLog.info(
-          {
-            event: "workflow.smoke.case_completed",
-            ticketId: ticket.id,
-            ok,
-            ...classification,
-            routePath: result.route.path,
-            hasReply,
-            groundingSourceIds,
-          },
-          "Workflow smoke case completed"
-        );
-      } else {
-        smokeLog.error(
-          {
-            event: "workflow.smoke.case_completed",
-            ticketId: ticket.id,
-            ok,
-            ...classification,
-            expectedRoute: expected.routePath,
-            actualRoute: result.route.path,
-            expectedReply: expected.hasReply,
-            actualReply: hasReply,
-            expectedMinGroundingSources: expected.minGroundingSources,
-            groundingSourceIds,
-            requiredGroundingSourceIds: expected.requiredGroundingSourceIds,
-            forbiddenGroundingSourceIds: expected.forbiddenGroundingSourceIds,
-          },
-          "Workflow smoke case completed"
-        );
-      }
-    } catch (error) {
-      const errorMessage = toErrorMessage(error);
-
-      cases.push({
-        ticketId: ticket.id,
-        source,
-        expectedRoute: expected.routePath,
-        expectedReply: expected.hasReply,
-        expectedMinGroundingSources: expected.minGroundingSources,
-        requiredGroundingSourceIds: expected.requiredGroundingSourceIds,
-        forbiddenGroundingSourceIds: expected.forbiddenGroundingSourceIds,
-        ok: false,
-        error: errorMessage,
-      });
-
+    if (ok) {
+      smokeLog.info(
+        {
+          event: "workflow.smoke.case_completed",
+          ticketId: ticket.id,
+          ok,
+          ...classification,
+          routePath: result.route.path,
+          hasReply,
+          groundingSourceIds,
+        },
+        "Workflow smoke case completed"
+      );
+    } else {
       smokeLog.error(
-        { event: "workflow.smoke.case_errored", ticketId: ticket.id, err: errorMessage },
-        "Workflow smoke case errored"
+        {
+          event: "workflow.smoke.case_completed",
+          ticketId: ticket.id,
+          ok,
+          ...classification,
+          expectedRoute: expected.routePath,
+          actualRoute: result.route.path,
+          expectedReply: expected.hasReply,
+          actualReply: hasReply,
+          expectedMinGroundingSources: expected.minGroundingSources,
+          groundingSourceIds,
+          requiredGroundingSourceIds: expected.requiredGroundingSourceIds,
+          forbiddenGroundingSourceIds: expected.forbiddenGroundingSourceIds,
+        },
+        "Workflow smoke case completed"
       );
     }
+
+    return caseLog;
+  } catch (error) {
+    const errorMessage = toErrorMessage(error);
+
+    smokeLog.error(
+      { event: "workflow.smoke.case_errored", ticketId: ticket.id, err: errorMessage },
+      "Workflow smoke case errored"
+    );
+
+    return {
+      ticketId: ticket.id,
+      source,
+      expectedRoute: expected.routePath,
+      expectedReply: expected.hasReply,
+      expectedMinGroundingSources: expected.minGroundingSources,
+      requiredGroundingSourceIds: expected.requiredGroundingSourceIds,
+      forbiddenGroundingSourceIds: expected.forbiddenGroundingSourceIds,
+      ok: false,
+      error: errorMessage,
+    };
   }
+};
+
+const main = async () => {
+  const cases = await mapWithWorkerCount(smokeCases, WORKFLOW_SMOKE_WORKER_COUNT, (smokeCase) =>
+    evaluateSmokeCase(smokeCase)
+  );
 
   const summary = {
     pass: cases.filter((smokeCase) => smokeCase.ok).length,

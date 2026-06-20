@@ -15,6 +15,7 @@ import type {
 } from "@/evals/classifier-types";
 import { goldenTickets, goldenTicketsPath } from "@/evals/load-datasets";
 import type { EvalLogger, GoldenTicket } from "@/evals/types";
+import { mapWithWorkerCount } from "@/evals/workers";
 import { mastra } from "@/index";
 import { toErrorMessage } from "@/lib/format";
 import logger from "@/lib/logger";
@@ -22,6 +23,8 @@ import { getOpenRouterUsage } from "@/lib/openrouter-usage";
 import { buildClassifyTicketPrompt } from "@/prompts/classify-ticket.prompt";
 import { ClassifyTicketSchema } from "@/schemas/classify-ticket.schema";
 import { writeEvalLog } from "./log-writer";
+
+const CLASSIFIER_EVAL_WORKER_COUNT = 8;
 
 const classifierAgent = mastra.getAgent("classifierAgent");
 
@@ -139,9 +142,13 @@ const evalGoldenTickets = async () => {
   const cases: ClassifierEvalCaseLog[] = [];
   const errorCases: ClassifierEvalErrorLog[] = [];
 
-  for (const goldenTicket of goldenTickets) {
-    const outcome = await evaluateGoldenTicket(goldenTicket, evalLog);
+  const outcomes = await mapWithWorkerCount(
+    goldenTickets,
+    CLASSIFIER_EVAL_WORKER_COUNT,
+    (goldenTicket) => evaluateGoldenTicket(goldenTicket, evalLog)
+  );
 
+  for (const outcome of outcomes) {
     if (outcome.kind === "error") {
       totals.errors += 1;
       errorCases.push(outcome.errorLog);
@@ -179,6 +186,10 @@ const evalGoldenTickets = async () => {
     },
     "Classifier eval completed"
   );
+
+  if (summary.fail > 0 || summary.errors > 0) {
+    process.exitCode = 1;
+  }
 };
 
 const main = async () => {
