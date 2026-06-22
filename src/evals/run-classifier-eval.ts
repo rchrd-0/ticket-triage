@@ -2,6 +2,7 @@ import path from "node:path";
 import { performance } from "node:perf_hooks";
 import type { ClassifyTicketResult } from "@/agents/classifier.agent";
 import { classifier } from "@/config/models";
+import { runClassifierScorers } from "@/evals/classifier.scorers";
 import {
   addCaseToTotals,
   buildCaseLog,
@@ -99,12 +100,18 @@ const evaluateGoldenTicket = async (
 
   try {
     const { usage, classification } = await classifyTicket(ticket.body);
+    const scorerResults = await runClassifierScorers({
+      input: { ticketId: ticket.id, product: ticket.product },
+      output: classification,
+      groundTruth: expected,
+    });
     const caseLog = buildCaseLog(
       ticket,
       expected,
       classification,
       usage,
-      performance.now() - start
+      performance.now() - start,
+      scorerResults
     );
 
     logCaseResult(ticketLog, caseLog);

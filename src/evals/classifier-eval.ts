@@ -1,4 +1,5 @@
 import type { ClassifyTicketResult } from "@/agents/classifier.agent";
+import type { ClassifierScorerResults } from "@/evals/classifier.scorers";
 import type { ClassifiedTicket } from "@/schemas/classify-ticket.schema";
 import type { Ticket } from "@/schemas/ticket.schema";
 import type {
@@ -20,31 +21,41 @@ export const createEvalTotals = (): ClassifierEvalTotals => ({
   ticketsWithCost: 0,
 });
 
-export const compareClassification = (actual: ClassifiedTicket, expected: ClassifiedTicket) => ({
-  category: actual.category === expected.category,
-  needsHuman: actual.needsHuman === expected.needsHuman,
-  urgency: actual.urgency === expected.urgency,
-  confidence: actual.confidence === expected.confidence,
-});
+const scorerPassed = (scorerResults: ClassifierScorerResults, scorerId: string): boolean => {
+  const scorerResult = scorerResults[scorerId];
+
+  if (!scorerResult) {
+    throw new Error(`Missing classifier scorer result: ${scorerId}`);
+  }
+
+  return scorerResult.score === 1;
+};
 
 export const buildCaseLog = (
   ticket: Ticket,
   expected: ClassifiedTicket,
   actual: ClassifiedTicket,
   usage: ClassifyTicketResult["usage"],
-  latencyMs: number
+  latencyMs: number,
+  scorerResults: ClassifierScorerResults
 ): ClassifierEvalCaseLog => {
-  const matches = compareClassification(actual, expected);
+  const matches = {
+    category: scorerPassed(scorerResults, "classifier-category-contract"),
+    needsHuman: scorerPassed(scorerResults, "classifier-needs-human-contract"),
+    urgency: scorerPassed(scorerResults, "classifier-urgency-contract"),
+    confidence: actual.confidence === expected.confidence,
+  };
   const costCredits = usage?.cost;
 
   return {
     ticketId: ticket.id,
     product: ticket.product,
-    ok: matches.category && matches.needsHuman,
+    ok: scorerPassed(scorerResults, "classifier-primary-contract"),
     latencyMs: Math.round(latencyMs),
     actual,
     expected,
     matches,
+    scorerResults,
     ...(typeof costCredits === "number" ? { costCredits } : {}),
   };
 };
