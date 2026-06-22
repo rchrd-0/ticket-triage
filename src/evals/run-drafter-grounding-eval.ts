@@ -38,6 +38,7 @@ const draftReply = async (
 
 type DrafterGroundingResult = {
   ticketId: string;
+  reply: Pick<DraftReply, "subject" | "body">;
   providedSourceIds: string[];
   groundingSourceIds: string[];
   checks: {
@@ -108,6 +109,10 @@ const evaluateCase = async (
 
     const result: DrafterGroundingResult = {
       ticketId: ticket.id,
+      reply: {
+        subject: reply.subject,
+        body: reply.body,
+      },
       providedSourceIds,
       groundingSourceIds: reply.groundingSourceIds,
       checks: evaluateGrounding({
