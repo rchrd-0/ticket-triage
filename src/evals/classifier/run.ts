@@ -2,28 +2,28 @@ import path from "node:path";
 import { performance } from "node:perf_hooks";
 import type { ClassifyTicketResult } from "@/agents/classifier.agent";
 import { classifier } from "@/config/models";
-import { runClassifierScorers } from "@/evals/classifier.scorers";
 import {
   addCaseToTotals,
   buildCaseLog,
   buildSummary,
   createEvalTotals,
-} from "@/evals/classifier-eval";
+} from "@/evals/classifier/results";
+import { runClassifierScorers } from "@/evals/classifier/scorers";
 import type {
   ClassifierEvalCaseLog,
   ClassifierEvalCaseOutcome,
   ClassifierEvalErrorLog,
-} from "@/evals/classifier-types";
-import { goldenTickets, goldenTicketsPath } from "@/evals/load-datasets";
-import type { EvalLogger, GoldenTicket } from "@/evals/types";
-import { mapWithWorkerCount } from "@/evals/workers";
+} from "@/evals/classifier/types";
+import { goldenTickets, goldenTicketsPath } from "@/evals/shared/load-datasets";
+import { writeEvalLog } from "@/evals/shared/log-writer";
+import type { EvalLogger, GoldenTicket } from "@/evals/shared/types";
+import { mapWithWorkerCount } from "@/evals/shared/workers";
 import { mastra } from "@/index";
 import { toErrorMessage } from "@/lib/format";
 import logger from "@/lib/logger";
 import { getOpenRouterUsage } from "@/lib/openrouter-usage";
 import { buildClassifyTicketPrompt } from "@/prompts/classify-ticket.prompt";
 import { ClassifyTicketSchema } from "@/schemas/classify-ticket.schema";
-import { writeEvalLog } from "./log-writer";
 
 const CLASSIFIER_EVAL_WORKER_COUNT = 8;
 
@@ -172,7 +172,7 @@ const evalGoldenTickets = async () => {
   const logPath = await writeEvalLog("eval-classifier", {
     runAt: new Date().toISOString(),
     dataset: {
-      path: path.relative(path.resolve(import.meta.dir, "..", ".."), goldenTicketsPath),
+      path: path.relative(path.resolve(import.meta.dir, "..", "..", ".."), goldenTicketsPath),
       size: datasetSize,
     },
     model: {

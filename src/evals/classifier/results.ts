@@ -1,12 +1,8 @@
 import type { ClassifyTicketResult } from "@/agents/classifier.agent";
-import type { ClassifierScorerResults } from "@/evals/classifier.scorers";
+import type { ClassifierScorerResults } from "@/evals/classifier/scorers";
 import type { ClassifiedTicket } from "@/schemas/classify-ticket.schema";
 import type { Ticket } from "@/schemas/ticket.schema";
-import type {
-  ClassifierEvalCaseLog,
-  ClassifierEvalSummary,
-  ClassifierEvalTotals,
-} from "./classifier-types";
+import type { ClassifierEvalCaseLog, ClassifierEvalSummary, ClassifierEvalTotals } from "./types";
 
 export const createEvalTotals = (): ClassifierEvalTotals => ({
   pass: 0,

@@ -1,6 +1,6 @@
 import { Mastra } from "@mastra/core";
-import { classifierScorers } from "@/evals/classifier.scorers";
-import { replyQualityScorers } from "@/evals/reply-quality.scorers";
+import { classifierScorers } from "@/evals/classifier/scorers";
+import { replyQualityScorers } from "@/evals/drafter/reply-quality.scorers";
 import { createCoreMastraConfig } from "@/mastra/core";
 import { supportContextMcp } from "@/mcp/support-context.mcp";
 

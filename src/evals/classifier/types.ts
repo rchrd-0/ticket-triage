@@ -1,5 +1,5 @@
 import type { ClassifiedTicket } from "@/schemas/classify-ticket.schema";
-import type { ClassifierScorerResults } from "./classifier.scorers";
+import type { ClassifierScorerResults } from "./scorers";
 
 export type ClassifierEvalMatches = {
   category: boolean;

@@ -3,10 +3,10 @@ import {
   drafterGroundingCases,
   drafterGroundingCasesPath,
   goldenTickets,
-} from "@/evals/load-datasets";
-import { writeEvalLog } from "@/evals/log-writer";
-import type { DrafterGroundingCase, EvalLogger } from "@/evals/types";
-import { mapWithWorkerCount } from "@/evals/workers";
+} from "@/evals/shared/load-datasets";
+import { writeEvalLog } from "@/evals/shared/log-writer";
+import type { DrafterGroundingCase, EvalLogger } from "@/evals/shared/types";
+import { mapWithWorkerCount } from "@/evals/shared/workers";
 import { mastra } from "@/index";
 import { toErrorMessage } from "@/lib/format";
 import logger from "@/lib/logger";
@@ -183,7 +183,10 @@ const main = async () => {
   const logPath = await writeEvalLog("eval-drafter-grounding", {
     runAt: new Date().toISOString(),
     dataset: {
-      path: path.relative(path.resolve(import.meta.dir, "..", ".."), drafterGroundingCasesPath),
+      path: path.relative(
+        path.resolve(import.meta.dir, "..", "..", ".."),
+        drafterGroundingCasesPath
+      ),
       size: drafterGroundingCases.length,
     },
     summary,

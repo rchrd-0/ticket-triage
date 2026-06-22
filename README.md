@@ -128,7 +128,7 @@ Useful entry points:
 
 - [src/workflows/triage.workflow.ts](src/workflows/triage.workflow.ts) - classify, route, draft, and human-review branches
 - [src/worker.ts](src/worker.ts) - Worker API, auth, validation, and workflow invocation
-- [src/evals](src/evals) - classifier, drafter, and workflow eval runners
+- [src/evals](src/evals) - grouped eval runners, scorers, datasets, and shared eval helpers
 - [demo.http](demo.http) - live API demo requests
 
 See [docs/architecture.md](docs/architecture.md) for the request path and runtime boundaries.

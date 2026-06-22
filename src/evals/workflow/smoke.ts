@@ -1,12 +1,12 @@
 import path from "node:path";
-import { goldenTickets, goldenTicketsPath } from "@/evals/load-datasets";
-import { mapWithWorkerCount } from "@/evals/workers";
+import { goldenTickets, goldenTicketsPath } from "@/evals/shared/load-datasets";
+import { writeEvalLog } from "@/evals/shared/log-writer";
+import { mapWithWorkerCount } from "@/evals/shared/workers";
 import { mastra } from "@/index";
 import { toErrorMessage } from "@/lib/format";
 import logger from "@/lib/logger";
 import type { Ticket } from "@/schemas/ticket.schema";
 import { TriageOutputSchema } from "@/workflows/triage.workflow";
-import { writeEvalLog } from "./log-writer";
 
 const WORKFLOW_SMOKE_WORKER_COUNT = 8;
 
@@ -234,7 +234,7 @@ const main = async () => {
     runAt: new Date().toISOString(),
     script: "workflow:smoke",
     dataset: {
-      path: path.relative(path.resolve(import.meta.dir, "..", ".."), goldenTicketsPath),
+      path: path.relative(path.resolve(import.meta.dir, "..", "..", ".."), goldenTicketsPath),
       ticketIds: smokeCases.map(({ ticket }) => ticket.id),
     },
     summary,

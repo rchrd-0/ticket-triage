@@ -2,8 +2,8 @@ import { describe, expect, test } from "bun:test";
 import {
   replyQualityDeterministicPassed,
   runReplyQualityScorers,
-} from "@/evals/reply-quality.scorers";
-import type { ReplyQualityManualCase } from "@/evals/types";
+} from "@/evals/drafter/reply-quality.scorers";
+import type { ReplyQualityManualCase } from "@/evals/shared/types";
 import type { DraftReply } from "@/schemas/draft-reply.schema";
 import type { InvestigationSource } from "@/schemas/investigation.schema";
 

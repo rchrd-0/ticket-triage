@@ -1,14 +1,24 @@
 import { readFile } from "node:fs/promises";
 import path from "node:path";
-import type { DrafterGroundingCase, GoldenTicket, ReplyQualityManualCase } from "@/evals/types";
+import type {
+  DrafterGroundingCase,
+  GoldenTicket,
+  ReplyQualityManualCase,
+} from "@/evals/shared/types";
 
-export const goldenTicketsPath = path.resolve(import.meta.dir, "datasets", "golden-tickets.json");
+export const goldenTicketsPath = path.resolve(
+  import.meta.dir,
+  "..",
+  "datasets",
+  "golden-tickets.json"
+);
 export const goldenTickets = JSON.parse(
   await readFile(goldenTicketsPath, "utf8")
 ) as GoldenTicket[];
 
 export const drafterGroundingCasesPath = path.resolve(
   import.meta.dir,
+  "..",
   "datasets",
   "drafter-grounding.json"
 );
@@ -18,6 +28,7 @@ export const drafterGroundingCases = JSON.parse(
 
 export const replyQualityManualCasesPath = path.resolve(
   import.meta.dir,
+  "..",
   "datasets",
   "reply-quality-manual.json"
 );

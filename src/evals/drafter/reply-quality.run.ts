@@ -1,19 +1,23 @@
 import path from "node:path";
 import {
+  type ReplyQualityScorerResults,
+  replyQualityDeterministicPassed,
+  runReplyQualityScorers,
+} from "@/evals/drafter/reply-quality.scorers";
+import {
   drafterGroundingCases,
   drafterGroundingCasesPath,
   goldenTickets,
   replyQualityManualCases,
   replyQualityManualCasesPath,
-} from "@/evals/load-datasets";
-import { writeEvalLog } from "@/evals/log-writer";
-import {
-  type ReplyQualityScorerResults,
-  replyQualityDeterministicPassed,
-  runReplyQualityScorers,
-} from "@/evals/reply-quality.scorers";
-import type { DrafterGroundingCase, EvalLogger, ReplyQualityManualCase } from "@/evals/types";
-import { mapWithWorkerCount } from "@/evals/workers";
+} from "@/evals/shared/load-datasets";
+import { writeEvalLog } from "@/evals/shared/log-writer";
+import type {
+  DrafterGroundingCase,
+  EvalLogger,
+  ReplyQualityManualCase,
+} from "@/evals/shared/types";
+import { mapWithWorkerCount } from "@/evals/shared/workers";
 import { mastra } from "@/index";
 import { toErrorMessage } from "@/lib/format";
 import logger from "@/lib/logger";
@@ -203,11 +207,11 @@ const main = async () => {
     runAt: new Date().toISOString(),
     dataset: {
       drafterGroundingPath: path.relative(
-        path.resolve(import.meta.dir, "..", ".."),
+        path.resolve(import.meta.dir, "..", "..", ".."),
         drafterGroundingCasesPath
       ),
       manualBaselinePath: path.relative(
-        path.resolve(import.meta.dir, "..", ".."),
+        path.resolve(import.meta.dir, "..", "..", ".."),
         replyQualityManualCasesPath
       ),
       size: drafterGroundingCases.length,

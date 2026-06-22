@@ -1,5 +1,5 @@
 import { describe, expect, test } from "bun:test";
-import { runClassifierScorers } from "@/evals/classifier.scorers";
+import { runClassifierScorers } from "@/evals/classifier/scorers";
 import type { ClassifiedTicket } from "@/schemas/classify-ticket.schema";
 
 const expectedAccountAccess: ClassifiedTicket = {

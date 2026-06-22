@@ -1,5 +1,5 @@
 import { createScorer } from "@mastra/core/evals";
-import type { ReplyQualityManualCase } from "@/evals/types";
+import type { ReplyQualityManualCase } from "@/evals/shared/types";
 import type { DraftReply } from "@/schemas/draft-reply.schema";
 import type {
   InvestigationSource,
