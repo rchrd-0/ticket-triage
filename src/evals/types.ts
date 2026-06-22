@@ -26,6 +26,20 @@ type InlineDrafterGroundingCase = BaseDrafterGroundingCase & {
 
 export type DrafterGroundingCase = GoldenDrafterGroundingCase | InlineDrafterGroundingCase;
 
+export type ReplyQualityManualScores = {
+  groundedness: 1 | 2 | 3;
+  actionability: 1 | 2 | 3;
+  policySafety: 1 | 2 | 3;
+  tone: 1 | 2 | 3;
+  provenanceDiscipline: 1 | 2 | 3;
+};
+
+export type ReplyQualityManualCase = {
+  caseId: string;
+  scores: ReplyQualityManualScores;
+  notes: string;
+};
+
 export type EvalLogger = {
   child(bindings: Record<string, unknown>): EvalLogger;
   debug(obj: Record<string, unknown>, msg: string): void;

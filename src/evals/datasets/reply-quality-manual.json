@@ -1,0 +1,79 @@
+[
+  {
+    "caseId": "g-002",
+    "scores": {
+      "groundedness": 3,
+      "actionability": 3,
+      "policySafety": 3,
+      "tone": 3,
+      "provenanceDiscipline": 3
+    },
+    "notes": "Strong software reply. Uses the KB-supported troubleshooting path and asks for useful reproduction details."
+  },
+  {
+    "caseId": "g-005",
+    "scores": {
+      "groundedness": 3,
+      "actionability": 3,
+      "policySafety": 3,
+      "tone": 3,
+      "provenanceDiscipline": 3
+    },
+    "notes": "Strong account recovery reply. Keeps the customer on password reset flow and avoids asking for passwords or codes."
+  },
+  {
+    "caseId": "g-003",
+    "scores": {
+      "groundedness": 3,
+      "actionability": 3,
+      "policySafety": 2,
+      "tone": 3,
+      "provenanceDiscipline": 3
+    },
+    "notes": "Latest tracking facts are grounded. Review-initiation wording is acceptable only if the workflow represents that review starting."
+  },
+  {
+    "caseId": "smoke-unknown-order",
+    "scores": {
+      "groundedness": 1,
+      "actionability": 2,
+      "policySafety": 2,
+      "tone": 3,
+      "provenanceDiscipline": 3
+    },
+    "notes": "Original baseline prose implied the system looked into ORD-99999 and saw no recent tracking updates, but no order-status source was supplied."
+  },
+  {
+    "caseId": "g-009",
+    "scores": {
+      "groundedness": 3,
+      "actionability": 3,
+      "policySafety": 3,
+      "tone": 3,
+      "provenanceDiscipline": 3
+    },
+    "notes": "Clear returns answer with correct refund timing and next step."
+  },
+  {
+    "caseId": "g-019",
+    "scores": {
+      "groundedness": 3,
+      "actionability": 3,
+      "policySafety": 3,
+      "tone": 3,
+      "provenanceDiscipline": 3
+    },
+    "notes": "Correct billing-dispute intake. Asks for the expected charge details without promising a refund."
+  },
+  {
+    "caseId": "g-020",
+    "scores": {
+      "groundedness": 3,
+      "actionability": 2,
+      "policySafety": 3,
+      "tone": 3,
+      "provenanceDiscipline": 3
+    },
+    "notes": "Good low-context response. It asks for more details and does not cite unsupported sources."
+  }
+]

@@ -70,6 +70,7 @@ fails early with explicit environment-variable validation errors.
 | `bun test` | Unit tests |
 | `bun run eval:classifier` | Model-backed classifier golden eval |
 | `bun run eval:drafter` | Model-backed drafter grounding eval |
+| `bun run eval:reply-quality` | Model-backed reply-quality scorer eval |
 | `bun run workflow:smoke` | End-to-end workflow smoke |
 | `bun run deploy:worker:dry-run` | Validate Worker bundle without publishing |
 | `bun run deploy:worker` | Deploy the Worker |

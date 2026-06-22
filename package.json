@@ -13,6 +13,7 @@
     "test": "bun test",
     "eval:classifier": "bun src/evals/run-classifier-eval.ts",
     "eval:drafter": "bun src/evals/run-drafter-grounding-eval.ts",
+    "eval:reply-quality": "bun src/evals/run-reply-quality-eval.ts",
     "workflow:smoke": "bun src/evals/workflow-smoke.ts",
     "check-types": "tsc -b",
     "check": "ultracite check",

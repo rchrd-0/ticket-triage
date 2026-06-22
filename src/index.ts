@@ -1,10 +1,11 @@
 import { Mastra } from "@mastra/core";
 import { classifierScorers } from "@/evals/classifier.scorers";
+import { replyQualityScorers } from "@/evals/reply-quality.scorers";
 import { createCoreMastraConfig } from "@/mastra/core";
 import { supportContextMcp } from "@/mcp/support-context.mcp";
 
 export const mastra = new Mastra({
   ...createCoreMastraConfig(),
   mcpServers: { supportContextMcp },
-  scorers: classifierScorers,
+  scorers: { ...classifierScorers, ...replyQualityScorers },
 });
