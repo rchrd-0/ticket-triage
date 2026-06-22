@@ -45,7 +45,7 @@ Expected response shapes:
 | Draftable shipping | `route.path: "draft"`, `reply` present, `reply.groundingSourceIds` populated |
 | Security human review | `route.path: "human_review"`, `reply` omitted |
 
-## Local Setup
+## Local setup
 
 ```bash
 bun install
@@ -54,6 +54,9 @@ cp .env.example .env
 
 Fill the local `.env` with OpenRouter and Langfuse credentials. `TRIAGE_API_KEY` is required for the
 private Worker endpoint.
+
+Commands that start Mastra or call model-backed evals require these secrets. Without them, startup
+fails early with explicit environment-variable validation errors.
 
 ## Commands
 
@@ -76,7 +79,7 @@ private Worker endpoint.
 Model-backed evals call OpenRouter and may spend provider budget. Generated JSON eval logs are
 written under `logs/` and are intentionally ignored by git.
 
-## Evaluation Snapshot
+## Evaluation snapshot
 
 Latest recorded eval results:
 
@@ -87,7 +90,9 @@ Latest recorded eval results:
 | Drafter grounding eval | 7/7 | Controlled-context source-ID checks |
 | Drafter v6.2 stability sweep | 15/15 runs | Full drafter eval passed at 7/7 cases each run |
 | Workflow smoke | 4/4 | Draft, found-order, unknown-order, and human-review branches |
-| Deployed Worker smoke | pass | Health, draft shipping, and security human-review requests |
+| Deployed Worker smoke | pass | Last recorded deployed triage smoke covered health, draft shipping, and security human review |
+
+See [docs/evals.md](docs/evals.md) for the eval-layer summary, tuning decisions, and known limits.
 
 ## Architecture
 
@@ -108,6 +113,8 @@ Useful entry points:
 - [src/worker.ts](src/worker.ts) - Worker API, auth, validation, and workflow invocation
 - [src/evals](src/evals) - classifier, drafter, and workflow eval runners
 - [demo.http](demo.http) - live API demo requests
+
+See [docs/architecture.md](docs/architecture.md) for the request path and runtime boundaries.
 
 ## Limitations
 
