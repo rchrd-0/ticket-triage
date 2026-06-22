@@ -2,9 +2,7 @@
   "$schema": "./node_modules/wrangler/config-schema.json",
   "name": "ticket-triage",
   "main": "src/worker.ts",
-  // Keep one stable private demo URL for now. Disable if this becomes a non-public backend.
   "workers_dev": true,
-  // Avoid extra public preview URLs until we deliberately add CI preview deploys.
   "preview_urls": false,
   "compatibility_date": "2026-06-15",
   "compatibility_flags": ["nodejs_compat"],
@@ -12,10 +10,15 @@
     "enabled": true,
     "head_sampling_rate": 1
   },
+  "routes":[
+    {
+      "pattern": "ticket-triage.rchrd.dev",
+      "custom_domain": true
+    }
+  ],
   "vars": {
     "NODE_ENV": "production",
     "LOG_LEVEL": "info",
-    // Avoid many realtime OTEL export fetches in Workers; src/worker.ts flushes once with waitUntil.
     "LANGFUSE_REALTIME": "false",
     "LANGFUSE_BASE_URL": "https://jp.cloud.langfuse.com"
   },

@@ -1,65 +1,120 @@
 # ticket-triage
 
-AI-powered support ticket triage capstone built with TypeScript, Bun, Mastra, and Cloudflare
-Workers.
+AI-powered support ticket triage API for e-commerce-style support requests. It classifies incoming
+tickets, routes safe cases to a grounded draft-reply workflow, and sends high-risk cases to human
+review without generating customer-facing copy.
 
-Current workflow:
+## Workflow
 
 ```text
-ticket -> classify -> route
-  -> draft: investigate with read-only tools -> draft grounded reply
-  -> human_review: omit automated reply
+ticket
+  -> classify
+  -> route
+    -> draft: investigate read-only support context -> draft grounded reply
+    -> human_review: return classification and route only
 ```
 
-The draft branch uses a bounded local investigator with read-only KB, SOP, and order-status tools.
-Tool results are normalized into investigation sources, and drafted replies return
-`groundingSourceIds` that must come from the supplied sources. The internal workflow uses local
-Mastra tools; the same read-only support context tools are also exposed through a local stdio MCP
-server for external AI clients.
+The draft branch investigates local support context through read-only KB, SOP, and order-status
+tools. Tool results are normalized into sources, and generated replies return `groundingSourceIds`
+that must come from the supplied sources.
 
-## Setup
+## Demo
+
+Live private endpoint:
+
+```text
+https://ticket-triage.rchrd.dev
+```
+
+`POST /triage` is protected with `Authorization: Bearer <TRIAGE_API_KEY>`.
+
+```bash
+export TRIAGE_BASE_URL="https://ticket-triage.rchrd.dev"
+export TRIAGE_API_KEY="replace-with-private-demo-key"
+
+curl -sS -w "\nHTTP %{http_code} in %{time_total}s\n" "$TRIAGE_BASE_URL/health"
+```
+
+[demo.http](demo.http) includes one draftable delayed-shipping request and one human-review security
+request.
+
+Expected response shapes:
+
+| Case | Expected shape |
+|---|---|
+| Draftable shipping | `route.path: "draft"`, `reply` present, `reply.groundingSourceIds` populated |
+| Security human review | `route.path: "human_review"`, `reply` omitted |
+
+## Local Setup
 
 ```bash
 bun install
+cp .env.example .env
 ```
 
-Create local environment files from the project notes or deployment docs. Required secrets include
-OpenRouter and Langfuse credentials; `TRIAGE_API_KEY` is required for the private Worker endpoint.
+Fill the local `.env` with OpenRouter and Langfuse credentials. `TRIAGE_API_KEY` is required for the
+private Worker endpoint.
 
-## Common Commands
+## Commands
 
-```bash
-bun run dev              # Mastra Studio on localhost:4111
-bun run check-types      # TypeScript
-bun run check            # Ultracite
-bun test                 # Unit tests
-bun run eval:classifier  # Model-backed classifier eval
-bun run eval:drafter     # Model-backed drafter grounding eval
-bun run workflow:smoke   # End-to-end workflow smoke
-```
+| Command | Purpose |
+|---|---|
+| `bun run dev` | Mastra Studio on `localhost:4111` |
+| `bun run dev:worker` | Local Cloudflare Worker |
+| `bun run worker:types` | Generate Worker binding types |
+| `bun run check-types` | TypeScript project check |
+| `bun run check` | Ultracite static check |
+| `bun test` | Unit tests |
+| `bun run eval:classifier` | Model-backed classifier golden eval |
+| `bun run eval:drafter` | Model-backed drafter grounding eval |
+| `bun run workflow:smoke` | End-to-end workflow smoke |
+| `bun run deploy:worker:dry-run` | Validate Worker bundle without publishing |
+| `bun run deploy:worker` | Deploy the Worker |
+| `bun run mcp:stdio` | Start the local stdio MCP server |
+| `bun run mcp:inspect` | Inspect the local MCP server |
 
 Model-backed evals call OpenRouter and may spend provider budget. Generated JSON eval logs are
 written under `logs/` and are intentionally ignored by git.
 
-## Worker API
+## Evaluation Snapshot
 
-The deployed Worker exposes:
+Latest recorded eval results:
 
-- `GET /health`
-- `POST /triage`, protected by `Authorization: Bearer <TRIAGE_API_KEY>`
+| Check | Result | Notes |
+|---|---:|---|
+| Local checks | pass | `worker:types`, `check-types`, `check`, and unit tests |
+| Classifier golden eval | 19/20 primary | 20 hand-authored cases; one conservative human-review false positive |
+| Drafter grounding eval | 7/7 | Controlled-context source-ID checks |
+| Drafter v6.2 stability sweep | 15/15 runs | Full drafter eval passed at 7/7 cases each run |
+| Workflow smoke | 4/4 | Draft, found-order, unknown-order, and human-review branches |
+| Deployed Worker smoke | pass | Health, draft shipping, and security human-review requests |
 
-Local and deployment commands:
+## Architecture
 
-```bash
-bun run worker:types
-bun run dev:worker
-bun run deploy:worker:dry-run
-bun run deploy:worker
-```
+| Layer | Current choice |
+|---|---|
+| Runtime | TypeScript + Bun |
+| AI workflow | Mastra agents and workflows |
+| Model gateway | OpenRouter |
+| API | Cloudflare Workers + Hono |
+| Validation | Zod |
+| Observability | Mastra observability + Langfuse |
+| Support context | Local KB, SOP, and mock order fixtures |
+| External tool surface | Local stdio MCP server for read-only support context tools |
 
-The Worker keeps MCP out of the deployed runtime. Local MCP validation uses:
+Useful entry points:
 
-```bash
-bun run mcp:stdio
-bun run mcp:inspect
-```
+- [src/workflows/triage.workflow.ts](src/workflows/triage.workflow.ts) - classify, route, draft, and human-review branches
+- [src/worker.ts](src/worker.ts) - Worker API, auth, validation, and workflow invocation
+- [src/evals](src/evals) - classifier, drafter, and workflow eval runners
+- [demo.http](demo.http) - live API demo requests
+
+## Limitations
+
+- The live API uses a private bearer token; it is not browser-safe public auth.
+- There is no persistence, ticket history, user account system, or human-review queue.
+- Support context is fixture-backed, not production customer data.
+- Eval sets are intentionally small and hand-authored; they are regression checks, not broad
+  statistical guarantees.
+- Kaggle-derived tickets were used only for early noisy fixtures, not as training data or eval
+  ground truth.
