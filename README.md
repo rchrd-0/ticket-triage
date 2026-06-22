@@ -94,6 +94,22 @@ Latest recorded eval results:
 
 See [docs/evals.md](docs/evals.md) for the eval-layer summary, tuning decisions, and known limits.
 
+## Cost and latency
+
+Current profile from Phase 6 recorded evidence:
+
+| Surface | Measurement | Result | Notes |
+|---|---:|---:|---|
+| Classifier eval | Average case latency | 1.76 s | 20 cases, bounded worker pool, OpenRouter |
+| Classifier eval | Cost per case | ~0.000119 credits | 0.002378 credits total across 20 cases |
+| Deployed Worker | Draft shipping request | 8.20 s | Full `/triage` path with classification, investigation, drafting, and observability flush scheduled |
+| Deployed Worker | Security human-review request | 1.99 s | Full `/triage` path, no investigation or draft reply |
+
+Latency is provider- and network-sensitive. Classifier timings are per model call inside the eval
+runner; Worker timings are end-to-end HTTP durations. Workflow smoke currently validates branch
+behavior but does not publish per-step timings, so deeper phase timing is inspected in Langfuse
+traces.
+
 ## Architecture
 
 | Layer | Current choice |

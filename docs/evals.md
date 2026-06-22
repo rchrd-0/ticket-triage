@@ -104,3 +104,42 @@ kept the prose fix and restored SOP citation stability across a 15-run sweep.
 | Strict retrieval ranking eval | Deferred | Current retrieval is intentionally lexical; stricter semantic ranking checks belong after retrieval becomes a bottleneck |
 | Investigator eval | Deferred | Workflow smoke and traces are enough until tool selection becomes unclear, costly, or a source of bad grounding |
 | LLM-as-judge reply scoring | Deferred | Manual scoring is enough for the current small eval set |
+
+## Latency and cost profile
+
+Current profile is based on recorded Phase 6 runs, not a fresh benchmark suite. The relevant evidence
+is copied here because raw run artifacts are local/internal.
+
+| Surface | Recorded run | Result | Notes |
+|---|---|---:|---|
+| Classifier eval | 2026-06-20 `bun run eval:classifier` | 1,757 ms avg case latency | 20 cases through OpenRouter with bounded eval concurrency |
+| Classifier eval | 2026-06-20 `bun run eval:classifier` | 0.002378 credits total | About 0.000119 credits per classified ticket |
+| Classifier eval | 2026-06-20 `bun run eval:classifier` | 831 ms min, 1,537 ms p50, 2,879 ms p95, 3,663 ms max | Per-case elapsed time once a worker starts that case |
+| Deployed Worker draft | 2026-06-20 deployed `/triage` smoke | 8.20 s | End-to-end draft path; includes classify, investigate, draft, HTTP overhead, and scheduled observability flush |
+| Deployed Worker human review | 2026-06-20 deployed `/triage` smoke | 1.99 s | End-to-end human-review path; skips investigation and drafting |
+
+Recorded classifier run details:
+
+| Field | Value |
+|---|---|
+| Run timestamp | `2026-06-20T11:06:53.320Z` |
+| Dataset | `src/evals/datasets/golden-tickets.json`, 20 cases |
+| Model | `deepseek/deepseek-v4-flash` |
+| Temperature | `0` |
+| Reasoning effort | `none` |
+| Eval runner shape | Bounded worker pool, worker count `8` |
+| Primary result | 19/20 |
+| Category | 20/20 |
+| `needsHuman` | 19/20 |
+| Urgency | 20/20 |
+| Errors | 0 |
+| Tickets with recorded cost | 20 |
+
+Recorded deployed smoke details:
+
+| Request | HTTP status | Duration | Result |
+|---|---:|---:|---|
+| `GET /health` | 200 | 1.24 s | pass |
+| `POST /triage` draft shipping | 200 | 8.20 s | `route.path: "draft"`, reply returned, grounding IDs `order-88421`, `sop-shipping-delay-001` |
+| `POST /triage` security human review | 200 | 1.99 s | `route.path: "human_review"`, no reply, no grounding IDs |
+
