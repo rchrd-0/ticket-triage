@@ -10,11 +10,21 @@ export type GoldenTicket = {
   expected: ClassifiedTicket;
 };
 
-export type DrafterGroundingCase = {
-  ticketId: string;
+type BaseDrafterGroundingCase = {
   terminationReason: InvestigationTerminationReason;
   sources: InvestigationSource[];
 };
+
+type GoldenDrafterGroundingCase = BaseDrafterGroundingCase & {
+  ticketId: string;
+};
+
+type InlineDrafterGroundingCase = BaseDrafterGroundingCase & {
+  ticket: Ticket;
+  classification: ClassifiedTicket;
+};
+
+export type DrafterGroundingCase = GoldenDrafterGroundingCase | InlineDrafterGroundingCase;
 
 export type EvalLogger = {
   child(bindings: Record<string, unknown>): EvalLogger;

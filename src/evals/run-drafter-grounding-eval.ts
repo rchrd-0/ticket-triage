@@ -64,6 +64,21 @@ const getGoldenTicket = (ticketId: string) => {
   return goldenTicket;
 };
 
+const getGroundingCaseId = (groundingCase: DrafterGroundingCase) =>
+  "ticketId" in groundingCase ? groundingCase.ticketId : groundingCase.ticket.id;
+
+const getGroundingCaseInputs = (groundingCase: DrafterGroundingCase) => {
+  if ("ticketId" in groundingCase) {
+    const { ticket, expected: classification } = getGoldenTicket(groundingCase.ticketId);
+    return { ticket, classification };
+  }
+
+  return {
+    ticket: groundingCase.ticket,
+    classification: groundingCase.classification,
+  };
+};
+
 const evaluateGrounding = (args: {
   providedSourceIds: string[];
   groundingSourceIds: string[];
@@ -96,10 +111,11 @@ const evaluateCase = async (
   groundingCase: DrafterGroundingCase,
   evalLog: EvalLogger
 ): Promise<DrafterGroundingOutcome> => {
-  const caseLog = evalLog.child({ ticketId: groundingCase.ticketId });
+  const caseId = getGroundingCaseId(groundingCase);
+  const caseLog = evalLog.child({ ticketId: caseId });
 
   try {
-    const { ticket, expected: classification } = getGoldenTicket(groundingCase.ticketId);
+    const { ticket, classification } = getGroundingCaseInputs(groundingCase);
     const reply = await draftReply(ticket, classification, {
       sources: groundingCase.sources,
       terminationReason: groundingCase.terminationReason,
@@ -125,7 +141,7 @@ const evaluateCase = async (
 
     return { kind: "success", caseLog: result };
   } catch (error) {
-    const errorLog = { ticketId: groundingCase.ticketId, error: toErrorMessage(error) };
+    const errorLog = { ticketId: caseId, error: toErrorMessage(error) };
     caseLog.error(
       { event: "eval.drafter_grounding.case_errored", err: errorLog.error },
       "Drafter grounding eval case errored"

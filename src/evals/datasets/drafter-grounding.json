@@ -48,6 +48,33 @@
     ]
   },
   {
+    "ticket": {
+      "id": "smoke-unknown-order",
+      "channel": "email",
+      "product": "Logitech MX Master 3",
+      "body": "My order ORD-99999 was supposed to arrive last week, but I cannot find any tracking update. Can you check what happened and tell me whether it can be resent?",
+      "customer": {
+        "name": "Smoke Test",
+        "email": "smoke.unknown.order@example.com"
+      }
+    },
+    "classification": {
+      "category": "Shipping and delivery",
+      "urgency": "medium",
+      "needsHuman": false,
+      "confidence": 0.9
+    },
+    "terminationReason": "incomplete_context",
+    "sources": [
+      {
+        "sourceId": "sop-shipping-delay-001",
+        "sourceType": "sop",
+        "title": "Delayed shipment review",
+        "content": "Check the current order and carrier status before discussing a replacement or refund. If tracking is moving, provide the latest known event and estimated delivery information without guaranteeing an arrival date. If tracking has not progressed beyond the normal carrier window, collect the order details and follow the standard delayed-shipment review. Replacement, refund, or address-interception approval must come from the applicable policy or a human reviewer."
+      }
+    ]
+  },
+  {
     "ticketId": "g-009",
     "terminationReason": "completed",
     "sources": [
