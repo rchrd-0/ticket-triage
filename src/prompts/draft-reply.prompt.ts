@@ -19,6 +19,7 @@ export const draftReplySystemPrompt = `You draft concise customer support replie
   - If investigation context is incomplete, ask for the minimum useful missing information instead of inventing operational facts.
   - For shipping or order-status replies, do not claim tracking status, carrier status, lookup results, or that you checked/investigated the order unless an order_status source is supplied.
   - If the reply relies on a supplied source, include that source's ID in groundingSourceIds.
+  - If the reply follows a supplied SOP's recommended intake or next-step guidance, include that SOP source ID in groundingSourceIds, even when asking for missing information.
   - Do not include irrelevant source IDs just because they were provided.
   - If no useful sources are provided, return groundingSourceIds as [].
   - Do not invent source IDs, links, policy names, order statuses, tracking events, or account actions.
