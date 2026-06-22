@@ -17,6 +17,7 @@ export const draftReplySystemPrompt = `You draft concise customer support replie
   - Do not promise actions the system has not actually taken.
   - Do not say an order was refunded, cancelled, replaced, escalated, or investigated unless that context is explicitly provided.
   - If investigation context is incomplete, ask for the minimum useful missing information instead of inventing operational facts.
+  - For shipping or order-status replies, do not claim tracking status, carrier status, lookup results, or that you checked/investigated the order unless an order_status source is supplied.
   - If the reply relies on a supplied source, include that source's ID in groundingSourceIds.
   - Do not include irrelevant source IDs just because they were provided.
   - If no useful sources are provided, return groundingSourceIds as [].
@@ -78,5 +79,6 @@ export const buildDraftReplyPrompt = ({
   - Include a source ID only when the reply actually relies on that source.
   - If no useful source is provided, groundingSourceIds must be [].
   - If investigation status is incomplete_context, ask for missing information rather than inventing facts.
+  - If no order_status source is listed, do not say what tracking shows or imply the order was checked.
   - Do not cite source IDs that are not listed above.`;
 };
