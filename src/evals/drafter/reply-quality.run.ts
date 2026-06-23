@@ -5,6 +5,11 @@ import {
   runReplyQualityScorers,
 } from "@/evals/drafter/reply-quality.scorers";
 import {
+  calculateReplyQualityJudgeCalibration,
+  type ReplyQualityJudgeCalibration,
+  replyQualityJudgeScorer,
+} from "@/evals/drafter/reply-quality-judge.scorers";
+import {
   drafterGroundingCases,
   drafterGroundingCasesPath,
   goldenTickets,
@@ -27,6 +32,7 @@ import { type DraftReply, DraftReplySchema } from "@/schemas/draft-reply.schema"
 import type { Ticket } from "@/schemas/ticket.schema";
 
 const REPLY_QUALITY_EVAL_WORKER_COUNT = 4;
+const REPLY_QUALITY_JUDGE_ENABLED = process.env.REPLY_QUALITY_JUDGE === "1";
 
 const drafterAgent = mastra.getAgent("drafterAgent");
 
@@ -56,6 +62,12 @@ type ReplyQualityResult = {
   manualNotes: string;
   scorerResults: ReplyQualityScorerResults;
   deterministicPassed: boolean;
+  judge?: {
+    scores: ReplyQualityManualCase["scores"];
+    average: number;
+    rationale: string;
+    calibration: ReplyQualityJudgeCalibration;
+  };
 };
 
 type ReplyQualityOutcome =
@@ -116,6 +128,14 @@ const logCaseResult = (caseLog: EvalLogger, result: ReplyQualityResult) => {
     groundingSourceIds: result.reply.groundingSourceIds,
     manualAverage: result.manualAverage,
     scorerResults: result.scorerResults,
+    judge: result.judge
+      ? {
+          average: result.judge.average,
+          withinTolerance: result.judge.calibration.withinTolerance,
+          averageDelta: result.judge.calibration.averageDelta,
+          calibrationMisses: result.judge.calibration.calibrationMisses,
+        }
+      : undefined,
   };
 
   if (result.deterministicPassed) {
@@ -124,6 +144,44 @@ const logCaseResult = (caseLog: EvalLogger, result: ReplyQualityResult) => {
   }
 
   caseLog.warn(logFields, "Reply-quality eval case completed");
+};
+
+const runReplyQualityJudge = async (
+  caseId: string,
+  ticket: Ticket,
+  classification: ClassifiedTicket,
+  groundingCase: DrafterGroundingCase,
+  reply: DraftReply,
+  manualCase: ReplyQualityManualCase
+) => {
+  const judgeResult = await replyQualityJudgeScorer.run({
+    input: {
+      caseId,
+      ticket,
+      classification,
+      sources: groundingCase.sources,
+      terminationReason: groundingCase.terminationReason,
+    },
+    output: reply,
+    groundTruth: manualCase,
+  });
+
+  const judgeAnalysis = judgeResult.analyzeStepResult;
+
+  if (!judgeAnalysis) {
+    throw new Error(`Reply-quality judge returned no analysis for case: ${caseId}`);
+  }
+
+  return {
+    scores: judgeAnalysis.scores,
+    average: judgeResult.score,
+    rationale: judgeResult.reason ?? judgeAnalysis.rationale,
+    calibration: calculateReplyQualityJudgeCalibration(manualCase.scores, {
+      scores: judgeAnalysis.scores,
+      average: judgeResult.score,
+      rationale: judgeResult.reason ?? judgeAnalysis.rationale,
+    }),
+  };
 };
 
 const evaluateCase = async (
@@ -149,6 +207,11 @@ const evaluateCase = async (
       output: reply,
       groundTruth: manualCase,
     });
+
+    const judge = REPLY_QUALITY_JUDGE_ENABLED
+      ? await runReplyQualityJudge(caseId, ticket, classification, groundingCase, reply, manualCase)
+      : undefined;
+
     const result = {
       caseId,
       reply,
@@ -158,6 +221,7 @@ const evaluateCase = async (
       manualNotes: manualCase.notes,
       scorerResults,
       deterministicPassed: replyQualityDeterministicPassed(scorerResults),
+      ...(judge ? { judge } : {}),
     };
 
     logCaseResult(caseLog, result);
@@ -197,6 +261,10 @@ const main = async () => {
     (outcome) => !replyQualityDeterministicPassed(outcome.caseLog.scorerResults)
   );
   const erroredCases = outcomes.filter((outcome) => outcome.kind === "error");
+  const judgedCases = successCases.filter((outcome) => outcome.caseLog.judge);
+  const judgeCalibrationMisses = judgedCases
+    .filter((outcome) => !outcome.caseLog.judge?.calibration.withinTolerance)
+    .map((outcome) => outcome.caseLog.caseId);
   const summary = {
     total: outcomes.length,
     deterministicPassed: successCases.length - failedCases.length,
@@ -216,6 +284,12 @@ const main = async () => {
       ),
       size: drafterGroundingCases.length,
     },
+    judge: {
+      enabled: REPLY_QUALITY_JUDGE_ENABLED,
+      completed: judgedCases.length,
+      withinTolerance: judgedCases.length - judgeCalibrationMisses.length,
+      calibrationMisses: judgeCalibrationMisses,
+    },
     summary,
     results: outcomes,
   });
@@ -225,6 +299,9 @@ const main = async () => {
       event: "eval.reply_quality.completed",
       logPath,
       ...summary,
+      judgeEnabled: REPLY_QUALITY_JUDGE_ENABLED,
+      judgeCompleted: judgedCases.length,
+      judgeCalibrationMisses,
       failures: failedCases.map((outcome) => outcome.caseLog),
       errors: erroredCases.map((outcome) => outcome.errorLog),
     },
@@ -241,3 +318,5 @@ try {
 } finally {
   await mastra.shutdown();
 }
+
+process.exit(process.exitCode ?? 0);
