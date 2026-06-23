@@ -15,6 +15,7 @@
     "eval:drafter": "bun src/evals/drafter/grounding.run.ts",
     "eval:reply-quality": "bun src/evals/drafter/reply-quality.run.ts",
     "workflow:smoke": "bun src/evals/workflow/smoke.ts",
+    "demo:adapter": "bun src/demo/adapter-demo.run.ts",
     "check-types": "tsc -b",
     "check": "ultracite check",
     "fix": "ultracite fix",

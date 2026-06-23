@@ -13,6 +13,7 @@ client
     -> route ticket
       -> draft: investigate read-only support context -> draft grounded reply
       -> human_review: return classification and route only
+  -> optional local demo adapter writes Slack-shaped handoff artifact
 ```
 
 The draft path can use KB, SOP, and order-status context. Human-review cases skip investigation and
@@ -27,6 +28,7 @@ do not generate a customer reply.
 | Local support tools | Read-only KB, SOP, and mock order context |
 | Local MCP stdio server | External AI-client access to the same read-only support tools |
 | Langfuse | Workflow and model-call observability |
+| Demo adapter | Local dry-run script that calls `/triage` and writes Slack-shaped handoff logs |
 
 ## Important boundaries
 
@@ -37,6 +39,8 @@ do not generate a customer reply.
 - Human review is a route result, not a queue, assignment system, or reviewer UI.
 - Draft replies include `groundingSourceIds`; those IDs must come from supplied investigation
   sources.
+- The Slack-shaped handoff is a local dry-run adapter demo; it does not call Slack, create external
+  state, or change the core `/triage` response contract.
 
 ## Entry points
 
@@ -45,3 +49,4 @@ do not generate a customer reply.
 - [src/index.ts](../src/index.ts) - local Mastra app registration, including MCP
 - [src/workflows/triage.workflow.ts](../src/workflows/triage.workflow.ts) - classify, route, draft, and human-review workflow
 - [src/mcp/support-context.stdio.ts](../src/mcp/support-context.stdio.ts) - local stdio MCP server
+- [src/demo](../src/demo) - dry-run Slack-shaped handoff adapter demo

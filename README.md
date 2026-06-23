@@ -7,11 +7,13 @@ review without generating customer-facing copy.
 ## Workflow
 
 ```text
-ticket
+incoming ticket
   -> classify
   -> route
-    -> draft: investigate read-only support context -> draft grounded reply
-    -> human_review: return classification and route only
+     -> draft: investigate support context -> draft grounded reply
+     -> human_review: return classification and route only
+  -> triage API response
+  -> optional Slack-shaped dry-run handoff
 ```
 
 The draft branch investigates local support context through read-only KB, SOP, and order-status
@@ -29,14 +31,18 @@ https://ticket-triage.rchrd.dev
 `POST /triage` is protected with `Authorization: Bearer <TRIAGE_API_KEY>`.
 
 ```bash
-export TRIAGE_BASE_URL="https://ticket-triage.rchrd.dev"
+export TRIAGE_API_URL="https://ticket-triage.rchrd.dev"
 export TRIAGE_API_KEY="replace-with-private-demo-key"
 
-curl -sS -w "\nHTTP %{http_code} in %{time_total}s\n" "$TRIAGE_BASE_URL/health"
+curl -sS -w "\nHTTP %{http_code} in %{time_total}s\n" "$TRIAGE_API_URL/health"
 ```
 
 [demo.http](demo.http) includes one draftable delayed-shipping request and one human-review security
 request.
+
+For a lightweight handoff demo, `bun run demo:adapter` reads two webhook-shaped support-ticket
+fixtures, calls `POST /triage`, and writes Slack-shaped dry-run handoff messages under `logs/`. It
+does not call the Slack API or create external state.
 
 Expected response shapes:
 
@@ -52,8 +58,8 @@ bun install
 cp .env.example .env
 ```
 
-Fill the local `.env` with OpenRouter and Langfuse credentials. `TRIAGE_API_KEY` is required for the
-private Worker endpoint.
+Fill the local `.env` with OpenRouter and Langfuse credentials. `TRIAGE_API_URL` and
+`TRIAGE_API_KEY` are required for private Worker API demos.
 
 Commands that start Mastra or call model-backed evals require these secrets. Without them, startup
 fails early with explicit environment-variable validation errors.
@@ -72,6 +78,7 @@ fails early with explicit environment-variable validation errors.
 | `bun run eval:drafter` | Model-backed drafter grounding eval |
 | `bun run eval:reply-quality` | Model-backed reply-quality scorer eval |
 | `bun run workflow:smoke` | End-to-end workflow smoke |
+| `bun run demo:adapter` | Dry-run Slack-shaped handoff demo through the Worker API |
 | `bun run deploy:worker:dry-run` | Validate Worker bundle without publishing |
 | `bun run deploy:worker` | Deploy the Worker |
 | `bun run mcp:stdio` | Start the local stdio MCP server |
@@ -86,14 +93,26 @@ Latest recorded eval results:
 
 | Check | Result | Notes |
 |---|---:|---|
-| Local checks | pass | `worker:types`, `check-types`, `check`, and unit tests |
-| Classifier golden eval | 19/20 primary | 20 hand-authored cases; one conservative human-review false positive |
+| Local checks | pass | `check-types`, `check`, and 55 unit tests |
+| Classifier golden eval | 20/20 primary | 20 hand-authored cases; urgency 19/20 |
 | Drafter grounding eval | 7/7 | Controlled-context source-ID checks |
-| Drafter v6.2 stability sweep | 15/15 runs | Full drafter eval passed at 7/7 cases each run |
+| Reply-quality scorer eval | 7/7 deterministic | Provenance, reply presence, and unknown-order guardrail |
+| Advisory reply-quality judge sweep | 3/3 runs | Judge completed 7/7 cases each run; advisory only |
+| Drafter v6.3 prompt | current | Tightened review-step and policy-question wording |
 | Workflow smoke | 4/4 | Draft, found-order, unknown-order, and human-review branches |
 | Deployed Worker smoke | pass | Last recorded deployed triage smoke covered health, draft shipping, and security human review |
 
 See [docs/evals.md](docs/evals.md) for the eval-layer summary, tuning decisions, and known limits.
+
+## Quality claims
+
+| Claim | Evidence |
+|---|---|
+| Classifier routes the current golden set correctly on primary fields | `bun run eval:classifier`; summarized in [docs/evals.md](docs/evals.md) |
+| Draft replies cite only supplied investigation sources | `bun run eval:drafter`; controlled grounding cases |
+| Reply quality has deterministic regression checks plus an advisory judge | `bun run eval:reply-quality`; optional `REPLY_QUALITY_JUDGE=1` |
+| Live API supports both draft and human-review branches | `demo.http` and `bun run workflow:smoke` |
+| Slack handoff is an adapter demo, not core API coupling | `bun run demo:adapter`; dry-run local artifact only |
 
 ## Cost and latency
 
@@ -105,6 +124,7 @@ Current profile from Phase 6 recorded evidence:
 | Classifier eval | Cost per case | ~0.000119 credits | 0.002378 credits total across 20 cases |
 | Deployed Worker | Draft shipping request | 8.20 s | Full `/triage` path with classification, investigation, drafting, and observability flush scheduled |
 | Deployed Worker | Security human-review request | 1.99 s | Full `/triage` path, no investigation or draft reply |
+| Adapter demo | Dry-run handoff | local artifact only | Calls `/triage`, then writes Slack-shaped messages under `logs/` without posting to Slack |
 
 Latency is provider- and network-sensitive. Classifier timings are per model call inside the eval
 runner; Worker timings are end-to-end HTTP durations. Workflow smoke currently validates branch
@@ -128,6 +148,7 @@ Useful entry points:
 
 - [src/workflows/triage.workflow.ts](src/workflows/triage.workflow.ts) - classify, route, draft, and human-review branches
 - [src/worker.ts](src/worker.ts) - Worker API, auth, validation, and workflow invocation
+- [src/demo](src/demo) - dry-run Slack-shaped handoff adapter demo
 - [src/evals](src/evals) - grouped eval runners, scorers, datasets, and shared eval helpers
 - [demo.http](demo.http) - live API demo requests
 
