@@ -34,3 +34,11 @@ export const investigator = {
     effort: "low",
   },
 } as const satisfies AgentModelConfig;
+
+export const replyQualityJudge = {
+  agentModel: "openai/gpt-5.4-mini",
+  temperature: 0,
+  reasoning: {
+    effort: "low",
+  },
+} as const satisfies AgentModelConfig;
